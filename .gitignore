@@ -1,0 +1,35 @@
+# Large calculation output stays on S3DF; only code, inputs and small metadata are tracked.
+*.out
+*.gbw
+*.hess
+*.densities
+*.densitiesinfo
+*.tmp
+*.tmp.*
+*.engrad
+*.opt
+*.prop
+*.property.txt
+*.bibtex
+*_trj.xyz
+*.allxyz
+*.cpcm
+*.cpcm_corr
+*.log
+*.err
+logs/
+status.csv
+stage1_summary.csv
+# geometries written by ORCA next to an input (the starting geometries live in structures/)
+dft/stage1_r2scan/*/*.xyz
+dft/stage2_b3lyp/*/*.xyz
+dft/stage2_b3lyp/*/*.inp
+# FEFF scratch
+pot.bin
+phase.bin
+gg.bin
+*.bin
+fort.*
+__pycache__/
+.DS_Store
+_to_delete/
