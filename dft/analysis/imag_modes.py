@@ -2,11 +2,15 @@
 
 For each stage-2 run, prints every imaginary mode, the six atoms that move most,
 the Zn amplitude, whether the mode is a methyl rotation, and <S**2> for UKS runs.
-Standard library only, so it runs with the system python3 on S3DF.
+Standard library only and Python 3.6 compatible, so it runs with the system python3 on S3DF.
 """
 import sys, re, math
 
 D = sys.argv[1]
+
+
+def dist(a, b):
+    return math.sqrt(sum((x - y) ** 2 for x, y in zip(a, b)))
 
 
 def mode_vectors(t, n):
@@ -53,8 +57,8 @@ for r in sys.argv[2:]:
         Hs = [i for i in top if el[i] == "H" and amp[i] > 0.2]
         cs = set()
         for h in Hs:
-            c = min((j for j in range(n) if el[j] == "C"), key=lambda j: math.dist(A[h][1:], A[j][1:]))
-            nH = sum(1 for j in range(n) if el[j] == "H" and math.dist(A[c][1:], A[j][1:]) < 1.2)
+            c = min((j for j in range(n) if el[j] == "C"), key=lambda j: dist(A[h][1:], A[j][1:]))
+            nH = sum(1 for j in range(n) if el[j] == "H" and dist(A[c][1:], A[j][1:]) < 1.2)
             cs.add((c, nH))
         methyl = len(Hs) >= 2 and len(cs) == 1 and list(cs)[0][1] == 3
         print(f"   {f:9.1f} cm-1  top: " + " ".join(f"{el[i]}{i}:{amp[i]:.2f}" for i in top)
