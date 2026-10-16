@@ -100,7 +100,12 @@ def main():
                 row = dict(ref=ref, coord=c["name"], type=ctype(c["name"]), branch=c["branch"], step=k,
                            offset=round(target - c["v0"], 4), target=round(target, 4), value="", E_rel_kJ="", status="")
                 if k >= len(steps):
-                    row["status"] = "after_fail" if failed else ("missing" if done else state)
+                    row["status"] = "after_fail" if failed else ("missing" if done else "pending")
+                    rows.append(row)
+                    continue
+                if not done and k == len(steps) - 1 and not failed:
+                    # last step of a job that is still running: in progress, not a failure
+                    row["status"] = "running"
                     rows.append(row)
                     continue
                 conv, E, A = steps[k]
@@ -152,10 +157,10 @@ def main():
     print("points:", dict(collections.Counter(r["status"] for r in rows)))
     print("unique passing geometries (branch starts counted once per coordinate):",
           sum(1 for r in rows if r["status"] == "pass" and r["step"] > 0) + len({(r["ref"], r["coord"]) for r in rows if r["status"] == "pass" and r["step"] == 0}))
-    print("\npass rate by coordinate type and distance from the minimum (finished jobs only)")
+    print("\npass rate by coordinate type and distance from the minimum (completed steps only)")
     agg = collections.defaultdict(lambda: [0, 0])
     for r in rows:
-        if r["status"] in ("pending", "running"):
+        if r["status"] in ("pending", "running", "missing"):
             continue
         key = (r["type"], r["branch"], abs(r["offset"]))
         agg[key][1] += 1
