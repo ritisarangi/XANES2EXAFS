@@ -9,7 +9,7 @@ This repository holds the code, inputs and small metadata for a Zn K-edge XANES/
 | Curation | 778 CSD CIFs reduced to 347 unique mononuclear Zn complexes; counterions and solvent removed, H added and checked, disorder cleaned | `curation/`, output in `structures/` |
 | Stage 1 | r2SCAN-3c, CPCM(water), Opt from the crystal geometry | `dft/stage1_r2scan/<REF>/<REF>.inp` |
 | Stage 2 | B3LYP-D3(BJ), def2-TZVP on Zn and first-shell donors, def2-SVP elsewhere, def2/J RIJCOSX, CPCM(water), TightOpt, analytic Freq, DefGrid3 | input written on the node by `dft/scripts/make_stage2_inp.py`; donor indices in `dft/stage2_b3lyp/<REF>/<REF>.meta` |
-| Perturbation scans (planned) | Relaxed 1D scans on the Zn core: 4 Zn–L bonds, 6 L–Zn–L angles, 1 donor-plane twist dihedral, 4 Zn–L–C–C ligand-tilt dihedrals, about 21 points each | to be added under `scans/` |
+| Perturbation scans | Relaxed 1D scans at the stage-2 level (B3LYP-D3BJ, mixed basis, CPCM, TightOpt), one coordinate constrained, everything else relaxed: Zn–L bonds −0.06 to +0.20 Å in 0.02 Å steps; L–Zn–L angles ±15° in 1.5°; donor twist dihedral ±10° in 1°; Zn–L–C–X tilt dihedrals ±10° in 1°. Each coordinate runs as two branches starting at the minimum | `scans/` |
 | Spectra (planned) | FEFF XANES and EXAFS per geometry; Debye-Waller factors from the stage-2 Hessians and the frequency–distance relation | to be added under `feff/` |
 
 ## Layout
@@ -40,6 +40,18 @@ Submit a list (stage 2 waits on stage 1 task by task):
 ```
 S1MAX=20 S2MAX=10 bash scripts/submit.sh lists/rest_00
 ```
+
+## Scans
+
+Run inside the project folder on S3DF:
+
+```
+python3 ../XANES2EXAFS/scans/make_scans.py . lists/pilot.txt        # writes scans/<REF>/... and scans/jobs_pilot.txt
+bash ../XANES2EXAFS/scans/submit_scans.sh scans/jobs_pilot.txt      # ACCOUNT=..., MAX=... optional
+python3 ../XANES2EXAFS/scans/validate.py . lists/pilot.txt          # pass/fail per point, pass rates, cost
+```
+
+A CN-4 complex gives 30 branch jobs and 273 geometries. `validate.py` keeps a point only if its optimisation converged, the constraint was met, the bond graph matches the reference, every donor stays bound with unscanned Zn–L within 0.15 Å, no new atom comes within 2.6 Å of Zn, the energy stays within 40 kJ/mol of the minimum without dropping more than 2 kJ/mol between steps, and no heavy-atom distance jumps more than 0.3 Å between steps. After the first failure the rest of that branch is dropped.
 
 ## Data policy
 
