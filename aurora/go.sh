@@ -35,6 +35,7 @@ esac
 QD=queue/$POOL
 
 need() { for v in ACCOUNT ORCA_DIR MPI_DIR; do [ -n "${!v}" ] || { echo "set $v first (see the header of this script)"; exit 1; }; done; }
+all_farm_jobs() { qstat -u "$USER" 2>/dev/null | awk '$4 ~ /^zn_(main|big)$/ && $10 ~ /[QRHE]/ {sub(/\..*/, "", $1); print $1}'; }
 active_jobs() { qstat -u "$USER" 2>/dev/null | awk -v n="zn_$POOL" '$4 == n && $10 ~ /[QRHE]/ {sub(/\..*/, "", $1); print $1}'; }
 
 farm() {  # farm <job name> <queue dir> <queue> <nodes> <hours> [extra -v settings]
@@ -83,17 +84,22 @@ submit)
   mkdir -p logs scans
   [ -f scans/jobs_scan_full.txt ] || python3 "$REPO/scans/make_scans.py" . lists/scan_full.txt | tail -3
   act=$(active_jobs)
+  # logs of branches whose job is gone without an end line are tagged as cancelled (never those of
+  # any queued or running farm), then restart.py prepares every stopped branch for continuation;
+  # neither touches a branch that is running
+  python3 "$HERE/queue.py" mark-lost . $(all_farm_jobs)
+  # interrupted steps restart from their last optimisation geometry (RESUME_PARTIAL=0: from the last converged step)
+  RESUME_PARTIAL=${RESUME_PARTIAL:-1} python3 "$REPO/scans/restart.py" . | tail -2
   if [ -n "$act" ]; then
-    echo "$POOL farm jobs already queued or running ($(echo $act)); adding one more on the same queue"
+    echo "$POOL farm jobs already queued or running ($(echo $act)): continuations go to the front of the live queue"
+    python3 "$HERE/queue.py" add . scans/jobs_scan_full.txt "$QD"
   else
-    python3 "$HERE/queue.py" mark-lost .
-    # interrupted steps restart from their last optimisation geometry (RESUME_PARTIAL=0: from the last converged step)
-    RESUME_PARTIAL=${RESUME_PARTIAL:-1} python3 "$REPO/scans/restart.py" . | tail -2
     python3 "$HERE/queue.py" build . scans/jobs_scan_full.txt "$QD" "$@"
     rm -f "$QD/STOP"
   fi
   left=$(( $(grep -c . "$QD/tasks.txt") - $(cat "$QD/next") ))
   [ $left -gt 0 ] || { echo "nothing left to run"; exit 0; }
+  [ "${NODES:-16}" = 0 ] && { echo "NODES=0: queue updated, no farm submitted"; exit 0; }
   Q=${QUEUE:-capacity} N=${NODES:-16} H=${HOURS:-48}
   id=$(farm "zn_$POOL" "$WORK/$QD" "$Q" "$N" "$H")
   echo "$(date '+%F %T') farm $id pool=$POOL cores=$CORES queue=$Q nodes=$N hours=$H account=$ACCOUNT tasks_left=$left" | tee -a logs/submissions.txt

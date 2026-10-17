@@ -57,9 +57,9 @@ slot() {
     done
     wait $pid 2>/dev/null
     # keep the per-step geometries and scan tables; drop wavefunction and scratch files
-    ( cd "$run" && rm -f scan.gbw scan*.tmp scan.densities* scan.*.gbw scan_*.tmp* 2>/dev/null )
+    ( cd "$run" && rm -f scan.gbw scan*.tmp scan*.tmp.* scan.densities* scan.*.gbw scan_*.tmp* 2>/dev/null )
     if [ "$SCRATCH" = tmp ]; then
-      find "$run" -maxdepth 1 -type f ! -name scan.inp -exec cp -p {} "$D/" \;
+      find "$run" -maxdepth 1 -type f ! -name scan.inp ! -name '*.tmp*' ! -name '*.gbw' ! -name '*densities*' -exec cp -p {} "$D/" \;
       rm -rf "$run"
     fi
     if [ -n "$why" ]; then

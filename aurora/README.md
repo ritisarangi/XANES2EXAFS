@@ -69,7 +69,9 @@ Other options: `CORES`, `HT`, `HBM`, `MAXCORE`, `SCRATCH` (see `sites/aurora.sh`
 
 ## Status
 
-- 2026-10-17: ORCA 6.0.1 + OpenMPI 4.1.6 installed on Aurora; farm, packing, PALS/OpenMPI interplay, stop/continue/stitch tested with stand-ins; layout benchmarked (above). Real-data pilot running: MAZBZN10 (49 atoms), CAPWIB (65), LUZTEF (81) in `main`, WIGBIX (121) in `big`.
+- 2026-10-17: ORCA 6.0.1 + OpenMPI 4.1.6 installed on Aurora; farm, packing, PALS/OpenMPI interplay, stop/continue/stitch tested with stand-ins; layout benchmarked (above).
+- 2026-10-17 pilot (1 h; MAZBZN10 49 atoms, CAPWIB 65, LUZTEF 81 in `main` on 4 nodes; WIGBIX 121 in `big` on 2 nodes): 0 ORCA failures in 114 runs, all stopped cleanly at the walltime. First SCF at the stage-2 geometry reproduces the S3DF stage-2 energy to 1e-6 Eh (0.001 kJ/mol). `validate.py`: 52/52 completed points pass. About 7 min per optimisation cycle per 4-core slot. Branch-start points take 3-5+ TightOpt cycles even at the stage-2 minimum: gradient and energy are converged at once, but soft ligand modes keep the step criterion open (same input on S3DF, so not Aurora-specific; starting branches from the stage-2 point without re-optimising would save these cycles). Estimate for the full set: 4,500-5,500 node-hours.
+- Fixed after the pilot: ORCA scratch files named `*.tmp.0` were copied back from `/tmp` (5 GB for 4 complexes); now excluded. Continuations of stopped branches can be added to the front of a live queue (`go.sh submit` does this when farms of the pool are running; `NODES=0` re-queues without a new job).
 
 ## Notes for Claude
 

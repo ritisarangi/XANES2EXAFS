@@ -3,6 +3,7 @@
 
 Usage (inside the run folder):
     python3 <repo>/aurora/queue.py build  . <jobs file> <queue dir> [REF ...]   (env NATOMS_MIN, NATOMS_MAX)
+    python3 <repo>/aurora/queue.py add    . <jobs file> <queue dir>                (env NATOMS_MIN, NATOMS_MAX)
     python3 <repo>/aurora/queue.py status . <jobs file>
     python3 <repo>/aurora/queue.py mark-lost . [running PBS job numbers ...]
 
@@ -11,6 +12,8 @@ build      writes <queue dir>/tasks.txt with every branch that can run now: cont
            long ones do not trail at the end. Only the given REFs when any are named, and only
            complexes with NATOMS_MIN <= atoms < NATOMS_MAX (the farms for normal and large
            complexes use different core counts).
+add        puts continuations prepared by restart.py at the front of a live queue (farms of the
+           pool keep running; same flock as the farm slots).
 status     counts branches by state.
 mark-lost  tags the logs of branches whose PBS job ended without the branch writing an end
            line (node failure, job killed) as CANCELLED, so restart.py continues them.
@@ -52,6 +55,34 @@ def state(work, d):
     return "fresh"
 
 
+def in_pool(work, jobs):
+    lo, hi = int(os.environ.get("NATOMS_MIN", 0)), int(os.environ.get("NATOMS_MAX", 10 ** 6))
+    size = {}
+    for d in jobs:
+        r = d.split("/")[1]
+        if r not in size:
+            size[r] = json.load(open(os.path.join(work, "stage2_b3lyp", r, r + ".meta")))["natoms"]
+    return [d for d in jobs if lo <= size[d.split("/")[1]] < hi]
+
+
+def add_continuations(work, jobs, qdir):
+    """Put continuations prepared by restart.py at the front of a live queue, under the same
+    flock the farm slots use, so farms of the pool can keep running."""
+    import fcntl
+    cont = [d for d in in_pool(work, jobs) if state(work, d) == "continuation"]
+    with open(os.path.join(qdir, "lock"), "a") as lk:
+        fcntl.flock(lk, fcntl.LOCK_EX)
+        tasks = [l.strip() for l in open(os.path.join(qdir, "tasks.txt")) if l.strip()]
+        n = int(open(os.path.join(qdir, "next")).read())
+        pending = set(tasks[n:])
+        new = [d for _, d in sorted((-natoms(os.path.join(work, d, "scan.inp")), d) for d in cont if d not in pending)]
+        tmp = os.path.join(qdir, "tasks.txt.new")
+        open(tmp, "w").write("".join(d + "\n" for d in tasks[:n] + new + tasks[n:]))
+        os.rename(tmp, os.path.join(qdir, "tasks.txt"))
+        fcntl.flock(lk, fcntl.LOCK_UN)
+    print("queue: %d continuations added to the front of %s (%d pending now)" % (len(new), os.path.relpath(qdir, work), len(tasks) - n + len(new)))
+
+
 def main():
     cmd, work = sys.argv[1], os.path.abspath(sys.argv[2])
     if cmd == "mark-lost":
@@ -73,6 +104,9 @@ def main():
         c = collections.Counter(state(work, d) for d in jobs)
         print("branches: %d done, %d started (running/stopped/failed), %d continuations ready, %d not started, %d total"
               % (c["done"], c["started"], c["continuation"], c["fresh"], len(jobs)))
+        return
+    if cmd == "add":
+        add_continuations(work, jobs, os.path.join(work, sys.argv[4]))
         return
     qdir, refs = os.path.join(work, sys.argv[4]), set(sys.argv[5:])
     if refs:
