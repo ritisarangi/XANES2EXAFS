@@ -1,15 +1,17 @@
 #!/bin/bash
 # Runs on every node of a farm job (started once per node by aurora/farm.pbs through mpiexec).
-# Each 16-core slot pulls the next branch from the shared queue, runs ORCA pinned to its cores,
-# and stops it before the walltime so restart.py can continue it from the last converged step.
-# Environment from farm.pbs: WORK REPO QDIR JOB DEADLINE; optional MIN_START_MIN, SLOTS.
+# Each slot (see slot_list in sites/aurora.sh) pulls the next branch from the shared queue, runs
+# ORCA pinned to its cores, and stops it before the walltime so restart.py can continue it from
+# the last converged step.
+# Environment from farm.pbs: WORK REPO QDIR JOB DEADLINE, the layout settings of sites/aurora.sh,
+# and optionally MIN_START_MIN.
 set -u
 source "$REPO/sites/aurora.sh"
 setup_env
 ulimit -s unlimited
 cd "$WORK" || exit 1
 HOST=$(hostname -s)
-MIN_START=$(( ${MIN_START_MIN:-45} * 60 ))   # do not start a branch with less time than this left
+MIN_START=$(( ${MIN_START_MIN:-20} * 60 ))   # do not start a branch with less time than this left
 
 claim() {   # print the next task, or nothing when the queue is empty
   local n t
@@ -24,7 +26,8 @@ claim() {   # print the next task, or nothing when the queue is empty
 }
 
 slot() {
-  local s=$1 cores=$2 seq=0 D mode out log pid why
+  local s=$1 cores=$2 hbm=$3 seq=0 D mode out log pid why run mem
+  mem=; [ "$HBM" = 1 ] && mem="numactl --preferred=$hbm"
   while :; do
     [ -e "$QDIR/STOP" ] || [ -e "$QDIR/stop_$JOB" ] && break
     [ $(( DEADLINE - $(date +%s) )) -lt $MIN_START ] && break
@@ -36,7 +39,12 @@ slot() {
     log=$WORK/logs/${mode}_${JOB}_${HOST}_${s}_${seq}.log
     touch "$QDIR/active/${JOB}_${HOST}_${s}"
     echo "$D start $(date '+%F %T') on $HOST cores $cores" > "$log"
-    ( cd "$D" && exec taskset -c "$cores" setsid "$ORCA/orca" scan.inp > "$out" 2>&1 ) &
+    # parallel settings follow the slot; they do not change the chemistry
+    sed -i -e "s/^%pal nprocs [0-9]* end/%pal nprocs $CORES end/" -e "s/^%maxcore [0-9]*/%maxcore $MAXCORE/" "$D/scan.inp"
+    run=$WORK/$D
+    if [ "$SCRATCH" = tmp ]; then run=/tmp/zn_${JOB}_$s; rm -rf "$run"; mkdir -p "$run"; cp "$D/scan.inp" "$run/"; fi
+    # scan.out is written straight into $WORK, so a stopped branch can always be continued
+    ( cd "$run" && exec taskset -c "$cores" setsid $mem "$ORCA/orca" scan.inp > "$WORK/$D/$out" 2>&1 ) &
     pid=$!     # setsid makes ORCA a session leader: the session holds orca, mpirun and all ranks
     why=
     while kill -0 $pid 2>/dev/null; do
@@ -48,8 +56,12 @@ slot() {
       break
     done
     wait $pid 2>/dev/null
-    # keep the output, per-step geometries and scan tables; drop wavefunction and scratch files
-    ( cd "$D" && rm -f scan.gbw scan*.tmp scan.densities* scan.*.gbw scan_*.tmp* 2>/dev/null )
+    # keep the per-step geometries and scan tables; drop wavefunction and scratch files
+    ( cd "$run" && rm -f scan.gbw scan*.tmp scan.densities* scan.*.gbw scan_*.tmp* 2>/dev/null )
+    if [ "$SCRATCH" = tmp ]; then
+      find "$run" -maxdepth 1 -type f ! -name scan.inp -exec cp -p {} "$D/" \;
+      rm -rf "$run"
+    fi
     if [ -n "$why" ]; then
       echo "$why" >> "$log"
     elif [ $mode = scanr ]; then
@@ -62,5 +74,5 @@ slot() {
 }
 
 i=0
-for c in $SLOTS; do slot $i "$c" & i=$((i + 1)); done
+while read -r cl hb; do slot $i "$cl" "$hb" & i=$((i + 1)); done < <(slot_list)
 wait

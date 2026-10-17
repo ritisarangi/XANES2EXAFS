@@ -4,11 +4,28 @@
 #   export ORCA_DIR=<folder holding the orca binary, ORCA 6.0.1>
 #   export MPI_DIR=<OpenMPI 4.1.6 install that ORCA 6.0.1 was built against>
 #   export WORK=<run folder on /lus/flare>
-# Aurora charges whole nodes, so each node runs 6 ORCA jobs of 16 cores side by side
-# (aurora/farm.pbs). Cores 0 and 52 are left to the OS; 8 more stay free.
+# Aurora charges whole nodes, so each node runs several ORCA jobs side by side (aurora/farm.pbs),
+# each pinned to its own cores. Cores 0 and 52 are left to the OS, leaving 51 per socket.
+# Layout options: CORES (MPI ranks per ORCA job), HT=1 (ranks on both hardware threads of
+# CORES/2 physical cores), HBM=1 (prefer the socket's HBM for memory), MAXCORE (MB per rank),
+# SCRATCH=tmp (ORCA works in node-local /tmp; scan.out still goes straight to $WORK).
 ACCOUNT=${ACCOUNT:?set ACCOUNT to the ALCF project}
-QSUB_SITE="-A $ACCOUNT -l filesystems=home:flare -j oe"
-SLOTS=${SLOTS:-"1-16 17-32 33-48 53-68 69-84 85-100"}
+QSUB_SITE="-A $ACCOUNT -l filesystems=flare -j oe"
+CORES=${CORES:-16} HT=${HT:-0} HBM=${HBM:-0} MAXCORE=${MAXCORE:-3000} SCRATCH=${SCRATCH:-lustre}
+
+slot_list() {   # one "cpulist hbm_node" line per slot on this node
+  local phys=$CORES s k lo hi cl
+  [ "$HT" = 1 ] && phys=$((CORES / 2))
+  for s in 0 1; do
+    for k in $(seq 0 $((51 / phys - 1))); do
+      lo=$((s * 52 + 1 + k * phys)); hi=$((lo + phys - 1)); cl="$lo-$hi"
+      [ "$HT" = 1 ] && cl="$cl,$((lo + 104))-$((hi + 104))"
+      echo "$cl $((s + 2))"
+    done
+  done
+}
+slots_per_node() { local p=$CORES; [ "$HT" = 1 ] && p=$((CORES / 2)); echo $(( 2 * (51 / p) )); }
+
 setup_env() {
   ORCA=${ORCA_DIR:?set ORCA_DIR}
   export PATH=$ORCA:${MPI_DIR:?set MPI_DIR}/bin:$PATH LD_LIBRARY_PATH=$ORCA:$MPI_DIR/lib:$LD_LIBRARY_PATH

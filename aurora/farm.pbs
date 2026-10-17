@@ -1,18 +1,19 @@
 #!/bin/bash -l
-# Node farm for the Zn scans on Aurora: every node runs 6 ORCA jobs of 16 cores at a time,
-# pulling scan branches from a shared queue until it is empty or the walltime is nearly used.
-# Submitted by aurora/go.sh, which passes WORK REPO QDIR HOURS and optionally TAIL_FRAC,
-# MIN_START_MIN, MARGIN_MIN. Account, queue, nodes and walltime come from the qsub line.
+# Node farm for the Zn scans on Aurora: every node runs several pinned ORCA jobs at a time
+# (layout in sites/aurora.sh), pulling scan branches from a shared queue until it is empty or
+# the walltime is nearly used. Submitted by aurora/go.sh, which passes WORK REPO QDIR HOURS, the
+# software and layout settings, and optionally TAIL_FRAC, MIN_START_MIN, MARGIN_MIN.
 #PBS -N zn_farm
 set -u
 cd "${WORK:?}" || exit 1
 export JOB=${PBS_JOBID%%.*}
 export DEADLINE=$(( $(date +%s) + ${HOURS:?} * 3600 - ${MARGIN_MIN:-10} * 60 ))
+source "$REPO/sites/aurora.sh"
 NN=$(sort -u "$PBS_NODEFILE" | wc -l)
-SLOTS_TOTAL=$(( NN * 6 ))
+SLOTS_TOTAL=$(( NN * $(slots_per_node) ))
 mkdir -p logs "$QDIR/active"
 rm -f "$QDIR/stop_$JOB"
-echo "farm $JOB: $NN nodes, $SLOTS_TOTAL slots, queue $QDIR ($(grep -c . "$QDIR/tasks.txt") tasks, next $(cat "$QDIR/next")), stops ORCA at $(date -d @$DEADLINE '+%F %T')"
+echo "farm $JOB: $NN nodes, $SLOTS_TOTAL slots of $CORES ranks (HT=$HT HBM=$HBM scratch=$SCRATCH), queue $QDIR ($(grep -c . "$QDIR/tasks.txt") tasks, next $(cat "$QDIR/next")), stops ORCA at $(date -d @$DEADLINE '+%F %T')"
 
 # Tail cutoff: once the queue is empty and fewer than TAIL_FRAC of the slots are still busy,
 # stop the stragglers (they continue later in a smaller job) instead of holding idle nodes.

@@ -8,13 +8,14 @@
 #   bash XANES2EXAFS/aurora/go.sh drain                         farm jobs start no new branches (running ones finish)
 #   bash XANES2EXAFS/aurora/go.sh export                        validate and pack passing geometries into scan_results.tar.gz
 #
-# Aurora has no per-core charging, so instead of Slurm arrays one PBS job ("farm") runs 6 ORCA
-# jobs of 16 cores on each node and keeps them fed from a shared queue. Branches still running
+# Aurora has no per-core charging, so instead of Slurm arrays one PBS job ("farm") runs several
+# pinned ORCA jobs on each node and keeps them fed from a shared queue. Branches still running
 # near the walltime are stopped and continued by the next 'submit' from their last converged step.
 #
 # Needs in the environment (put them in ~/.bashrc): ACCOUNT (ALCF project), ORCA_DIR, MPI_DIR, WORK.
 # Options for submit: QUEUE (default capacity), NODES (16), HOURS (48), TAIL_FRAC (0.25, 0 = off),
-# MIN_START_MIN (45: no new branch with less time left).
+# MIN_START_MIN (20: no new branch with less time left), and the layout settings CORES, HT, HBM,
+# MAXCORE, SCRATCH described in sites/aurora.sh.
 set -e
 HERE=$(cd "$(dirname "$0")" && pwd)
 REPO=$(dirname "$HERE")
@@ -26,11 +27,14 @@ active_jobs() { qstat -u "$USER" 2>/dev/null | awk '$4 ~ /^zn_farm/ && $10 ~ /[Q
 
 farm() {  # farm <queue dir> <queue> <nodes> <hours> [extra -v settings]
   local qd=$1 q=$2 n=$3 h=$4 extra=${5:-}
-  local wt=$(printf '%02d:%02d:00' $((h)) 0)
-  source "$REPO/sites/aurora.sh"
+  local wt=$(printf '%02d:00:00' "$h") snap=$WORK/.repo/$(date +%Y%m%d_%H%M%S)
+  # jobs run from a frozen copy of the scripts on /lus/flare: a later git pull cannot change a
+  # queued or running farm, and the job does not depend on the home file system
+  mkdir -p "$snap" && cp -r "$REPO/aurora" "$REPO/scans" "$REPO/sites" "$snap/"
+  source "$snap/sites/aurora.sh"
   qsub $QSUB_SITE -q "$q" -l select="$n" -l walltime="$wt" -o "$WORK/logs/" \
-       -v "WORK=$WORK,REPO=$REPO,QDIR=$qd,HOURS=$h,TAIL_FRAC=${TAIL_FRAC:-0.25},MIN_START_MIN=${MIN_START_MIN:-45}${extra}" \
-       "$HERE/farm.pbs"
+       -v "WORK=$WORK,REPO=$snap,QDIR=$qd,HOURS=$h,ACCOUNT=$ACCOUNT,ORCA_DIR=$ORCA_DIR,MPI_DIR=$MPI_DIR,CORES=$CORES,HT=$HT,HBM=$HBM,MAXCORE=$MAXCORE,SCRATCH=$SCRATCH,TAIL_FRAC=${TAIL_FRAC:-0.25},MIN_START_MIN=${MIN_START_MIN:-20}${extra}" \
+       "$snap/aurora/farm.pbs"
 }
 
 case "$cmd" in
