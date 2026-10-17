@@ -1,0 +1,36 @@
+#!/bin/bash -l
+# Node farm for the Zn scans on Aurora: every node runs 6 ORCA jobs of 16 cores at a time,
+# pulling scan branches from a shared queue until it is empty or the walltime is nearly used.
+# Submitted by aurora/go.sh, which passes WORK REPO QDIR HOURS and optionally TAIL_FRAC,
+# MIN_START_MIN, MARGIN_MIN. Account, queue, nodes and walltime come from the qsub line.
+#PBS -N zn_farm
+set -u
+cd "${WORK:?}" || exit 1
+export JOB=${PBS_JOBID%%.*}
+export DEADLINE=$(( $(date +%s) + ${HOURS:?} * 3600 - ${MARGIN_MIN:-10} * 60 ))
+NN=$(sort -u "$PBS_NODEFILE" | wc -l)
+SLOTS_TOTAL=$(( NN * 6 ))
+mkdir -p logs "$QDIR/active"
+rm -f "$QDIR/stop_$JOB"
+echo "farm $JOB: $NN nodes, $SLOTS_TOTAL slots, queue $QDIR ($(grep -c . "$QDIR/tasks.txt") tasks, next $(cat "$QDIR/next")), stops ORCA at $(date -d @$DEADLINE '+%F %T')"
+
+# Tail cutoff: once the queue is empty and fewer than TAIL_FRAC of the slots are still busy,
+# stop the stragglers (they continue later in a smaller job) instead of holding idle nodes.
+TAIL_FRAC=${TAIL_FRAC:-0.25}
+(
+  while sleep 300; do
+    busy=$(ls "$QDIR/active" | grep -c "^${JOB}_")
+    left=$(( $(grep -c . "$QDIR/tasks.txt") - $(cat "$QDIR/next") ))
+    echo "$(date '+%F %T') busy $busy/$SLOTS_TOTAL, queue $left left"
+    if [ $left -le 0 ] && awk -v b=$busy -v t=$SLOTS_TOTAL -v f=$TAIL_FRAC 'BEGIN{exit !(b > 0 && b < f*t)}'; then
+      echo "tail cutoff: stopping the last $busy branches"; touch "$QDIR/stop_$JOB"; break
+    fi
+  done
+) &
+MON=$!
+
+[ -n "${TEST:-}" ] && ( sleep 90; echo "== core placement of ORCA processes on $(hostname -s) (psr = core)"; ps -eo psr,comm | grep orca_ | sort -n ) > "logs/test_placement_$JOB.txt" &
+
+mpiexec -n $NN --ppn 1 --cpu-bind none --hostfile "$PBS_NODEFILE" bash "$REPO/aurora/node.sh"
+kill $MON 2>/dev/null; wait $MON 2>/dev/null
+echo "farm $JOB done $(date '+%F %T'); queue next $(cat "$QDIR/next") of $(grep -c . "$QDIR/tasks.txt")"
