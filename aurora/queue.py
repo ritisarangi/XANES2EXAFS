@@ -2,19 +2,21 @@
 """Task queue for the Aurora node farm.
 
 Usage (inside the run folder):
-    python3 <repo>/aurora/queue.py build  . <jobs file> <queue dir> [REF ...]
+    python3 <repo>/aurora/queue.py build  . <jobs file> <queue dir> [REF ...]   (env NATOMS_MIN, NATOMS_MAX)
     python3 <repo>/aurora/queue.py status . <jobs file>
     python3 <repo>/aurora/queue.py mark-lost . [running PBS job numbers ...]
 
 build      writes <queue dir>/tasks.txt with every branch that can run now: continuations
            prepared by restart.py first, then fresh branches, largest complexes first so the
-           long ones do not trail at the end. Only the given REFs when any are named.
+           long ones do not trail at the end. Only the given REFs when any are named, and only
+           complexes with NATOMS_MIN <= atoms < NATOMS_MAX (the farms for normal and large
+           complexes use different core counts).
 status     counts branches by state.
 mark-lost  tags the logs of branches whose PBS job ended without the branch writing an end
            line (node failure, job killed) as CANCELLED, so restart.py continues them.
 Standard library only, Python 3.6+.
 """
-import sys, os, re, glob, collections
+import sys, os, re, glob, json, collections
 
 OK = "ORCA TERMINATED NORMALLY"
 
@@ -75,6 +77,13 @@ def main():
     qdir, refs = os.path.join(work, sys.argv[4]), set(sys.argv[5:])
     if refs:
         jobs = [d for d in jobs if d.split("/")[1] in refs]
+    lo, hi = int(os.environ.get("NATOMS_MIN", 0)), int(os.environ.get("NATOMS_MAX", 10 ** 6))
+    size = {}
+    for d in jobs:
+        r = d.split("/")[1]
+        if r not in size:
+            size[r] = json.load(open(os.path.join(work, "stage2_b3lyp", r, r + ".meta")))["natoms"]
+    jobs = [d for d in jobs if lo <= size[d.split("/")[1]] < hi]
     cont, fresh = [], []
     for d in jobs:
         s = state(work, d)

@@ -13,6 +13,10 @@
 # pinned ORCA jobs on each node and keeps them fed from a shared queue. Branches still running
 # near the walltime are stopped and continued by the next 'submit' from their last converged step.
 #
+# Two pools with separate queues and farms: POOL=main (default; complexes below BIG_ATOMS=100
+# atoms, CORES=4) and POOL=big (BIG_ATOMS and up, CORES=16). Small ORCA jobs give the most
+# node throughput; the large complexes get more cores so their branches do not trail for days.
+#
 # Needs in the environment (put them in ~/.bashrc): ACCOUNT (ALCF project), ORCA_DIR, MPI_DIR, WORK.
 # Options for submit: QUEUE (default capacity), NODES (16), HOURS (48), TAIL_FRAC (0.25, 0 = off),
 # MIN_START_MIN (20: no new branch with less time left), and the layout settings CORES, HT, HBM,
@@ -22,18 +26,25 @@ HERE=$(cd "$(dirname "$0")" && pwd)
 REPO=$(dirname "$HERE")
 WORK=${WORK:?set WORK to the run folder on /lus/flare}
 cmd=${1:-status}
+POOL=${POOL:-main} BIG_ATOMS=${BIG_ATOMS:-100}
+case "$POOL" in
+  main) export CORES=${CORES:-4} NATOMS_MIN=0 NATOMS_MAX=$BIG_ATOMS ;;
+  big)  export CORES=${CORES:-16} NATOMS_MIN=$BIG_ATOMS NATOMS_MAX=1000000 ;;
+  *) echo "POOL is main or big"; exit 1 ;;
+esac
+QD=queue/$POOL
 
 need() { for v in ACCOUNT ORCA_DIR MPI_DIR; do [ -n "${!v}" ] || { echo "set $v first (see the header of this script)"; exit 1; }; done; }
-active_jobs() { qstat -u "$USER" 2>/dev/null | awk '$4 ~ /^zn_farm/ && $10 ~ /[QRHE]/ {sub(/\..*/, "", $1); print $1}'; }
+active_jobs() { qstat -u "$USER" 2>/dev/null | awk -v n="zn_$POOL" '$4 == n && $10 ~ /[QRHE]/ {sub(/\..*/, "", $1); print $1}'; }
 
-farm() {  # farm <queue dir> <queue> <nodes> <hours> [extra -v settings]
-  local qd=$1 q=$2 n=$3 h=$4 extra=${5:-}
+farm() {  # farm <job name> <queue dir> <queue> <nodes> <hours> [extra -v settings]
+  local name=$1 qd=$2 q=$3 n=$4 h=$5 extra=${6:-}
   local wt=$(printf '%02d:00:00' "$h") snap=$WORK/.repo/$(date +%Y%m%d_%H%M%S)
   # jobs run from a frozen copy of the scripts on /lus/flare: a later git pull cannot change a
   # queued or running farm, and the job does not depend on the home file system
   mkdir -p "$snap" && cp -r "$REPO/aurora" "$REPO/scans" "$REPO/sites" "$snap/"
   source "$snap/sites/aurora.sh"
-  qsub $QSUB_SITE -q "$q" -l select="$n" -l walltime="$wt" -o "$WORK/logs/" \
+  qsub $QSUB_SITE -N "$name" -q "$q" -l select="$n" -l walltime="$wt" -o "$WORK/logs/" \
        -v "WORK=$WORK,REPO=$snap,QDIR=$qd,HOURS=$h,ACCOUNT=$ACCOUNT,ORCA_DIR=$ORCA_DIR,MPI_DIR=$MPI_DIR,CORES=$CORES,HT=$HT,HBM=$HBM,MAXCORE=$MAXCORE,SCRATCH=$SCRATCH,TAIL_FRAC=${TAIL_FRAC:-0.25},MIN_START_MIN=${MIN_START_MIN:-20}${extra}" \
        "$snap/aurora/farm.pbs"
 }
@@ -60,7 +71,7 @@ test)
     echo "test/t$i" >> "$WORK/test/queue/tasks.txt"
   done
   echo 0 > "$WORK/test/queue/next"
-  id=$(MIN_START_MIN=1 TAIL_FRAC=0 farm "$WORK/test/queue" debug 1 1 ",TEST=1,MARGIN_MIN=30")
+  id=$(MIN_START_MIN=1 TAIL_FRAC=0 farm zn_test "$WORK/test/queue" debug 1 1 ",TEST=1,MARGIN_MIN=30")
   echo "test job $id submitted (6 benzene opt+freq runs packed on one node)."
   echo "when it has finished:  grep -c 'TERMINATED NORMALLY' $WORK/test/t*/scan.out   (expect 6 x 1)"
   echo "                       cat $WORK/logs/test_placement_${id%%.*}.txt             (6 disjoint 16-core groups)"
@@ -73,24 +84,24 @@ submit)
   [ -f scans/jobs_scan_full.txt ] || python3 "$REPO/scans/make_scans.py" . lists/scan_full.txt | tail -3
   act=$(active_jobs)
   if [ -n "$act" ]; then
-    echo "farm jobs already queued or running ($(echo $act)); adding one more on the same queue"
+    echo "$POOL farm jobs already queued or running ($(echo $act)); adding one more on the same queue"
   else
     python3 "$HERE/queue.py" mark-lost .
     # interrupted steps restart from their last optimisation geometry (RESUME_PARTIAL=0: from the last converged step)
     RESUME_PARTIAL=${RESUME_PARTIAL:-1} python3 "$REPO/scans/restart.py" . | tail -2
-    python3 "$HERE/queue.py" build . scans/jobs_scan_full.txt queue "$@"
-    rm -f queue/STOP
+    python3 "$HERE/queue.py" build . scans/jobs_scan_full.txt "$QD" "$@"
+    rm -f "$QD/STOP"
   fi
-  left=$(( $(grep -c . queue/tasks.txt) - $(cat queue/next) ))
+  left=$(( $(grep -c . "$QD/tasks.txt") - $(cat "$QD/next") ))
   [ $left -gt 0 ] || { echo "nothing left to run"; exit 0; }
   Q=${QUEUE:-capacity} N=${NODES:-16} H=${HOURS:-48}
-  id=$(farm "$WORK/queue" "$Q" "$N" "$H")
-  echo "$(date '+%F %T') farm $id queue=$Q nodes=$N hours=$H account=$ACCOUNT tasks_left=$left" | tee -a logs/submissions.txt
+  id=$(farm "zn_$POOL" "$WORK/$QD" "$Q" "$N" "$H")
+  echo "$(date '+%F %T') farm $id pool=$POOL cores=$CORES queue=$Q nodes=$N hours=$H account=$ACCOUNT tasks_left=$left" | tee -a logs/submissions.txt
   ;;
 status)
   cd "$WORK"
   qstat -u "$USER" 2>/dev/null | awk '$4 ~ /^zn_/' || true
-  [ -f queue/tasks.txt ] && echo "queue: $(( $(grep -c . queue/tasks.txt) - $(cat queue/next) )) of $(grep -c . queue/tasks.txt) not yet handed out; $(ls queue/active 2>/dev/null | wc -l) ORCA runs active"
+  for qd in queue/*/; do [ -f "$qd/tasks.txt" ] && echo "queue $(basename "$qd"): $(( $(grep -c . "$qd/tasks.txt") - $(cat "$qd/next") )) of $(grep -c . "$qd/tasks.txt") not yet handed out; $(ls "$qd/active" 2>/dev/null | wc -l) ORCA runs active"; done
   [ -f scans/jobs_scan_full.txt ] && python3 "$HERE/queue.py" status . scans/jobs_scan_full.txt
   python3 "$REPO/scans/validate.py" . lists/scan_full.txt 2>/dev/null | head -4
   ;;
@@ -98,16 +109,16 @@ watch)
   # one line every N seconds (default 300): farm jobs, busy ORCA slots, queue left, branch states
   cd "$WORK"
   while :; do
-    j=$(qstat -u "$USER" 2>/dev/null | awk '$4 ~ /^zn_farm/ {n[$10]++; if ($10 == "R") nd += $6} END {printf "%dR/%dQ jobs, %d nodes", n["R"], n["Q"], nd}')
-    q=$( [ -f queue/tasks.txt ] && echo "$(( $(grep -c . queue/tasks.txt) - $(cat queue/next) )) queued" )
+    j=$(qstat -u "$USER" 2>/dev/null | awk '$4 ~ /^zn_(main|big)$/ {n[$10]++; if ($10 == "R") nd += $6} END {printf "%dR/%dQ jobs, %d nodes", n["R"], n["Q"], nd}')
+    q=$(for qd in queue/*/; do [ -f "$qd/tasks.txt" ] && printf '%s %d queued, %d running; ' "$(basename "$qd")" $(( $(grep -c . "$qd/tasks.txt") - $(cat "$qd/next") )) "$(ls "$qd/active" | wc -l)"; done)
     b=$(python3 "$HERE/queue.py" status . scans/jobs_scan_full.txt 2>/dev/null | sed 's/^branches: //; s/ (running\/stopped\/failed)//')
-    echo "[$(date '+%F %T')] $j | $(ls queue/active 2>/dev/null | wc -l) ORCA running | $q | $b"
+    echo "[$(date '+%F %T')] $j | $q| $b"
     sleep "${2:-300}"
   done
   ;;
 drain)
-  touch "$WORK/queue/STOP"
-  echo "farm jobs will start no new branches; running ones finish or stop at the walltime. 'submit' clears this."
+  touch "$WORK/$QD/STOP"
+  echo "$POOL farm jobs will start no new branches; running ones finish or stop at the walltime. 'submit' clears this."
   ;;
 export)
   cd "$WORK"
