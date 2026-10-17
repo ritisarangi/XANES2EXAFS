@@ -1,0 +1,43 @@
+# Zn scan production run on NERSC Perlmutter
+
+Relaxed one-coordinate scans around the B3LYP-D3(BJ) minima of about 335 Zn model complexes, at the stage-2 level, 16 cores per ORCA job in the `shared` QOS. Everything runs through one script, `nersc/go.sh`.
+
+## One-time setup
+
+1. ORCA 6.0.1 for Linux x86-64 (shared-library build), downloaded under your own ORCA forum account. The ORCA licence does not allow copying someone else's install.
+2. OpenMPI 4.1.x built for Slurm (about 20 minutes):
+   ```
+   wget https://download.open-mpi.org/release/open-mpi/v4.1/openmpi-4.1.6.tar.gz
+   tar xzf openmpi-4.1.6.tar.gz && cd openmpi-4.1.6
+   ./configure --prefix=$HOME/sw/openmpi-4.1.6 --with-slurm && make -j32 install
+   ```
+3. In `~/.bashrc`:
+   ```
+   export ACCOUNT=<NERSC project>
+   export ORCA_DIR=<folder holding the orca binary>
+   export MPI_DIR=$HOME/sw/openmpi-4.1.6
+   ```
+4. `git clone https://github.com/ritisarangi/XANES2EXAFS.git` and copy `scan_bundle.tar.gz` (from Riti) next to it.
+
+## Commands
+
+| Step | Command | What it does |
+|---|---|---|
+| 1 | `bash XANES2EXAFS/nersc/go.sh setup scan_bundle.tar.gz` | Unpacks into `$PSCRATCH/zn_scans`, checks ORCA and MPI, submits a 5-minute water test. Wait for `ORCA_TEST_OK` in the test log. |
+| 2 | `bash XANES2EXAFS/nersc/go.sh submit` | Writes all scan inputs (first time) and submits the next 20 array chunks. Run again whenever the queue drains until it reports 0 chunks left. |
+| 3 | `bash XANES2EXAFS/nersc/go.sh status` | Running and pending counts, finished jobs, validated points. |
+| 4 | `bash XANES2EXAFS/nersc/go.sh restart` | Continues branches stopped by the 48 h limit from their last converged step. Safe to run any time. |
+| 5 | `bash XANES2EXAFS/nersc/go.sh export` | Validates every point and packs the passing geometries into `scan_results.tar.gz` for Riti. |
+
+`git -C XANES2EXAFS pull` picks up fixes; it does not touch running jobs.
+
+## Size and cost
+
+About 30 branch jobs and 273 geometries per four-coordinate complex. The S3DF pilot ran a median 31 minutes per geometry on 16 cores, so the full set is roughly 790,000 core-hours. Large complexes take up to about 7 hours per geometry, so some branches need one or two restarts.
+
+## Notes for Claude
+
+- Work only inside `$PSCRATCH/zn_scans` and the `XANES2EXAFS` clone. Do not edit or delete `scan.out`, `scan_acc.txt` or `scan_orig.inp` files: they are the results.
+- Use `go.sh` for submitting, restarting and exporting. Do not write new submit scripts or change Slurm settings in `sites/nersc.sh` without asking.
+- Do not cancel jobs unless asked. Report status with `go.sh status`.
+- First failures listed by `validate.py` (jump, shell, energy_drop, new_contact) are expected at the ends of scans and need no action. An `energy_drop` more than 2 kJ/mol below a branch start means that complex has a lower minimum; list such complexes for Riti.

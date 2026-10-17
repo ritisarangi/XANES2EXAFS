@@ -81,6 +81,10 @@ bash ../XANES2EXAFS/redox/submit_redox.sh redox/jobs_pilot.txt      # ACCOUNT=ss
 python3 ../XANES2EXAFS/redox/analyze_redox.py . lists/pilot.txt     # per-bond dr, dk/k, slope, spin; redox/redox_compare_pilot.csv
 ```
 
+## Other clusters
+
+Cluster settings live in `sites/<site>.sh` (`s3df`, `nersc`); the scan submit scripts read `SITE`. `scans/make_bundle.py` packs the stage-2 geometries for another cluster, `nersc/go.sh` runs the full scan set on Perlmutter, and `scans/export_points.py` packs the passing geometries for the trip back. See `nersc/README.md`.
+
 ## Data policy
 
 Each job runs in node-local scratch and keeps only final geometries, energies, frequencies, Hessians for the reference structures, and spectra (`xmu.dat`, `chi.dat`, `feff.inp`). Per-job results go to small HDF5 files that are merged into one dataset. ORCA `.gbw`, trajectories and FEFF potential and phase files are deleted after extraction. Only the merged dataset leaves S3DF.

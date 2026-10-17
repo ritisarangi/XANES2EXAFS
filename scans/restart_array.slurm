@@ -1,20 +1,13 @@
 #!/bin/bash
 # Continue one stopped scan branch per array task (inputs from scans/restart.py), then stitch.
 #SBATCH --job-name=zn_scanr
-#SBATCH --partition=milano
-#SBATCH --constraint=OS_VER:9.6
 #SBATCH --nodes=1
 #SBATCH --ntasks=16
-#SBATCH --mem-per-cpu=4000M
-#SBATCH --time=72:00:00
 #SBATCH --output=logs/scanr_%A_%a.log
-module purge
-module load openmpi/v4.1.7
-MPIROOT=$(dirname $(dirname $(which mpirun)))
-ORCA=/sdf/group/ssrl/sarangi/sw/orca601/orca_6_0_1
-export PATH=$ORCA:$PATH LD_LIBRARY_PATH=$ORCA:$MPIROOT/lib:$MPIROOT/lib64:$LD_LIBRARY_PATH
+source "${REPO:?}/sites/${SITE:-s3df}.sh"
+setup_env
 ROOT=$SLURM_SUBMIT_DIR
-HERE=${REPO:?}/scans
+HERE=$REPO/scans
 D=$(sed -n "${SLURM_ARRAY_TASK_ID}p" "$ROOT/$LIST")
 cd "$ROOT/$D" || exit 1
 if grep -q "ORCA TERMINATED NORMALLY" scan.out 2>/dev/null; then echo "$D already done"; exit 0; fi
