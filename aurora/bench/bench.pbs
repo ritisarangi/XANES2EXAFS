@@ -1,0 +1,24 @@
+#!/bin/bash -l
+# Layout benchmark on 2 debug nodes: each node fills itself with identical ORCA jobs in several
+# layouts in turn and reports node throughput (aurora/bench/bench.sh). Results of 2026-10-17 are
+# in aurora/README.md.
+#
+#   qsub -A <project> -q debug -l select=2 -l walltime=01:00:00 -l filesystems=home:flare \
+#        -v REPO=$PWD/XANES2EXAFS,OUT=$WORK/bench,ORCA_DIR=$ORCA_DIR,MPI_DIR=$MPI_DIR,ACCOUNT=<project> \
+#        XANES2EXAFS/aurora/bench/bench.pbs
+#
+# Layout spec: name:cores_per_job:jobs_per_node:ht(0/1):hbm(0/1):maxcore:scratch(lustre|tmp)
+# MAXITER (default 2) optimisation cycles per job; the 2026-10-17 core-count scan used MAXITER=1.
+#PBS -N zn_bench
+#PBS -j oe
+set -u
+mkdir -p "${OUT:?}" && cd "$OUT" || exit 1
+mapfile -t N < <(sort -u "$PBS_NODEFILE")
+O=$OUT/run_${PBS_JOBID%%.*}
+REF=${REF:-LUZTEF}
+mpiexec -n 1 --ppn 1 --cpu-bind none --hosts "${N[0]}" bash "$REPO/aurora/bench/bench.sh" "$O" "$REF" \
+  ${LAYOUTS_A:-base16:16:6:0:0:3000:lustre ht8:16:12:1:0:1500:lustre c8tmp:8:12:0:0:3000:tmp} &
+mpiexec -n 1 --ppn 1 --cpu-bind none --hosts "${N[1]}" bash "$REPO/aurora/bench/bench.sh" "$O" "$REF" \
+  ${LAYOUTS_B:-c8:8:12:0:0:3000:lustre c8hbm:8:12:0:1:3000:lustre c4:4:24:0:0:3000:lustre} &
+wait
+cat "$O/summary.txt"

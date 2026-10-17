@@ -83,7 +83,7 @@ python3 ../XANES2EXAFS/redox/analyze_redox.py . lists/pilot.txt     # per-bond d
 
 ## Other clusters
 
-Cluster settings live in `sites/<site>.sh` (`s3df`, `nersc`); the scan submit scripts read `SITE`. `scans/make_bundle.py` packs the stage-2 geometries for another cluster, `nersc/go.sh` runs the full scan set on Perlmutter, and `scans/export_points.py` packs the passing geometries for the trip back. See `nersc/README.md`.
+Cluster settings live in `sites/<site>.sh` (`s3df`, `nersc`, `aurora`); the scan submit scripts read `SITE`. `scans/make_bundle.py` packs the stage-2 geometries for another cluster, `nersc/go.sh` runs the full scan set on Perlmutter, `aurora/go.sh` runs it on ALCF Aurora (node-packed PBS farms; benchmarks, run log and status in `aurora/README.md`), and `scans/export_points.py` packs the passing geometries for the trip back. See `nersc/README.md` and `aurora/README.md`.
 
 ## Data policy
 

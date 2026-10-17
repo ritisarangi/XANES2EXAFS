@@ -33,3 +33,4 @@ fort.*
 __pycache__/
 .DS_Store
 _to_delete/
+__pycache__/
