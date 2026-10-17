@@ -71,6 +71,16 @@ bash ../XANES2EXAFS/dielectric/submit_eps.sh dielectric/jobs_pilot.txt     # ACC
 python3 ../XANES2EXAFS/dielectric/analyze_eps.py . lists/pilot.txt 4 2    # per-bond r, k, sigma2 and slopes; dielectric/eps_compare_pilot.csv
 ```
 
+## One-electron change (redox pair)
+
+Re-optimises each complex with analytic frequencies at its charge moved one unit toward neutral: q > 0 to q − 1, q < 0 to q + 1, q = 0 to +1 with −1 as the fallback when the +1 run does not finish. Odd electron counts run as UKS doublets. Each Zn–L bond then has (r, k, σ²) in two states; a bond counts when 0.01 ≤ |Δr| ≤ 0.15 Å with the donor still bound.
+
+```
+python3 ../XANES2EXAFS/redox/make_redox.py . lists/pilot.txt        # redox/primary, redox/fallback, redox/jobs_pilot.txt
+bash ../XANES2EXAFS/redox/submit_redox.sh redox/jobs_pilot.txt      # ACCOUNT=ssrl:default, MAX=20 by default
+python3 ../XANES2EXAFS/redox/analyze_redox.py . lists/pilot.txt     # per-bond dr, dk/k, slope, spin; redox/redox_compare_pilot.csv
+```
+
 ## Data policy
 
 Each job runs in node-local scratch and keeps only final geometries, energies, frequencies, Hessians for the reference structures, and spectra (`xmu.dat`, `chi.dat`, `feff.inp`). Per-job results go to small HDF5 files that are merged into one dataset. ORCA `.gbw`, trajectories and FEFF potential and phase files are deleted after extraction. Only the merged dataset leaves S3DF.
