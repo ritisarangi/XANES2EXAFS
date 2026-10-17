@@ -53,6 +53,14 @@ python3 ../XANES2EXAFS/scans/validate.py . lists/pilot.txt          # pass/fail 
 
 A CN-4 complex gives 30 branch jobs and 273 geometries. `validate.py` keeps a point only if its optimisation converged, the constraint was met, the bond graph matches the reference, every donor stays bound with unscanned Zn–L within 0.15 Å, no new atom comes within 2.6 Å of Zn, the energy stays within 40 kJ/mol of the minimum without dropping more than 2 kJ/mol between steps, and no heavy-atom distance jumps more than 0.3 Å between steps. After the first failure the rest of that branch is dropped.
 
+Branches stopped by the 72-hour limit or a cancellation are continued from their last converged step:
+
+```
+bash ../XANES2EXAFS/scans/submit_restart.sh      # finds stopped branches, writes continuation inputs, submits (ACCOUNT=ssrl:default by default)
+```
+
+The kept steps go to `scan_acc.txt`, the original input to `scan_orig.inp`, and the continuation to `scan_cont.out`; when it finishes, `scan.out` is rewritten as one continuous scan for `validate.py`.
+
 ## Dielectric series
 
 Re-optimises each complex with analytic frequencies at other CPCM dielectric constants, starting from the stage-2 geometry at the stage-2 level. Only epsilon changes; the water cavity is kept (Rsolv 1.30). Each Zn–L bond then has r, k and σ² at several dielectrics, which give a per-bond slope of ln k against r to compare with the relaxed scans.
