@@ -70,7 +70,9 @@ def stopped_dirs(dft):
     out = []
     for d, (_, stopped) in sorted(latest.items()):
         full = os.path.join(dft, d)
-        if stopped and "ORCA TERMINATED NORMALLY" not in read(os.path.join(full, "scan.out")):
+        prepared = (os.path.exists(os.path.join(full, "scan_orig.inp")) and not os.path.exists(os.path.join(full, "scan.out"))
+                    and not os.path.exists(os.path.join(full, "scan_cont.out")))   # continuation written, not run yet
+        if stopped and not prepared and "ORCA TERMINATED NORMALLY" not in read(os.path.join(full, "scan.out")):
             out.append(d)
     return out
 
