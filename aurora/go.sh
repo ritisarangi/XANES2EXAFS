@@ -5,6 +5,7 @@
 #   bash XANES2EXAFS/aurora/go.sh test                          1 node, 6 packed ORCA test runs (debug queue)
 #   bash XANES2EXAFS/aurora/go.sh submit [REF ...]              continue stopped branches, queue the rest, submit a farm job
 #   bash XANES2EXAFS/aurora/go.sh status                        jobs, branch states, validated points
+#   bash XANES2EXAFS/aurora/go.sh watch [seconds]               one progress line every 300 s (or the given interval)
 #   bash XANES2EXAFS/aurora/go.sh drain                         farm jobs start no new branches (running ones finish)
 #   bash XANES2EXAFS/aurora/go.sh export                        validate and pack passing geometries into scan_results.tar.gz
 #
@@ -75,7 +76,8 @@ submit)
     echo "farm jobs already queued or running ($(echo $act)); adding one more on the same queue"
   else
     python3 "$HERE/queue.py" mark-lost .
-    python3 "$REPO/scans/restart.py" . | tail -2
+    # interrupted steps restart from their last optimisation geometry (RESUME_PARTIAL=0: from the last converged step)
+    RESUME_PARTIAL=${RESUME_PARTIAL:-1} python3 "$REPO/scans/restart.py" . | tail -2
     python3 "$HERE/queue.py" build . scans/jobs_scan_full.txt queue "$@"
     rm -f queue/STOP
   fi
@@ -91,6 +93,17 @@ status)
   [ -f queue/tasks.txt ] && echo "queue: $(( $(grep -c . queue/tasks.txt) - $(cat queue/next) )) of $(grep -c . queue/tasks.txt) not yet handed out; $(ls queue/active 2>/dev/null | wc -l) ORCA runs active"
   [ -f scans/jobs_scan_full.txt ] && python3 "$HERE/queue.py" status . scans/jobs_scan_full.txt
   python3 "$REPO/scans/validate.py" . lists/scan_full.txt 2>/dev/null | head -4
+  ;;
+watch)
+  # one line every N seconds (default 300): farm jobs, busy ORCA slots, queue left, branch states
+  cd "$WORK"
+  while :; do
+    j=$(qstat -u "$USER" 2>/dev/null | awk '$4 ~ /^zn_farm/ {n[$10]++; if ($10 == "R") nd += $6} END {printf "%dR/%dQ jobs, %d nodes", n["R"], n["Q"], nd}')
+    q=$( [ -f queue/tasks.txt ] && echo "$(( $(grep -c . queue/tasks.txt) - $(cat queue/next) )) queued" )
+    b=$(python3 "$HERE/queue.py" status . scans/jobs_scan_full.txt 2>/dev/null | sed 's/^branches: //; s/ (running\/stopped\/failed)//')
+    echo "[$(date '+%F %T')] $j | $(ls queue/active 2>/dev/null | wc -l) ORCA running | $q | $b"
+    sleep "${2:-300}"
+  done
   ;;
 drain)
   touch "$WORK/queue/STOP"

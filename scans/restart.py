@@ -89,8 +89,22 @@ def prepare(dft, d, dry):
     natoms = len(inp.split("* xyz")[1].strip().split("\n")) - 2
     acc = acc_load(full)
     part = read(os.path.join(full, "scan_cont.out")) if acc else read(os.path.join(full, "scan.out"))
-    acc = acc + leading_good(part)
+    good = leading_good(part)
+    acc = acc + good
     k = len(acc)
+    # RESUME_PARTIAL=1: start the interrupted step from its latest optimisation geometry instead of
+    # the last converged step; same target, so the constrained optimisation ends at the same point
+    # and the step's finished optimisation cycles are not repeated
+    partial = None
+    if os.environ.get("RESUME_PARTIAL") == "1" and k > 0:
+        rest = chunks(part)[len(good):]
+        if rest and "CARTESIAN COORDINATES (ANGSTROEM)" in rest[0]:
+            G = last_geom(rest[0], natoms)
+            try:
+                if len(G) == natoms and all(len(g) == 4 and [float(x) for x in g[1:]] for g in G):
+                    partial = rest[0]
+            except ValueError:
+                pass
     tgt = [v1 + (v2 - v1) * i / (n - 1) for i in range(n)]
     fmt = (lambda v: "%.4f" % v) if kind == "B" else (lambda v: "%.3f" % v)
     if dry:
@@ -110,7 +124,7 @@ def prepare(dft, d, dry):
     if k == 0:
         new = inp
     else:
-        G = last_geom(acc[-1], natoms)
+        G = last_geom(partial or acc[-1], natoms)
         rows = []
         for g, o in zip(G, old):
             extra = ' newgto "def2-TZVP" end' if "newgto" in o else ""
@@ -122,7 +136,7 @@ def prepare(dft, d, dry):
             geom = "%%geom\n  MaxIter 100\n  Constraints\n    { %s %s %s C }\n  end\nend\n" % (kind, " ".join(atoms), fmt(tgt[k]))
         new = head + geom + "* xyz %s %s\n%s\n*\n" % (cm[0], cm[1], "\n".join(rows))
     open(os.path.join(full, "scan.inp"), "w").write(new)
-    return "%s: %d of %d steps kept, %d to run" % (d, k, n, n - k)
+    return "%s: %d of %d steps kept, %d to run%s" % (d, k, n, n - k, " (interrupted step resumed from its last geometry)" if partial else "")
 
 
 def stitch(dft, d):

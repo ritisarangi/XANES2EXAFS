@@ -8,10 +8,11 @@
 # each pinned to its own cores. Cores 0 and 52 are left to the OS, leaving 51 per socket.
 # Layout options: CORES (MPI ranks per ORCA job), HT=1 (ranks on both hardware threads of
 # CORES/2 physical cores), HBM=1 (prefer the socket's HBM for memory), MAXCORE (MB per rank),
-# SCRATCH=tmp (ORCA works in node-local /tmp; scan.out still goes straight to $WORK).
+# SCRATCH=tmp (default: ORCA works in node-local /tmp, scan.out still goes straight to $WORK;
+# 4% faster than Lustre on one node, and keeps ORCA scratch I/O off the shared file system).
 ACCOUNT=${ACCOUNT:?set ACCOUNT to the ALCF project}
 QSUB_SITE="-A $ACCOUNT -l filesystems=flare -j oe"
-CORES=${CORES:-16} HT=${HT:-0} HBM=${HBM:-0} MAXCORE=${MAXCORE:-3000} SCRATCH=${SCRATCH:-lustre}
+CORES=${CORES:-16} HT=${HT:-0} HBM=${HBM:-0} MAXCORE=${MAXCORE:-3000} SCRATCH=${SCRATCH:-tmp}
 
 slot_list() {   # one "cpulist hbm_node" line per slot on this node
   local phys=$CORES s k lo hi cl
