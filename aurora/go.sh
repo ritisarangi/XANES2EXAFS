@@ -14,7 +14,7 @@
 # near the walltime are stopped and continued by the next 'submit' from their last converged step.
 #
 # Two pools with separate queues and farms: POOL=main (default; complexes below BIG_ATOMS=100
-# atoms, CORES=4) and POOL=big (BIG_ATOMS and up, CORES=16). Small ORCA jobs give the most
+# atoms, CORES=4) and POOL=big (BIG_ATOMS and up, CORES=8). Small ORCA jobs give the most
 # node throughput; the large complexes get more cores so their branches do not trail for days.
 #
 # Needs in the environment (put them in ~/.bashrc): ACCOUNT (ALCF project), ORCA_DIR, MPI_DIR, WORK.
@@ -29,7 +29,7 @@ cmd=${1:-status}
 POOL=${POOL:-main} BIG_ATOMS=${BIG_ATOMS:-100}
 case "$POOL" in
   main) export CORES=${CORES:-4} NATOMS_MIN=0 NATOMS_MAX=$BIG_ATOMS ;;
-  big)  export CORES=${CORES:-16} NATOMS_MIN=$BIG_ATOMS NATOMS_MAX=1000000 ;;
+  big)  export CORES=${CORES:-8} NATOMS_MIN=$BIG_ATOMS NATOMS_MAX=1000000 ;;
   *) echo "POOL is main or big"; exit 1 ;;
 esac
 QD=queue/$POOL
