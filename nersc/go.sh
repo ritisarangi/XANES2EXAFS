@@ -23,7 +23,8 @@ need() { for v in ACCOUNT ORCA_DIR MPI_DIR; do [ -n "${!v}" ] || { echo "set $v 
 case "$cmd" in
 setup)
   need
-  B=${2:?give the path to scan_bundle.tar.gz}
+  B=${2:?give the path to scan_bundle.tar.gz (Riti sends this file by email or Drive)}
+  [ -f "$B" ] || { echo "$B not found. Get scan_bundle.tar.gz from Riti (email or Drive) and copy it here: scp scan_bundle.tar.gz perlmutter.nersc.gov:~"; exit 1; }
   mkdir -p "$WORK" && tar -xzf "$B" -C "$WORK"
   [ -x "$ORCA_DIR/orca" ] || { echo "no orca binary in $ORCA_DIR"; exit 1; }
   [ -x "$MPI_DIR/bin/mpirun" ] || { echo "no mpirun in $MPI_DIR/bin"; exit 1; }

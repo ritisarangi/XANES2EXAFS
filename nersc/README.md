@@ -4,6 +4,7 @@ Relaxed one-coordinate scans around the B3LYP-D3(BJ) minima of about 335 Zn mode
 
 ## One-time setup
 
+0. Get `scan_bundle.tar.gz` (0.7 MB) from Riti by email or Drive. It holds the stage-2 geometries and is not in this repo.
 1. Download ORCA 6.0.1 for Linux x86-64 (`orca_6_0_1_linux_x86-64_shared_openmpi416.tar.xz`) from https://orcaforum.kofo.mpg.de under your own account, and copy it and `scan_bundle.tar.gz` to your Perlmutter home folder.
 2. On Perlmutter:
    ```
