@@ -10,5 +10,5 @@ SBATCH_SITE="--account=$ACCOUNT --constraint=cpu --qos=shared --cpus-per-task=2 
 setup_env() {
   ORCA=${ORCA_DIR:?set ORCA_DIR}
   export PATH=$ORCA:${MPI_DIR:?set MPI_DIR}/bin:$PATH LD_LIBRARY_PATH=$ORCA:$MPI_DIR/lib:$LD_LIBRARY_PATH
-  export OMPI_MCA_btl=self,vader
+  export OMPI_MCA_btl=self,vader OMPI_MCA_pml=ob1 OMPI_MCA_mtl=^ofi
 }

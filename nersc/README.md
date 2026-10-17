@@ -4,20 +4,14 @@ Relaxed one-coordinate scans around the B3LYP-D3(BJ) minima of about 335 Zn mode
 
 ## One-time setup
 
-1. ORCA 6.0.1 for Linux x86-64 (shared-library build), downloaded under your own ORCA forum account. The ORCA licence does not allow copying someone else's install.
-2. OpenMPI 4.1.x built for Slurm (about 20 minutes):
+1. Download ORCA 6.0.1 for Linux x86-64 (`orca_6_0_1_linux_x86-64_shared_openmpi416.tar.xz`) from https://orcaforum.kofo.mpg.de under your own account, and copy it and `scan_bundle.tar.gz` to your Perlmutter home folder.
+2. On Perlmutter:
    ```
-   wget https://download.open-mpi.org/release/open-mpi/v4.1/openmpi-4.1.6.tar.gz
-   tar xzf openmpi-4.1.6.tar.gz && cd openmpi-4.1.6
-   ./configure --prefix=$HOME/sw/openmpi-4.1.6 --with-slurm && make -j32 install
+   git clone https://github.com/ritisarangi/XANES2EXAFS.git
+   bash XANES2EXAFS/nersc/install_orca.sh ~/orca_6_0_1_linux_x86-64_shared_openmpi416.tar.xz <NERSC project>
+   source ~/.bashrc
    ```
-3. In `~/.bashrc`:
-   ```
-   export ACCOUNT=<NERSC project>
-   export ORCA_DIR=<folder holding the orca binary>
-   export MPI_DIR=$HOME/sw/openmpi-4.1.6
-   ```
-4. `git clone https://github.com/ritisarangi/XANES2EXAFS.git` and copy `scan_bundle.tar.gz` (from Riti) next to it.
+   This unpacks ORCA, builds OpenMPI 4.1.6 under `$HOME/sw` (about 15 minutes), and adds `ACCOUNT`, `ORCA_DIR` and `MPI_DIR` to `~/.bashrc`.
 
 ## Commands
 
