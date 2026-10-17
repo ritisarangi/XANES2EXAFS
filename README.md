@@ -53,6 +53,16 @@ python3 ../XANES2EXAFS/scans/validate.py . lists/pilot.txt          # pass/fail 
 
 A CN-4 complex gives 30 branch jobs and 273 geometries. `validate.py` keeps a point only if its optimisation converged, the constraint was met, the bond graph matches the reference, every donor stays bound with unscanned Zn–L within 0.15 Å, no new atom comes within 2.6 Å of Zn, the energy stays within 40 kJ/mol of the minimum without dropping more than 2 kJ/mol between steps, and no heavy-atom distance jumps more than 0.3 Å between steps. After the first failure the rest of that branch is dropped.
 
+## Dielectric series
+
+Re-optimises each complex with analytic frequencies at other CPCM dielectric constants, starting from the stage-2 geometry at the stage-2 level. Only epsilon changes; the water cavity is kept (Rsolv 1.30). Each Zn–L bond then has r, k and σ² at several dielectrics, which give a per-bond slope of ln k against r to compare with the relaxed scans.
+
+```
+python3 ../XANES2EXAFS/dielectric/make_eps.py . lists/pilot.txt 4 2       # writes dielectric/eps4, eps2 and dielectric/jobs_pilot.txt
+bash ../XANES2EXAFS/dielectric/submit_eps.sh dielectric/jobs_pilot.txt     # ACCOUNT=..., MAX=... optional
+python3 ../XANES2EXAFS/dielectric/analyze_eps.py . lists/pilot.txt 4 2    # per-bond r, k, sigma2 and slopes; dielectric/eps_compare_pilot.csv
+```
+
 ## Data policy
 
 Each job runs in node-local scratch and keeps only final geometries, energies, frequencies, Hessians for the reference structures, and spectra (`xmu.dat`, `chi.dat`, `feff.inp`). Per-job results go to small HDF5 files that are merged into one dataset. ORCA `.gbw`, trajectories and FEFF potential and phase files are deleted after extraction. Only the merged dataset leaves S3DF.
