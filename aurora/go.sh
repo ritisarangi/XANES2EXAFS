@@ -34,6 +34,8 @@ case "$POOL" in
   *) echo "POOL is main or big"; exit 1 ;;
 esac
 QD=queue/$POOL
+# submit and publish change queues and branch folders: never two at once (autopilot and by hand)
+case "$cmd" in submit|publish) exec 8>>"$WORK/.gosh.lock"; flock 8 ;; esac
 
 need() { for v in ACCOUNT ORCA_DIR MPI_DIR; do [ -n "${!v}" ] || { echo "set $v first (see the header of this script)"; exit 1; }; done; }
 all_farm_jobs() { qstat -u "$USER" 2>/dev/null | awk '$4 ~ /^zn_(main|big)$/ && $10 ~ /[QRHE]/ {sub(/\..*/, "", $1); print $1}'; }

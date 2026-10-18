@@ -1,0 +1,85 @@
+#!/bin/bash
+# Keeps the Zn campaign going unattended. Run it in a detached screen on a login node:
+#   screen -dmS zn_autopilot bash XANES2EXAFS/aurora/autopilot.sh
+# Every 10 minutes it
+#   - re-queues the stopped branches of farms that ended (go.sh submit with NODES=0)
+#   - keeps WANT_MAIN 256-node prod farms and WANT_BIG 16-node capacity farms (big pool) queued or
+#     running, with 6 h walltimes (the best queue priority on Aurora)
+#   - every 6 h audits and publishes finished complexes (go.sh publish)
+#   - every 2 h writes aurora/STATUS.md and pushes it
+# and pauses new submissions (touch $WORK/autopilot/PAUSE to pause by hand) when more than
+# FAIL_MAX ORCA runs failed since the last check, when the allocation balance is below MIN_BALANCE
+# node-hours, or after STOP_AT (allocation end). It runs go.sh from a frozen copy of the scripts,
+# so editing the clone never breaks a step in progress; restart the autopilot to pick up changes.
+# Settings come from ~/.bashrc (ACCOUNT ORCA_DIR MPI_DIR WORK) and the variables below.
+set -u
+# ~/.bashrc may stop early in a non-interactive shell, so take the four settings from it directly
+eval "$(grep -E '^export (ACCOUNT|ORCA_DIR|MPI_DIR|WORK)=' ~/.bashrc)"
+export ACCOUNT ORCA_DIR MPI_DIR WORK
+SRC=$(cd "$(dirname "$0")/.." && pwd)
+WANT_MAIN=${WANT_MAIN:-2} WANT_BIG=${WANT_BIG:-2} FAIL_MAX=${FAIL_MAX:-25}
+MIN_BALANCE=${MIN_BALANCE:-1500} STOP_AT=${STOP_AT:-2026-10-21 18:00}
+A=$WORK/autopilot; mkdir -p "$A"
+LOG=$A/autopilot.log
+SNAP=$A/repo; rm -rf "$SNAP"; mkdir -p "$SNAP"; cp -r "$SRC/aurora" "$SRC/scans" "$SRC/sites" "$SNAP/"
+GO="bash $SNAP/aurora/go.sh"
+[ -n "${DRY:-}" ] && GO="echo DRY go.sh"      # DRY=1 ONCE=1: one cycle, log what it would do
+say() { echo "[$(date '+%F %T')] $*" >> "$LOG"; }
+farms() { qstat -u "$USER" 2>/dev/null | awk '$4 ~ /^zn_(main|big)$/ {sub(/\..*/, "", $1); print $1, $4, $3, $10}'; }
+failed() { grep -l 'did not terminate normally' "$WORK"/logs/scan*_*.log 2>/dev/null | xargs -r grep -L -E 'DUE TO TIME LIMIT|CANCELLED' | wc -l; }
+say "autopilot started (pid $$, scripts frozen from $SRC at $(git -C "$SRC" rev-parse --short HEAD))"
+prev=$(farms | awk '{print $1":"$2}'); prevfail=$(failed); last_pub=0; last_stat=0
+while :; do
+  now=$(date +%s)
+  cur=$(farms)
+  # 1. farms that left the queue: put their stopped branches back in the pool's queue
+  for x in $prev; do
+    id=${x%%:*} name=${x##*:}
+    echo "$cur" | grep -q "^$id " && continue
+    say "farm $id ($name) ended: $(tail -1 "$WORK"/logs/$id.*.OU 2>/dev/null)"
+    POOL=${name#zn_} NODES=0 $GO submit >> "$LOG" 2>&1
+  done
+  # 2. guards
+  fail=$(failed)
+  if [ $((fail - prevfail)) -gt "$FAIL_MAX" ]; then
+    touch "$A/PAUSE"; say "ALERT: $((fail - prevfail)) new failed ORCA runs since the last check; submissions paused"
+  fi
+  prevfail=$fail
+  bal=$(sbank-list-allocations -p "$ACCOUNT" 2>/dev/null | awk '/Available Balance:/ {gsub(",", "", $3); print int($3)}' | head -1)
+  why=
+  [ -e "$A/PAUSE" ] && why="paused ($A/PAUSE)"
+  [ -n "$bal" ] && [ "$bal" -lt "$MIN_BALANCE" ] && why="balance $bal node-hours below $MIN_BALANCE"
+  [ "$now" -ge "$(date -d "$STOP_AT" +%s)" ] && why="past STOP_AT $STOP_AT"
+  # 3. keep farms queued
+  if [ -z "$why" ]; then
+    left_main=$(( $(grep -c . "$WORK/queue/main/tasks.txt") - $(cat "$WORK/queue/main/next") ))
+    left_big=$(( $(grep -c . "$WORK/queue/big/tasks.txt") - $(cat "$WORK/queue/big/next") ))
+    n_main=$(echo "$cur" | awk '$2 == "zn_main" && $3 != "capacity"' | grep -c .)
+    n_big=$(echo "$cur" | awk '$2 == "zn_big"' | grep -c .)
+    n_cap=$(echo "$cur" | awk '$3 == "capacity"' | grep -c .)
+    # 256-node farms only while the main queue can fill them (24 slots per node)
+    if [ "$n_main" -lt "$WANT_MAIN" ] && [ "$left_main" -gt 3000 ]; then
+      say "submitting main farm (queue $left_main left, $n_main main farms)"
+      POOL=main QUEUE=prod NODES=256 HOURS=6 $GO submit >> "$LOG" 2>&1
+    fi
+    if [ "$n_big" -lt "$WANT_BIG" ] && [ "$left_big" -gt 0 ] && [ "$n_cap" -lt 5 ]; then
+      say "submitting big farm (queue $left_big left, $n_big big farms)"
+      POOL=big QUEUE=capacity NODES=16 HOURS=6 $GO submit >> "$LOG" 2>&1
+    fi
+  else
+    say "no new farms: $why"
+  fi
+  # 4. publish finished complexes, write the status page
+  if [ $((now - last_pub)) -ge 21600 ]; then
+    say "publish: $( $GO publish 2>&1 | tail -2 | tr '\n' ' ')"; last_pub=$now
+  fi
+  if [ $((now - last_stat)) -ge 7200 ]; then
+    bash "$SNAP/aurora/status.sh" > "$SRC/aurora/STATUS.md" 2>/dev/null
+    [ -z "${DRY:-}" ] && ( cd "$SRC" && git add aurora/STATUS.md && git commit -q -m "Aurora status $(date '+%F %H:%M')" aurora/STATUS.md \
+      && git push -q ) >> "$LOG" 2>&1 && say "STATUS.md pushed"
+    last_stat=$now
+  fi
+  prev=$(farms | awk '{print $1":"$2}')
+  [ -n "${ONCE:-}" ] && break
+  sleep 600
+done
