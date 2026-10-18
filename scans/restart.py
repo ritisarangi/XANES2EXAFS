@@ -109,6 +109,24 @@ def prepare(dft, d, dry):
                 pass
     tgt = [v1 + (v2 - v1) * i / (n - 1) for i in range(n)]
     fmt = (lambda v: "%.4f" % v) if kind == "B" else (lambda v: "%.3f" % v)
+    if k >= n:
+        # every step converged, but ORCA was stopped before it terminated: the branch is complete.
+        # Write it as one finished scan (as --stitch does) instead of continuing past the last target.
+        if dry:
+            return "%s: all %d steps converged; completed without a rerun" % (d, n)
+        acc = acc[:n]
+        acc_save(full, acc)
+        text = "".join("%s %d\n%s" % (MARK, i + 1, c) for i, c in enumerate(acc))
+        open(os.path.join(full, "scan.out.new"), "w").write(text + "\n                             ****ORCA TERMINATED NORMALLY****\n")
+        for f in ("scan.out", "scan_cont.out"):
+            p = os.path.join(full, f)
+            if os.path.exists(p):
+                i = 1
+                while os.path.exists(os.path.join(full, "scan_try%d.out" % i)):
+                    i += 1
+                os.rename(p, os.path.join(full, "scan_try%d.out" % i))
+        os.rename(os.path.join(full, "scan.out.new"), os.path.join(full, "scan.out"))
+        return "%s: all %d steps converged; completed without a rerun" % (d, n)
     if dry:
         return "%s: %d of %d steps kept, %d to run" % (d, k, n, n - k)
     acc_save(full, acc)
@@ -167,7 +185,10 @@ def main():
     dry = "--dry" in sys.argv
     ds = stopped_dirs(dft)
     for d in ds:
-        print(prepare(dft, d, dry))
+        try:
+            print(prepare(dft, d, dry))
+        except Exception as e:          # one odd branch must not stop the others from being prepared
+            print("%s: not prepared (%s: %s)" % (d, type(e).__name__, e))
     if not dry and ds:
         open(os.path.join(dft, "scans", "jobs_restart.txt"), "w").write("\n".join(ds) + "\n")
         print("wrote scans/jobs_restart.txt (%d branches)" % len(ds))
