@@ -4,9 +4,11 @@
     from ntype import classify;  classify(atoms, n_index, zn_index) -> type string
     python3 ntype.py <xyz> <meta>          prints the type of every N donor
 
-Types: azole (N in a 5-membered ring with another N: imidazole, pyrazole, triazole, tetrazole),
-pyrrolide (deprotonated N in a 5-membered ring with one N, e.g. dipyrrins, porphyrins),
-pyridine (N in a 6-membered ring), nitrile, imine (C=N outside an aromatic ring, Schiff base),
+Types: imidazole (5-ring N whose ring neighbours are both C, another N in the ring: imidazole N3,
+benzimidazole), pyrazole (5-ring N bonded to a ring N: pyrazole, triazole, tetrazole, thiadiazole),
+thiazole (5-ring N with S or O as the other heteroatom), pyrrolide (5-ring N, all other ring atoms C:
+dipyrrins, porphyrins), pyridine (N in a 6-membered ring), imine (C=N-C outside a ring, Schiff base),
+hydrazone (C=N-N outside a ring, incl. thiosemicarbazones), nitrile,
 amido (deprotonated N on a C=O, S=O or in a sulfonamide/carboxamide), amine (sp3 N with H or
 three single bonds), other. Standard library only, Python 3.6+.
 """
@@ -44,11 +46,15 @@ def classify(A, n, zn):
     rings = _rings(nb, n)
     r5 = [r for r in rings if len(r) == 5]
     r6 = [r for r in rings if len(r) == 6]
-    if any(sum(1 for k in r if el[k] == "N") >= 2 for r in r5) and nH == 0 and len(heavy) == 2:
-        return "azole"
+    hetero5 = [sorted(el[k] for k in r if k != n and el[k] != "C") for r in r5]
     if r5 and nH == 0 and len(heavy) == 2:
+        if any("N" in h for h in hetero5):
+            # imidazole N3 (both ring neighbours C) vs pyrazole/triazole/tetrazole N (an N neighbour)
+            return "pyrazole" if any(el[j] == "N" for j in heavy) else "imidazole"
+        if any(h for h in hetero5):
+            return "thiazole"              # thiazole / oxazole N
         return "pyrrolide"
-    if r6 and nH == 0 and len(heavy) == 2 and all(len([j for j in nb[k] if el[j] != "H"]) <= 3 for k in r6[0]):
+    if r6 and nH == 0 and len(heavy) == 2:
         return "pyridine"
     if nH == 0 and len(heavy) == 2:
         for c in heavy:
@@ -56,9 +62,8 @@ def classify(A, n, zn):
                 return "amido"
             if el[c] in ("C", "S") and any(el[o] == "O" and Z.dist(A[c], A[o]) < (1.30 if el[c] == "C" else 1.50) for o in nb[c]):
                 return "amido"
-        for c in heavy:
-            if el[c] == "C" and Z.dist(A[n], A[c]) < 1.345:
-                return "imine"
+        if any(el[c] == "C" and Z.dist(A[n], A[c]) < 1.345 for c in heavy):
+            return "hydrazone" if any(el[j] == "N" for j in heavy) else "imine"
         return "other"
     if nH == 0 and len(heavy) == 1 and el[heavy[0]] == "C" and Z.dist(A[n], A[heavy[0]]) < 1.20:
         return "nitrile"
