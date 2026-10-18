@@ -1,10 +1,9 @@
 #!/bin/bash
 # Prepare and submit continuations of stopped scan branches.
 # Run from the project folder:  bash <repo>/scans/submit_restart.sh
-# Environment options: SITE (s3df default, or nersc), ACCOUNT (S3DF default ssrl:default), MAX concurrent tasks (default 11)
+# Environment options: SITE (s3df default, or nersc), ACCOUNT (S3DF default ssrl:smbxas, which is not preempted), MAX concurrent tasks (default 11)
 set -e
 SITE=${SITE:-s3df}
-[ "$SITE" = s3df ] && ACCOUNT=${ACCOUNT:-ssrl:default}
 MAX=${MAX:-11}
 HERE=$(cd "$(dirname "$0")" && pwd)
 REPO=$(dirname "$HERE")

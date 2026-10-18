@@ -4,7 +4,7 @@
 #   bash <repo>/scans/submit_scans.sh scans/jobs_pilot.txt
 # Options through the environment:
 #   SITE     s3df (default) or nersc; site settings in sites/<SITE>.sh
-#   ACCOUNT  Slurm account (S3DF default ssrl:smbxas; required at NERSC)
+#   ACCOUNT  Slurm account (S3DF default ssrl:smbxas, which is not preempted; required at NERSC)
 #   MAX      concurrent tasks per chunk (default 30; 16 cores each)
 set -e
 JOBS=${1:?give a jobs file, e.g. scans/jobs_pilot.txt}

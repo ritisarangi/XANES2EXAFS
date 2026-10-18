@@ -5,8 +5,12 @@ Usage (inside the project folder on S3DF):
     python3 <repo>/scans/restart.py .            # find stopped branches, write restart inputs
     python3 <repo>/scans/restart.py . --dry      # only list what it would do
     python3 <repo>/scans/restart.py . --stitch scans/REF/coord_branch   # used by restart_array.slurm
+    python3 <repo>/scans/restart.py . --prepare scans/REF/coord_branch  # used by both array scripts after a requeue
 
-A branch counts as stopped when its last Slurm log says TIME LIMIT or CANCELLED and its
+A preempted task that Slurm requeues restarts itself: the array scripts call --prepare
+for their own folder when they find a partial output, so the requeued run continues
+instead of starting over.
+A branch counts as stopped when its last Slurm log says TIME LIMIT, PREEMPTION or CANCELLED and its
 output did not terminate normally. For each one the converged steps so far are kept in
 scan_acc.txt, the original input is saved once as scan_orig.inp, and a new scan.inp
 continues from the last converged geometry over the remaining targets (a constrained
@@ -66,7 +70,7 @@ def stopped_dirs(dft):
         d = m.group(1)
         mt = os.path.getmtime(lg)
         if d not in latest or mt > latest[d][0]:
-            latest[d] = (mt, bool(re.search(r"DUE TO TIME LIMIT|CANCELLED", t)))
+            latest[d] = (mt, bool(re.search(r"DUE TO TIME LIMIT|PREEMPT|CANCELLED", t)))
     out = []
     for d, (_, stopped) in sorted(latest.items()):
         full = os.path.join(dft, d)
@@ -96,6 +100,10 @@ def prepare(dft, d, dry):
     if dry:
         return "%s: %d of %d steps kept, %d to run" % (d, k, n, n - k)
     acc_save(full, acc)
+    if k >= n:                        # every step converged; only the final output was lost
+        text = "".join("%s %d\n%s" % (MARK, i + 1, c) for i, c in enumerate(acc))
+        open(os.path.join(full, "scan.out"), "w").write(text + "\n                             ****ORCA TERMINATED NORMALLY****\n")
+        return "%s: all %d steps already converged; scan.out rebuilt" % (d, n)
     for f in ("scan.out", "scan_cont.out"):
         p = os.path.join(full, f)
         if os.path.exists(p):
@@ -143,6 +151,9 @@ def stitch(dft, d):
 
 def main():
     dft = os.path.abspath(sys.argv[1])
+    if "--prepare" in sys.argv:
+        print(prepare(dft, sys.argv[sys.argv.index("--prepare") + 1], False))
+        return
     if "--stitch" in sys.argv:
         sys.exit(stitch(dft, sys.argv[sys.argv.index("--stitch") + 1]))
     dry = "--dry" in sys.argv
