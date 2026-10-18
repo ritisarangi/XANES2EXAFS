@@ -22,6 +22,7 @@ MIN_BALANCE=${MIN_BALANCE:-1500} STOP_AT=${STOP_AT:-2026-10-21 18:00}
 A=$WORK/autopilot; mkdir -p "$A"
 LOG=$A/autopilot.log
 SNAP=$A/repo; rm -rf "$SNAP"; mkdir -p "$SNAP"; cp -r "$SRC/aurora" "$SRC/scans" "$SRC/sites" "$SNAP/"
+export RESULTS=${RESULTS:-$(dirname "$SRC")/XANES2EXAFS-results}   # the aurora-results checkout
 GO="bash $SNAP/aurora/go.sh"
 [ -n "${DRY:-}" ] && GO="echo DRY go.sh"      # DRY=1 ONCE=1: one cycle, log what it would do
 say() { echo "[$(date '+%F %T')] $*" >> "$LOG"; }
