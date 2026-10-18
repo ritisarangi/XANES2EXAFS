@@ -112,13 +112,6 @@ def prepare(dft, d, dry):
     if dry:
         return "%s: %d of %d steps kept, %d to run" % (d, k, n, n - k)
     acc_save(full, acc)
-    for f in ("scan.out", "scan_cont.out"):
-        p = os.path.join(full, f)
-        if os.path.exists(p):
-            i = 1
-            while os.path.exists(os.path.join(full, "scan_try%d.out" % i)):
-                i += 1
-            os.rename(p, os.path.join(full, "scan_try%d.out" % i))
     head, rest = inp.split("%geom", 1)
     tail = rest.split("* xyz", 1)[1]
     cm = tail.strip().split("\n")[0].split()            # charge mult
@@ -137,7 +130,17 @@ def prepare(dft, d, dry):
         else:
             geom = "%%geom\n  MaxIter 100\n  Constraints\n    { %s %s %s C }\n  end\nend\n" % (kind, " ".join(atoms), fmt(tgt[k]))
         new = head + geom + "* xyz %s %s\n%s\n*\n" % (cm[0], cm[1], "\n".join(rows))
-    open(os.path.join(full, "scan.inp"), "w").write(new)
+    # new input first (atomically), old outputs renamed last: a branch interrupted at any point is
+    # either untouched or fully prepared, and a repeated run finishes the job
+    open(os.path.join(full, "scan.inp.new"), "w").write(new)
+    os.rename(os.path.join(full, "scan.inp.new"), os.path.join(full, "scan.inp"))
+    for f in ("scan.out", "scan_cont.out"):
+        p = os.path.join(full, f)
+        if os.path.exists(p):
+            i = 1
+            while os.path.exists(os.path.join(full, "scan_try%d.out" % i)):
+                i += 1
+            os.rename(p, os.path.join(full, "scan_try%d.out" % i))
     return "%s: %d of %d steps kept, %d to run%s" % (d, k, n, n - k, " (interrupted step resumed from its last geometry)" if partial else "")
 
 

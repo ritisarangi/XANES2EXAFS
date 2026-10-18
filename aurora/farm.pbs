@@ -7,7 +7,8 @@
 set -u
 cd "${WORK:?}" || exit 1
 export JOB=${PBS_JOBID%%.*}
-export DEADLINE=$(( $(date +%s) + ${HOURS:?} * 3600 - ${MARGIN_MIN:-10} * 60 ))
+# ORCA stops MARGIN_MIN before the walltime, leaving time to re-queue this farm's stopped branches
+export DEADLINE=$(( $(date +%s) + ${HOURS:?} * 3600 - ${MARGIN_MIN:-25} * 60 ))
 source "$REPO/sites/aurora.sh"
 NN=$(sort -u "$PBS_NODEFILE" | wc -l)
 SLOTS_TOTAL=$(( NN * $(slots_per_node) ))
@@ -34,4 +35,15 @@ MON=$!
 
 mpiexec -n $NN --ppn 1 --cpu-bind none --hostfile "$PBS_NODEFILE" bash "$REPO/aurora/node.sh"
 kill $MON 2>/dev/null; wait $MON 2>/dev/null
+# Put this pool's stopped branches back at the front of its queue, so the campaign keeps going
+# without anyone on a login node (go.sh submit and the autopilot do the same; the lock keeps them
+# apart). The pool's atom range follows the queue folder name.
+pool=$(basename "$QDIR")
+if [ "$pool" = big ]; then export NATOMS_MIN=${BIG_ATOMS:-100} NATOMS_MAX=1000000; else export NATOMS_MIN=0 NATOMS_MAX=${BIG_ATOMS:-100}; fi
+(
+  flock 8
+  echo "$(date '+%F %T') requeue after farm $JOB ($pool)"
+  RESUME_PARTIAL=1 python3 "$REPO/scans/restart.py" . | tail -1
+  python3 "$REPO/aurora/queue.py" add . scans/jobs_scan_full.txt "queue/$pool"
+) 8>>"$WORK/.gosh.lock" >> logs/requeue_$JOB.log 2>&1
 echo "farm $JOB done $(date '+%F %T'); queue next $(cat "$QDIR/next") of $(grep -c . "$QDIR/tasks.txt")"
