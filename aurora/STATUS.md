@@ -1,12 +1,12 @@
 # Zn scan campaign on Aurora: status
 
-Generated 2026-10-18 17:17 UTC by `aurora/autopilot.sh`. Human-written notes are in the run log of `aurora/README.md`; validated results are on the `aurora-results` branch.
+Generated 2026-10-18 17:53 UTC by `aurora/autopilot.sh`. Human-written notes are in the run log of `aurora/README.md`; validated results are on the `aurora-results` branch.
 
 ## Branches
 
 ```
-branches: 95 done, 2723 started (running/stopped/failed), 4182 continuations ready, 3175 not started, 10175 total
-queue main: 5009 of 12001 waiting, 384 ORCA runs active
+branches: 101 done, 384 started (running/stopped/failed), 6515 continuations ready, 3175 not started, 10175 total
+queue main: 9090 of 16084 waiting, 384 ORCA runs active
 queue big: 600 of 600 waiting, 0 ORCA runs active
 failed ORCA runs not retried: 0
 allocation: 23,832.2 Node Hours available on isaac
@@ -18,7 +18,7 @@ allocation: 23,832.2 Node Hours available on isaac
 |---|---|---|---|---|---|---|
 | 8939977 | zn_main | small | 256 | 12:00 | Q | -- |
 | 8940280 | zn_big | capacity | 16 | 24:00 | Q | -- |
-| 8940420 | zn_main | capacity | 16 | 12:00 | R | 02:16 |
+| 8940420 | zn_main | capacity | 16 | 12:00 | R | 02:50 |
 | 8940421 | zn_big | capacity | 16 | 12:00 | Q | -- |
 | 8940426 | zn_main | small | 256 | 06:00 | Q | -- |
 
@@ -34,4 +34,7 @@ allocation: 23,832.2 Node Hours available on isaac
 [2026-10-18 16:31:42] STATUS.md pushed
 [2026-10-18 16:41:40] autopilot started (pid 128224, scripts frozen from /home/dsokaras/dev/xanes2exafs/XANES2EXAFS at 51b76a8)
 [2026-10-18 17:17:47] publish: publish: no newly finished complexes nothing new to commit 
+[2026-10-18 17:22:05] STATUS.md pushed
+[2026-10-18 17:31:39] autopilot started (pid 472182, scripts frozen from /home/dsokaras/dev/xanes2exafs/XANES2EXAFS at 8b2763b)
+[2026-10-18 17:53:01] publish: publish: no newly finished complexes nothing new to commit 
 ```
