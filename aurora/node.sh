@@ -87,3 +87,17 @@ slot() {
 i=0
 while read -r cl hb; do slot $i "$cl" "$hb" & i=$((i + 1)); done < <(slot_list)
 wait
+
+# Farms submitted before farm.pbs re-queued its own stopped branches: the head node does it here,
+# a minute after its slots stop so the other nodes have tagged theirs (same lock as go.sh)
+if [ -z "${FARM_REQUEUE:-}" ] && [ "$HOST" = "$(head -1 "$PBS_NODEFILE" | cut -d. -f1)" ]; then
+  sleep 60
+  pool=$(basename "$QDIR")
+  if [ "$pool" = big ]; then export NATOMS_MIN=100 NATOMS_MAX=1000000; else export NATOMS_MIN=0 NATOMS_MAX=100; fi
+  (
+    flock 8
+    echo "$(date '+%F %T') requeue after farm $JOB ($pool, from node.sh)"
+    RESUME_PARTIAL=1 python3 "$REPO/scans/restart.py" . | tail -1
+    python3 "$REPO/aurora/queue.py" add . scans/jobs_scan_full.txt "queue/$pool"
+  ) 8>>"$WORK/.gosh.lock" >> "$WORK/logs/requeue_$JOB.log" 2>&1
+fi

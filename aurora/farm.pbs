@@ -33,6 +33,7 @@ MON=$!
 
 [ -n "${TEST:-}" ] && ( sleep 90; echo "== core placement of ORCA processes on $(hostname -s) (psr = core)"; ps -eo psr,comm | grep orca_ | sort -n ) > "logs/test_placement_$JOB.txt" &
 
+export FARM_REQUEUE=1      # this script re-queues at the end (older farms let node.sh do it)
 mpiexec -n $NN --ppn 1 --cpu-bind none --hostfile "$PBS_NODEFILE" bash "$REPO/aurora/node.sh"
 kill $MON 2>/dev/null; wait $MON 2>/dev/null
 # Put this pool's stopped branches back at the front of its queue, so the campaign keeps going
