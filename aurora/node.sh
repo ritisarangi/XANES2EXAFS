@@ -67,8 +67,8 @@ slot() {
       rm -rf "$run"
     fi
     # an MPI process killed by a signal, or mpirun failing to start, is an infrastructure failure,
-    # not chemistry: tag it so
-    # restart.py continues the branch from its last converged step (at most 2 retries)
+    # not chemistry: tag it so restart.py continues the branch from its last converged step
+    # (at most 2 retries)
     if [ -z "$why" ] && ! grep -q "ORCA TERMINATED NORMALLY" "$WORK/$D/$out" 2>/dev/null \
        && grep -qE "exited on signal|orte_init failed" "$WORK/$D/$out" 2>/dev/null && [ "$(ls "$D"/scan_try*.out 2>/dev/null | wc -l)" -lt 3 ]; then
       why="CANCELLED (MPI failure; retried)"
