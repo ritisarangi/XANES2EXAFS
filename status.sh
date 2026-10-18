@@ -1,6 +1,7 @@
 #!/bin/bash
 # One-screen status for the Zn project. Run from the project folder on S3DF:
 #   bash ../XANES2EXAFS/status.sh
+REPO=$(cd "$(dirname "$0")" && pwd)
 cd "${1:-.}"
 echo "== queue (pending array tasks counted one by one) =="
 squeue -u "$USER" -h -r -o "%.10j %.8T" | sort | uniq -c
@@ -14,4 +15,5 @@ for d in redox/fallback/*/; do r=$(basename "$d"); grep -q "VIBRATIONAL FREQUENC
 echo "finished: $((p+f)) of $tot  (+1/-1 primary $p, fallback $f)"
 echo "FAILED markers: $(ls redox/*/*/FAILED 2>/dev/null | wc -l)   resumed after preemption: $(grep -l 'resuming from' logs/redox_*.log 2>/dev/null | wc -l)"
 echo "== scan pilot =="
-python3 "$(dirname "$0")/scans/validate.py" . lists/pilot.txt 2>/dev/null | grep -E "minutes per scan point|first-failure"
+python3 "$REPO/scans/validate.py" . lists/pilot.txt > logs/validate_last.txt 2>&1 || echo "validate.py failed; see logs/validate_last.txt"
+grep -E "minutes per scan point|first-failure|Traceback|Error" logs/validate_last.txt
