@@ -7,6 +7,7 @@
 #   bash XANES2EXAFS/aurora/go.sh status                        jobs, branch states, validated points
 #   bash XANES2EXAFS/aurora/go.sh watch [seconds]               one progress line every 300 s (or the given interval)
 #   bash XANES2EXAFS/aurora/go.sh drain                         farm jobs start no new branches (running ones finish)
+#   bash XANES2EXAFS/aurora/go.sh publish                       audit, then push validated points of finished complexes to aurora-results
 #   bash XANES2EXAFS/aurora/go.sh export                        validate and pack passing geometries into scan_results.tar.gz
 #
 # Aurora has no per-core charging, so instead of Slurm arrays one PBS job ("farm") runs several
@@ -125,6 +126,20 @@ watch)
 drain)
   touch "$WORK/$QD/STOP"
   echo "$POOL farm jobs will start no new branches; running ones finish or stop at the walltime. 'submit' clears this."
+  ;;
+publish)
+  # audit the run folder, then add the validated points of newly finished complexes to the
+  # aurora-results branch (checked out at RESULTS, default: a worktree next to this clone) and push
+  RESULTS=${RESULTS:-$(dirname "$REPO")/XANES2EXAFS-results}
+  cd "$WORK"
+  python3 "$HERE/audit.py" . scans/jobs_scan_full.txt || { echo "audit found problems: nothing published"; exit 1; }
+  python3 "$HERE/publish.py" . scans/jobs_scan_full.txt "$RESULTS"
+  cd "$RESULTS"
+  git add -A
+  if git diff --cached --quiet; then echo "nothing new to commit"; exit 0; fi
+  n=$(($(wc -l < summary.csv) - 1))
+  git commit -q -m "Aurora results: $n complexes published ($(date '+%F %H:%M'))"
+  git push -q -u origin aurora-results && echo "pushed: $(git log --oneline -1)"
   ;;
 export)
   cd "$WORK"
