@@ -28,6 +28,9 @@ claim() {   # print the next task, or nothing when the queue is empty
 slot() {
   local s=$1 cores=$2 hbm=$3 seq=0 D mode out log pid why run mem
   mem=; [ "$HBM" = 1 ] && mem="numactl --preferred=$hbm"
+  # each slot gets its own OpenMPI session and shared-memory directory: with many mpiruns per
+  # node, shared ones collide and a rank dies with SIGBUS in btl_vader
+  local ompi=/tmp/zn_ompi_${JOB}_$s; mkdir -p "$ompi"
   while :; do
     [ -e "$QDIR/STOP" ] || [ -e "$QDIR/stop_$JOB" ] && break
     [ $(( DEADLINE - $(date +%s) )) -lt $MIN_START ] && break
@@ -44,7 +47,8 @@ slot() {
     run=$WORK/$D
     if [ "$SCRATCH" = tmp ]; then run=/tmp/zn_${JOB}_$s; rm -rf "$run"; mkdir -p "$run"; cp "$D/scan.inp" "$run/"; fi
     # scan.out is written straight into $WORK, so a stopped branch can always be continued
-    ( cd "$run" && exec taskset -c "$cores" setsid $mem "$ORCA/orca" scan.inp > "$WORK/$D/$out" 2>&1 ) &
+    ( cd "$run" && export OMPI_MCA_orte_tmpdir_base="$ompi" OMPI_MCA_btl_vader_backing_directory="$ompi" \
+        && exec taskset -c "$cores" setsid $mem "$ORCA/orca" scan.inp > "$WORK/$D/$out" 2>&1 ) &
     pid=$!     # setsid makes ORCA a session leader: the session holds orca, mpirun and all ranks
     why=
     while kill -0 $pid 2>/dev/null; do
@@ -61,6 +65,12 @@ slot() {
     if [ "$SCRATCH" = tmp ]; then
       find "$run" -maxdepth 1 -type f ! -name scan.inp ! -name '*.tmp*' ! -name '*.gbw' ! -name '*densities*' -exec cp -p {} "$D/" \;
       rm -rf "$run"
+    fi
+    # an MPI process killed by a signal is an infrastructure failure, not chemistry: tag it so
+    # restart.py continues the branch from its last converged step (at most 2 retries)
+    if [ -z "$why" ] && ! grep -q "ORCA TERMINATED NORMALLY" "$WORK/$D/$out" 2>/dev/null \
+       && grep -q "exited on signal" "$WORK/$D/$out" 2>/dev/null && [ "$(ls "$D"/scan_try*.out 2>/dev/null | wc -l)" -lt 3 ]; then
+      why="CANCELLED (MPI process killed by a signal; retried)"
     fi
     if [ -n "$why" ]; then
       echo "$why" >> "$log"
