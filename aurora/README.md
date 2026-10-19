@@ -110,7 +110,7 @@ Other options: `CORES`, `HT`, `HBM`, `MAXCORE`, `SCRATCH` (see `sites/aurora.sh`
 
 ## Results for Riti
 
-Validated points of finished complexes are pushed to the **`aurora-results`** branch (data only, see its README): `scan_points/<REF>.xyz` (passing geometries with energies), `validation/<REF>.csv`, `coords/<REF>.json`, `summary.csv`, `FLAGGED.md`. `go.sh publish` runs `aurora/audit.py` first (every ORCA output matches its own folder's input, no folder run twice at once, no branch queued twice) and publishes nothing if it finds a problem. A complex is published once, when all its branches have terminated normally; raw outputs stay on Aurora.
+Validated points of finished complexes are pushed to the **`aurora-results`** branch in exactly the `scan_results/` layout of `scans/export_points.py`: `scan_results/<REF>.xyz`, `scan_results/validation_scan_full.csv`, `scan_results/coords/<REF>.json` (checked byte-identical to its output); its README lists the published complexes, complexes with a lower minimum than stage 2, and complexes not exported. `go.sh publish` runs `aurora/audit.py` first (every ORCA output matches its own folder's input, no folder run twice at once, no branch queued twice) and publishes nothing if it finds a problem. A complex is published once, when all its branches have terminated normally; raw outputs stay on Aurora.
 
 ## Notes for Claude
 

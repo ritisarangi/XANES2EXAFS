@@ -139,7 +139,7 @@ publish)
   cd "$RESULTS"
   git add -A
   if git diff --cached --quiet; then echo "nothing new to commit"; exit 0; fi
-  n=$(($(wc -l < summary.csv) - 1))
+  n=$(ls scan_results/*.xyz 2>/dev/null | wc -l)
   git commit -q -m "Aurora results: $n complexes published ($(date '+%F %H:%M'))"
   git push -q -u origin aurora-results && echo "pushed: $(git log --oneline -1)"
   ;;
