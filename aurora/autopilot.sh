@@ -32,6 +32,17 @@ farms() {   # id name queue state account
   qstat -u "$USER" 2>/dev/null | awk '$4 ~ /^zn_(main|big)$/ {sub(/\..*/, "", $1); print $1, $4, $3, $10}' |
     while read -r id name q st; do echo "$id $name $q $st $(qstat -f "$id" 2>/dev/null | awk '/Account_Name/ {print $3}')"; done
 }
+hours() {   # 6 h, or less (at least 2 h) so the farm can still finish before a reservation of most of the machine
+  local now s best=6 h
+  now=$(date +%s)
+  s=$(pbs_rstat -f 2>/dev/null | awk '/^reserve_start/ {sub(/^reserve_start = /, ""); st=$0} /Resource_List.nodect/ && $3 >= 5000 {print st}' |
+      while read -r d; do date -d "$d" +%s; done | awk -v n="$now" '$1 > n' | sort -n | head -1)
+  if [ -n "$s" ]; then
+    h=$(( (s - now) / 3600 - 1 ))       # whole hours left before it starts, minus 1 h to get a start slot
+    [ "$h" -lt 6 ] && [ "$h" -ge 2 ] && best=$h
+  fi
+  echo $best
+}
 usable() {   # print the node-hours left on project $1 if an allocation runs > 8 h more with >= MIN_BALANCE
   sbank-list-allocations -p "$1" 2>/dev/null | awk -v p="$1" -v min="$MIN_BALANCE" -v now="$(date +%s)" '
     $6 == p && $4 ~ /^20[0-9][0-9]-/ { gsub(",", "", $9); cmd = "date -d " $4 " +%s"; cmd | getline end; close(cmd)
@@ -83,16 +94,16 @@ while :; do
     # 256-node farms only while the main queue can fill them (24 slots per node)
     if [ "$n_main" -lt "$WANT_MAIN" ] && [ "$left_main" -gt 3000 ]; then
       say "submitting main farm on $ACCOUNT (queue $left_main left, $n_main main farms)"
-      POOL=main QUEUE=prod NODES=256 HOURS=6 $GO submit >> "$LOG" 2>&1
+      POOL=main QUEUE=prod NODES=256 HOURS=$(hours) $GO submit >> "$LOG" 2>&1
     fi
     # and one 16-node main farm in capacity, which starts far more often than the 256-node ones
     if [ "$n_main_cap" -lt "$WANT_MAIN_CAP" ] && [ "$left_main" -gt 0 ] && [ "$n_cap" -lt 5 ]; then
-      say "submitting main capacity farm on $ACCOUNT (queue $left_main left)"
-      POOL=main QUEUE=capacity NODES=16 HOURS=6 $GO submit >> "$LOG" 2>&1; n_cap=$((n_cap + 1))
+      say "submitting main capacity farm on $ACCOUNT, $(hours) h (queue $left_main left)"
+      POOL=main QUEUE=capacity NODES=16 HOURS=$(hours) $GO submit >> "$LOG" 2>&1; n_cap=$((n_cap + 1))
     fi
     if [ "$n_big" -lt "$WANT_BIG" ] && [ "$left_big" -gt 0 ] && [ "$n_cap" -lt 5 ]; then
       say "submitting big farm on $ACCOUNT (queue $left_big left, $n_big big farms)"
-      POOL=big QUEUE=capacity NODES=16 HOURS=6 $GO submit >> "$LOG" 2>&1
+      POOL=big QUEUE=capacity NODES=16 HOURS=$(hours) $GO submit >> "$LOG" 2>&1
     fi
   else
     say "no new farms: $why"
