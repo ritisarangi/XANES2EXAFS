@@ -3,8 +3,9 @@
 #   screen -dmS zn_autopilot bash XANES2EXAFS/aurora/autopilot.sh
 # Every 10 minutes it
 #   - re-queues the stopped branches of farms that ended (go.sh submit with NODES=0)
-#   - keeps WANT_MAIN 256-node prod farms and WANT_BIG 16-node capacity farms (big pool) queued or
-#     running, with 6 h walltimes (the best queue priority on Aurora)
+#   - keeps WANT_MAIN 256-node prod farms, WANT_MAIN_CAP 16-node capacity farms for the main pool and
+#     WANT_BIG 16-node capacity farms (big pool) queued or running, with 6 h walltimes (the best
+#     queue priority on Aurora)
 #   - every 6 h audits and publishes finished complexes (go.sh publish)
 #   - every 2 h writes aurora/STATUS.md and pushes it
 # and pauses new submissions (touch $WORK/autopilot/PAUSE to pause by hand) when more than
@@ -18,7 +19,7 @@ set -u
 eval "$(grep -E '^export (ACCOUNT|ORCA_DIR|MPI_DIR|WORK)=' ~/.bashrc)"
 export ACCOUNT ORCA_DIR MPI_DIR WORK
 SRC=$(cd "$(dirname "$0")/.." && pwd)
-WANT_MAIN=${WANT_MAIN:-2} WANT_BIG=${WANT_BIG:-2} FAIL_MAX=${FAIL_MAX:-25}
+WANT_MAIN=${WANT_MAIN:-2} WANT_BIG=${WANT_BIG:-2} WANT_MAIN_CAP=${WANT_MAIN_CAP:-1} FAIL_MAX=${FAIL_MAX:-25}
 MIN_BALANCE=${MIN_BALANCE:-1500} ACCOUNTS=${ACCOUNTS:-isaac ModCon}
 A=$WORK/autopilot; mkdir -p "$A"
 LOG=$A/autopilot.log
@@ -78,10 +79,16 @@ while :; do
     n_main=$(echo "$cur" | awk -v a="$ACCOUNT" '$2 == "zn_main" && $3 != "capacity" && ($4 == "R" || $5 == a)' | grep -c .)
     n_big=$(echo "$cur" | awk -v a="$ACCOUNT" '$2 == "zn_big" && ($4 == "R" || $5 == a)' | grep -c .)
     n_cap=$(echo "$cur" | awk '$3 == "capacity"' | grep -c .)
+    n_main_cap=$(echo "$cur" | awk -v a="$ACCOUNT" '$2 == "zn_main" && $3 == "capacity" && ($4 == "R" || $5 == a)' | grep -c .)
     # 256-node farms only while the main queue can fill them (24 slots per node)
     if [ "$n_main" -lt "$WANT_MAIN" ] && [ "$left_main" -gt 3000 ]; then
       say "submitting main farm on $ACCOUNT (queue $left_main left, $n_main main farms)"
       POOL=main QUEUE=prod NODES=256 HOURS=6 $GO submit >> "$LOG" 2>&1
+    fi
+    # and one 16-node main farm in capacity, which starts far more often than the 256-node ones
+    if [ "$n_main_cap" -lt "$WANT_MAIN_CAP" ] && [ "$left_main" -gt 0 ] && [ "$n_cap" -lt 5 ]; then
+      say "submitting main capacity farm on $ACCOUNT (queue $left_main left)"
+      POOL=main QUEUE=capacity NODES=16 HOURS=6 $GO submit >> "$LOG" 2>&1; n_cap=$((n_cap + 1))
     fi
     if [ "$n_big" -lt "$WANT_BIG" ] && [ "$left_big" -gt 0 ] && [ "$n_cap" -lt 5 ]; then
       say "submitting big farm on $ACCOUNT (queue $left_big left, $n_big big farms)"
