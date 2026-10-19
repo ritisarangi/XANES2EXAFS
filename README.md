@@ -4,6 +4,8 @@ Validated geometries and energies from the relaxed one-coordinate scans of the X
 
 ## What is here
 
+The geometry files use exactly the frame format of `scans/export_points.py` (the `scan_results/<REF>.xyz` of the NERSC instructions); the validation rows are `scans/validate.py` output, split per complex. At the end of the campaign the same points are also packed as `scan_results.tar.gz` with `go.sh export`.
+
 A complex appears here once every one of its scan branches has finished. Only points that pass `scans/validate.py` are included as geometries; the validation row of every point (passing or not, with the reason) is kept beside them.
 
 | Path | Content |
@@ -13,6 +15,7 @@ A complex appears here once every one of its scan branches has finished. Only po
 | `coords/<REF>.json` | The scanned coordinates of the complex: type, atom indices (0-based, stage-2 atom order), start value, branch ends and folder names |
 | `summary.csv` | One line per published complex: atoms, branches, points, passing points, failure reasons, date published |
 | `FLAGGED.md` | Finished complexes not published because no branch start passes validation |
+| `LOWER_MINIMA.md` | Complexes where a branch fell more than 2 kJ/mol below its start (`energy_drop`): the complex has a lower minimum than the stage-2 geometry (the list `nersc/README.md` asks for) |
 
 Units: angstrom, degrees, hartree (`E_h`), kJ/mol (`E_rel_kJ`). Bond offsets are in angstrom, angle and dihedral offsets in degrees.
 
