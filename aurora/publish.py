@@ -11,6 +11,8 @@ go through scans/validate.py; only passing geometries are written:
   validation/<REF>.csv    the validate.py row of every point, passing or not, with the reason
   coords/<REF>.json       the scanned coordinates (scans/<REF>/coords.json)
   summary.csv             one line per published complex
+  LOWER_MINIMA.md         complexes where a branch fell more than 2 kJ/mol below its start
+                          (energy_drop): a lower minimum than stage 2, to be listed for Riti
 A finished complex with no passing branch start is not published; it is listed in FLAGGED.md.
 Standard library only, Python 3.6+.
 """
@@ -46,6 +48,8 @@ def main():
     summary = list(csv.DictReader(open(sp))) if os.path.exists(sp) else []
     flagged_p = os.path.join(out, "FLAGGED.md")
     flagged = [l for l in open(flagged_p).read().split("\n") if l.startswith("- ")] if os.path.exists(flagged_p) else []
+    lower_p = os.path.join(out, "LOWER_MINIMA.md")
+    lower = [l for l in open(lower_p).read().split("\n") if l.startswith("- ")] if os.path.exists(lower_p) else []
     seen = {r["ref"] for r in summary} | {l.split()[1] for l in flagged}
     new = sorted(r for r, ds in by.items() if r not in seen and all(done(os.path.join(work, d, "scan.out")) for d in ds))
     if not new:
@@ -62,6 +66,9 @@ def main():
     n_new = n_pts = 0
     for ref in new:
         rs = rows[ref]
+        drops = [r for r in rs if r["status"] == "energy_drop" and r["E_rel_kJ"] not in ("", None) and float(r["E_rel_kJ"]) < -2.0]
+        if drops:
+            lower.append("- %s: %s" % (ref, "; ".join("%s %s step %s at %s kJ/mol" % (r["coord"], r["branch"], r["step"], r["E_rel_kJ"]) for r in drops)))
         nat = int(open(os.path.join(work, "stage2_b3lyp", ref, ref + ".xyz")).readline())
         starts = [r for r in rs if float(r["offset"]) == 0.0]
         reasons = collections.Counter(r["status"] for r in rs if r["status"] not in ("pass", "after_fail"))
@@ -97,6 +104,10 @@ def main():
         w = csv.DictWriter(f, fieldnames=SUMMARY)
         w.writeheader()
         w.writerows(summary)
+    if lower:
+        open(lower_p, "w").write("# Complexes with a lower minimum than stage 2\n\nA scan branch fell more than 2 kJ/mol below "
+                                 "its start (`energy_drop` in validation), so the complex has a lower minimum than the "
+                                 "stage-2 geometry. Points past the drop are not published.\n\n" + "\n".join(sorted(set(lower))) + "\n")
     if flagged:
         open(flagged_p, "w").write("# Finished complexes not published\n\nThese complexes finished every branch, but "
                                    "validation rejects their branch starts, so no point is usable as defined. They need a "
