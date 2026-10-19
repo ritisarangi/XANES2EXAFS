@@ -1,0 +1,464 @@
+{
+ "ref": "ZEFGAS",
+ "zn": 0,
+ "donors": [
+  1,
+  2,
+  3,
+  4
+ ],
+ "coords": [
+  {
+   "name": "bond_Zn-S1",
+   "kind": "B",
+   "atoms": [
+    0,
+    1
+   ],
+   "branch": "neg",
+   "v0": 2.304579611052623,
+   "start": 2.304579611052623,
+   "end": 2.244579611052623,
+   "npoints": 4,
+   "dir": "scans/ZEFGAS/bond_Zn-S1_neg"
+  },
+  {
+   "name": "bond_Zn-S1",
+   "kind": "B",
+   "atoms": [
+    0,
+    1
+   ],
+   "branch": "pos",
+   "v0": 2.304579611052623,
+   "start": 2.304579611052623,
+   "end": 2.5045796110526233,
+   "npoints": 11,
+   "dir": "scans/ZEFGAS/bond_Zn-S1_pos"
+  },
+  {
+   "name": "bond_Zn-S2",
+   "kind": "B",
+   "atoms": [
+    0,
+    2
+   ],
+   "branch": "neg",
+   "v0": 2.3046686816746327,
+   "start": 2.3046686816746327,
+   "end": 2.2446686816746326,
+   "npoints": 4,
+   "dir": "scans/ZEFGAS/bond_Zn-S2_neg"
+  },
+  {
+   "name": "bond_Zn-S2",
+   "kind": "B",
+   "atoms": [
+    0,
+    2
+   ],
+   "branch": "pos",
+   "v0": 2.3046686816746327,
+   "start": 2.3046686816746327,
+   "end": 2.504668681674633,
+   "npoints": 11,
+   "dir": "scans/ZEFGAS/bond_Zn-S2_pos"
+  },
+  {
+   "name": "bond_Zn-N3",
+   "kind": "B",
+   "atoms": [
+    0,
+    3
+   ],
+   "branch": "neg",
+   "v0": 2.121292451168202,
+   "start": 2.121292451168202,
+   "end": 2.061292451168202,
+   "npoints": 4,
+   "dir": "scans/ZEFGAS/bond_Zn-N3_neg"
+  },
+  {
+   "name": "bond_Zn-N3",
+   "kind": "B",
+   "atoms": [
+    0,
+    3
+   ],
+   "branch": "pos",
+   "v0": 2.121292451168202,
+   "start": 2.121292451168202,
+   "end": 2.321292451168202,
+   "npoints": 11,
+   "dir": "scans/ZEFGAS/bond_Zn-N3_pos"
+  },
+  {
+   "name": "bond_Zn-N4",
+   "kind": "B",
+   "atoms": [
+    0,
+    4
+   ],
+   "branch": "neg",
+   "v0": 2.124158862134882,
+   "start": 2.124158862134882,
+   "end": 2.064158862134882,
+   "npoints": 4,
+   "dir": "scans/ZEFGAS/bond_Zn-N4_neg"
+  },
+  {
+   "name": "bond_Zn-N4",
+   "kind": "B",
+   "atoms": [
+    0,
+    4
+   ],
+   "branch": "pos",
+   "v0": 2.124158862134882,
+   "start": 2.124158862134882,
+   "end": 2.3241588621348823,
+   "npoints": 11,
+   "dir": "scans/ZEFGAS/bond_Zn-N4_pos"
+  },
+  {
+   "name": "angle_S1-Zn-S2",
+   "kind": "A",
+   "atoms": [
+    1,
+    0,
+    2
+   ],
+   "branch": "neg",
+   "v0": 124.98521289063714,
+   "start": 124.98521289063714,
+   "end": 109.98521289063714,
+   "npoints": 11,
+   "dir": "scans/ZEFGAS/angle_S1-Zn-S2_neg"
+  },
+  {
+   "name": "angle_S1-Zn-S2",
+   "kind": "A",
+   "atoms": [
+    1,
+    0,
+    2
+   ],
+   "branch": "pos",
+   "v0": 124.98521289063714,
+   "start": 124.98521289063714,
+   "end": 139.98521289063714,
+   "npoints": 11,
+   "dir": "scans/ZEFGAS/angle_S1-Zn-S2_pos"
+  },
+  {
+   "name": "angle_S1-Zn-N3",
+   "kind": "A",
+   "atoms": [
+    1,
+    0,
+    3
+   ],
+   "branch": "neg",
+   "v0": 87.46365574935623,
+   "start": 87.46365574935623,
+   "end": 72.46365574935623,
+   "npoints": 11,
+   "dir": "scans/ZEFGAS/angle_S1-Zn-N3_neg"
+  },
+  {
+   "name": "angle_S1-Zn-N3",
+   "kind": "A",
+   "atoms": [
+    1,
+    0,
+    3
+   ],
+   "branch": "pos",
+   "v0": 87.46365574935623,
+   "start": 87.46365574935623,
+   "end": 102.46365574935623,
+   "npoints": 11,
+   "dir": "scans/ZEFGAS/angle_S1-Zn-N3_pos"
+  },
+  {
+   "name": "angle_S1-Zn-N4",
+   "kind": "A",
+   "atoms": [
+    1,
+    0,
+    4
+   ],
+   "branch": "neg",
+   "v0": 121.47203221663231,
+   "start": 121.47203221663231,
+   "end": 106.47203221663231,
+   "npoints": 11,
+   "dir": "scans/ZEFGAS/angle_S1-Zn-N4_neg"
+  },
+  {
+   "name": "angle_S1-Zn-N4",
+   "kind": "A",
+   "atoms": [
+    1,
+    0,
+    4
+   ],
+   "branch": "pos",
+   "v0": 121.47203221663231,
+   "start": 121.47203221663231,
+   "end": 136.47203221663233,
+   "npoints": 11,
+   "dir": "scans/ZEFGAS/angle_S1-Zn-N4_pos"
+  },
+  {
+   "name": "angle_S2-Zn-N3",
+   "kind": "A",
+   "atoms": [
+    2,
+    0,
+    3
+   ],
+   "branch": "neg",
+   "v0": 122.06493650178321,
+   "start": 122.06493650178321,
+   "end": 107.06493650178321,
+   "npoints": 11,
+   "dir": "scans/ZEFGAS/angle_S2-Zn-N3_neg"
+  },
+  {
+   "name": "angle_S2-Zn-N3",
+   "kind": "A",
+   "atoms": [
+    2,
+    0,
+    3
+   ],
+   "branch": "pos",
+   "v0": 122.06493650178321,
+   "start": 122.06493650178321,
+   "end": 137.06493650178322,
+   "npoints": 11,
+   "dir": "scans/ZEFGAS/angle_S2-Zn-N3_pos"
+  },
+  {
+   "name": "angle_S2-Zn-N4",
+   "kind": "A",
+   "atoms": [
+    2,
+    0,
+    4
+   ],
+   "branch": "neg",
+   "v0": 87.42340499196443,
+   "start": 87.42340499196443,
+   "end": 72.42340499196443,
+   "npoints": 11,
+   "dir": "scans/ZEFGAS/angle_S2-Zn-N4_neg"
+  },
+  {
+   "name": "angle_S2-Zn-N4",
+   "kind": "A",
+   "atoms": [
+    2,
+    0,
+    4
+   ],
+   "branch": "pos",
+   "v0": 87.42340499196443,
+   "start": 87.42340499196443,
+   "end": 102.42340499196443,
+   "npoints": 11,
+   "dir": "scans/ZEFGAS/angle_S2-Zn-N4_pos"
+  },
+  {
+   "name": "angle_N3-Zn-N4",
+   "kind": "A",
+   "atoms": [
+    3,
+    0,
+    4
+   ],
+   "branch": "neg",
+   "v0": 117.10868608119955,
+   "start": 117.10868608119955,
+   "end": 102.10868608119955,
+   "npoints": 11,
+   "dir": "scans/ZEFGAS/angle_N3-Zn-N4_neg"
+  },
+  {
+   "name": "angle_N3-Zn-N4",
+   "kind": "A",
+   "atoms": [
+    3,
+    0,
+    4
+   ],
+   "branch": "pos",
+   "v0": 117.10868608119955,
+   "start": 117.10868608119955,
+   "end": 132.10868608119955,
+   "npoints": 11,
+   "dir": "scans/ZEFGAS/angle_N3-Zn-N4_pos"
+  },
+  {
+   "name": "twist_S1-N3-S2-N4",
+   "kind": "D",
+   "atoms": [
+    1,
+    3,
+    2,
+    4
+   ],
+   "branch": "neg",
+   "v0": 79.77402152137226,
+   "start": 79.77402152137226,
+   "end": 69.77402152137226,
+   "npoints": 11,
+   "dir": "scans/ZEFGAS/twist_S1-N3-S2-N4_neg"
+  },
+  {
+   "name": "twist_S1-N3-S2-N4",
+   "kind": "D",
+   "atoms": [
+    1,
+    3,
+    2,
+    4
+   ],
+   "branch": "pos",
+   "v0": 79.77402152137226,
+   "start": 79.77402152137226,
+   "end": 89.77402152137226,
+   "npoints": 11,
+   "dir": "scans/ZEFGAS/twist_S1-N3-S2-N4_pos"
+  },
+  {
+   "name": "tilt_Zn-S1-C7-C16",
+   "kind": "D",
+   "atoms": [
+    0,
+    1,
+    7,
+    16
+   ],
+   "branch": "neg",
+   "v0": -11.444800293823398,
+   "start": -11.444800293823398,
+   "end": -21.4448002938234,
+   "npoints": 11,
+   "dir": "scans/ZEFGAS/tilt_Zn-S1-C7-C16_neg"
+  },
+  {
+   "name": "tilt_Zn-S1-C7-C16",
+   "kind": "D",
+   "atoms": [
+    0,
+    1,
+    7,
+    16
+   ],
+   "branch": "pos",
+   "v0": -11.444800293823398,
+   "start": -11.444800293823398,
+   "end": -1.4448002938233984,
+   "npoints": 11,
+   "dir": "scans/ZEFGAS/tilt_Zn-S1-C7-C16_pos"
+  },
+  {
+   "name": "tilt_Zn-S2-C29-C38",
+   "kind": "D",
+   "atoms": [
+    0,
+    2,
+    29,
+    38
+   ],
+   "branch": "neg",
+   "v0": -11.755167488093957,
+   "start": -11.755167488093957,
+   "end": -21.755167488093957,
+   "npoints": 11,
+   "dir": "scans/ZEFGAS/tilt_Zn-S2-C29-C38_neg"
+  },
+  {
+   "name": "tilt_Zn-S2-C29-C38",
+   "kind": "D",
+   "atoms": [
+    0,
+    2,
+    29,
+    38
+   ],
+   "branch": "pos",
+   "v0": -11.755167488093957,
+   "start": -11.755167488093957,
+   "end": -1.7551674880939565,
+   "npoints": 11,
+   "dir": "scans/ZEFGAS/tilt_Zn-S2-C29-C38_pos"
+  },
+  {
+   "name": "tilt_Zn-N3-C16-C7",
+   "kind": "D",
+   "atoms": [
+    0,
+    3,
+    16,
+    7
+   ],
+   "branch": "neg",
+   "v0": 10.377045667296333,
+   "start": 10.377045667296333,
+   "end": 0.3770456672963327,
+   "npoints": 11,
+   "dir": "scans/ZEFGAS/tilt_Zn-N3-C16-C7_neg"
+  },
+  {
+   "name": "tilt_Zn-N3-C16-C7",
+   "kind": "D",
+   "atoms": [
+    0,
+    3,
+    16,
+    7
+   ],
+   "branch": "pos",
+   "v0": 10.377045667296333,
+   "start": 10.377045667296333,
+   "end": 20.377045667296333,
+   "npoints": 11,
+   "dir": "scans/ZEFGAS/tilt_Zn-N3-C16-C7_pos"
+  },
+  {
+   "name": "tilt_Zn-N4-C38-C29",
+   "kind": "D",
+   "atoms": [
+    0,
+    4,
+    38,
+    29
+   ],
+   "branch": "neg",
+   "v0": 10.859211072209142,
+   "start": 10.859211072209142,
+   "end": 0.859211072209142,
+   "npoints": 11,
+   "dir": "scans/ZEFGAS/tilt_Zn-N4-C38-C29_neg"
+  },
+  {
+   "name": "tilt_Zn-N4-C38-C29",
+   "kind": "D",
+   "atoms": [
+    0,
+    4,
+    38,
+    29
+   ],
+   "branch": "pos",
+   "v0": 10.859211072209142,
+   "start": 10.859211072209142,
+   "end": 20.859211072209142,
+   "npoints": 11,
+   "dir": "scans/ZEFGAS/tilt_Zn-N4-C38-C29_pos"
+  }
+ ]
+}
