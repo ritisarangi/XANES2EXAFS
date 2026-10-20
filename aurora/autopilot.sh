@@ -44,6 +44,10 @@ hours() {   # 6 h, or less (at least 2 h) so the farm can still finish before a 
   fi
   echo $best
 }
+finished() {   # id:name of finished farms (PBS history) not handled yet
+  qstat -x -u "$USER" 2>/dev/null | awk '$4 ~ /^zn_(main|big)$/ && $10 == "F" {sub(/\..*/, "", $1); print $1 ":" $4}' |
+    grep -vxF -f "$A/farms_handled" 2>/dev/null
+}
 usable() {   # print the node-hours left on project $1 if an allocation runs > 8 h more with >= MIN_BALANCE
   sbank-list-allocations -p "$1" 2>/dev/null | awk -v p="$1" -v min="$MIN_BALANCE" -v now="$(date +%s)" '
     $6 == p && $4 ~ /^20[0-9][0-9]-/ { gsub(",", "", $9); cmd = "date -d " $4 " +%s"; cmd | getline end; close(cmd)
@@ -52,16 +56,19 @@ usable() {   # print the node-hours left on project $1 if an allocation runs > 8
 failed() { grep -l 'did not terminate normally' "$WORK"/logs/scan*_*.log 2>/dev/null | xargs -r grep -L -E 'DUE TO TIME LIMIT|CANCELLED' | wc -l; }
 say "autopilot started (pid $$, scripts frozen from $SRC at $(git -C "$SRC" rev-parse --short HEAD), accounts: $ACCOUNTS)"
 acct_prev=
-prev=$(farms | awk '{print $1":"$2}'); prevfail=$(failed); last_pub=0; last_stat=0
+prevfail=$(failed); last_pub=0; last_stat=0
+# farms already finished when the autopilot starts count as handled (their farms re-queued themselves)
+touch "$A/farms_handled"; finished >> "$A/farms_handled"
 while :; do
   now=$(date +%s)
   cur=$(farms)
-  # 1. farms that left the queue: put their stopped branches back in the pool's queue
-  for x in $prev; do
+  # 1. farms that finished (PBS history): put their stopped branches back in the pool's queue
+  #    (the farms do this themselves at the end; this is the backup)
+  for x in $(finished); do
     id=${x%%:*} name=${x##*:}
-    echo "$cur" | grep -q "^$id " && continue
     say "farm $id ($name) ended: $(tail -1 "$WORK"/logs/$id.*.OU 2>/dev/null)"
     POOL=${name#zn_} NODES=0 $GO submit >> "$LOG" 2>&1
+    echo "$x" >> "$A/farms_handled"
   done
   # 2. guards
   fail=$(failed)
@@ -119,7 +126,6 @@ while :; do
       && git push -q ) >> "$LOG" 2>&1 && say "STATUS.md pushed"
     last_stat=$now
   fi
-  prev=$(farms | awk '{print $1":"$2}')
   [ -n "${ONCE:-}" ] && break
   sleep 600
 done
