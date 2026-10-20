@@ -3,6 +3,7 @@
 # A neutral complex whose +1 run does not finish is rerun at -1 in the same task.
 # Runs on the preemptable QOS: a requeued task resumes each optimisation from its last
 # geometry (redox/resume.py) and skips a primary run already marked as failed.
+# MODE=reverse (set by submit_redox.sh) runs only redox/reverse/<REF>, the opposite charge step.
 #SBATCH --job-name=zn_redox
 #SBATCH --partition=milano
 #SBATCH --constraint=OS_VER:9.6
@@ -33,6 +34,7 @@ run() {
   echo "$REF $1 end $(date '+%F %T')"
   done_ok . || { touch FAILED; return 1; }
 }
+if [ "${MODE:-}" = reverse ]; then run reverse && exit 0; echo "$REF reverse FAILED"; exit 1; fi
 if run primary; then exit 0; fi
 if [ -d "$ROOT/redox/fallback/$REF" ]; then
   echo "$REF primary did not finish; running the -1 fallback"

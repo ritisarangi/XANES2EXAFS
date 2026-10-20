@@ -8,7 +8,10 @@ which redox_array.slurm runs only when the +1 run does not finish.
 Multiplicity: doublet for an odd electron count, singlet for an even one (UKS for doublets).
 Start geometry, method, basis and CPCM(water) are those of stage 2.
 Writes redox/primary/<REF>/<REF>.inp, redox/fallback/<REF>/<REF>.inp (neutral complexes only)
-and redox/jobs_<tag>.txt (one REF per line). Standard library only, Python 3.6+.
+and redox/jobs_<tag>.txt (one REF per line).
+With --reverse: writes only redox/reverse/<REF>/<REF>.inp, one electron in the direction opposite
+to the primary run (q > 0 -> q + 1, q < 0 -> q - 1, q = 0 -> -1), and redox/jobs_reverse_<tag>.txt.
+Standard library only, Python 3.6+.
 """
 import sys, os, json
 
@@ -38,6 +41,7 @@ def write(dft, sub, ref, L, tz, q, note):
 def main():
     dft = os.path.abspath(sys.argv[1])
     lst = sys.argv[2]
+    reverse = "--reverse" in sys.argv
     tag = os.path.splitext(os.path.basename(lst))[0]
     refs = [l.strip() for l in open(os.path.join(dft, lst)) if l.strip() and not l.startswith("#")]
     jobs, skipped, summary = [], [], {}
@@ -52,6 +56,13 @@ def main():
             continue
         tz = set(M["donors"]) | {M["zn_index"]}
         q0 = M["charge"]
+        if reverse:
+            qr = q0 + 1 if q0 > 0 else q0 - 1
+            mr = write(dft, "reverse", ref, L, tz, qr, "charge %+d -> %+d, reverse of primary" % (q0, qr))
+            key = "%+d -> %+d (mult %d)" % (q0, qr, mr)
+            summary[key] = summary.get(key, 0) + 1
+            jobs.append(ref)
+            continue
         q1 = q0 - 1 if q0 > 0 else (q0 + 1 if q0 < 0 else 1)
         m1 = write(dft, "primary", ref, L, tz, q1, "charge %+d -> %+d" % (q0, q1))
         key = "%+d -> %+d (mult %d)" % (q0, q1, m1)
@@ -60,7 +71,7 @@ def main():
             key += ", fallback -1 (mult %d)" % m2
         summary[key] = summary.get(key, 0) + 1
         jobs.append(ref)
-    jf = os.path.join(dft, "redox", "jobs_%s.txt" % tag)
+    jf = os.path.join(dft, "redox", ("jobs_reverse_%s.txt" if reverse else "jobs_%s.txt") % tag)
     open(jf, "w").write("\n".join(jobs) + "\n")
     for k in sorted(summary):
         print("  %-45s %d" % (k, summary[k]))

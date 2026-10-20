@@ -8,7 +8,8 @@ from the Hessian (same formulas as dielectric/analyze_eps.py), then
     dr = r_redox - r_ref,  dk/k,  slope = (ln k_redox - ln k_ref) / dr   (1/A)
 and a status: use if 0.01 <= |dr| <= 0.15 A with the Zn-L set unchanged, small if |dr| < 0.01,
 dissociated if |dr| > 0.15 A or the donor leaves 2.8 A. Mulliken spin on Zn and on each donor,
-and <S**2>, are kept for reference. Writes redox/redox_compare_<tag>.csv.
+and <S**2>, are kept for reference. Writes redox/redox_compare_<tag>.csv. With --reverse it reads redox/reverse/ instead and
+writes redox/redox_compare_reverse_<tag>.csv.
 Standard library only, Python 3.6+.
 """
 import sys, os, re, json, math, csv
@@ -41,13 +42,16 @@ def main():
     dft = os.path.abspath(sys.argv[1])
     lst = sys.argv[2]
     tag = os.path.splitext(os.path.basename(lst))[0]
+    subs = ("reverse",) if "--reverse" in sys.argv else ("primary", "fallback")
+    if "--reverse" in sys.argv:
+        tag = "reverse_" + tag
     refs = [l.strip() for l in open(os.path.join(dft, lst)) if l.strip() and not l.startswith("#")]
     rows, notes = [], []
     for ref in refs:
         meta = json.load(open(os.path.join(dft, "stage2_b3lyp", ref, ref + ".meta")))
         zn, donors = meta["zn_index"], meta["donors"]
         state = None
-        for sub in ("primary", "fallback"):
+        for sub in subs:
             d = os.path.join(dft, "redox", sub, ref)
             ok, q, s2, spin = out_info(os.path.join(d, ref + ".out"))
             if ok:
