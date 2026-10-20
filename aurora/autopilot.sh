@@ -32,10 +32,11 @@ farms() {   # id name queue state account
   qstat -u "$USER" 2>/dev/null | awk '$4 ~ /^zn_(main|big)$/ {sub(/\..*/, "", $1); print $1, $4, $3, $10}' |
     while read -r id name q st; do echo "$id $name $q $st $(qstat -f "$id" 2>/dev/null | awk '/Account_Name/ {print $3}')"; done
 }
-hours() {   # 6 h, or less (at least 2 h) so the farm can still finish before a reservation of most of the machine
+hours() {   # 6 h, or less (at least 2 h) so the farm can still finish before a full-machine reservation
+            # (maintenance); partial reservations leave nodes for our farms, so they do not count
   local now s best=6 h
   now=$(date +%s)
-  s=$(pbs_rstat -f 2>/dev/null | awk '/^reserve_start/ {sub(/^reserve_start = /, ""); st=$0} /Resource_List.nodect/ && $3 >= 5000 {print st}' |
+  s=$(pbs_rstat -f 2>/dev/null | awk '/^reserve_start/ {sub(/^reserve_start = /, ""); st=$0} /Resource_List.nodect/ && $3 >= 10000 {print st}' |
       while read -r d; do date -d "$d" +%s; done | awk -v n="$now" '$1 > n' | sort -n | head -1)
   if [ -n "$s" ]; then
     h=$(( (s - now) / 3600 - 1 ))       # whole hours left before it starts, minus 1 h to get a start slot
