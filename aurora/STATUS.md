@@ -1,15 +1,15 @@
 # Zn scan campaign on Aurora: status
 
-Generated 2026-10-20 08:51 UTC by `aurora/autopilot.sh`. Human-written notes are in the run log of `aurora/README.md`; validated results are on the `aurora-results` branch.
+Generated 2026-10-20 10:04 UTC by `aurora/autopilot.sh`. Human-written notes are in the run log of `aurora/README.md`; validated results are on the `aurora-results` branch.
 
 ## Branches
 
 ```
-branches: 1055 done, 6717 started (running/stopped/failed), 0 continuations ready, 2403 not started, 10175 total
-queue main: 2011 of 17229 waiting, 6521 ORCA runs active
-queue big: 392 of 983 waiting, 192 ORCA runs active
+branches: 1225 done, 6060 started (running/stopped/failed), 549 continuations ready, 2341 not started, 10175 total
+queue main: 2306 of 17627 waiting, 0 ORCA runs active
+queue big: 584 of 1175 waiting, 0 ORCA runs active
 failed ORCA runs not retried: 2
-allocation: 22,090.0 Node Hours available on isaac
+allocation: 20,363.7 Node Hours available on isaac
 ```
 
 ## Farm jobs
@@ -18,23 +18,22 @@ allocation: 22,090.0 Node Hours available on isaac
 |---|---|---|---|---|---|---|
 | 8939977 | zn_main | small | 256 | 12:00 | Q | -- |
 | 8940280 | zn_big | capacity | 16 | 24:00 | Q | -- |
-| 8940426 | zn_main | small | 256 | 06:00 | R | 04:56 |
-| 8946258 | zn_main | capacity | 16 | 06:00 | R | 05:26 |
-| 8946295 | zn_big | capacity | 16 | 06:00 | R | 05:10 |
+| 8947389 | zn_main | capacity | 16 | 06:00 | Q | -- |
+| 8947400 | zn_big | capacity | 16 | 06:00 | Q | -- |
 
 ## Last autopilot actions
 
 ```
-[2026-10-20 00:09:49] publish: publish: no newly finished complexes nothing new to commit 
-[2026-10-20 00:10:04] STATUS.md pushed
-[2026-10-20 02:16:32] STATUS.md pushed
-[2026-10-20 04:25:48] STATUS.md pushed
-[2026-10-20 05:32:06] autopilot started (pid 493530, scripts frozen from /home/dsokaras/dev/xanes2exafs/XANES2EXAFS at d2bc482, accounts: isaac ModCon)
-[2026-10-20 05:32:21] new farms go to project isaac (22090 node-hours left)
-[2026-10-20 05:52:26] publish: publish: no newly finished complexes nothing new to commit 
-[2026-10-20 05:54:19] STATUS.md pushed
-[2026-10-20 07:46:25] STATUS.md pushed
-[2026-10-20 08:29:15] autopilot started (pid 1672127, scripts frozen from /home/dsokaras/dev/xanes2exafs/XANES2EXAFS at b90db72, accounts: isaac ModCon)
-[2026-10-20 08:29:33] new farms go to project isaac (22090 node-hours left)
-[2026-10-20 08:51:49] publish: publish: 2 complexes added (551 passing points), 0 not exported; 7 complexes published in total pushed: db65066 Aurora results: 7 complexes published (2026-10-20 08:51) 
+main farm jobs already queued or running (8939977 8940426): continuations go to the front of the live queue
+queue: 25 continuations added to the front of queue/main (2306 pending now)
+2026-10-20 09:28:52 farm 8947389.aurora-pbs-0001.hostmgmt.cm.aurora.alcf.anl.gov pool=main cores=4 queue=capacity nodes=16 hours=6 account=isaac tasks_left=2306
+[2026-10-20 09:39:04] submitting big farm on isaac (queue 584 left, 1 big farms)
+logs tagged as cancelled: 0
+no stopped branches found
+big farm jobs already queued or running (8940280): continuations go to the front of the live queue
+queue: 0 continuations added to the front of queue/big (584 pending now)
+2026-10-20 09:39:33 farm 8947400.aurora-pbs-0001.hostmgmt.cm.aurora.alcf.anl.gov pool=big cores=8 queue=capacity nodes=16 hours=6 account=isaac tasks_left=584
+[2026-10-20 09:41:53] autopilot started (pid 1996789, scripts frozen from /home/dsokaras/dev/xanes2exafs/XANES2EXAFS at 2f23758, accounts: isaac ModCon)
+[2026-10-20 09:42:18] new farms go to project isaac (21905 node-hours left)
+[2026-10-20 10:04:20] publish: publish: no newly finished complexes nothing new to commit 
 ```
