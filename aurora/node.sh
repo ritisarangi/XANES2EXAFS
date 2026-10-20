@@ -70,7 +70,7 @@ slot() {
     # not chemistry: tag it so restart.py continues the branch from its last converged step
     # (at most 2 retries; walltime restarts do not count)
     if [ -z "$why" ] && ! grep -q "ORCA TERMINATED NORMALLY" "$WORK/$D/$out" 2>/dev/null \
-       && grep -qE "exited on signal|orte_init failed" "$WORK/$D/$out" 2>/dev/null \
+       && grep -qE "exited on signal|orte_init failed|exiting improperly" "$WORK/$D/$out" 2>/dev/null \
        && [ "$(grep -l "^$D start" "$WORK"/logs/scan*_*.log 2>/dev/null | xargs -r grep -l 'MPI failure' | wc -l)" -lt 2 ]; then
       why="CANCELLED (MPI failure; retried)"
     fi
