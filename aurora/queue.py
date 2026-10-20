@@ -4,6 +4,7 @@
 Usage (inside the run folder):
     python3 <repo>/aurora/queue.py build  . <jobs file> <queue dir> [REF ...]   (env NATOMS_MIN, NATOMS_MAX)
     python3 <repo>/aurora/queue.py add    . <jobs file> <queue dir>                (env NATOMS_MIN, NATOMS_MAX)
+    python3 <repo>/aurora/queue.py prioritize . <jobs file> <queue dir> [<queue dir> ...]
     python3 <repo>/aurora/queue.py status . <jobs file>
     python3 <repo>/aurora/queue.py mark-lost . [running PBS job numbers ...]
 
@@ -14,6 +15,8 @@ build      writes <queue dir>/tasks.txt with every branch that can run now: cont
            complexes use different core counts).
 add        puts continuations prepared by restart.py at the front of a live queue (farms of the
            pool keep running; same flock as the farm slots).
+prioritize moves the pending branches of complexes that are at least half done to the front,
+           most complete first (whole complexes are what gets published); the rest keep their order.
 status     counts branches by state.
 mark-lost  tags the logs of branches whose PBS job ended without the branch writing an end
            line (node failure, job killed) as CANCELLED, so restart.py continues them.
@@ -83,6 +86,27 @@ def add_continuations(work, jobs, qdir):
     print("queue: %d continuations added to the front of %s (%d pending now)" % (len(new), os.path.relpath(qdir, work), len(tasks) - n + len(new)))
 
 
+def prioritize(work, jobs, qdirs):
+    import fcntl
+    by = collections.defaultdict(list)
+    for d in jobs:
+        by[d.split("/")[1]].append(d)
+    frac = {r: sum(state(work, d) == "done" for d in ds) / float(len(ds)) for r, ds in by.items()}
+    key = lambda d: -frac[d.split("/")[1]] if frac[d.split("/")[1]] >= 0.5 else 0.0
+    for qdir in qdirs:
+        with open(os.path.join(qdir, "lock"), "a") as lk:
+            fcntl.flock(lk, fcntl.LOCK_EX)
+            tasks = [l.strip() for l in open(os.path.join(qdir, "tasks.txt")) if l.strip()]
+            n = int(open(os.path.join(qdir, "next")).read())
+            pend = sorted(tasks[n:], key=key)          # stable: equal keys keep their order
+            tmp = os.path.join(qdir, "tasks.txt.new")
+            open(tmp, "w").write("".join(d + "\n" for d in tasks[:n] + pend))
+            os.rename(tmp, os.path.join(qdir, "tasks.txt"))
+            fcntl.flock(lk, fcntl.LOCK_UN)
+        print("prioritize %s: %d of %d pending branches belong to complexes at least half done"
+              % (os.path.basename(qdir), sum(1 for d in pend if key(d) < 0), len(pend)))
+
+
 def main():
     cmd, work = sys.argv[1], os.path.abspath(sys.argv[2])
     if cmd == "mark-lost":
@@ -104,6 +128,9 @@ def main():
         c = collections.Counter(state(work, d) for d in jobs)
         print("branches: %d done, %d started (running/stopped/failed), %d continuations ready, %d not started, %d total"
               % (c["done"], c["started"], c["continuation"], c["fresh"], len(jobs)))
+        return
+    if cmd == "prioritize":
+        prioritize(work, jobs, [os.path.join(work, q) for q in sys.argv[4:]])
         return
     if cmd == "add":
         add_continuations(work, jobs, os.path.join(work, sys.argv[4]))

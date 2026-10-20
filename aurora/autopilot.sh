@@ -116,7 +116,13 @@ while :; do
   else
     say "no new farms: $why"
   fi
-  # 4. publish finished complexes, write the status page
+  # 4. every 30 min: branches of nearly complete complexes to the front of the queues
+  if [ $((now - ${last_prio:-0})) -ge 1800 ]; then
+    ( flock 8; python3 "$SNAP/aurora/queue.py" prioritize "$WORK" scans/jobs_scan_full.txt queue/main queue/big ) \
+      8>>"$WORK/.gosh.lock" >> "$LOG" 2>&1
+    last_prio=$now
+  fi
+  # 5. publish finished complexes, write the status page
   if [ $((now - last_pub)) -ge 21600 ]; then
     say "publish: $( $GO publish 2>&1 | tail -2 | tr '\n' ' ')"; last_pub=$now
   fi
