@@ -1,0 +1,464 @@
+{
+ "ref": "DILGUA",
+ "zn": 0,
+ "donors": [
+  1,
+  2,
+  5,
+  6
+ ],
+ "coords": [
+  {
+   "name": "bond_Zn-S1",
+   "kind": "B",
+   "atoms": [
+    0,
+    1
+   ],
+   "branch": "neg",
+   "v0": 2.3094679817476162,
+   "start": 2.3094679817476162,
+   "end": 2.249467981747616,
+   "npoints": 4,
+   "dir": "scans/DILGUA/bond_Zn-S1_neg"
+  },
+  {
+   "name": "bond_Zn-S1",
+   "kind": "B",
+   "atoms": [
+    0,
+    1
+   ],
+   "branch": "pos",
+   "v0": 2.3094679817476162,
+   "start": 2.3094679817476162,
+   "end": 2.5094679817476164,
+   "npoints": 11,
+   "dir": "scans/DILGUA/bond_Zn-S1_pos"
+  },
+  {
+   "name": "bond_Zn-S2",
+   "kind": "B",
+   "atoms": [
+    0,
+    2
+   ],
+   "branch": "neg",
+   "v0": 2.309769292433929,
+   "start": 2.309769292433929,
+   "end": 2.2497692924339288,
+   "npoints": 4,
+   "dir": "scans/DILGUA/bond_Zn-S2_neg"
+  },
+  {
+   "name": "bond_Zn-S2",
+   "kind": "B",
+   "atoms": [
+    0,
+    2
+   ],
+   "branch": "pos",
+   "v0": 2.309769292433929,
+   "start": 2.309769292433929,
+   "end": 2.509769292433929,
+   "npoints": 11,
+   "dir": "scans/DILGUA/bond_Zn-S2_pos"
+  },
+  {
+   "name": "bond_Zn-N5",
+   "kind": "B",
+   "atoms": [
+    0,
+    5
+   ],
+   "branch": "neg",
+   "v0": 2.0377165140979048,
+   "start": 2.0377165140979048,
+   "end": 1.9777165140979047,
+   "npoints": 4,
+   "dir": "scans/DILGUA/bond_Zn-N5_neg"
+  },
+  {
+   "name": "bond_Zn-N5",
+   "kind": "B",
+   "atoms": [
+    0,
+    5
+   ],
+   "branch": "pos",
+   "v0": 2.0377165140979048,
+   "start": 2.0377165140979048,
+   "end": 2.237716514097905,
+   "npoints": 11,
+   "dir": "scans/DILGUA/bond_Zn-N5_pos"
+  },
+  {
+   "name": "bond_Zn-N6",
+   "kind": "B",
+   "atoms": [
+    0,
+    6
+   ],
+   "branch": "neg",
+   "v0": 2.034096715273736,
+   "start": 2.034096715273736,
+   "end": 1.974096715273736,
+   "npoints": 4,
+   "dir": "scans/DILGUA/bond_Zn-N6_neg"
+  },
+  {
+   "name": "bond_Zn-N6",
+   "kind": "B",
+   "atoms": [
+    0,
+    6
+   ],
+   "branch": "pos",
+   "v0": 2.034096715273736,
+   "start": 2.034096715273736,
+   "end": 2.2340967152737363,
+   "npoints": 11,
+   "dir": "scans/DILGUA/bond_Zn-N6_pos"
+  },
+  {
+   "name": "angle_S1-Zn-S2",
+   "kind": "A",
+   "atoms": [
+    1,
+    0,
+    2
+   ],
+   "branch": "neg",
+   "v0": 115.08772997946244,
+   "start": 115.08772997946244,
+   "end": 100.08772997946244,
+   "npoints": 11,
+   "dir": "scans/DILGUA/angle_S1-Zn-S2_neg"
+  },
+  {
+   "name": "angle_S1-Zn-S2",
+   "kind": "A",
+   "atoms": [
+    1,
+    0,
+    2
+   ],
+   "branch": "pos",
+   "v0": 115.08772997946244,
+   "start": 115.08772997946244,
+   "end": 130.08772997946244,
+   "npoints": 11,
+   "dir": "scans/DILGUA/angle_S1-Zn-S2_pos"
+  },
+  {
+   "name": "angle_S1-Zn-N5",
+   "kind": "A",
+   "atoms": [
+    1,
+    0,
+    5
+   ],
+   "branch": "neg",
+   "v0": 96.16740422841121,
+   "start": 96.16740422841121,
+   "end": 81.16740422841121,
+   "npoints": 11,
+   "dir": "scans/DILGUA/angle_S1-Zn-N5_neg"
+  },
+  {
+   "name": "angle_S1-Zn-N5",
+   "kind": "A",
+   "atoms": [
+    1,
+    0,
+    5
+   ],
+   "branch": "pos",
+   "v0": 96.16740422841121,
+   "start": 96.16740422841121,
+   "end": 111.16740422841121,
+   "npoints": 11,
+   "dir": "scans/DILGUA/angle_S1-Zn-N5_pos"
+  },
+  {
+   "name": "angle_S1-Zn-N6",
+   "kind": "A",
+   "atoms": [
+    1,
+    0,
+    6
+   ],
+   "branch": "neg",
+   "v0": 122.36432425984215,
+   "start": 122.36432425984215,
+   "end": 107.36432425984215,
+   "npoints": 11,
+   "dir": "scans/DILGUA/angle_S1-Zn-N6_neg"
+  },
+  {
+   "name": "angle_S1-Zn-N6",
+   "kind": "A",
+   "atoms": [
+    1,
+    0,
+    6
+   ],
+   "branch": "pos",
+   "v0": 122.36432425984215,
+   "start": 122.36432425984215,
+   "end": 137.36432425984214,
+   "npoints": 11,
+   "dir": "scans/DILGUA/angle_S1-Zn-N6_pos"
+  },
+  {
+   "name": "angle_S2-Zn-N5",
+   "kind": "A",
+   "atoms": [
+    2,
+    0,
+    5
+   ],
+   "branch": "neg",
+   "v0": 122.36851115767143,
+   "start": 122.36851115767143,
+   "end": 107.36851115767143,
+   "npoints": 11,
+   "dir": "scans/DILGUA/angle_S2-Zn-N5_neg"
+  },
+  {
+   "name": "angle_S2-Zn-N5",
+   "kind": "A",
+   "atoms": [
+    2,
+    0,
+    5
+   ],
+   "branch": "pos",
+   "v0": 122.36851115767143,
+   "start": 122.36851115767143,
+   "end": 137.36851115767143,
+   "npoints": 11,
+   "dir": "scans/DILGUA/angle_S2-Zn-N5_pos"
+  },
+  {
+   "name": "angle_S2-Zn-N6",
+   "kind": "A",
+   "atoms": [
+    2,
+    0,
+    6
+   ],
+   "branch": "neg",
+   "v0": 96.20084887799835,
+   "start": 96.20084887799835,
+   "end": 81.20084887799835,
+   "npoints": 11,
+   "dir": "scans/DILGUA/angle_S2-Zn-N6_neg"
+  },
+  {
+   "name": "angle_S2-Zn-N6",
+   "kind": "A",
+   "atoms": [
+    2,
+    0,
+    6
+   ],
+   "branch": "pos",
+   "v0": 96.20084887799835,
+   "start": 96.20084887799835,
+   "end": 111.20084887799835,
+   "npoints": 11,
+   "dir": "scans/DILGUA/angle_S2-Zn-N6_pos"
+  },
+  {
+   "name": "angle_N5-Zn-N6",
+   "kind": "A",
+   "atoms": [
+    5,
+    0,
+    6
+   ],
+   "branch": "neg",
+   "v0": 106.38409759249096,
+   "start": 106.38409759249096,
+   "end": 91.38409759249096,
+   "npoints": 11,
+   "dir": "scans/DILGUA/angle_N5-Zn-N6_neg"
+  },
+  {
+   "name": "angle_N5-Zn-N6",
+   "kind": "A",
+   "atoms": [
+    5,
+    0,
+    6
+   ],
+   "branch": "pos",
+   "v0": 106.38409759249096,
+   "start": 106.38409759249096,
+   "end": 121.38409759249096,
+   "npoints": 11,
+   "dir": "scans/DILGUA/angle_N5-Zn-N6_pos"
+  },
+  {
+   "name": "twist_S1-N5-S2-N6",
+   "kind": "D",
+   "atoms": [
+    1,
+    5,
+    2,
+    6
+   ],
+   "branch": "neg",
+   "v0": 83.9037999801368,
+   "start": 83.9037999801368,
+   "end": 73.9037999801368,
+   "npoints": 11,
+   "dir": "scans/DILGUA/twist_S1-N5-S2-N6_neg"
+  },
+  {
+   "name": "twist_S1-N5-S2-N6",
+   "kind": "D",
+   "atoms": [
+    1,
+    5,
+    2,
+    6
+   ],
+   "branch": "pos",
+   "v0": 83.9037999801368,
+   "start": 83.9037999801368,
+   "end": 93.9037999801368,
+   "npoints": 11,
+   "dir": "scans/DILGUA/twist_S1-N5-S2-N6_pos"
+  },
+  {
+   "name": "tilt_Zn-S1-C7-C16",
+   "kind": "D",
+   "atoms": [
+    0,
+    1,
+    7,
+    16
+   ],
+   "branch": "neg",
+   "v0": -26.722294003467727,
+   "start": -26.722294003467727,
+   "end": -36.722294003467724,
+   "npoints": 11,
+   "dir": "scans/DILGUA/tilt_Zn-S1-C7-C16_neg"
+  },
+  {
+   "name": "tilt_Zn-S1-C7-C16",
+   "kind": "D",
+   "atoms": [
+    0,
+    1,
+    7,
+    16
+   ],
+   "branch": "pos",
+   "v0": -26.722294003467727,
+   "start": -26.722294003467727,
+   "end": -16.722294003467727,
+   "npoints": 11,
+   "dir": "scans/DILGUA/tilt_Zn-S1-C7-C16_pos"
+  },
+  {
+   "name": "tilt_Zn-S2-C30-C39",
+   "kind": "D",
+   "atoms": [
+    0,
+    2,
+    30,
+    39
+   ],
+   "branch": "neg",
+   "v0": -26.316407076441585,
+   "start": -26.316407076441585,
+   "end": -36.316407076441585,
+   "npoints": 11,
+   "dir": "scans/DILGUA/tilt_Zn-S2-C30-C39_neg"
+  },
+  {
+   "name": "tilt_Zn-S2-C30-C39",
+   "kind": "D",
+   "atoms": [
+    0,
+    2,
+    30,
+    39
+   ],
+   "branch": "pos",
+   "v0": -26.316407076441585,
+   "start": -26.316407076441585,
+   "end": -16.316407076441585,
+   "npoints": 11,
+   "dir": "scans/DILGUA/tilt_Zn-S2-C30-C39_pos"
+  },
+  {
+   "name": "tilt_Zn-N5-C17-C16",
+   "kind": "D",
+   "atoms": [
+    0,
+    5,
+    17,
+    16
+   ],
+   "branch": "neg",
+   "v0": -0.8855116486041118,
+   "start": -0.8855116486041118,
+   "end": -10.885511648604112,
+   "npoints": 11,
+   "dir": "scans/DILGUA/tilt_Zn-N5-C17-C16_neg"
+  },
+  {
+   "name": "tilt_Zn-N5-C17-C16",
+   "kind": "D",
+   "atoms": [
+    0,
+    5,
+    17,
+    16
+   ],
+   "branch": "pos",
+   "v0": -0.8855116486041118,
+   "start": -0.8855116486041118,
+   "end": 9.114488351395888,
+   "npoints": 11,
+   "dir": "scans/DILGUA/tilt_Zn-N5-C17-C16_pos"
+  },
+  {
+   "name": "tilt_Zn-N6-C40-C39",
+   "kind": "D",
+   "atoms": [
+    0,
+    6,
+    40,
+    39
+   ],
+   "branch": "neg",
+   "v0": -0.4195850186810008,
+   "start": -0.4195850186810008,
+   "end": -10.419585018681001,
+   "npoints": 11,
+   "dir": "scans/DILGUA/tilt_Zn-N6-C40-C39_neg"
+  },
+  {
+   "name": "tilt_Zn-N6-C40-C39",
+   "kind": "D",
+   "atoms": [
+    0,
+    6,
+    40,
+    39
+   ],
+   "branch": "pos",
+   "v0": -0.4195850186810008,
+   "start": -0.4195850186810008,
+   "end": 9.580414981318999,
+   "npoints": 11,
+   "dir": "scans/DILGUA/tilt_Zn-N6-C40-C39_pos"
+  }
+ ]
+}
