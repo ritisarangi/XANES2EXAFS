@@ -1,6 +1,6 @@
 # Zn scan campaign on Aurora: status
 
-Generated 2026-10-20 00:09 UTC by `aurora/autopilot.sh`. Human-written notes are in the run log of `aurora/README.md`; validated results are on the `aurora-results` branch.
+Generated 2026-10-20 02:15 UTC by `aurora/autopilot.sh`. Human-written notes are in the run log of `aurora/README.md`; validated results are on the `aurora-results` branch.
 
 ## Branches
 
@@ -25,7 +25,6 @@ allocation: 22,090.0 Node Hours available on isaac
 ## Last autopilot actions
 
 ```
-logs tagged as cancelled: 0
 no stopped branches found
 big farm jobs already queued or running (8940280): continuations go to the front of the live queue
 queue: 0 continuations added to the front of queue/big (584 pending now)
@@ -37,4 +36,5 @@ queue: 0 continuations added to the front of queue/big (584 pending now)
 [2026-10-20 00:07:22] autopilot started (pid 425298, scripts frozen from /home/dsokaras/dev/xanes2exafs/XANES2EXAFS at 031cd3a, accounts: isaac ModCon)
 [2026-10-20 00:08:05] new farms go to project isaac (22090 node-hours left)
 [2026-10-20 00:09:49] publish: publish: no newly finished complexes nothing new to commit 
+[2026-10-20 00:10:04] STATUS.md pushed
 ```
