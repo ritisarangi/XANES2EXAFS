@@ -1,6 +1,6 @@
 # Zn scan campaign on Aurora: status
 
-Generated 2026-10-20 20:23 UTC by `aurora/autopilot.sh`. Human-written notes are in the run log of `aurora/README.md`; validated results are on the `aurora-results` branch.
+Generated 2026-10-20 22:10 UTC by `aurora/autopilot.sh`. Human-written notes are in the run log of `aurora/README.md`; validated results are on the `aurora-results` branch.
 
 ## Branches
 
@@ -25,16 +25,16 @@ allocation: 20,176.2 Node Hours available on isaac
 ## Last autopilot actions
 
 ```
-logs tagged as cancelled: 0
-no stopped branches found
-big farm jobs already queued or running (8940280): continuations go to the front of the live queue
-queue: 0 continuations added to the front of queue/big (572 pending now)
-2026-10-20 18:12:36 farm 8948280.aurora-pbs-0001.hostmgmt.cm.aurora.alcf.anl.gov pool=big cores=8 queue=capacity nodes=16 hours=6 account=isaac tasks_left=572
-prioritize main: 85 of 8327 pending branches belong to complexes at least half done
-prioritize big: 14 of 572 pending branches belong to complexes at least half done
 prioritize main: 85 of 8327 pending branches belong to complexes at least half done
 prioritize big: 14 of 572 pending branches belong to complexes at least half done
 prioritize main: 85 of 8327 pending branches belong to complexes at least half done
 prioritize big: 14 of 572 pending branches belong to complexes at least half done
 [2026-10-20 20:23:39] publish: publish: 3 complexes added (901 passing points), 0 not exported; 10 complexes published in total pushed: c3ee6c5 Aurora results: 10 complexes published (2026-10-20 20:23) 
+[2026-10-20 20:24:02] STATUS.md pushed
+prioritize main: 85 of 8327 pending branches belong to complexes at least half done
+prioritize big: 14 of 572 pending branches belong to complexes at least half done
+prioritize main: 85 of 8327 pending branches belong to complexes at least half done
+prioritize big: 14 of 572 pending branches belong to complexes at least half done
+prioritize main: 85 of 8327 pending branches belong to complexes at least half done
+prioritize big: 14 of 572 pending branches belong to complexes at least half done
 ```
