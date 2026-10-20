@@ -5,10 +5,12 @@ Usage (inside one redox/<primary|fallback>/<REF> folder):  python3 <repo>/redox/
 When REF.out exists without a normal termination and ORCA left a current geometry in REF.xyz,
 the original input is kept once as REF_orig.inp, REF.inp is rewritten to start from REF.xyz
 (same method, charge, multiplicity and per-atom basis), and the partial output is renamed
-REF_tryN.out. REF.gbw, when present, is picked up by ORCA as the starting guess.
+REF_tryN.out. Leftovers of the killed run (REF.gbw, REF*.tmp, densities, scratch) are deleted
+first: a run killed while writing them leaves corrupt files that crash the restart in startup or
+in the SCF. The restart starts from a fresh guess at the last geometry.
 Prints what it did. Standard library only, Python 3.6+.
 """
-import sys, os
+import sys, os, glob
 
 
 def main():
@@ -29,6 +31,12 @@ def main():
         L = open(xyz).read().strip().split("\n")
         if len(L) >= 2 and L[0].strip().isdigit() and int(L[0]) == len(old):
             G = [l.split()[:4] for l in L[2:2 + len(old)]]
+    for f in [ref + ".gbw", ref + ".densities", ref + ".densitiesinfo", ref + ".engrad", ref + ".opt",
+              ref + ".bibtex", ref + "_property.txt"] + glob.glob(ref + "*.tmp*") + glob.glob(ref + ".*.tmp"):
+        try:
+            os.remove(f)
+        except OSError:
+            pass
     i = 1
     while os.path.exists("%s_try%d.out" % (ref, i)):
         i += 1
