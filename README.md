@@ -8,15 +8,17 @@
 
 A complex is added when all its branches have terminated normally and `aurora/audit.py` finds no problem (every ORCA output matches its own folder's input; no folder run twice at once).
 
-## Published (14 complexes, 4101 points)
+## Published (19 complexes, 5194 points)
 
 | Complex | Atoms | Branches | Points | Passing | Published |
 |---|---|---|---|---|---|
 | DILGUA | 53 | 30 | 302 | 302 | 2026-10-20 |
 | FATJUG | 49 | 30 | 302 | 280 | 2026-10-19 |
+| GAKKUY | 49 | 30 | 302 | 234 | 2026-10-21 |
 | GALGEG | 49 | 30 | 302 | 298 | 2026-10-19 |
 | HUCCIU | 50 | 30 | 302 | 296 | 2026-10-19 |
 | LAQBIP | 51 | 30 | 302 | 302 | 2026-10-21 |
+| MOZSIE | 53 | 30 | 302 | 282 | 2026-10-21 |
 | NEHKIU | 53 | 30 | 302 | 300 | 2026-10-20 |
 | NIGTEC | 96 | 30 | 302 | 302 | 2026-10-21 |
 | QOQYEA | 50 | 30 | 302 | 292 | 2026-10-19 |
@@ -24,6 +26,9 @@ A complex is added when all its branches have terminated normally and `aurora/au
 | RATHOL | 55 | 30 | 302 | 294 | 2026-10-21 |
 | SOCSAE | 51 | 30 | 302 | 299 | 2026-10-20 |
 | SUYTIR | 53 | 30 | 302 | 291 | 2026-10-21 |
+| TBZZNP01 | 51 | 30 | 302 | 226 | 2026-10-21 |
+| VOJHIO | 53 | 30 | 302 | 97 | 2026-10-21 |
+| VUVVAM | 55 | 30 | 302 | 254 | 2026-10-21 |
 | WUCGIN | 51 | 30 | 302 | 249 | 2026-10-20 |
 | ZEFGAS | 51 | 30 | 302 | 294 | 2026-10-19 |
 
@@ -31,7 +36,7 @@ A complex is added when all its branches have terminated normally and `aurora/au
 
 A branch fell more than 2 kJ/mol below its start (`energy_drop`), so the complex has a lower minimum than the stage-2 geometry; points past the drop are not exported.
 
-None so far.
+- GAKKUY: angle_S2-Zn-S3 neg step 9 at -4.906 kJ/mol
 
 ## Finished but not exported
 
