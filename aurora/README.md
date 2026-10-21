@@ -124,6 +124,7 @@ Other options: `CORES`, `HT`, `HBM`, `MAXCORE`, `SCRATCH` (see `sites/aurora.sh`
 - 2026-10-20 20:23: NEHKIU, DILGUA and SOCSAE published (901 passing points), finished by the prioritisation: 10 complexes on `aurora-results`. All five farms queued, waiting for nodes.
 - 2026-10-21 00:27: isaac's allocation ends 10/22 00:00, so from about 10/21 16:00 the autopilot sends new farms to ModCon. It now moves farms still queued on isaac to ModCon with `qalter -A` (they keep their eligible time, 74 h for 8939977, which sets their queue priority) instead of cancelling them; cancelling stays the fallback. Autopilot restarted with the change. All five farms still queued (busy machine; the new daily 335-node reservations 14:00-05:00 do not block them).
 - 2026-10-21 00:40: capacity farm 8948275 (`main`, 16 nodes x 6 h, 384 slots) started; the four other farms still queued.
+- 2026-10-21 01:25: capacity farm 8948280 (`big`, 16 nodes x 6 h, 192 slots) started; two farms (one per pool) running now.
 
 ## Results for Riti
 
