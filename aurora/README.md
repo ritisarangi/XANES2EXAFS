@@ -132,6 +132,7 @@ Other options: `CORES`, `HT`, `HBM`, `MAXCORE`, `SCRATCH` (see `sites/aurora.sh`
 - 2026-10-21 12:21: farm 8949575 (`main`, 16 nodes x 6 h) ended normally and re-queued its 381 stopped branches itself.
 - 2026-10-21 13:08: GAKKUY, MOZSIE, TBZZNP01, VOJHIO and VUVVAM published (1,093 passing points): 19 complexes, 5,194 points on `aurora-results`. For Riti: VOJHIO passes only 97 of 302 points. In 24 of its 30 branches an early step (mostly the first) moves a heavy-atom distance by more than 0.3 A (`jump`) at almost no energy cost (|dE| < 0.4 kJ/mol), so the rest of each branch is `after_fail`. It happens in branches that never restarted too, so it is a soft conformational mode of the complex, not a restart artifact. GAKKUY has a lower minimum than stage 2 (angle_S2-Zn-S3 neg, -4.9 kJ/mol).
 - 2026-10-21 12:45: capacity farm 8950006 (`main`, 16 nodes x 6 h) started; 8949671 (`big`) ends about 13:40.
+- 2026-10-21 13:44: farm 8949671 (`big`, 16 nodes x 6 h) ended normally and re-queued its 188 stopped branches itself; replacement `big` farm submitted.
 
 ## Results for Riti
 
