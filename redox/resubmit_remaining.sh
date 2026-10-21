@@ -1,15 +1,14 @@
 #!/bin/bash
 # Move unfinished redox work onto the current, requeue-safe job script.
 # Run from the project folder:  bash <repo>/redox/resubmit_remaining.sh
-# 1. Cancels only the PENDING zn_redox tasks (running tasks keep going).
+# (It no longer cancels anything: an earlier version cancelled every pending zn_redox task,
+#  including other arrays such as the reverse runs.)
 # 2. Lists every complex in redox/jobs_*.txt that has neither finished nor is running now.
 # 3. Submits those through submit_redox.sh (preemptable QOS, resume on requeue).
 # A complex that is running now is left out, so no folder ever has two ORCA runs at once.
 set -e
 HERE=$(cd "$(dirname "$0")" && pwd)
 mkdir -p logs
-scancel -u "$USER" -n zn_redox -t PENDING || true
-sleep 2
 running=$(squeue -u "$USER" -n zn_redox -t RUNNING,COMPLETING -h -o "%F %K" | while read a k; do
   f="logs/redox_${a}_${k}.log"; [ -f "$f" ] && grep -oE "^[A-Z0-9]+ (primary|fallback) start" "$f" | tail -1 | cut -d' ' -f1
 done | sort -u)
