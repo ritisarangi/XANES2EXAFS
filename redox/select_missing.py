@@ -9,8 +9,10 @@ A bond is covered when some run gives status 'use' with donor |spin| < 0.05.
 Writes
   lists/reverse_N.txt   complexes with an uncovered Zn-N bond whose N carried spin >= 0.05 in the
                         first run, and that have not had a reverse run yet
-  lists/eps_small.txt   (--eps only) complexes with any Zn-L bond still uncovered after the
-                        first and reverse runs, for a CPCM epsilon = 2 run
+  lists/eps_small.txt   (--eps only) complexes with a Zn-L bond still uncovered after the first
+                        and reverse runs because its donor carried spin or the bond dissociated,
+                        for a low-dielectric run. Bonds that only moved < 0.01 A are left out: a
+                        dielectric change moves them too little as well; they take the donor-type slope.
 Standard library only, Python 3.6+.
 """
 import sys, os, csv, glob
@@ -30,9 +32,12 @@ revN = sorted({k[0] for k, r in F.items() if k not in covered and r["el"] == "N"
                and abs(float(r["spin_L"])) >= 0.05 and k[0] not in had_reverse})
 print("bonds covered: %d of %d" % (len(covered), len(F)))
 if "--eps" in sys.argv:
-    left = sorted({k[0] for k in F if k not in covered})
+    def tiny(k):   # moved < 0.01 A with a closed-shell donor in some run: noise, not a missing state
+        return any(r is not None and r["status"] == "small" and abs(float(r["spin_L"])) < 0.05
+                   for r in (F.get(k), R.get(k)))
+    left = sorted({k[0] for k in F if k not in covered and not tiny(k)})
     open(os.path.join(dft, "lists", "eps_small.txt"), "w").write("\n".join(left) + "\n")
-    print("lists/eps_small.txt: %d complexes with a bond still uncovered after the reverse runs" % len(left))
+    print("lists/eps_small.txt: %d complexes with a spin or dissociated bond still uncovered" % len(left))
 else:
     open(os.path.join(dft, "lists", "reverse_N.txt"), "w").write("\n".join(revN) + "\n")
     print("lists/reverse_N.txt: %d complexes (N spin, no reverse run yet)" % len(revN))
