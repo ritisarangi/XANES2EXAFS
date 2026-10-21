@@ -13,7 +13,12 @@ for r in $(cat lists/reverse_*.txt | sort -u); do
   d=redox/reverse/$r
   if done_ok "$d/$r.out"; then nd=$((nd+1)); continue; fi
   if echo "$active" | grep -qx "$r"; then na=$((na+1)); continue; fi
-  if [ -f "$d/FAILED" ]; then nf=$((nf+1)); continue; fi
+  if [ -f "$d/FAILED" ]; then
+    # jobs started before the preemption fix marked killed runs as FAILED; keep only real failures
+    nt=$(ls $d/${r}_try*.out 2>/dev/null | wc -l)
+    if grep -q "ORCA TERMINATED NORMALLY" "$d/$r.out" 2>/dev/null || [ "$nt" -ge 12 ]; then nf=$((nf+1)); continue; fi
+    rm -f "$d/FAILED"; echo "$r: cleared a FAILED marker left by a killed run"
+  fi
   echo "$r" >> redox/jobs_reverse_remaining.txt
 done
 echo "finished $nd, running or queued $na, FAILED $nf, to submit $(grep -c . redox/jobs_reverse_remaining.txt || true)"
