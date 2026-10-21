@@ -134,6 +134,7 @@ Other options: `CORES`, `HT`, `HBM`, `MAXCORE`, `SCRATCH` (see `sites/aurora.sh`
 - 2026-10-21 12:45: capacity farm 8950006 (`main`, 16 nodes x 6 h) started; 8949671 (`big`) ends about 13:40.
 - 2026-10-21 13:44: farm 8949671 (`big`, 16 nodes x 6 h) ended normally and re-queued its 188 stopped branches itself; replacement `big` farm submitted.
 - 2026-10-21 16:04: switched to ModCon (49,112 node-hours; isaac ends 10/22 00:00 with about 19,000 node-hours unused). The four queued farms 8939977, 8947436, 8940280 and 8950108 moved to ModCon with `qalter -A`; their eligible times (89 h, 29 h, 42 h) were kept. Running farm 8950006 stays on isaac until it ends at about 18:45. Queue waits are long since the maintenance: the `small` queue (256-1,024 nodes) has 66 jobs waiting and 2 running, and the 512-node `capacity` cap is full.
+- 2026-10-21 18:30: farm 8950006 (`main`, 16 nodes x 6 h, the last isaac farm) ended normally and re-queued its 379 stopped branches itself; first ModCon `main` capacity farm submitted at 18:44.
 
 ## Results for Riti
 
