@@ -32,10 +32,17 @@ run() {
   $ORCA/orca $REF.inp > $REF.out
   rm -f $REF.gbw $REF*.tmp* $REF.densities* ${REF}_trj.xyz $REF.engrad $REF.opt 2>/dev/null
   echo "$REF $1 end $(date '+%F %T')"
-  done_ok . || { touch FAILED; return 1; }
+  done_ok . && return 0
+  # A preempted run is killed inside ORCA ("error termination") while this script keeps going,
+  # so only a normal ORCA termination without frequencies, or six killed attempts in a row,
+  # counts as a real failure. Anything else exits for the watcher to resubmit.
+  ntry=$(ls ${REF}_try*.out 2>/dev/null | wc -l)
+  if grep -q "ORCA TERMINATED NORMALLY" $REF.out 2>/dev/null || [ "$ntry" -ge 6 ]; then touch FAILED; fi
+  return 1
 }
 if [ "${MODE:-}" = reverse ]; then run reverse && exit 0; echo "$REF reverse FAILED"; exit 1; fi
 if run primary; then exit 0; fi
+[ -f "$ROOT/redox/primary/$REF/FAILED" ] || { echo "$REF primary stopped (killed or preempted); left for resubmission"; exit 1; }
 if [ -d "$ROOT/redox/fallback/$REF" ]; then
   echo "$REF primary did not finish; running the -1 fallback"
   run fallback && exit 0
