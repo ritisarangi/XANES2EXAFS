@@ -11,7 +11,7 @@
 # and pauses new submissions (touch $WORK/autopilot/PAUSE to pause by hand) when more than
 # FAIL_MAX ORCA runs failed since the last check. New farms go to the first project in ACCOUNTS
 # with an allocation that ends more than 8 h from now and has at least MIN_BALANCE node-hours
-# (isaac, then ModCon); when it moves on, farms still queued on the old project are cancelled. It runs go.sh from a frozen copy of the scripts,
+# (isaac, then ModCon); when it moves on, farms still queued on the old project are moved to the new one (qalter -A). It runs go.sh from a frozen copy of the scripts,
 # so editing the clone never breaks a step in progress; restart the autopilot to pick up changes.
 # Settings come from ~/.bashrc (ACCOUNT ORCA_DIR MPI_DIR WORK) and the variables below.
 set -u
@@ -83,9 +83,11 @@ while :; do
     export ACCOUNT=$acct
     if [ "$acct" != "$acct_prev" ]; then
       say "new farms go to project $acct ($bal node-hours left)"
-      # farms still queued on another project would wait on an ending allocation: cancel them
+      # farms still queued on another project would wait on an ending allocation: move them to the
+      # new project (they keep their eligible time, hence their queue priority), or cancel them
       echo "$cur" | awk -v a="$acct" '$4 == "Q" && $5 != "" && $5 != a {print $1, $5}' | while read -r id old; do
-        if [ -n "${DRY:-}" ]; then say "DRY would cancel queued farm $id on $old"
+        if [ -n "${DRY:-}" ]; then say "DRY would move queued farm $id from $old to $acct"
+        elif qalter -A "$acct" "$id"; then say "moved queued farm $id from $old to $acct (allocation not usable)"
         else qdel "$id" && say "cancelled queued farm $id on $old (allocation not usable)"; fi; done
       cur=$(farms); acct_prev=$acct
     fi
