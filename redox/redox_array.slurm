@@ -34,10 +34,10 @@ run() {
   echo "$REF $1 end $(date '+%F %T')"
   done_ok . && return 0
   # A preempted run is killed inside ORCA ("error termination") while this script keeps going,
-  # so only a normal ORCA termination without frequencies, or six killed attempts in a row,
+  # so only a normal ORCA termination without frequencies, or twelve killed attempts,
   # counts as a real failure. Anything else exits for the watcher to resubmit.
   ntry=$(ls ${REF}_try*.out 2>/dev/null | wc -l)
-  if grep -q "ORCA TERMINATED NORMALLY" $REF.out 2>/dev/null || [ "$ntry" -ge 6 ]; then touch FAILED; fi
+  if grep -q "ORCA TERMINATED NORMALLY" $REF.out 2>/dev/null || [ "$ntry" -ge 12 ]; then touch FAILED; fi
   return 1
 }
 if [ "${MODE:-}" = reverse ]; then run reverse && exit 0; echo "$REF reverse FAILED"; exit 1; fi
