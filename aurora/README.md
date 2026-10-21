@@ -129,6 +129,7 @@ Other options: `CORES`, `HT`, `HBM`, `MAXCORE`, `SCRATCH` (see `sites/aurora.sh`
 - 2026-10-21 07:06: LAQBIP, NIGTEC, RATHOL and SUYTIR published (1,189 passing points of 1,208): 14 complexes, 4,101 points on `aurora-results`.
 - 2026-10-21 07:12: farm 8948280 (`big`, 16 nodes x 6 h) ended normally and re-queued its 190 stopped branches itself; the autopilot keeps one main and two big capacity farms queued.
 - 2026-10-21 08:03: capacity farms 8949575 (`main`, since 06:40) and 8949671 (`big`, since 08:03) running, 16 nodes x 6 h each.
+- 2026-10-21 12:21: farm 8949575 (`main`, 16 nodes x 6 h) ended normally and re-queued its 381 stopped branches itself.
 
 ## Results for Riti
 
