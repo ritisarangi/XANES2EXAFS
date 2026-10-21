@@ -9,7 +9,7 @@ active=$(bash "$HERE/running_refs.sh")
 done_ok() { grep -q "ORCA TERMINATED NORMALLY" "$1" 2>/dev/null && grep -q "VIBRATIONAL FREQUENCIES" "$1"; }
 : > redox/jobs_reverse_remaining.txt
 nd=0; na=0; nf=0
-for r in $(cat lists/reverse_S.txt); do
+for r in $(cat lists/reverse_*.txt | sort -u); do
   d=redox/reverse/$r
   if done_ok "$d/$r.out"; then nd=$((nd+1)); continue; fi
   if echo "$active" | grep -qx "$r"; then na=$((na+1)); continue; fi

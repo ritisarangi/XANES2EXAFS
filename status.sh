@@ -13,9 +13,11 @@ p=0; f=0
 for d in redox/primary/*/; do r=$(basename "$d"); grep -q "VIBRATIONAL FREQUENCIES" "$d$r.out" 2>/dev/null && grep -q "ORCA TERMINATED NORMALLY" "$d$r.out" && p=$((p+1)); done
 for d in redox/fallback/*/; do r=$(basename "$d"); grep -q "VIBRATIONAL FREQUENCIES" "$d$r.out" 2>/dev/null && grep -q "ORCA TERMINATED NORMALLY" "$d$r.out" && f=$((f+1)); done
 echo "finished: $((p+f)) of $tot  (+1/-1 primary $p, fallback $f)"
-rv=0; nr=$(grep -c . lists/reverse_S.txt 2>/dev/null || echo 0)
+rv=0; nr=$(cat lists/reverse_*.txt 2>/dev/null | sort -u | grep -c .)
 for d in redox/reverse/*/; do [ -d "$d" ] || continue; r=$(basename "$d"); grep -q "VIBRATIONAL FREQUENCIES" "$d$r.out" 2>/dev/null && grep -q "ORCA TERMINATED NORMALLY" "$d$r.out" && rv=$((rv+1)); done
-echo "reverse (S closed-shell check): $rv of $nr finished"
+echo "reverse runs (S and N): $rv of $nr finished"
+ne=0; for d in dielectric/eps2/*/; do [ -d "$d" ] || continue; r=$(basename "$d"); grep -q "VIBRATIONAL FREQUENCIES" "$d$r.out" 2>/dev/null && ne=$((ne+1)); done
+echo "eps2 runs: $ne of $(grep -c . lists/eps_small.txt 2>/dev/null || echo 0) finished"
 echo "FAILED markers: $(ls redox/*/*/FAILED 2>/dev/null | wc -l)   resumed after preemption: $(grep -l 'resuming from' logs/redox_*.log 2>/dev/null | wc -l)"
 echo "== scan pilot =="
 python3 "$REPO/scans/validate.py" . lists/pilot.txt > logs/validate_last.txt 2>&1 || echo "validate.py failed; see logs/validate_last.txt"

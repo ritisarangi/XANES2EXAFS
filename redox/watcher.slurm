@@ -17,9 +17,9 @@ cd "$SLURM_SUBMIT_DIR" || exit 1
 EVERY=${EVERY:-30}
 echo "== $(date '+%F %T') watcher run"
 bash "${REPO:?}/redox/resubmit_reverse.sh"
-total=$(grep -c . lists/reverse_S.txt)
+total=$(cat lists/reverse_*.txt | sort -u | grep -c .)
 fin=0
-for r in $(cat lists/reverse_S.txt); do
+for r in $(cat lists/reverse_*.txt | sort -u); do
   d=redox/reverse/$r
   { grep -q "VIBRATIONAL FREQUENCIES" "$d/$r.out" 2>/dev/null && grep -q "ORCA TERMINATED NORMALLY" "$d/$r.out"; } && fin=$((fin+1)) && continue
   [ -f "$d/FAILED" ] && fin=$((fin+1))
