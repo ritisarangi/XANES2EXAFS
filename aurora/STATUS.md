@@ -1,6 +1,6 @@
 # Zn scan campaign on Aurora: status
 
-Generated 2026-10-20 22:10 UTC by `aurora/autopilot.sh`. Human-written notes are in the run log of `aurora/README.md`; validated results are on the `aurora-results` branch.
+Generated 2026-10-21 00:19 UTC by `aurora/autopilot.sh`. Human-written notes are in the run log of `aurora/README.md`; validated results are on the `aurora-results` branch.
 
 ## Branches
 
@@ -25,12 +25,12 @@ allocation: 20,176.2 Node Hours available on isaac
 ## Last autopilot actions
 
 ```
-prioritize main: 85 of 8327 pending branches belong to complexes at least half done
 prioritize big: 14 of 572 pending branches belong to complexes at least half done
 prioritize main: 85 of 8327 pending branches belong to complexes at least half done
 prioritize big: 14 of 572 pending branches belong to complexes at least half done
-[2026-10-20 20:23:39] publish: publish: 3 complexes added (901 passing points), 0 not exported; 10 complexes published in total pushed: c3ee6c5 Aurora results: 10 complexes published (2026-10-20 20:23) 
-[2026-10-20 20:24:02] STATUS.md pushed
+[2026-10-20 22:12:00] STATUS.md pushed
+prioritize main: 85 of 8327 pending branches belong to complexes at least half done
+prioritize big: 14 of 572 pending branches belong to complexes at least half done
 prioritize main: 85 of 8327 pending branches belong to complexes at least half done
 prioritize big: 14 of 572 pending branches belong to complexes at least half done
 prioritize main: 85 of 8327 pending branches belong to complexes at least half done
