@@ -10,9 +10,9 @@ MAX=${MAX:-20}
 HERE=$(cd "$(dirname "$0")" && pwd)
 mkdir -p logs redox/chunks
 base=$(basename "$JOBS" .txt)
-rm -f redox/chunks/${base}_*
-split -l 99 -d "$JOBS" redox/chunks/${base}_
-for f in redox/chunks/${base}_*; do
+stamp=$(date +%Y%m%d%H%M%S)   # unique chunk names: running arrays keep reading their own list
+split -l 99 -d "$JOBS" redox/chunks/${base}_${stamp}_
+for f in redox/chunks/${base}_${stamp}_*; do
   n=$(grep -c . "$f")
   id=$(sbatch --parsable --account="$ACCOUNT" ${EXCLUDE:+--exclude=$EXCLUDE} --requeue --array=1-${n}%${MAX} --export=ALL,MODE="${MODE:-}",LIST="$f",REPO="$(dirname "$HERE")" "$HERE/redox_array.slurm")
   echo "$(date '+%F %T') $f n=$n account=$ACCOUNT job=$id (redox ${MODE:-primary})" | tee -a logs/submissions.txt
