@@ -136,6 +136,7 @@ Other options: `CORES`, `HT`, `HBM`, `MAXCORE`, `SCRATCH` (see `sites/aurora.sh`
 - 2026-10-21 16:04: switched to ModCon (49,112 node-hours; isaac ends 10/22 00:00 with about 19,000 node-hours unused). The four queued farms 8939977, 8947436, 8940280 and 8950108 moved to ModCon with `qalter -A`; their eligible times (89 h, 29 h, 42 h) were kept. Running farm 8950006 stays on isaac until it ends at about 18:45. Queue waits are long since the maintenance: the `small` queue (256-1,024 nodes) has 66 jobs waiting and 2 running, and the 512-node `capacity` cap is full.
 - 2026-10-21 18:30: farm 8950006 (`main`, 16 nodes x 6 h, the last isaac farm) ended normally and re-queued its 379 stopped branches itself; first ModCon `main` capacity farm submitted at 18:44.
 - 2026-10-21 19:11: GUYHEN published (204 of 302 points pass): 20 complexes, 5,398 points on `aurora-results`. For Riti: in 12 GUYHEN branches the point where the branch stops passing is a `shell`, `new_contact` or `jump` at about -17 to -19 kJ/mol. The complex finds a rearranged structure about 18 kJ/mol below the stage-2 geometry. `validate.py` flags these as structural changes, not `energy_drop`, so GUYHEN is not in the results README's lower-minimum list; its stage-2 minimum may need another look.
+- 2026-10-22 00:32: first ModCon farm running: 8950108 (`big`, 16 nodes x 6 h, 192 slots, all busy). The isaac allocation ended at 00:00; the run folder under the isaac project directory stays readable and writable so far.
 
 ## Results for Riti
 
