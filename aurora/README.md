@@ -138,6 +138,7 @@ Other options: `CORES`, `HT`, `HBM`, `MAXCORE`, `SCRATCH` (see `sites/aurora.sh`
 - 2026-10-21 19:11: GUYHEN published (204 of 302 points pass): 20 complexes, 5,398 points on `aurora-results`. For Riti: in 12 GUYHEN branches the point where the branch stops passing is a `shell`, `new_contact` or `jump` at about -17 to -19 kJ/mol. The complex finds a rearranged structure about 18 kJ/mol below the stage-2 geometry. `validate.py` flags these as structural changes, not `energy_drop`, so GUYHEN is not in the results README's lower-minimum list; its stage-2 minimum may need another look.
 - 2026-10-22 00:32: first ModCon farm running: 8950108 (`big`, 16 nodes x 6 h, 192 slots, all busy). The isaac allocation ended at 00:00; the run folder under the isaac project directory stays readable and writable so far.
 - 2026-10-22 06:23: farm 8950108 (`big`, ModCon, 16 nodes x 6 h) ended normally and re-queued its 190 stopped branches itself. Nothing ran 18:30-00:32 on 10/21 (both queues full); the four other farms are still queued.
+- 2026-10-22 07:48: capacity farm 8950977 (`main`, ModCon, 16 nodes x 6 h, 384 slots) started after 13 h in the queue.
 - 2026-10-22 07:57: OJELEU published (135 atoms, the first complex of the `big` pool; 302 of 302 points pass): 21 complexes, 5,700 points on `aurora-results`.
 
 ## Results for Riti
