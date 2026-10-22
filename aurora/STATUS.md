@@ -1,6 +1,6 @@
 # Zn scan campaign on Aurora: status
 
-Generated 2026-10-22 20:56 UTC by `aurora/autopilot.sh`. Human-written notes are in the run log of `aurora/README.md`; validated results are on the `aurora-results` branch.
+Generated 2026-10-22 22:56 UTC by `aurora/autopilot.sh`. Human-written notes are in the run log of `aurora/README.md`; validated results are on the `aurora-results` branch.
 
 ## Branches
 
@@ -25,14 +25,14 @@ allocation: 48,810.6 Node Hours available on ModCon
 ## Last autopilot actions
 
 ```
-logs tagged as cancelled: 0
-no stopped branches found
-big farm jobs already queued or running (8940280): continuations go to the front of the live queue
-queue: 0 continuations added to the front of queue/big (515 pending now)
-2026-10-22 19:04:47 farm 8954403.aurora-pbs-0001.hostmgmt.cm.aurora.alcf.anl.gov pool=big cores=8 queue=capacity nodes=16 hours=6 account=ModCon tasks_left=515
+[2026-10-22 19:50:33] publish: publish: no newly finished complexes nothing new to commit 
 prioritize main: 41 of 8078 pending branches belong to complexes at least half done
 prioritize big: 15 of 515 pending branches belong to complexes at least half done
-[2026-10-22 19:50:33] publish: publish: no newly finished complexes nothing new to commit 
+prioritize main: 41 of 8078 pending branches belong to complexes at least half done
+prioritize big: 15 of 515 pending branches belong to complexes at least half done
+[2026-10-22 21:05:38] STATUS.md pushed
+prioritize main: 41 of 8078 pending branches belong to complexes at least half done
+prioritize big: 15 of 515 pending branches belong to complexes at least half done
 prioritize main: 41 of 8078 pending branches belong to complexes at least half done
 prioritize big: 15 of 515 pending branches belong to complexes at least half done
 prioritize main: 41 of 8078 pending branches belong to complexes at least half done
