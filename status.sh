@@ -16,8 +16,9 @@ echo "finished: $((p+f)) of $tot  (+1/-1 primary $p, fallback $f)"
 rv=0; nr=$(cat lists/reverse_*.txt 2>/dev/null | sort -u | grep -c .)
 for d in redox/reverse/*/; do [ -d "$d" ] || continue; r=$(basename "$d"); grep -q "VIBRATIONAL FREQUENCIES" "$d$r.out" 2>/dev/null && grep -q "ORCA TERMINATED NORMALLY" "$d$r.out" && rv=$((rv+1)); done
 echo "reverse runs (S and N): $rv of $nr finished"
-ne=0; for d in dielectric/eps2/*/; do [ -d "$d" ] || continue; r=$(basename "$d"); grep -q "VIBRATIONAL FREQUENCIES" "$d$r.out" 2>/dev/null && ne=$((ne+1)); done
-echo "eps2 runs: $ne of $(grep -c . lists/eps_small.txt 2>/dev/null || echo 0) finished"
+for e in 1 2; do lst=lists/eps1.txt; [ $e = 2 ] && lst=lists/eps2_anion.txt; ne=0; nt=$(grep -c . $lst 2>/dev/null || echo 0)
+  for r in $(cat $lst 2>/dev/null); do grep -q "VIBRATIONAL FREQUENCIES" dielectric/eps$e/$r/$r.out 2>/dev/null && ne=$((ne+1)); done
+  echo "eps=$e runs: $ne of $nt finished"; done
 echo "FAILED markers: $(ls redox/*/*/FAILED 2>/dev/null | wc -l)   resumed after preemption: $(grep -l 'resuming from' logs/redox_*.log 2>/dev/null | wc -l)"
 echo "== scan pilot =="
 python3 "$REPO/scans/validate.py" . lists/pilot.txt > logs/validate_last.txt 2>&1 || echo "validate.py failed; see logs/validate_last.txt"
