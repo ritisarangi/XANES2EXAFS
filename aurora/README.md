@@ -142,6 +142,7 @@ Other options: `CORES`, `HT`, `HBM`, `MAXCORE`, `SCRATCH` (see `sites/aurora.sh`
 - 2026-10-22 07:57: OJELEU published (135 atoms, the first complex of the `big` pool; 302 of 302 points pass): 21 complexes, 5,700 points on `aurora-results`.
 - 2026-10-22 13:06: capacity farm 8952802 (`big`, ModCon, 16 nodes x 6 h, 192 slots) started; 8950977 (`main`) is stopping at its deadline.
 - 2026-10-22 14:05: TIXQOH published (302 of 302 points pass): 22 complexes, 6,002 points on `aurora-results`. Farm 8950977 (`main`, ModCon) ended normally at 13:29 and re-queued its 378 stopped branches itself. Overall: 38.9% of the 102,426 points done, 1,563 of 10,175 branches finished.
+- 2026-10-22 18:48: farm 8952802 (`big`, ModCon, 16 nodes x 6 h) ended normally and re-queued its 192 stopped branches itself. Progress at 16:25: 39,819 of 102,426 points (38.9%), 1,576 of 10,175 branches, 22 complexes published; about 8,500 node-hours left (main ~5,200, big ~3,300).
 
 ## Results for Riti
 
