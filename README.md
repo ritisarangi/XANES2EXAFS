@@ -8,7 +8,7 @@
 
 A complex is added when all its branches have terminated normally and `aurora/audit.py` finds no problem (every ORCA output matches its own folder's input; no folder run twice at once).
 
-## Published (21 complexes, 5700 points)
+## Published (22 complexes, 6002 points)
 
 | Complex | Atoms | Branches | Points | Passing | Published |
 |---|---|---|---|---|---|
@@ -29,6 +29,7 @@ A complex is added when all its branches have terminated normally and `aurora/au
 | SOCSAE | 51 | 30 | 302 | 299 | 2026-10-20 |
 | SUYTIR | 53 | 30 | 302 | 291 | 2026-10-21 |
 | TBZZNP01 | 51 | 30 | 302 | 226 | 2026-10-21 |
+| TIXQOH | 92 | 30 | 302 | 302 | 2026-10-22 |
 | VOJHIO | 53 | 30 | 302 | 97 | 2026-10-21 |
 | VUVVAM | 55 | 30 | 302 | 254 | 2026-10-21 |
 | WUCGIN | 51 | 30 | 302 | 249 | 2026-10-20 |
