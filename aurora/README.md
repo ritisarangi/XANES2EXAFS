@@ -143,6 +143,7 @@ Other options: `CORES`, `HT`, `HBM`, `MAXCORE`, `SCRATCH` (see `sites/aurora.sh`
 - 2026-10-22 13:06: capacity farm 8952802 (`big`, ModCon, 16 nodes x 6 h, 192 slots) started; 8950977 (`main`) is stopping at its deadline.
 - 2026-10-22 14:05: TIXQOH published (302 of 302 points pass): 22 complexes, 6,002 points on `aurora-results`. Farm 8950977 (`main`, ModCon) ended normally at 13:29 and re-queued its 378 stopped branches itself. Overall: 38.9% of the 102,426 points done, 1,563 of 10,175 branches finished.
 - 2026-10-22 18:48: farm 8952802 (`big`, ModCon, 16 nodes x 6 h) ended normally and re-queued its 192 stopped branches itself. Progress at 16:25: 39,819 of 102,426 points (38.9%), 1,576 of 10,175 branches, 22 complexes published; about 8,500 node-hours left (main ~5,200, big ~3,300).
+- 2026-10-23 02:25: no farm has run since 10/22 18:48 (7.5 h). All five farms are queued on ModCon: the 16-node farms are held for a top job or reservation (`capacity` 81 running, 88 queued), the 256-node farms lack free nodes (`small` 2 running, 63 queued; 8939977 eligible 121 h). Nothing to fix on our side.
 
 ## Results for Riti
 
