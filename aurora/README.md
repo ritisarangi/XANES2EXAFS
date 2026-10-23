@@ -145,6 +145,7 @@ Other options: `CORES`, `HT`, `HBM`, `MAXCORE`, `SCRATCH` (see `sites/aurora.sh`
 - 2026-10-22 18:48: farm 8952802 (`big`, ModCon, 16 nodes x 6 h) ended normally and re-queued its 192 stopped branches itself. Progress at 16:25: 39,819 of 102,426 points (38.9%), 1,576 of 10,175 branches, 22 complexes published; about 8,500 node-hours left (main ~5,200, big ~3,300).
 - 2026-10-23 02:25: no farm has run since 10/22 18:48 (7.5 h). All five farms are queued on ModCon: the 16-node farms are held for a top job or reservation (`capacity` 81 running, 88 queued), the 256-node farms lack free nodes (`small` 2 running, 63 queued; 8939977 eligible 121 h). Nothing to fix on our side.
 - 2026-10-23 03:41: capacity farm 8953480 (`main`, ModCon, 16 nodes x 6 h, 384 slots) started after 13.5 h in the queue, ending the 9 h gap.
+- 2026-10-23 05:05: 256-node farm 8947436 (`main`, ModCon, `small`, 6 h) started after 67 h in the queue: 6,144 slots, all busy; with 8953480 (16 nodes) that is 6,528 main branches running at once and 1,531 left in the main queue.
 
 ## Results for Riti
 
