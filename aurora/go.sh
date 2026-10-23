@@ -44,6 +44,9 @@ active_jobs() { qstat -u "$USER" 2>/dev/null | awk -v n="zn_$POOL" '$4 == n && $
 farm() {  # farm <job name> <queue dir> <queue> <nodes> <hours> [extra -v settings]
   local name=$1 qd=$2 q=$3 n=$4 h=$5 extra=${6:-}
   local wt=$(printf '%02d:00:00' "$h") snap=$WORK/.repo/$(date +%Y%m%d_%H%M%S)
+  # a 256-node farm stops ~6,000 branches; re-queueing them takes 25+ min on a busy Lustre, so
+  # large farms stop ORCA earlier (MARGIN_MIN, default 25) to finish that before the walltime
+  case "$extra" in *MARGIN_MIN=*) ;; *) if [ "$n" -ge 64 ]; then extra="$extra,MARGIN_MIN=${MARGIN_MIN:-50}"; fi ;; esac
   # jobs run from a frozen copy of the scripts on /lus/flare: a later git pull cannot change a
   # queued or running farm, and the job does not depend on the home file system
   mkdir -p "$snap" && cp -r "$REPO/aurora" "$REPO/scans" "$REPO/sites" "$snap/"
