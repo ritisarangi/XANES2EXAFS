@@ -39,10 +39,14 @@ for e in eps_list:
         uks = " UKS" if M["mult"] > 1 else ""
         d = os.path.join("dielectric", "eps%g" % eps, ref)
         os.makedirs(os.path.join(dft, d), exist_ok=True)
-        inp = ("# %s: stage-2 level at CPCM epsilon %g, from the stage-2 geometry\n" % (ref, eps)
-               + "! B3LYP D3BJ def2-SVP def2/J RIJCOSX CPCM TightOpt Freq DefGrid3 TightSCF%s\n" % uks
+        # epsilon = 1 is vacuum: run without CPCM (CPCM at epsilon 1 has zero screening and ORCA's
+        # property step fails on it with a diagonalization error)
+        solv = "" if eps <= 1.0 else " CPCM"
+        cpcm = "" if eps <= 1.0 else "%%cpcm\n  epsilon %g\n  refrac 1.3328\n  rsolv 1.30\nend\n" % eps
+        inp = ("# %s: stage-2 level at %s, from the stage-2 geometry\n" % (ref, "gas phase (epsilon 1)" if eps <= 1.0 else "CPCM epsilon %g" % eps)
+               + "! B3LYP D3BJ def2-SVP def2/J RIJCOSX%s TightOpt Freq DefGrid3 TightSCF%s\n" % (solv, uks)
                + "%pal nprocs 16 end\n%maxcore 3000\n%geom MaxIter 300 end\n%scf MaxIter 500 end\n"
-               + "%%cpcm\n  epsilon %g\n  refrac 1.3328\n  rsolv 1.30\nend\n" % eps
+               + cpcm
                + "* xyz %d %d\n" % (M["charge"], M["mult"]) + "\n".join(rows) + "\n*\n")
         open(os.path.join(dft, d, ref + ".inp"), "w").write(inp)
         jobs.append(d)
