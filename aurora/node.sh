@@ -37,7 +37,11 @@ slot() {
     D=$(claim)
     [ -n "$D" ] || break
     seq=$((seq + 1))
-    if [ -e "$D/scan.out" ] || [ -e "$D/scan_cont.out" ]; then continue; fi   # already started elsewhere
+    # one ORCA per folder, ever: the slot (and ORCA, which inherits fd 7) holds the folder's lock
+    # while it runs; restart.py takes the same lock before it touches a folder
+    exec 7>>"$D/.run.lock"
+    flock -n 7 || { exec 7>&-; continue; }
+    if [ -e "$D/scan.out" ] || [ -e "$D/scan_cont.out" ]; then exec 7>&-; continue; fi   # already started elsewhere
     if [ -e "$D/scan_orig.inp" ]; then mode=scanr out=scan_cont.out; else mode=scan out=scan.out; fi
     log=$WORK/logs/${mode}_${JOB}_${HOST}_${s}_${seq}.log
     touch "$QDIR/active/${JOB}_${HOST}_${s}"
@@ -81,6 +85,7 @@ slot() {
     fi
     grep -q "ORCA TERMINATED NORMALLY" "$D/scan.out" 2>/dev/null || echo "$D ORCA did not terminate normally" >> "$log"
     echo "$D end $(date '+%F %T')" >> "$log"
+    exec 7>&-          # the end line is written: restart.py may now prepare this folder
     rm -f "$QDIR/active/${JOB}_${HOST}_${s}"
   done
 }

@@ -75,8 +75,12 @@ def main():
     sp = os.path.join(work, "autopilot", "published.json")
     state = json.load(open(sp)) if os.path.exists(sp) else {}
     new = sorted(r for r, ds in by.items() if r not in state and all(done(os.path.join(work, d, "scan.out")) for d in ds))
-    if "--pending" in sys.argv:          # exit 0 when there is something to publish (go.sh audits only then)
+    if "--pending" in sys.argv:          # print the complexes ready to publish (go.sh audits those); exit 3 if none
+        print(" ".join(new))
         sys.exit(0 if new else 3)
+    if os.environ.get("PUBLISH_REFS") is not None:   # only the complexes the audit passed
+        ok = set(os.environ["PUBLISH_REFS"].split())
+        new = [r for r in new if r in ok]
     if not new:
         print("publish: no newly finished complexes")
         return

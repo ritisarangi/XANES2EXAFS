@@ -72,12 +72,16 @@ def add_continuations(work, jobs, qdir):
     """Put continuations prepared by restart.py at the front of a live queue, under the same
     flock the farm slots use, so farms of the pool can keep running."""
     import fcntl
+    # the states are read without the lock (minutes on a busy Lustre); a branch a farm claims
+    # meanwhile still looks like a continuation, so everything past the position at the start
+    # (claimed since, or still pending) counts as queued
+    n0 = int(open(os.path.join(qdir, "next")).read())
     cont = [d for d in in_pool(work, jobs) if state(work, d) == "continuation"]
     with open(os.path.join(qdir, "lock"), "a") as lk:
         fcntl.flock(lk, fcntl.LOCK_EX)
         tasks = [l.strip() for l in open(os.path.join(qdir, "tasks.txt")) if l.strip()]
         n = int(open(os.path.join(qdir, "next")).read())
-        pending = set(tasks[n:])
+        pending = set(tasks[min(n0, n):])
         new = [d for _, d in sorted((-natoms(os.path.join(work, d, "scan.inp")), d) for d in cont if d not in pending)]
         tmp = os.path.join(qdir, "tasks.txt.new")
         open(tmp, "w").write("".join(d + "\n" for d in tasks[:n] + new + tasks[n:]))

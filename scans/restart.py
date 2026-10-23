@@ -74,7 +74,18 @@ def stopped_dirs(dft):
                     and not os.path.exists(os.path.join(full, "scan_cont.out")))   # continuation written, not run yet
         if stopped and not prepared and "ORCA TERMINATED NORMALLY" not in read(os.path.join(full, "scan.out")):
             out.append(d)
-    return out
+    return out, {d: mt for d, (mt, _) in latest.items()}
+
+
+def busy(full, logtime):
+    """True when an ORCA run may be using the folder now: a farm slot holds its lock (Aurora
+    node.sh), or an output was written after the stopped run's log ended (a newer run started
+    since the logs were read). Checked again right before a folder is changed."""
+    for f in ("scan.out", "scan_cont.out"):
+        p = os.path.join(full, f)
+        if os.path.exists(p) and os.path.getmtime(p) > logtime + 60:
+            return True
+    return False
 
 
 def prepare(dft, d, dry):
@@ -183,12 +194,28 @@ def main():
     if "--stitch" in sys.argv:
         sys.exit(stitch(dft, sys.argv[sys.argv.index("--stitch") + 1]))
     dry = "--dry" in sys.argv
-    ds = stopped_dirs(dft)
+    ds, logtime = stopped_dirs(dft)
     for d in ds:
+        full = os.path.join(dft, d)
+        lk = None
         try:
+            if not dry and os.path.isdir(full):
+                import fcntl
+                lk = open(os.path.join(full, ".run.lock"), "a")
+                try:
+                    fcntl.flock(lk, fcntl.LOCK_EX | fcntl.LOCK_NB)
+                except OSError:
+                    print("%s: running now; left alone" % d)
+                    continue
+            if busy(full, logtime.get(d, 0)):
+                print("%s: written since its last run ended; left alone" % d)
+                continue
             print(prepare(dft, d, dry))
         except Exception as e:          # one odd branch must not stop the others from being prepared
             print("%s: not prepared (%s: %s)" % (d, type(e).__name__, e))
+        finally:
+            if lk:
+                lk.close()
     if not dry and ds:
         open(os.path.join(dft, "scans", "jobs_restart.txt"), "w").write("\n".join(ds) + "\n")
         print("wrote scans/jobs_restart.txt (%d branches)" % len(ds))

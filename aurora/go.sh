@@ -139,9 +139,15 @@ publish)
   cd "$WORK"
   # the audit reads every log and holds the lock the farms need at their end: run it only when a
   # complex is ready to publish
-  python3 "$HERE/publish.py" . scans/jobs_scan_full.txt "$RESULTS" --pending || { echo "publish: no newly finished complexes"; exit 0; }
-  python3 "$HERE/audit.py" . scans/jobs_scan_full.txt || { echo "audit found problems: nothing published"; exit 1; }
-  python3 "$HERE/publish.py" . scans/jobs_scan_full.txt "$RESULTS"
+  refs=$(python3 "$HERE/publish.py" . scans/jobs_scan_full.txt "$RESULTS" --pending) || { echo "publish: no newly finished complexes"; exit 0; }
+  # a complex with an audit problem is held back (and reported); the others are published
+  bad=$WORK/autopilot/audit_bad.txt
+  AUDIT_BAD=$bad python3 "$HERE/audit.py" . scans/jobs_scan_full.txt $refs
+  grep -qx ALL "$bad" 2>/dev/null && { echo "audit found a queue problem: nothing published"; exit 1; }
+  ok=$(for r in $refs; do grep -qx "$r" "$bad" 2>/dev/null || echo "$r"; done | tr '\n' ' ')
+  [ -s "$bad" ] && echo "audit problems in $(tr '\n' ' ' < "$bad"): held back"
+  [ -n "${ok// }" ] || { echo "publish: nothing passed the audit"; exit 1; }
+  PUBLISH_REFS="$ok" python3 "$HERE/publish.py" . scans/jobs_scan_full.txt "$RESULTS"
   cd "$RESULTS"
   git add -A
   if git diff --cached --quiet; then echo "nothing new to commit"; exit 0; fi
