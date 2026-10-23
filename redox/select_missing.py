@@ -3,6 +3,7 @@
 
 Usage (inside the project folder):
     python3 <repo>/redox/select_missing.py .          # after the first round: list N reverse runs
+    python3 <repo>/redox/select_missing.py . --eps --next   # a later batch, skipping complexes already listed
     python3 <repo>/redox/select_missing.py . --eps    # list low-dielectric runs (complexes whose reverse run is still pending are left for later)
 Reads redox/redox_compare_all.csv and every redox/redox_compare_reverse_*.csv present.
 A bond is covered when some run gives status 'use' with donor |spin| < 0.05.
@@ -41,12 +42,18 @@ if "--eps" in sys.argv:
     pending = planned - {k[0] for k in R}          # reverse run planned but not analysed yet
     left = sorted({k[0] for k in F if k not in covered and not tiny(k) and k[0] not in pending})
     q = {k[0]: int(r["charge_ref"]) for k, r in F.items()}
+    if "--next" in sys.argv:                       # a later batch: skip complexes already listed
+        done_before = set()
+        for p in glob.glob(os.path.join(dft, "lists", "eps1*.txt")) + glob.glob(os.path.join(dft, "lists", "eps2_anion*.txt")):
+            done_before |= {l.strip() for l in open(p) if l.strip()}
+        left = [r for r in left if r not in done_before]
     eps1 = [r for r in left if q[r] > -2]          # vacuum (epsilon = 1)
     eps2 = [r for r in left if q[r] <= -2]         # anions -2 and below: epsilon = 2, vacuum may not bind the electrons
-    open(os.path.join(dft, "lists", "eps1.txt"), "w").write("\n".join(eps1) + "\n")
-    open(os.path.join(dft, "lists", "eps2_anion.txt"), "w").write("\n".join(eps2) + "\n")
+    sfx = "_next" if "--next" in sys.argv else ""
+    open(os.path.join(dft, "lists", "eps1%s.txt" % sfx), "w").write("\n".join(eps1) + "\n")
+    open(os.path.join(dft, "lists", "eps2_anion%s.txt" % sfx), "w").write("\n".join(eps2) + "\n")
     print("waiting on a reverse run, not listed yet: %d complexes" % len({k[0] for k in F if k not in covered and k[0] in pending}))
-    print("lists/eps1.txt: %d complexes (epsilon = 1)   lists/eps2_anion.txt: %d complexes (charge <= -2, epsilon = 2)" % (len(eps1), len(eps2)))
+    print("lists/eps1%s.txt: %d complexes (epsilon = 1)   lists/eps2_anion%s.txt: %d complexes (charge <= -2, epsilon = 2)" % (sfx, len(eps1), sfx, len(eps2)))
 else:
     open(os.path.join(dft, "lists", "reverse_N.txt"), "w").write("\n".join(revN) + "\n")
     print("lists/reverse_N.txt: %d complexes (N spin, no reverse run yet)" % len(revN))
