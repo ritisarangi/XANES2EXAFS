@@ -101,7 +101,7 @@ def main():
             k = (r["ref"], r["bond"])
             if src == "first":
                 base[k] = dict(el=r["el"], r0=float(r["r_ref"]), k0=float(r["k_ref"]), s2=float(r["s2_10K_ref"]),
-                               line=r["slope_line"])
+                               nu0=float(r["nu_ref"]), line=r["slope_line"])
             dr = float(r["dr"])
             if float(r["k_redox"]) <= 0 or float(r["k_ref"]) <= 0:
                 continue
@@ -160,7 +160,7 @@ def main():
         red = [p for p in pts[k] if p["src"] in ("first", "reverse") and p["ok"] and p["spin"] < SPIN and p["dr"] * p["y"] < 0]
         eps = [p for p in pts[k] if p["src"].startswith("eps") and p["ok"] and p["dr"] * p["y"] < 0]
         rows.append(dict(ref=k[0], bond=k[1], el=el, donor_type=g, r0=base[k]["r0"], k0=base[k]["k0"],
-                         s2_10K_0=base[k]["s2"], slope=round(slope, 3), source=source,
+                         s2_10K_0=base[k]["s2"], nu0=base[k]["nu0"], slope=round(slope, 3), source=source,
                          own_dr=round(q["dr"], 4) if q else "", rearranged_complex=int(k[0] in rearranged),
                          slope_redox=round(max(red, key=lambda p: abs(p["dr"]))["y"] / max(red, key=lambda p: abs(p["dr"]))["dr"], 3) if red else "",
                          slope_eps=round(max(eps, key=lambda p: abs(p["dr"]))["y"] / max(eps, key=lambda p: abs(p["dr"]))["dr"], 3) if eps else "",
