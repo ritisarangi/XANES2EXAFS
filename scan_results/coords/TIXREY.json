@@ -1,0 +1,464 @@
+{
+ "ref": "TIXREY",
+ "zn": 0,
+ "donors": [
+  1,
+  2,
+  3,
+  5
+ ],
+ "coords": [
+  {
+   "name": "bond_Zn-S1",
+   "kind": "B",
+   "atoms": [
+    0,
+    1
+   ],
+   "branch": "neg",
+   "v0": 2.3165518605174626,
+   "start": 2.3165518605174626,
+   "end": 2.2565518605174626,
+   "npoints": 4,
+   "dir": "scans/TIXREY/bond_Zn-S1_neg"
+  },
+  {
+   "name": "bond_Zn-S1",
+   "kind": "B",
+   "atoms": [
+    0,
+    1
+   ],
+   "branch": "pos",
+   "v0": 2.3165518605174626,
+   "start": 2.3165518605174626,
+   "end": 2.516551860517463,
+   "npoints": 11,
+   "dir": "scans/TIXREY/bond_Zn-S1_pos"
+  },
+  {
+   "name": "bond_Zn-S2",
+   "kind": "B",
+   "atoms": [
+    0,
+    2
+   ],
+   "branch": "neg",
+   "v0": 2.318152230550275,
+   "start": 2.318152230550275,
+   "end": 2.258152230550275,
+   "npoints": 4,
+   "dir": "scans/TIXREY/bond_Zn-S2_neg"
+  },
+  {
+   "name": "bond_Zn-S2",
+   "kind": "B",
+   "atoms": [
+    0,
+    2
+   ],
+   "branch": "pos",
+   "v0": 2.318152230550275,
+   "start": 2.318152230550275,
+   "end": 2.518152230550275,
+   "npoints": 11,
+   "dir": "scans/TIXREY/bond_Zn-S2_pos"
+  },
+  {
+   "name": "bond_Zn-N3",
+   "kind": "B",
+   "atoms": [
+    0,
+    3
+   ],
+   "branch": "neg",
+   "v0": 2.107018873854662,
+   "start": 2.107018873854662,
+   "end": 2.047018873854662,
+   "npoints": 4,
+   "dir": "scans/TIXREY/bond_Zn-N3_neg"
+  },
+  {
+   "name": "bond_Zn-N3",
+   "kind": "B",
+   "atoms": [
+    0,
+    3
+   ],
+   "branch": "pos",
+   "v0": 2.107018873854662,
+   "start": 2.107018873854662,
+   "end": 2.307018873854662,
+   "npoints": 11,
+   "dir": "scans/TIXREY/bond_Zn-N3_pos"
+  },
+  {
+   "name": "bond_Zn-N5",
+   "kind": "B",
+   "atoms": [
+    0,
+    5
+   ],
+   "branch": "neg",
+   "v0": 2.0894632804751554,
+   "start": 2.0894632804751554,
+   "end": 2.0294632804751553,
+   "npoints": 4,
+   "dir": "scans/TIXREY/bond_Zn-N5_neg"
+  },
+  {
+   "name": "bond_Zn-N5",
+   "kind": "B",
+   "atoms": [
+    0,
+    5
+   ],
+   "branch": "pos",
+   "v0": 2.0894632804751554,
+   "start": 2.0894632804751554,
+   "end": 2.2894632804751556,
+   "npoints": 11,
+   "dir": "scans/TIXREY/bond_Zn-N5_pos"
+  },
+  {
+   "name": "angle_S1-Zn-S2",
+   "kind": "A",
+   "atoms": [
+    1,
+    0,
+    2
+   ],
+   "branch": "neg",
+   "v0": 116.29461055076992,
+   "start": 116.29461055076992,
+   "end": 101.29461055076992,
+   "npoints": 11,
+   "dir": "scans/TIXREY/angle_S1-Zn-S2_neg"
+  },
+  {
+   "name": "angle_S1-Zn-S2",
+   "kind": "A",
+   "atoms": [
+    1,
+    0,
+    2
+   ],
+   "branch": "pos",
+   "v0": 116.29461055076992,
+   "start": 116.29461055076992,
+   "end": 131.2946105507699,
+   "npoints": 11,
+   "dir": "scans/TIXREY/angle_S1-Zn-S2_pos"
+  },
+  {
+   "name": "angle_S1-Zn-N3",
+   "kind": "A",
+   "atoms": [
+    1,
+    0,
+    3
+   ],
+   "branch": "neg",
+   "v0": 101.30465005692177,
+   "start": 101.30465005692177,
+   "end": 86.30465005692177,
+   "npoints": 11,
+   "dir": "scans/TIXREY/angle_S1-Zn-N3_neg"
+  },
+  {
+   "name": "angle_S1-Zn-N3",
+   "kind": "A",
+   "atoms": [
+    1,
+    0,
+    3
+   ],
+   "branch": "pos",
+   "v0": 101.30465005692177,
+   "start": 101.30465005692177,
+   "end": 116.30465005692177,
+   "npoints": 11,
+   "dir": "scans/TIXREY/angle_S1-Zn-N3_pos"
+  },
+  {
+   "name": "angle_S1-Zn-N5",
+   "kind": "A",
+   "atoms": [
+    1,
+    0,
+    5
+   ],
+   "branch": "neg",
+   "v0": 121.56962384653372,
+   "start": 121.56962384653372,
+   "end": 106.56962384653372,
+   "npoints": 11,
+   "dir": "scans/TIXREY/angle_S1-Zn-N5_neg"
+  },
+  {
+   "name": "angle_S1-Zn-N5",
+   "kind": "A",
+   "atoms": [
+    1,
+    0,
+    5
+   ],
+   "branch": "pos",
+   "v0": 121.56962384653372,
+   "start": 121.56962384653372,
+   "end": 136.56962384653372,
+   "npoints": 11,
+   "dir": "scans/TIXREY/angle_S1-Zn-N5_pos"
+  },
+  {
+   "name": "angle_S2-Zn-N3",
+   "kind": "A",
+   "atoms": [
+    2,
+    0,
+    3
+   ],
+   "branch": "neg",
+   "v0": 117.60291502970182,
+   "start": 117.60291502970182,
+   "end": 102.60291502970182,
+   "npoints": 11,
+   "dir": "scans/TIXREY/angle_S2-Zn-N3_neg"
+  },
+  {
+   "name": "angle_S2-Zn-N3",
+   "kind": "A",
+   "atoms": [
+    2,
+    0,
+    3
+   ],
+   "branch": "pos",
+   "v0": 117.60291502970182,
+   "start": 117.60291502970182,
+   "end": 132.60291502970182,
+   "npoints": 11,
+   "dir": "scans/TIXREY/angle_S2-Zn-N3_pos"
+  },
+  {
+   "name": "angle_S2-Zn-N5",
+   "kind": "A",
+   "atoms": [
+    2,
+    0,
+    5
+   ],
+   "branch": "neg",
+   "v0": 101.14028254337175,
+   "start": 101.14028254337175,
+   "end": 86.14028254337175,
+   "npoints": 11,
+   "dir": "scans/TIXREY/angle_S2-Zn-N5_neg"
+  },
+  {
+   "name": "angle_S2-Zn-N5",
+   "kind": "A",
+   "atoms": [
+    2,
+    0,
+    5
+   ],
+   "branch": "pos",
+   "v0": 101.14028254337175,
+   "start": 101.14028254337175,
+   "end": 116.14028254337175,
+   "npoints": 11,
+   "dir": "scans/TIXREY/angle_S2-Zn-N5_pos"
+  },
+  {
+   "name": "angle_N3-Zn-N5",
+   "kind": "A",
+   "atoms": [
+    3,
+    0,
+    5
+   ],
+   "branch": "neg",
+   "v0": 98.49709058050865,
+   "start": 98.49709058050865,
+   "end": 83.49709058050865,
+   "npoints": 11,
+   "dir": "scans/TIXREY/angle_N3-Zn-N5_neg"
+  },
+  {
+   "name": "angle_N3-Zn-N5",
+   "kind": "A",
+   "atoms": [
+    3,
+    0,
+    5
+   ],
+   "branch": "pos",
+   "v0": 98.49709058050865,
+   "start": 98.49709058050865,
+   "end": 113.49709058050865,
+   "npoints": 11,
+   "dir": "scans/TIXREY/angle_N3-Zn-N5_pos"
+  },
+  {
+   "name": "twist_S1-S2-N3-N5",
+   "kind": "D",
+   "atoms": [
+    1,
+    2,
+    3,
+    5
+   ],
+   "branch": "neg",
+   "v0": -82.1429407912076,
+   "start": -82.1429407912076,
+   "end": -92.1429407912076,
+   "npoints": 11,
+   "dir": "scans/TIXREY/twist_S1-S2-N3-N5_neg"
+  },
+  {
+   "name": "twist_S1-S2-N3-N5",
+   "kind": "D",
+   "atoms": [
+    1,
+    2,
+    3,
+    5
+   ],
+   "branch": "pos",
+   "v0": -82.1429407912076,
+   "start": -82.1429407912076,
+   "end": -72.1429407912076,
+   "npoints": 11,
+   "dir": "scans/TIXREY/twist_S1-S2-N3-N5_pos"
+  },
+  {
+   "name": "tilt_Zn-S1-C11-C10",
+   "kind": "D",
+   "atoms": [
+    0,
+    1,
+    11,
+    10
+   ],
+   "branch": "neg",
+   "v0": -41.32328456471194,
+   "start": -41.32328456471194,
+   "end": -51.32328456471194,
+   "npoints": 11,
+   "dir": "scans/TIXREY/tilt_Zn-S1-C11-C10_neg"
+  },
+  {
+   "name": "tilt_Zn-S1-C11-C10",
+   "kind": "D",
+   "atoms": [
+    0,
+    1,
+    11,
+    10
+   ],
+   "branch": "pos",
+   "v0": -41.32328456471194,
+   "start": -41.32328456471194,
+   "end": -31.32328456471194,
+   "npoints": 11,
+   "dir": "scans/TIXREY/tilt_Zn-S1-C11-C10_pos"
+  },
+  {
+   "name": "tilt_Zn-S2-C39-C38",
+   "kind": "D",
+   "atoms": [
+    0,
+    2,
+    39,
+    38
+   ],
+   "branch": "neg",
+   "v0": -42.85226237677885,
+   "start": -42.85226237677885,
+   "end": -52.85226237677885,
+   "npoints": 11,
+   "dir": "scans/TIXREY/tilt_Zn-S2-C39-C38_neg"
+  },
+  {
+   "name": "tilt_Zn-S2-C39-C38",
+   "kind": "D",
+   "atoms": [
+    0,
+    2,
+    39,
+    38
+   ],
+   "branch": "pos",
+   "v0": -42.85226237677885,
+   "start": -42.85226237677885,
+   "end": -32.85226237677885,
+   "npoints": 11,
+   "dir": "scans/TIXREY/tilt_Zn-S2-C39-C38_pos"
+  },
+  {
+   "name": "tilt_Zn-N3-C7-C10",
+   "kind": "D",
+   "atoms": [
+    0,
+    3,
+    7,
+    10
+   ],
+   "branch": "neg",
+   "v0": -68.74377116496701,
+   "start": -68.74377116496701,
+   "end": -78.74377116496701,
+   "npoints": 11,
+   "dir": "scans/TIXREY/tilt_Zn-N3-C7-C10_neg"
+  },
+  {
+   "name": "tilt_Zn-N3-C7-C10",
+   "kind": "D",
+   "atoms": [
+    0,
+    3,
+    7,
+    10
+   ],
+   "branch": "pos",
+   "v0": -68.74377116496701,
+   "start": -68.74377116496701,
+   "end": -58.743771164967015,
+   "npoints": 11,
+   "dir": "scans/TIXREY/tilt_Zn-N3-C7-C10_pos"
+  },
+  {
+   "name": "tilt_Zn-N5-C32-C23",
+   "kind": "D",
+   "atoms": [
+    0,
+    5,
+    32,
+    23
+   ],
+   "branch": "neg",
+   "v0": -49.635745198229706,
+   "start": -49.635745198229706,
+   "end": -59.635745198229706,
+   "npoints": 11,
+   "dir": "scans/TIXREY/tilt_Zn-N5-C32-C23_neg"
+  },
+  {
+   "name": "tilt_Zn-N5-C32-C23",
+   "kind": "D",
+   "atoms": [
+    0,
+    5,
+    32,
+    23
+   ],
+   "branch": "pos",
+   "v0": -49.635745198229706,
+   "start": -49.635745198229706,
+   "end": -39.635745198229706,
+   "npoints": 11,
+   "dir": "scans/TIXREY/tilt_Zn-N5-C32-C23_pos"
+  }
+ ]
+}

@@ -1,0 +1,464 @@
+{
+ "ref": "EGORAT",
+ "zn": 0,
+ "donors": [
+  1,
+  2,
+  3,
+  6
+ ],
+ "coords": [
+  {
+   "name": "bond_Zn-S1",
+   "kind": "B",
+   "atoms": [
+    0,
+    1
+   ],
+   "branch": "neg",
+   "v0": 2.3056184501708827,
+   "start": 2.3056184501708827,
+   "end": 2.2456184501708827,
+   "npoints": 4,
+   "dir": "scans/EGORAT/bond_Zn-S1_neg"
+  },
+  {
+   "name": "bond_Zn-S1",
+   "kind": "B",
+   "atoms": [
+    0,
+    1
+   ],
+   "branch": "pos",
+   "v0": 2.3056184501708827,
+   "start": 2.3056184501708827,
+   "end": 2.505618450170883,
+   "npoints": 11,
+   "dir": "scans/EGORAT/bond_Zn-S1_pos"
+  },
+  {
+   "name": "bond_Zn-S2",
+   "kind": "B",
+   "atoms": [
+    0,
+    2
+   ],
+   "branch": "neg",
+   "v0": 2.305838861364719,
+   "start": 2.305838861364719,
+   "end": 2.245838861364719,
+   "npoints": 4,
+   "dir": "scans/EGORAT/bond_Zn-S2_neg"
+  },
+  {
+   "name": "bond_Zn-S2",
+   "kind": "B",
+   "atoms": [
+    0,
+    2
+   ],
+   "branch": "pos",
+   "v0": 2.305838861364719,
+   "start": 2.305838861364719,
+   "end": 2.5058388613647193,
+   "npoints": 11,
+   "dir": "scans/EGORAT/bond_Zn-S2_pos"
+  },
+  {
+   "name": "bond_Zn-N3",
+   "kind": "B",
+   "atoms": [
+    0,
+    3
+   ],
+   "branch": "neg",
+   "v0": 2.0773643151074768,
+   "start": 2.0773643151074768,
+   "end": 2.0173643151074767,
+   "npoints": 4,
+   "dir": "scans/EGORAT/bond_Zn-N3_neg"
+  },
+  {
+   "name": "bond_Zn-N3",
+   "kind": "B",
+   "atoms": [
+    0,
+    3
+   ],
+   "branch": "pos",
+   "v0": 2.0773643151074768,
+   "start": 2.0773643151074768,
+   "end": 2.277364315107477,
+   "npoints": 11,
+   "dir": "scans/EGORAT/bond_Zn-N3_pos"
+  },
+  {
+   "name": "bond_Zn-N6",
+   "kind": "B",
+   "atoms": [
+    0,
+    6
+   ],
+   "branch": "neg",
+   "v0": 2.0779981188716405,
+   "start": 2.0779981188716405,
+   "end": 2.0179981188716405,
+   "npoints": 4,
+   "dir": "scans/EGORAT/bond_Zn-N6_neg"
+  },
+  {
+   "name": "bond_Zn-N6",
+   "kind": "B",
+   "atoms": [
+    0,
+    6
+   ],
+   "branch": "pos",
+   "v0": 2.0779981188716405,
+   "start": 2.0779981188716405,
+   "end": 2.2779981188716407,
+   "npoints": 11,
+   "dir": "scans/EGORAT/bond_Zn-N6_pos"
+  },
+  {
+   "name": "angle_S1-Zn-S2",
+   "kind": "A",
+   "atoms": [
+    1,
+    0,
+    2
+   ],
+   "branch": "neg",
+   "v0": 128.041919498776,
+   "start": 128.041919498776,
+   "end": 113.041919498776,
+   "npoints": 11,
+   "dir": "scans/EGORAT/angle_S1-Zn-S2_neg"
+  },
+  {
+   "name": "angle_S1-Zn-S2",
+   "kind": "A",
+   "atoms": [
+    1,
+    0,
+    2
+   ],
+   "branch": "pos",
+   "v0": 128.041919498776,
+   "start": 128.041919498776,
+   "end": 143.041919498776,
+   "npoints": 11,
+   "dir": "scans/EGORAT/angle_S1-Zn-S2_pos"
+  },
+  {
+   "name": "angle_S1-Zn-N3",
+   "kind": "A",
+   "atoms": [
+    1,
+    0,
+    3
+   ],
+   "branch": "neg",
+   "v0": 86.15352451502442,
+   "start": 86.15352451502442,
+   "end": 71.15352451502442,
+   "npoints": 11,
+   "dir": "scans/EGORAT/angle_S1-Zn-N3_neg"
+  },
+  {
+   "name": "angle_S1-Zn-N3",
+   "kind": "A",
+   "atoms": [
+    1,
+    0,
+    3
+   ],
+   "branch": "pos",
+   "v0": 86.15352451502442,
+   "start": 86.15352451502442,
+   "end": 101.15352451502442,
+   "npoints": 11,
+   "dir": "scans/EGORAT/angle_S1-Zn-N3_pos"
+  },
+  {
+   "name": "angle_S1-Zn-N6",
+   "kind": "A",
+   "atoms": [
+    1,
+    0,
+    6
+   ],
+   "branch": "neg",
+   "v0": 128.63662884774033,
+   "start": 128.63662884774033,
+   "end": 113.63662884774033,
+   "npoints": 11,
+   "dir": "scans/EGORAT/angle_S1-Zn-N6_neg"
+  },
+  {
+   "name": "angle_S1-Zn-N6",
+   "kind": "A",
+   "atoms": [
+    1,
+    0,
+    6
+   ],
+   "branch": "pos",
+   "v0": 128.63662884774033,
+   "start": 128.63662884774033,
+   "end": 143.63662884774033,
+   "npoints": 11,
+   "dir": "scans/EGORAT/angle_S1-Zn-N6_pos"
+  },
+  {
+   "name": "angle_S2-Zn-N3",
+   "kind": "A",
+   "atoms": [
+    2,
+    0,
+    3
+   ],
+   "branch": "neg",
+   "v0": 127.93302197175429,
+   "start": 127.93302197175429,
+   "end": 112.93302197175429,
+   "npoints": 11,
+   "dir": "scans/EGORAT/angle_S2-Zn-N3_neg"
+  },
+  {
+   "name": "angle_S2-Zn-N3",
+   "kind": "A",
+   "atoms": [
+    2,
+    0,
+    3
+   ],
+   "branch": "pos",
+   "v0": 127.93302197175429,
+   "start": 127.93302197175429,
+   "end": 142.93302197175427,
+   "npoints": 11,
+   "dir": "scans/EGORAT/angle_S2-Zn-N3_pos"
+  },
+  {
+   "name": "angle_S2-Zn-N6",
+   "kind": "A",
+   "atoms": [
+    2,
+    0,
+    6
+   ],
+   "branch": "neg",
+   "v0": 86.10046002946702,
+   "start": 86.10046002946702,
+   "end": 71.10046002946702,
+   "npoints": 11,
+   "dir": "scans/EGORAT/angle_S2-Zn-N6_neg"
+  },
+  {
+   "name": "angle_S2-Zn-N6",
+   "kind": "A",
+   "atoms": [
+    2,
+    0,
+    6
+   ],
+   "branch": "pos",
+   "v0": 86.10046002946702,
+   "start": 86.10046002946702,
+   "end": 101.10046002946702,
+   "npoints": 11,
+   "dir": "scans/EGORAT/angle_S2-Zn-N6_pos"
+  },
+  {
+   "name": "angle_N3-Zn-N6",
+   "kind": "A",
+   "atoms": [
+    3,
+    0,
+    6
+   ],
+   "branch": "neg",
+   "v0": 101.880474426665,
+   "start": 101.880474426665,
+   "end": 86.880474426665,
+   "npoints": 11,
+   "dir": "scans/EGORAT/angle_N3-Zn-N6_neg"
+  },
+  {
+   "name": "angle_N3-Zn-N6",
+   "kind": "A",
+   "atoms": [
+    3,
+    0,
+    6
+   ],
+   "branch": "pos",
+   "v0": 101.880474426665,
+   "start": 101.880474426665,
+   "end": 116.880474426665,
+   "npoints": 11,
+   "dir": "scans/EGORAT/angle_N3-Zn-N6_pos"
+  },
+  {
+   "name": "twist_S1-N3-S2-N6",
+   "kind": "D",
+   "atoms": [
+    1,
+    3,
+    2,
+    6
+   ],
+   "branch": "neg",
+   "v0": 90.90578980589409,
+   "start": 90.90578980589409,
+   "end": 80.90578980589409,
+   "npoints": 11,
+   "dir": "scans/EGORAT/twist_S1-N3-S2-N6_neg"
+  },
+  {
+   "name": "twist_S1-N3-S2-N6",
+   "kind": "D",
+   "atoms": [
+    1,
+    3,
+    2,
+    6
+   ],
+   "branch": "pos",
+   "v0": 90.90578980589409,
+   "start": 90.90578980589409,
+   "end": 100.90578980589409,
+   "npoints": 11,
+   "dir": "scans/EGORAT/twist_S1-N3-S2-N6_pos"
+  },
+  {
+   "name": "tilt_Zn-S1-C9-N4",
+   "kind": "D",
+   "atoms": [
+    0,
+    1,
+    9,
+    4
+   ],
+   "branch": "neg",
+   "v0": -4.664344003608735,
+   "start": -4.664344003608735,
+   "end": -14.664344003608736,
+   "npoints": 11,
+   "dir": "scans/EGORAT/tilt_Zn-S1-C9-N4_neg"
+  },
+  {
+   "name": "tilt_Zn-S1-C9-N4",
+   "kind": "D",
+   "atoms": [
+    0,
+    1,
+    9,
+    4
+   ],
+   "branch": "pos",
+   "v0": -4.664344003608735,
+   "start": -4.664344003608735,
+   "end": 5.335655996391265,
+   "npoints": 11,
+   "dir": "scans/EGORAT/tilt_Zn-S1-C9-N4_pos"
+  },
+  {
+   "name": "tilt_Zn-S2-C37-N7",
+   "kind": "D",
+   "atoms": [
+    0,
+    2,
+    37,
+    7
+   ],
+   "branch": "neg",
+   "v0": -4.9275035540540495,
+   "start": -4.9275035540540495,
+   "end": -14.927503554054049,
+   "npoints": 11,
+   "dir": "scans/EGORAT/tilt_Zn-S2-C37-N7_neg"
+  },
+  {
+   "name": "tilt_Zn-S2-C37-N7",
+   "kind": "D",
+   "atoms": [
+    0,
+    2,
+    37,
+    7
+   ],
+   "branch": "pos",
+   "v0": -4.9275035540540495,
+   "start": -4.9275035540540495,
+   "end": 5.0724964459459505,
+   "npoints": 11,
+   "dir": "scans/EGORAT/tilt_Zn-S2-C37-N7_pos"
+  },
+  {
+   "name": "tilt_Zn-N3-C28-C33",
+   "kind": "D",
+   "atoms": [
+    0,
+    3,
+    28,
+    33
+   ],
+   "branch": "neg",
+   "v0": -10.15593513331121,
+   "start": -10.15593513331121,
+   "end": -20.15593513331121,
+   "npoints": 11,
+   "dir": "scans/EGORAT/tilt_Zn-N3-C28-C33_neg"
+  },
+  {
+   "name": "tilt_Zn-N3-C28-C33",
+   "kind": "D",
+   "atoms": [
+    0,
+    3,
+    28,
+    33
+   ],
+   "branch": "pos",
+   "v0": -10.15593513331121,
+   "start": -10.15593513331121,
+   "end": -0.15593513331121045,
+   "npoints": 11,
+   "dir": "scans/EGORAT/tilt_Zn-N3-C28-C33_pos"
+  },
+  {
+   "name": "tilt_Zn-N6-C56-C61",
+   "kind": "D",
+   "atoms": [
+    0,
+    6,
+    56,
+    61
+   ],
+   "branch": "neg",
+   "v0": -9.857411909126318,
+   "start": -9.857411909126318,
+   "end": -19.85741190912632,
+   "npoints": 11,
+   "dir": "scans/EGORAT/tilt_Zn-N6-C56-C61_neg"
+  },
+  {
+   "name": "tilt_Zn-N6-C56-C61",
+   "kind": "D",
+   "atoms": [
+    0,
+    6,
+    56,
+    61
+   ],
+   "branch": "pos",
+   "v0": -9.857411909126318,
+   "start": -9.857411909126318,
+   "end": 0.14258809087368185,
+   "npoints": 11,
+   "dir": "scans/EGORAT/tilt_Zn-N6-C56-C61_pos"
+  }
+ ]
+}
