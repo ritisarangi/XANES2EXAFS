@@ -147,6 +147,7 @@ Other options: `CORES`, `HT`, `HBM`, `MAXCORE`, `SCRATCH` (see `sites/aurora.sh`
 - 2026-10-23 03:41: capacity farm 8953480 (`main`, ModCon, 16 nodes x 6 h, 384 slots) started after 13.5 h in the queue, ending the 9 h gap.
 - 2026-10-23 05:05: 256-node farm 8947436 (`main`, ModCon, `small`, 6 h) started after 67 h in the queue: 6,144 slots, all busy; with 8953480 (16 nodes) that is 6,528 main branches running at once and 1,531 left in the main queue.
 - 2026-10-23 08:15: the 6-hourly publish took 57 min (07:12-08:09): `audit.py` read every log on a Lustre busy with 6,528 running branches, holding `.gosh.lock`, which the farms need for their end-of-run re-queue. `go.sh publish` now first asks `publish.py --pending` whether any complex is ready and runs the audit only then. Autopilot restarted with the change.
+- 2026-10-23 09:30: farm 8953480 (`main`, ModCon, 16 nodes x 6 h) ended normally and re-queued 382 of its 383 stopped branches itself (the other one was completed or prepared outside the pool). 256-node farm 8947436 runs until about 11:05; main queue 964 pending.
 
 ## Results for Riti
 
