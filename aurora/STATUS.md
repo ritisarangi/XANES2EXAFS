@@ -1,6 +1,6 @@
 # Zn scan campaign on Aurora: status
 
-Generated 2026-10-22 22:56 UTC by `aurora/autopilot.sh`. Human-written notes are in the run log of `aurora/README.md`; validated results are on the `aurora-results` branch.
+Generated 2026-10-23 01:10 UTC by `aurora/autopilot.sh`. Human-written notes are in the run log of `aurora/README.md`; validated results are on the `aurora-results` branch.
 
 ## Branches
 
@@ -25,12 +25,12 @@ allocation: 48,810.6 Node Hours available on ModCon
 ## Last autopilot actions
 
 ```
-[2026-10-22 19:50:33] publish: publish: no newly finished complexes nothing new to commit 
-prioritize main: 41 of 8078 pending branches belong to complexes at least half done
 prioritize big: 15 of 515 pending branches belong to complexes at least half done
 prioritize main: 41 of 8078 pending branches belong to complexes at least half done
 prioritize big: 15 of 515 pending branches belong to complexes at least half done
-[2026-10-22 21:05:38] STATUS.md pushed
+[2026-10-22 22:57:14] STATUS.md pushed
+prioritize main: 41 of 8078 pending branches belong to complexes at least half done
+prioritize big: 15 of 515 pending branches belong to complexes at least half done
 prioritize main: 41 of 8078 pending branches belong to complexes at least half done
 prioritize big: 15 of 515 pending branches belong to complexes at least half done
 prioritize main: 41 of 8078 pending branches belong to complexes at least half done
