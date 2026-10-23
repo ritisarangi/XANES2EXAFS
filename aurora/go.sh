@@ -134,6 +134,9 @@ publish)
   # aurora-results branch (checked out at RESULTS, default: a worktree next to this clone) and push
   RESULTS=${RESULTS:-$(dirname "$REPO")/XANES2EXAFS-results}
   cd "$WORK"
+  # the audit reads every log and holds the lock the farms need at their end: run it only when a
+  # complex is ready to publish
+  python3 "$HERE/publish.py" . scans/jobs_scan_full.txt "$RESULTS" --pending || { echo "publish: no newly finished complexes"; exit 0; }
   python3 "$HERE/audit.py" . scans/jobs_scan_full.txt || { echo "audit found problems: nothing published"; exit 1; }
   python3 "$HERE/publish.py" . scans/jobs_scan_full.txt "$RESULTS"
   cd "$RESULTS"
