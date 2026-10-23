@@ -150,7 +150,7 @@ Other options: `CORES`, `HT`, `HBM`, `MAXCORE`, `SCRATCH` (see `sites/aurora.sh`
 - 2026-10-23 09:30: farm 8953480 (`main`, ModCon, 16 nodes x 6 h) ended normally and re-queued 382 of its 383 stopped branches itself (the other one was completed or prepared outside the pool). 256-node farm 8947436 runs until about 11:05; main queue 964 pending.
 - 2026-10-23 10:06: capacity farm 8954403 (`big`, ModCon, 16 nodes x 6 h, 192 slots) started; replacement `main` capacity farm 8956596 queued. The 256-node farm stops taking new branches near its deadline (tail cutoff) and ends about 11:05.
 - 2026-10-23 11:05: 256-node farm 8947436 ran its full 6 h, then was killed at the walltime during its end-of-run re-queue: `restart.py` prepared its 6,015 stopped branches (24 min on the busy Lustre) but `queue.py add` did not finish. No work lost; re-queued by hand at 11:33 (5,999 continuations to the front of `main`, 6,756 pending). Fix: `go.sh` gives farms of 64+ nodes `MARGIN_MIN=50` (ORCA stops 50 min before the walltime) instead of 25. Autopilot restarted with it at 12:25; a 256-node farm it had just submitted with the old margin (8956768, 0 h eligible) was cancelled for a new one. 8939977 (queued since 10/17, old margin) is kept: if it hits the same, the autopilot backup re-queues.
-- 2026-10-23 12:53: 256-node farm 8956793 (`main`, ModCon, 6 h, `MARGIN_MIN=50`) started 10 min after submission: 6,144 slots, which took 6,267 of the 6,756 pending main branches; 489 left in the main queue.
+- 2026-10-23 12:47: 256-node farm 8956793 (`main`, ModCon, 6 h, `MARGIN_MIN=50`) started 5 min after submission: 6,144 slots, which took 6,267 of the 6,756 pending main branches; 489 left in the main queue.
 
 ## Results for Riti
 
