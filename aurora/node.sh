@@ -30,12 +30,18 @@ slot() {
   mem=; [ "$HBM" = 1 ] && mem="numactl --preferred=$hbm"
   # each slot gets its own OpenMPI session and shared-memory directory: with many mpiruns per
   # node, shared ones collide and a rank dies with SIGBUS in btl_vader
-  local ompi=/tmp/zn_ompi_${JOB}_$s; mkdir -p "$ompi"
+  local ompi=/tmp/zn_ompi_${JOB}_$s idle=0; mkdir -p "$ompi"
   while :; do
     [ -e "$QDIR/STOP" ] || [ -e "$QDIR/stop_$JOB" ] && break
     [ $(( DEADLINE - $(date +%s) )) -lt $MIN_START ] && break
     D=$(claim)
-    [ -n "$D" ] || break
+    if [ -z "$D" ]; then
+      # empty queue while another farm of this pool still runs: its stopped branches come back
+      # when it ends, so wait for them (at most WAIT_MIN, default 45) instead of giving up the nodes
+      [ "$(ls "$QDIR/active" 2>/dev/null | grep -vc "^${JOB}_")" -gt 0 ] && [ $idle -lt $(( ${WAIT_MIN:-45} * 60 )) ] || break
+      sleep 120; idle=$((idle + 120)); continue
+    fi
+    idle=0
     seq=$((seq + 1))
     # one ORCA per folder, ever: the slot (and ORCA, which inherits fd 7) holds the folder's lock
     # while it runs; restart.py takes the same lock before it touches a folder
