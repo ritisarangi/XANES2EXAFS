@@ -130,7 +130,8 @@ def main():
             if not ok:
                 notes.append("%s eps %s: not finished" % (ref, e))
                 continue
-            if e != "80" and (eps_used is None or abs(eps_used - float(e)) > 0.01):
+            gas = float(e) <= 1.0 and eps_used is None      # epsilon 1 runs are gas phase: no CPCM printout
+            if e != "80" and not gas and (eps_used is None or abs(eps_used - float(e)) > 0.01):
                 notes.append("%s eps %s: ORCA printed epsilon %s, result not used" % (ref, e, eps_used))
                 continue
             masses, freqs, modes = read_hess(os.path.join(d, ref + ".hess"))
