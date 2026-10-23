@@ -1,0 +1,464 @@
+{
+ "ref": "LEQHAU",
+ "zn": 16,
+ "donors": [
+  12,
+  13,
+  14,
+  15
+ ],
+ "coords": [
+  {
+   "name": "bond_Zn-S12",
+   "kind": "B",
+   "atoms": [
+    16,
+    12
+   ],
+   "branch": "neg",
+   "v0": 2.372497074416956,
+   "start": 2.372497074416956,
+   "end": 2.3124970744169557,
+   "npoints": 4,
+   "dir": "scans/LEQHAU/bond_Zn-S12_neg"
+  },
+  {
+   "name": "bond_Zn-S12",
+   "kind": "B",
+   "atoms": [
+    16,
+    12
+   ],
+   "branch": "pos",
+   "v0": 2.372497074416956,
+   "start": 2.372497074416956,
+   "end": 2.572497074416956,
+   "npoints": 11,
+   "dir": "scans/LEQHAU/bond_Zn-S12_pos"
+  },
+  {
+   "name": "bond_Zn-S13",
+   "kind": "B",
+   "atoms": [
+    16,
+    13
+   ],
+   "branch": "neg",
+   "v0": 2.3725018962177846,
+   "start": 2.3725018962177846,
+   "end": 2.3125018962177846,
+   "npoints": 4,
+   "dir": "scans/LEQHAU/bond_Zn-S13_neg"
+  },
+  {
+   "name": "bond_Zn-S13",
+   "kind": "B",
+   "atoms": [
+    16,
+    13
+   ],
+   "branch": "pos",
+   "v0": 2.3725018962177846,
+   "start": 2.3725018962177846,
+   "end": 2.572501896217785,
+   "npoints": 11,
+   "dir": "scans/LEQHAU/bond_Zn-S13_pos"
+  },
+  {
+   "name": "bond_Zn-S14",
+   "kind": "B",
+   "atoms": [
+    16,
+    14
+   ],
+   "branch": "neg",
+   "v0": 2.3714895109081735,
+   "start": 2.3714895109081735,
+   "end": 2.3114895109081735,
+   "npoints": 4,
+   "dir": "scans/LEQHAU/bond_Zn-S14_neg"
+  },
+  {
+   "name": "bond_Zn-S14",
+   "kind": "B",
+   "atoms": [
+    16,
+    14
+   ],
+   "branch": "pos",
+   "v0": 2.3714895109081735,
+   "start": 2.3714895109081735,
+   "end": 2.5714895109081737,
+   "npoints": 11,
+   "dir": "scans/LEQHAU/bond_Zn-S14_pos"
+  },
+  {
+   "name": "bond_Zn-S15",
+   "kind": "B",
+   "atoms": [
+    16,
+    15
+   ],
+   "branch": "neg",
+   "v0": 2.3714919637451666,
+   "start": 2.3714919637451666,
+   "end": 2.3114919637451665,
+   "npoints": 4,
+   "dir": "scans/LEQHAU/bond_Zn-S15_neg"
+  },
+  {
+   "name": "bond_Zn-S15",
+   "kind": "B",
+   "atoms": [
+    16,
+    15
+   ],
+   "branch": "pos",
+   "v0": 2.3714919637451666,
+   "start": 2.3714919637451666,
+   "end": 2.5714919637451668,
+   "npoints": 11,
+   "dir": "scans/LEQHAU/bond_Zn-S15_pos"
+  },
+  {
+   "name": "angle_S12-Zn-S13",
+   "kind": "A",
+   "atoms": [
+    12,
+    16,
+    13
+   ],
+   "branch": "neg",
+   "v0": 118.3706937452228,
+   "start": 118.3706937452228,
+   "end": 103.3706937452228,
+   "npoints": 11,
+   "dir": "scans/LEQHAU/angle_S12-Zn-S13_neg"
+  },
+  {
+   "name": "angle_S12-Zn-S13",
+   "kind": "A",
+   "atoms": [
+    12,
+    16,
+    13
+   ],
+   "branch": "pos",
+   "v0": 118.3706937452228,
+   "start": 118.3706937452228,
+   "end": 133.3706937452228,
+   "npoints": 11,
+   "dir": "scans/LEQHAU/angle_S12-Zn-S13_pos"
+  },
+  {
+   "name": "angle_S12-Zn-S14",
+   "kind": "A",
+   "atoms": [
+    12,
+    16,
+    14
+   ],
+   "branch": "neg",
+   "v0": 92.50959529562624,
+   "start": 92.50959529562624,
+   "end": 77.50959529562624,
+   "npoints": 11,
+   "dir": "scans/LEQHAU/angle_S12-Zn-S14_neg"
+  },
+  {
+   "name": "angle_S12-Zn-S14",
+   "kind": "A",
+   "atoms": [
+    12,
+    16,
+    14
+   ],
+   "branch": "pos",
+   "v0": 92.50959529562624,
+   "start": 92.50959529562624,
+   "end": 107.50959529562624,
+   "npoints": 11,
+   "dir": "scans/LEQHAU/angle_S12-Zn-S14_pos"
+  },
+  {
+   "name": "angle_S12-Zn-S15",
+   "kind": "A",
+   "atoms": [
+    12,
+    16,
+    15
+   ],
+   "branch": "neg",
+   "v0": 118.63027112615003,
+   "start": 118.63027112615003,
+   "end": 103.63027112615003,
+   "npoints": 11,
+   "dir": "scans/LEQHAU/angle_S12-Zn-S15_neg"
+  },
+  {
+   "name": "angle_S12-Zn-S15",
+   "kind": "A",
+   "atoms": [
+    12,
+    16,
+    15
+   ],
+   "branch": "pos",
+   "v0": 118.63027112615003,
+   "start": 118.63027112615003,
+   "end": 133.63027112615003,
+   "npoints": 11,
+   "dir": "scans/LEQHAU/angle_S12-Zn-S15_pos"
+  },
+  {
+   "name": "angle_S13-Zn-S14",
+   "kind": "A",
+   "atoms": [
+    13,
+    16,
+    14
+   ],
+   "branch": "neg",
+   "v0": 118.62985384192012,
+   "start": 118.62985384192012,
+   "end": 103.62985384192012,
+   "npoints": 11,
+   "dir": "scans/LEQHAU/angle_S13-Zn-S14_neg"
+  },
+  {
+   "name": "angle_S13-Zn-S14",
+   "kind": "A",
+   "atoms": [
+    13,
+    16,
+    14
+   ],
+   "branch": "pos",
+   "v0": 118.62985384192012,
+   "start": 118.62985384192012,
+   "end": 133.62985384192012,
+   "npoints": 11,
+   "dir": "scans/LEQHAU/angle_S13-Zn-S14_pos"
+  },
+  {
+   "name": "angle_S13-Zn-S15",
+   "kind": "A",
+   "atoms": [
+    13,
+    16,
+    15
+   ],
+   "branch": "neg",
+   "v0": 92.50949661995335,
+   "start": 92.50949661995335,
+   "end": 77.50949661995335,
+   "npoints": 11,
+   "dir": "scans/LEQHAU/angle_S13-Zn-S15_neg"
+  },
+  {
+   "name": "angle_S13-Zn-S15",
+   "kind": "A",
+   "atoms": [
+    13,
+    16,
+    15
+   ],
+   "branch": "pos",
+   "v0": 92.50949661995335,
+   "start": 92.50949661995335,
+   "end": 107.50949661995335,
+   "npoints": 11,
+   "dir": "scans/LEQHAU/angle_S13-Zn-S15_pos"
+  },
+  {
+   "name": "angle_S14-Zn-S15",
+   "kind": "A",
+   "atoms": [
+    14,
+    16,
+    15
+   ],
+   "branch": "neg",
+   "v0": 118.6163514552538,
+   "start": 118.6163514552538,
+   "end": 103.6163514552538,
+   "npoints": 11,
+   "dir": "scans/LEQHAU/angle_S14-Zn-S15_neg"
+  },
+  {
+   "name": "angle_S14-Zn-S15",
+   "kind": "A",
+   "atoms": [
+    14,
+    16,
+    15
+   ],
+   "branch": "pos",
+   "v0": 118.6163514552538,
+   "start": 118.6163514552538,
+   "end": 133.6163514552538,
+   "npoints": 11,
+   "dir": "scans/LEQHAU/angle_S14-Zn-S15_pos"
+  },
+  {
+   "name": "twist_S12-S14-S13-S15",
+   "kind": "D",
+   "atoms": [
+    12,
+    14,
+    13,
+    15
+   ],
+   "branch": "neg",
+   "v0": -77.71283896036282,
+   "start": -77.71283896036282,
+   "end": -87.71283896036282,
+   "npoints": 11,
+   "dir": "scans/LEQHAU/twist_S12-S14-S13-S15_neg"
+  },
+  {
+   "name": "twist_S12-S14-S13-S15",
+   "kind": "D",
+   "atoms": [
+    12,
+    14,
+    13,
+    15
+   ],
+   "branch": "pos",
+   "v0": -77.71283896036282,
+   "start": -77.71283896036282,
+   "end": -67.71283896036282,
+   "npoints": 11,
+   "dir": "scans/LEQHAU/twist_S12-S14-S13-S15_pos"
+  },
+  {
+   "name": "tilt_Zn-S12-C2-C4",
+   "kind": "D",
+   "atoms": [
+    16,
+    12,
+    2,
+    4
+   ],
+   "branch": "neg",
+   "v0": 0.48714495259140933,
+   "start": 0.48714495259140933,
+   "end": -9.512855047408591,
+   "npoints": 11,
+   "dir": "scans/LEQHAU/tilt_Zn-S12-C2-C4_neg"
+  },
+  {
+   "name": "tilt_Zn-S12-C2-C4",
+   "kind": "D",
+   "atoms": [
+    16,
+    12,
+    2,
+    4
+   ],
+   "branch": "pos",
+   "v0": 0.48714495259140933,
+   "start": 0.48714495259140933,
+   "end": 10.487144952591409,
+   "npoints": 11,
+   "dir": "scans/LEQHAU/tilt_Zn-S12-C2-C4_pos"
+  },
+  {
+   "name": "tilt_Zn-S13-C3-C5",
+   "kind": "D",
+   "atoms": [
+    16,
+    13,
+    3,
+    5
+   ],
+   "branch": "neg",
+   "v0": 0.493753350406187,
+   "start": 0.493753350406187,
+   "end": -9.506246649593812,
+   "npoints": 11,
+   "dir": "scans/LEQHAU/tilt_Zn-S13-C3-C5_neg"
+  },
+  {
+   "name": "tilt_Zn-S13-C3-C5",
+   "kind": "D",
+   "atoms": [
+    16,
+    13,
+    3,
+    5
+   ],
+   "branch": "pos",
+   "v0": 0.493753350406187,
+   "start": 0.493753350406187,
+   "end": 10.493753350406188,
+   "npoints": 11,
+   "dir": "scans/LEQHAU/tilt_Zn-S13-C3-C5_pos"
+  },
+  {
+   "name": "tilt_Zn-S14-C4-C2",
+   "kind": "D",
+   "atoms": [
+    16,
+    14,
+    4,
+    2
+   ],
+   "branch": "neg",
+   "v0": -0.49480344633040224,
+   "start": -0.49480344633040224,
+   "end": -10.494803446330403,
+   "npoints": 11,
+   "dir": "scans/LEQHAU/tilt_Zn-S14-C4-C2_neg"
+  },
+  {
+   "name": "tilt_Zn-S14-C4-C2",
+   "kind": "D",
+   "atoms": [
+    16,
+    14,
+    4,
+    2
+   ],
+   "branch": "pos",
+   "v0": -0.49480344633040224,
+   "start": -0.49480344633040224,
+   "end": 9.505196553669597,
+   "npoints": 11,
+   "dir": "scans/LEQHAU/tilt_Zn-S14-C4-C2_pos"
+  },
+  {
+   "name": "tilt_Zn-S15-C5-C3",
+   "kind": "D",
+   "atoms": [
+    16,
+    15,
+    5,
+    3
+   ],
+   "branch": "neg",
+   "v0": -0.5023278173635627,
+   "start": -0.5023278173635627,
+   "end": -10.502327817363563,
+   "npoints": 11,
+   "dir": "scans/LEQHAU/tilt_Zn-S15-C5-C3_neg"
+  },
+  {
+   "name": "tilt_Zn-S15-C5-C3",
+   "kind": "D",
+   "atoms": [
+    16,
+    15,
+    5,
+    3
+   ],
+   "branch": "pos",
+   "v0": -0.5023278173635627,
+   "start": -0.5023278173635627,
+   "end": 9.497672182636437,
+   "npoints": 11,
+   "dir": "scans/LEQHAU/tilt_Zn-S15-C5-C3_pos"
+  }
+ ]
+}
