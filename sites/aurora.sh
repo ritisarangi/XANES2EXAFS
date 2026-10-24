@@ -30,6 +30,7 @@ slots_per_node() { local p=$CORES; [ "$HT" = 1 ] && p=$((CORES / 2)); echo $(( 2
 setup_env() {
   ORCA=${ORCA_DIR:?set ORCA_DIR}
   export PATH=$ORCA:${MPI_DIR:?set MPI_DIR}/bin:$PATH LD_LIBRARY_PATH=$ORCA:$MPI_DIR/lib:$LD_LIBRARY_PATH
+  export OPAL_PREFIX=$MPI_DIR      # OpenMPI may have been copied from the folder it was built in
   export OMPI_MCA_btl=self,vader OMPI_MCA_pml=ob1 OMPI_MCA_mtl=^ofi
   # each ORCA run is confined to its slot with taskset; OpenMPI must not bind on top of that
   export OMPI_MCA_hwloc_base_binding_policy=none OMPI_MCA_rmaps_base_oversubscribe=1

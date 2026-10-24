@@ -101,7 +101,10 @@ def prepare(dft, d, dry):
     kind, atoms, v1, v2, n = m.group(1), m.group(2).split(), float(m.group(3)), float(m.group(4)), int(m.group(5))
     natoms = len(inp.split("* xyz")[1].strip().split("\n")) - 2
     acc = acc_load(full)
-    part = read(os.path.join(full, "scan_cont.out")) if acc else read(os.path.join(full, "scan.out"))
+    # the run that stopped wrote scan_cont.out if it was a continuation (even one that restarted
+    # from the original input because no step had converged yet), scan.out if it was the first run
+    cont = os.path.join(full, "scan_cont.out")
+    part = read(cont) if os.path.exists(cont) else read(os.path.join(full, "scan.out"))
     good = leading_good(part)
     acc = acc + good
     k = len(acc)
