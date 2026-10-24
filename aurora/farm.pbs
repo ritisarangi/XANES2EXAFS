@@ -40,11 +40,15 @@ kill $MON 2>/dev/null; wait $MON 2>/dev/null
 # without anyone on a login node (go.sh submit and the autopilot do the same; the lock keeps them
 # apart). The pool's atom range follows the queue folder name.
 pool=$(basename "$QDIR")
-if [ "$pool" = big ]; then export NATOMS_MIN=${BIG_ATOMS:-100} NATOMS_MAX=1000000; else export NATOMS_MIN=0 NATOMS_MAX=${BIG_ATOMS:-100}; fi
+[ -n "${TEST:-}" ] && { echo "farm $JOB done $(date '+%F %T') (test)"; exit 0; }
 (
   flock 8
   echo "$(date '+%F %T') requeue after farm $JOB ($pool)"
   RESUME_PARTIAL=1 python3 "$REPO/scans/restart.py" . | tail -1
-  python3 "$REPO/aurora/queue.py" add . scans/jobs_scan_full.txt "queue/$pool"
+  # a mixed main farm (node.sh) also ran big branches: re-queue both pools
+  for p in $pool $([ "$pool" = main ] && [ -s "$(dirname "$QDIR")/split_$JOB" ] && echo big); do
+    if [ "$p" = big ]; then mn=${BIG_ATOMS:-100} mx=1000000; else mn=0 mx=${BIG_ATOMS:-100}; fi
+    NATOMS_MIN=$mn NATOMS_MAX=$mx python3 "$REPO/aurora/queue.py" add . scans/jobs_scan_full.txt "queue/$p"
+  done
 ) 8>>"$WORK/.gosh.lock" >> logs/requeue_$JOB.log 2>&1
 echo "farm $JOB done $(date '+%F %T'); queue next $(cat "$QDIR/next") of $(grep -c . "$QDIR/tasks.txt")"

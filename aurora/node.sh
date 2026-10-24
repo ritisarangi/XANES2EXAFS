@@ -13,6 +13,39 @@ cd "$WORK" || exit 1
 HOST=$(hostname -s)
 MIN_START=$(( ${MIN_START_MIN:-20} * 60 ))   # do not start a branch with less time than this left
 
+# Mixed farm: a main-pool farm with fewer pending branches than slots gives only the nodes it
+# needs to the main pool; the next nodes switch to the big-pool layout (BIG_CORES ranks per slot)
+# and take big branches. The first node decides the split under the queue lock, before any slot
+# claims a branch; every node then finds its place from its rank in the node file.
+BIGQ=$(dirname "$QDIR")/big
+MIXED=
+if [ "$(basename "$QDIR")" = main ] && [ -f "$BIGQ/tasks.txt" ] && [ "${MIXED_FARM:-1}" = 1 ]; then
+  split=$(dirname "$QDIR")/split_$JOB
+  exec 9>>"$QDIR/lock"; flock 9
+  if [ ! -s "$split" ]; then
+    nn=$(sort -u "$PBS_NODEFILE" | wc -l)
+    pm=$(( $(grep -c . "$QDIR/tasks.txt") - $(cat "$QDIR/next") ))
+    pb=$(( $(grep -c . "$BIGQ/tasks.txt") - $(cat "$BIGQ/next") ))
+    sm=$(slots_per_node); sb=$(CORES=${BIG_CORES:-8} slots_per_node)
+    nm=$(( (pm + sm - 1) / sm )); nb=$(( (pb + sb - 1) / sb ))
+    [ $nm -lt 1 ] && nm=1
+    if [ $nm -ge $nn ] || [ $pb -le 0 ]; then nm=$nn; nb=0; fi
+    [ $(( nm + nb )) -gt $nn ] && nb=$(( nn - nm ))
+    echo "$nm $nb $pm $pb" > "$split.new" && mv "$split.new" "$split"
+  fi
+  read -r nm nb pm pb < "$split"
+  flock -u 9; exec 9>&-
+  i=$(sort -u "$PBS_NODEFILE" | cut -d. -f1 | grep -nx "$HOST" | cut -d: -f1)
+  if [ "$nb" -gt 0 ]; then
+    MIXED=1          # the job runs on as long as either pool has work: no tail cutoff here
+    if [ -n "$i" ] && [ "$i" -gt "$nm" ] && [ "$i" -le $(( nm + nb )) ]; then
+      export QDIR=$BIGQ CORES=${BIG_CORES:-8}
+      mkdir -p "$QDIR/active"
+    fi
+    [ "$i" = 1 ] && echo "mixed farm $JOB: $nm nodes for $pm main branches, $nb nodes for $pb big branches"
+  fi
+fi
+
 claim() {   # print the next task, or nothing when the queue is empty
   local n t
   exec 9>>"$QDIR/lock"
@@ -32,7 +65,8 @@ slot() {
   # node, shared ones collide and a rank dies with SIGBUS in btl_vader
   local ompi=/tmp/zn_ompi_${JOB}_$s idle=0; mkdir -p "$ompi"
   while :; do
-    [ -e "$QDIR/STOP" ] || [ -e "$QDIR/stop_$JOB" ] && break
+    [ -e "$QDIR/STOP" ] && break
+    [ -z "$MIXED" ] && [ -e "$QDIR/stop_$JOB" ] && break
     [ $(( DEADLINE - $(date +%s) )) -lt $MIN_START ] && break
     D=$(claim)
     if [ -z "$D" ]; then
@@ -64,7 +98,7 @@ slot() {
     while kill -0 $pid 2>/dev/null; do
       sleep 20
       if [ "$(date +%s)" -ge "$DEADLINE" ]; then why="DUE TO TIME LIMIT"
-      elif [ -e "$QDIR/stop_$JOB" ]; then why="CANCELLED (tail cutoff)"
+      elif [ -z "$MIXED" ] && [ -e "$QDIR/stop_$JOB" ]; then why="CANCELLED (tail cutoff)"
       else continue; fi
       pkill -TERM -s $pid 2>/dev/null; sleep 30; pkill -KILL -s $pid 2>/dev/null
       break
