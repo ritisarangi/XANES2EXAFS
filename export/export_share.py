@@ -48,7 +48,8 @@ FILE NAMES   <REFCODE>_<run>.<ext>
   Atom order is identical in all files of one REFCODE.
 
 FULL OUTPUTS (.out: energies, Mulliken spins, <S^2>) stay in
-  /sdf/data/ssrl/smb/xas/users/ritis/Zn_small_molecule_dft/{stage2_b3lyp,redox/primary,redox/reverse,dielectric/eps1,dielectric/eps2}/<REFCODE>/
+  /sdf/data/ssrl/smb/xas/users/ritis/Zn_small_molecule_dft/<folder>/<REFCODE>/<REFCODE>.out
+  folder: ref = stage2_b3lyp, redox1 = redox/primary, redox2 = redox/reverse, eps1 = dielectric/eps1, eps2 = dielectric/eps2
 
 TABLES
   index.csv  one row per xyz/hess pair: refcode, run, file, charge, multiplicity, method, solvent
