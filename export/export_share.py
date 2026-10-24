@@ -5,7 +5,7 @@ Usage (inside the project folder):
     python3 <repo>/export/export_share.py . /sdf/data/ssrl/smb/dft/users/tetef01/Riti-CSD-calcs
 
 Copies, for every complex in redox/slopes_final.csv:
-    ref/<REFCODE>_ref.xyz, .hess           stage-2 minimum (all 347)
+    ref/<REFCODE>_ref.xyz, .hess, .inp          stage-2 minimum (all 347)
     partner/<REFCODE>_<run>.xyz, .hess     only the partner runs that supply a bond's slope
 Writes index.csv (charge, multiplicity, method per file), bonds.csv (one row per Zn-L bond,
 with the partner file it uses) and README.txt. Safe to rerun; files are overwritten.
@@ -29,9 +29,9 @@ METHOD
   TightOpt + analytic Freq. CPCM(water, eps 80) unless noted. Closed-shell runs RKS, doublets UKS.
 
 FOLDERS
-  ref/       the reference minimum of every complex (347 xyz + 347 hess)
+  ref/       the reference minimum of every complex (347 xyz, hess, inp)
   partner/   second minima of the same complex, used only to get the slope d ln k / d r
-             ({npart} complexes, {nfiles} xyz/hess pairs; only runs that supply a slope are included)
+             ({npart} complexes, {nfiles} xyz/hess/inp sets; only runs that supply a slope are included)
 
 FILE NAMES   <REFCODE>_<run>.<ext>
   REFCODE    CSD refcode, upper case (e.g. HUFBAL)
@@ -43,7 +43,12 @@ FILE NAMES   <REFCODE>_<run>.<ext>
   ext  .xyz    final optimized geometry, Angstrom, ORCA xyz format
        .hess   ORCA Hessian file: $hessian (Eh/bohr^2, mass-unweighted), $vibrational_frequencies,
                $normal_modes, $atoms (element, mass, coordinates in bohr)
+       .inp    ORCA input as first submitted (keywords, charge, multiplicity, per-atom basis);
+               runs restarted after preemption used the same input from the last saved geometry
   Atom order is identical in all files of one REFCODE.
+
+FULL OUTPUTS (.out: energies, Mulliken spins, <S^2>) stay in
+  /sdf/data/ssrl/smb/xas/users/ritis/Zn_small_molecule_dft/{stage2_b3lyp,redox/primary,redox/reverse,dielectric/eps1,dielectric/eps2}/<REFCODE>/
 
 TABLES
   index.csv  one row per xyz/hess pair: refcode, run, file, charge, multiplicity, method, solvent
@@ -93,6 +98,9 @@ def main():
     def copy(d, ref, tag, sub):
         for ext in (".xyz", ".hess"):
             shutil.copy2(os.path.join(d, ref + ext), os.path.join(out, sub, "%s_%s%s" % (ref, tag, ext)))
+        inp = next((os.path.join(d, n) for n in (ref + "_orig.inp", ref + ".inp") if os.path.exists(os.path.join(d, n))), None)
+        if inp:
+            shutil.copy2(inp, os.path.join(out, sub, "%s_%s.inp" % (ref, tag)))
         q, m, cpcm = charge_mult(os.path.join(d, ref + ".inp"))
         eps = {"eps1": "gas", "eps2": "CPCM eps 2", "eps4": "CPCM eps 4"}.get(tag, "CPCM eps 80")
         index.append(dict(refcode=ref, run=tag, file="%s/%s_%s" % (sub, ref, tag), charge=q, multiplicity=m,
