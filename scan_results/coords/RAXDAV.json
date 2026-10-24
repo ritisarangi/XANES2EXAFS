@@ -1,0 +1,464 @@
+{
+ "ref": "RAXDAV",
+ "zn": 0,
+ "donors": [
+  1,
+  2,
+  19,
+  20
+ ],
+ "coords": [
+  {
+   "name": "bond_Zn-N1",
+   "kind": "B",
+   "atoms": [
+    0,
+    1
+   ],
+   "branch": "neg",
+   "v0": 2.065003778085488,
+   "start": 2.065003778085488,
+   "end": 2.005003778085488,
+   "npoints": 4,
+   "dir": "scans/RAXDAV/bond_Zn-N1_neg"
+  },
+  {
+   "name": "bond_Zn-N1",
+   "kind": "B",
+   "atoms": [
+    0,
+    1
+   ],
+   "branch": "pos",
+   "v0": 2.065003778085488,
+   "start": 2.065003778085488,
+   "end": 2.265003778085488,
+   "npoints": 11,
+   "dir": "scans/RAXDAV/bond_Zn-N1_pos"
+  },
+  {
+   "name": "bond_Zn-N2",
+   "kind": "B",
+   "atoms": [
+    0,
+    2
+   ],
+   "branch": "neg",
+   "v0": 2.0650124888178554,
+   "start": 2.0650124888178554,
+   "end": 2.0050124888178553,
+   "npoints": 4,
+   "dir": "scans/RAXDAV/bond_Zn-N2_neg"
+  },
+  {
+   "name": "bond_Zn-N2",
+   "kind": "B",
+   "atoms": [
+    0,
+    2
+   ],
+   "branch": "pos",
+   "v0": 2.0650124888178554,
+   "start": 2.0650124888178554,
+   "end": 2.2650124888178556,
+   "npoints": 11,
+   "dir": "scans/RAXDAV/bond_Zn-N2_pos"
+  },
+  {
+   "name": "bond_Zn-S19",
+   "kind": "B",
+   "atoms": [
+    0,
+    19
+   ],
+   "branch": "neg",
+   "v0": 2.3402441414018442,
+   "start": 2.3402441414018442,
+   "end": 2.280244141401844,
+   "npoints": 4,
+   "dir": "scans/RAXDAV/bond_Zn-S19_neg"
+  },
+  {
+   "name": "bond_Zn-S19",
+   "kind": "B",
+   "atoms": [
+    0,
+    19
+   ],
+   "branch": "pos",
+   "v0": 2.3402441414018442,
+   "start": 2.3402441414018442,
+   "end": 2.5402441414018444,
+   "npoints": 11,
+   "dir": "scans/RAXDAV/bond_Zn-S19_pos"
+  },
+  {
+   "name": "bond_Zn-S20",
+   "kind": "B",
+   "atoms": [
+    0,
+    20
+   ],
+   "branch": "neg",
+   "v0": 2.340273175404299,
+   "start": 2.340273175404299,
+   "end": 2.280273175404299,
+   "npoints": 4,
+   "dir": "scans/RAXDAV/bond_Zn-S20_neg"
+  },
+  {
+   "name": "bond_Zn-S20",
+   "kind": "B",
+   "atoms": [
+    0,
+    20
+   ],
+   "branch": "pos",
+   "v0": 2.340273175404299,
+   "start": 2.340273175404299,
+   "end": 2.540273175404299,
+   "npoints": 11,
+   "dir": "scans/RAXDAV/bond_Zn-S20_pos"
+  },
+  {
+   "name": "angle_N1-Zn-N2",
+   "kind": "A",
+   "atoms": [
+    1,
+    0,
+    2
+   ],
+   "branch": "neg",
+   "v0": 100.1934356695978,
+   "start": 100.1934356695978,
+   "end": 85.1934356695978,
+   "npoints": 11,
+   "dir": "scans/RAXDAV/angle_N1-Zn-N2_neg"
+  },
+  {
+   "name": "angle_N1-Zn-N2",
+   "kind": "A",
+   "atoms": [
+    1,
+    0,
+    2
+   ],
+   "branch": "pos",
+   "v0": 100.1934356695978,
+   "start": 100.1934356695978,
+   "end": 115.1934356695978,
+   "npoints": 11,
+   "dir": "scans/RAXDAV/angle_N1-Zn-N2_pos"
+  },
+  {
+   "name": "angle_N1-Zn-S19",
+   "kind": "A",
+   "atoms": [
+    1,
+    0,
+    19
+   ],
+   "branch": "neg",
+   "v0": 118.28764187687726,
+   "start": 118.28764187687726,
+   "end": 103.28764187687726,
+   "npoints": 11,
+   "dir": "scans/RAXDAV/angle_N1-Zn-S19_neg"
+  },
+  {
+   "name": "angle_N1-Zn-S19",
+   "kind": "A",
+   "atoms": [
+    1,
+    0,
+    19
+   ],
+   "branch": "pos",
+   "v0": 118.28764187687726,
+   "start": 118.28764187687726,
+   "end": 133.28764187687727,
+   "npoints": 11,
+   "dir": "scans/RAXDAV/angle_N1-Zn-S19_pos"
+  },
+  {
+   "name": "angle_N1-Zn-S20",
+   "kind": "A",
+   "atoms": [
+    1,
+    0,
+    20
+   ],
+   "branch": "neg",
+   "v0": 113.23194356272188,
+   "start": 113.23194356272188,
+   "end": 98.23194356272188,
+   "npoints": 11,
+   "dir": "scans/RAXDAV/angle_N1-Zn-S20_neg"
+  },
+  {
+   "name": "angle_N1-Zn-S20",
+   "kind": "A",
+   "atoms": [
+    1,
+    0,
+    20
+   ],
+   "branch": "pos",
+   "v0": 113.23194356272188,
+   "start": 113.23194356272188,
+   "end": 128.23194356272188,
+   "npoints": 11,
+   "dir": "scans/RAXDAV/angle_N1-Zn-S20_pos"
+  },
+  {
+   "name": "angle_N2-Zn-S19",
+   "kind": "A",
+   "atoms": [
+    2,
+    0,
+    19
+   ],
+   "branch": "neg",
+   "v0": 113.23640286924437,
+   "start": 113.23640286924437,
+   "end": 98.23640286924437,
+   "npoints": 11,
+   "dir": "scans/RAXDAV/angle_N2-Zn-S19_neg"
+  },
+  {
+   "name": "angle_N2-Zn-S19",
+   "kind": "A",
+   "atoms": [
+    2,
+    0,
+    19
+   ],
+   "branch": "pos",
+   "v0": 113.23640286924437,
+   "start": 113.23640286924437,
+   "end": 128.2364028692444,
+   "npoints": 11,
+   "dir": "scans/RAXDAV/angle_N2-Zn-S19_pos"
+  },
+  {
+   "name": "angle_N2-Zn-S20",
+   "kind": "A",
+   "atoms": [
+    2,
+    0,
+    20
+   ],
+   "branch": "neg",
+   "v0": 118.28277418971516,
+   "start": 118.28277418971516,
+   "end": 103.28277418971516,
+   "npoints": 11,
+   "dir": "scans/RAXDAV/angle_N2-Zn-S20_neg"
+  },
+  {
+   "name": "angle_N2-Zn-S20",
+   "kind": "A",
+   "atoms": [
+    2,
+    0,
+    20
+   ],
+   "branch": "pos",
+   "v0": 118.28277418971516,
+   "start": 118.28277418971516,
+   "end": 133.28277418971516,
+   "npoints": 11,
+   "dir": "scans/RAXDAV/angle_N2-Zn-S20_pos"
+  },
+  {
+   "name": "angle_S19-Zn-S20",
+   "kind": "A",
+   "atoms": [
+    19,
+    0,
+    20
+   ],
+   "branch": "neg",
+   "v0": 94.80876591578826,
+   "start": 94.80876591578826,
+   "end": 79.80876591578826,
+   "npoints": 11,
+   "dir": "scans/RAXDAV/angle_S19-Zn-S20_neg"
+  },
+  {
+   "name": "angle_S19-Zn-S20",
+   "kind": "A",
+   "atoms": [
+    19,
+    0,
+    20
+   ],
+   "branch": "pos",
+   "v0": 94.80876591578826,
+   "start": 94.80876591578826,
+   "end": 109.80876591578826,
+   "npoints": 11,
+   "dir": "scans/RAXDAV/angle_S19-Zn-S20_pos"
+  },
+  {
+   "name": "twist_N1-N2-S19-S20",
+   "kind": "D",
+   "atoms": [
+    1,
+    2,
+    19,
+    20
+   ],
+   "branch": "neg",
+   "v0": -72.78198219404136,
+   "start": -72.78198219404136,
+   "end": -82.78198219404136,
+   "npoints": 11,
+   "dir": "scans/RAXDAV/twist_N1-N2-S19-S20_neg"
+  },
+  {
+   "name": "twist_N1-N2-S19-S20",
+   "kind": "D",
+   "atoms": [
+    1,
+    2,
+    19,
+    20
+   ],
+   "branch": "pos",
+   "v0": -72.78198219404136,
+   "start": -72.78198219404136,
+   "end": -62.78198219404136,
+   "npoints": 11,
+   "dir": "scans/RAXDAV/twist_N1-N2-S19-S20_pos"
+  },
+  {
+   "name": "tilt_Zn-N1-C5-H15",
+   "kind": "D",
+   "atoms": [
+    0,
+    1,
+    5,
+    15
+   ],
+   "branch": "neg",
+   "v0": 1.150355523101141,
+   "start": 1.150355523101141,
+   "end": -8.84964447689886,
+   "npoints": 11,
+   "dir": "scans/RAXDAV/tilt_Zn-N1-C5-H15_neg"
+  },
+  {
+   "name": "tilt_Zn-N1-C5-H15",
+   "kind": "D",
+   "atoms": [
+    0,
+    1,
+    5,
+    15
+   ],
+   "branch": "pos",
+   "v0": 1.150355523101141,
+   "start": 1.150355523101141,
+   "end": 11.15035552310114,
+   "npoints": 11,
+   "dir": "scans/RAXDAV/tilt_Zn-N1-C5-H15_pos"
+  },
+  {
+   "name": "tilt_Zn-N2-C6-H16",
+   "kind": "D",
+   "atoms": [
+    0,
+    2,
+    6,
+    16
+   ],
+   "branch": "neg",
+   "v0": 1.1508723076613276,
+   "start": 1.1508723076613276,
+   "end": -8.849127692338673,
+   "npoints": 11,
+   "dir": "scans/RAXDAV/tilt_Zn-N2-C6-H16_neg"
+  },
+  {
+   "name": "tilt_Zn-N2-C6-H16",
+   "kind": "D",
+   "atoms": [
+    0,
+    2,
+    6,
+    16
+   ],
+   "branch": "pos",
+   "v0": 1.1508723076613276,
+   "start": 1.1508723076613276,
+   "end": 11.150872307661327,
+   "npoints": 11,
+   "dir": "scans/RAXDAV/tilt_Zn-N2-C6-H16_pos"
+  },
+  {
+   "name": "tilt_Zn-S19-C9-C10",
+   "kind": "D",
+   "atoms": [
+    0,
+    19,
+    9,
+    10
+   ],
+   "branch": "neg",
+   "v0": -0.16076443481237943,
+   "start": -0.16076443481237943,
+   "end": -10.16076443481238,
+   "npoints": 11,
+   "dir": "scans/RAXDAV/tilt_Zn-S19-C9-C10_neg"
+  },
+  {
+   "name": "tilt_Zn-S19-C9-C10",
+   "kind": "D",
+   "atoms": [
+    0,
+    19,
+    9,
+    10
+   ],
+   "branch": "pos",
+   "v0": -0.16076443481237943,
+   "start": -0.16076443481237943,
+   "end": 9.83923556518762,
+   "npoints": 11,
+   "dir": "scans/RAXDAV/tilt_Zn-S19-C9-C10_pos"
+  },
+  {
+   "name": "tilt_Zn-S20-C10-C9",
+   "kind": "D",
+   "atoms": [
+    0,
+    20,
+    10,
+    9
+   ],
+   "branch": "neg",
+   "v0": -0.12894064924052429,
+   "start": -0.12894064924052429,
+   "end": -10.128940649240525,
+   "npoints": 11,
+   "dir": "scans/RAXDAV/tilt_Zn-S20-C10-C9_neg"
+  },
+  {
+   "name": "tilt_Zn-S20-C10-C9",
+   "kind": "D",
+   "atoms": [
+    0,
+    20,
+    10,
+    9
+   ],
+   "branch": "pos",
+   "v0": -0.12894064924052429,
+   "start": -0.12894064924052429,
+   "end": 9.871059350759475,
+   "npoints": 11,
+   "dir": "scans/RAXDAV/tilt_Zn-S20-C10-C9_pos"
+  }
+ ]
+}

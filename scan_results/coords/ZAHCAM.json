@@ -1,0 +1,464 @@
+{
+ "ref": "ZAHCAM",
+ "zn": 0,
+ "donors": [
+  3,
+  5,
+  7,
+  9
+ ],
+ "coords": [
+  {
+   "name": "bond_Zn-N3",
+   "kind": "B",
+   "atoms": [
+    0,
+    3
+   ],
+   "branch": "neg",
+   "v0": 2.036345868585605,
+   "start": 2.036345868585605,
+   "end": 1.976345868585605,
+   "npoints": 4,
+   "dir": "scans/ZAHCAM/bond_Zn-N3_neg"
+  },
+  {
+   "name": "bond_Zn-N3",
+   "kind": "B",
+   "atoms": [
+    0,
+    3
+   ],
+   "branch": "pos",
+   "v0": 2.036345868585605,
+   "start": 2.036345868585605,
+   "end": 2.2363458685856052,
+   "npoints": 11,
+   "dir": "scans/ZAHCAM/bond_Zn-N3_pos"
+  },
+  {
+   "name": "bond_Zn-N5",
+   "kind": "B",
+   "atoms": [
+    0,
+    5
+   ],
+   "branch": "neg",
+   "v0": 2.04457591726239,
+   "start": 2.04457591726239,
+   "end": 1.98457591726239,
+   "npoints": 4,
+   "dir": "scans/ZAHCAM/bond_Zn-N5_neg"
+  },
+  {
+   "name": "bond_Zn-N5",
+   "kind": "B",
+   "atoms": [
+    0,
+    5
+   ],
+   "branch": "pos",
+   "v0": 2.04457591726239,
+   "start": 2.04457591726239,
+   "end": 2.2445759172623903,
+   "npoints": 11,
+   "dir": "scans/ZAHCAM/bond_Zn-N5_pos"
+  },
+  {
+   "name": "bond_Zn-N7",
+   "kind": "B",
+   "atoms": [
+    0,
+    7
+   ],
+   "branch": "neg",
+   "v0": 2.0346133600191063,
+   "start": 2.0346133600191063,
+   "end": 1.9746133600191063,
+   "npoints": 4,
+   "dir": "scans/ZAHCAM/bond_Zn-N7_neg"
+  },
+  {
+   "name": "bond_Zn-N7",
+   "kind": "B",
+   "atoms": [
+    0,
+    7
+   ],
+   "branch": "pos",
+   "v0": 2.0346133600191063,
+   "start": 2.0346133600191063,
+   "end": 2.2346133600191065,
+   "npoints": 11,
+   "dir": "scans/ZAHCAM/bond_Zn-N7_pos"
+  },
+  {
+   "name": "bond_Zn-N9",
+   "kind": "B",
+   "atoms": [
+    0,
+    9
+   ],
+   "branch": "neg",
+   "v0": 2.0492541613861515,
+   "start": 2.0492541613861515,
+   "end": 1.9892541613861514,
+   "npoints": 4,
+   "dir": "scans/ZAHCAM/bond_Zn-N9_neg"
+  },
+  {
+   "name": "bond_Zn-N9",
+   "kind": "B",
+   "atoms": [
+    0,
+    9
+   ],
+   "branch": "pos",
+   "v0": 2.0492541613861515,
+   "start": 2.0492541613861515,
+   "end": 2.2492541613861516,
+   "npoints": 11,
+   "dir": "scans/ZAHCAM/bond_Zn-N9_pos"
+  },
+  {
+   "name": "angle_N3-Zn-N5",
+   "kind": "A",
+   "atoms": [
+    3,
+    0,
+    5
+   ],
+   "branch": "neg",
+   "v0": 110.87491039858513,
+   "start": 110.87491039858513,
+   "end": 95.87491039858513,
+   "npoints": 11,
+   "dir": "scans/ZAHCAM/angle_N3-Zn-N5_neg"
+  },
+  {
+   "name": "angle_N3-Zn-N5",
+   "kind": "A",
+   "atoms": [
+    3,
+    0,
+    5
+   ],
+   "branch": "pos",
+   "v0": 110.87491039858513,
+   "start": 110.87491039858513,
+   "end": 125.87491039858513,
+   "npoints": 11,
+   "dir": "scans/ZAHCAM/angle_N3-Zn-N5_pos"
+  },
+  {
+   "name": "angle_N3-Zn-N7",
+   "kind": "A",
+   "atoms": [
+    3,
+    0,
+    7
+   ],
+   "branch": "neg",
+   "v0": 104.89881733898552,
+   "start": 104.89881733898552,
+   "end": 89.89881733898552,
+   "npoints": 11,
+   "dir": "scans/ZAHCAM/angle_N3-Zn-N7_neg"
+  },
+  {
+   "name": "angle_N3-Zn-N7",
+   "kind": "A",
+   "atoms": [
+    3,
+    0,
+    7
+   ],
+   "branch": "pos",
+   "v0": 104.89881733898552,
+   "start": 104.89881733898552,
+   "end": 119.89881733898552,
+   "npoints": 11,
+   "dir": "scans/ZAHCAM/angle_N3-Zn-N7_pos"
+  },
+  {
+   "name": "angle_N3-Zn-N9",
+   "kind": "A",
+   "atoms": [
+    3,
+    0,
+    9
+   ],
+   "branch": "neg",
+   "v0": 114.23868914334356,
+   "start": 114.23868914334356,
+   "end": 99.23868914334356,
+   "npoints": 11,
+   "dir": "scans/ZAHCAM/angle_N3-Zn-N9_neg"
+  },
+  {
+   "name": "angle_N3-Zn-N9",
+   "kind": "A",
+   "atoms": [
+    3,
+    0,
+    9
+   ],
+   "branch": "pos",
+   "v0": 114.23868914334356,
+   "start": 114.23868914334356,
+   "end": 129.23868914334355,
+   "npoints": 11,
+   "dir": "scans/ZAHCAM/angle_N3-Zn-N9_pos"
+  },
+  {
+   "name": "angle_N5-Zn-N7",
+   "kind": "A",
+   "atoms": [
+    5,
+    0,
+    7
+   ],
+   "branch": "neg",
+   "v0": 114.35050194572156,
+   "start": 114.35050194572156,
+   "end": 99.35050194572156,
+   "npoints": 11,
+   "dir": "scans/ZAHCAM/angle_N5-Zn-N7_neg"
+  },
+  {
+   "name": "angle_N5-Zn-N7",
+   "kind": "A",
+   "atoms": [
+    5,
+    0,
+    7
+   ],
+   "branch": "pos",
+   "v0": 114.35050194572156,
+   "start": 114.35050194572156,
+   "end": 129.35050194572156,
+   "npoints": 11,
+   "dir": "scans/ZAHCAM/angle_N5-Zn-N7_pos"
+  },
+  {
+   "name": "angle_N5-Zn-N9",
+   "kind": "A",
+   "atoms": [
+    5,
+    0,
+    9
+   ],
+   "branch": "neg",
+   "v0": 102.2177220097351,
+   "start": 102.2177220097351,
+   "end": 87.2177220097351,
+   "npoints": 11,
+   "dir": "scans/ZAHCAM/angle_N5-Zn-N9_neg"
+  },
+  {
+   "name": "angle_N5-Zn-N9",
+   "kind": "A",
+   "atoms": [
+    5,
+    0,
+    9
+   ],
+   "branch": "pos",
+   "v0": 102.2177220097351,
+   "start": 102.2177220097351,
+   "end": 117.2177220097351,
+   "npoints": 11,
+   "dir": "scans/ZAHCAM/angle_N5-Zn-N9_pos"
+  },
+  {
+   "name": "angle_N7-Zn-N9",
+   "kind": "A",
+   "atoms": [
+    7,
+    0,
+    9
+   ],
+   "branch": "neg",
+   "v0": 110.5722293334844,
+   "start": 110.5722293334844,
+   "end": 95.5722293334844,
+   "npoints": 11,
+   "dir": "scans/ZAHCAM/angle_N7-Zn-N9_neg"
+  },
+  {
+   "name": "angle_N7-Zn-N9",
+   "kind": "A",
+   "atoms": [
+    7,
+    0,
+    9
+   ],
+   "branch": "pos",
+   "v0": 110.5722293334844,
+   "start": 110.5722293334844,
+   "end": 125.5722293334844,
+   "npoints": 11,
+   "dir": "scans/ZAHCAM/angle_N7-Zn-N9_pos"
+  },
+  {
+   "name": "twist_N3-N5-N7-N9",
+   "kind": "D",
+   "atoms": [
+    3,
+    5,
+    7,
+    9
+   ],
+   "branch": "neg",
+   "v0": -75.33819294571634,
+   "start": -75.33819294571634,
+   "end": -85.33819294571634,
+   "npoints": 11,
+   "dir": "scans/ZAHCAM/twist_N3-N5-N7-N9_neg"
+  },
+  {
+   "name": "twist_N3-N5-N7-N9",
+   "kind": "D",
+   "atoms": [
+    3,
+    5,
+    7,
+    9
+   ],
+   "branch": "pos",
+   "v0": -75.33819294571634,
+   "start": -75.33819294571634,
+   "end": -65.33819294571634,
+   "npoints": 11,
+   "dir": "scans/ZAHCAM/twist_N3-N5-N7-N9_pos"
+  },
+  {
+   "name": "tilt_Zn-N3-C11-C18",
+   "kind": "D",
+   "atoms": [
+    0,
+    3,
+    11,
+    18
+   ],
+   "branch": "neg",
+   "v0": -0.049400566668847,
+   "start": -0.049400566668847,
+   "end": -10.049400566668847,
+   "npoints": 11,
+   "dir": "scans/ZAHCAM/tilt_Zn-N3-C11-C18_neg"
+  },
+  {
+   "name": "tilt_Zn-N3-C11-C18",
+   "kind": "D",
+   "atoms": [
+    0,
+    3,
+    11,
+    18
+   ],
+   "branch": "pos",
+   "v0": -0.049400566668847,
+   "start": -0.049400566668847,
+   "end": 9.950599433331153,
+   "npoints": 11,
+   "dir": "scans/ZAHCAM/tilt_Zn-N3-C11-C18_pos"
+  },
+  {
+   "name": "tilt_Zn-N5-C20-C19",
+   "kind": "D",
+   "atoms": [
+    0,
+    5,
+    20,
+    19
+   ],
+   "branch": "neg",
+   "v0": -5.2133167905571876,
+   "start": -5.2133167905571876,
+   "end": -15.213316790557187,
+   "npoints": 11,
+   "dir": "scans/ZAHCAM/tilt_Zn-N5-C20-C19_neg"
+  },
+  {
+   "name": "tilt_Zn-N5-C20-C19",
+   "kind": "D",
+   "atoms": [
+    0,
+    5,
+    20,
+    19
+   ],
+   "branch": "pos",
+   "v0": -5.2133167905571876,
+   "start": -5.2133167905571876,
+   "end": 4.7866832094428124,
+   "npoints": 11,
+   "dir": "scans/ZAHCAM/tilt_Zn-N5-C20-C19_pos"
+  },
+  {
+   "name": "tilt_Zn-N7-C27-C34",
+   "kind": "D",
+   "atoms": [
+    0,
+    7,
+    27,
+    34
+   ],
+   "branch": "neg",
+   "v0": -0.718486185117293,
+   "start": -0.718486185117293,
+   "end": -10.718486185117293,
+   "npoints": 11,
+   "dir": "scans/ZAHCAM/tilt_Zn-N7-C27-C34_neg"
+  },
+  {
+   "name": "tilt_Zn-N7-C27-C34",
+   "kind": "D",
+   "atoms": [
+    0,
+    7,
+    27,
+    34
+   ],
+   "branch": "pos",
+   "v0": -0.718486185117293,
+   "start": -0.718486185117293,
+   "end": 9.281513814882707,
+   "npoints": 11,
+   "dir": "scans/ZAHCAM/tilt_Zn-N7-C27-C34_pos"
+  },
+  {
+   "name": "tilt_Zn-N9-C36-C35",
+   "kind": "D",
+   "atoms": [
+    0,
+    9,
+    36,
+    35
+   ],
+   "branch": "neg",
+   "v0": -7.475396323331889,
+   "start": -7.475396323331889,
+   "end": -17.47539632333189,
+   "npoints": 11,
+   "dir": "scans/ZAHCAM/tilt_Zn-N9-C36-C35_neg"
+  },
+  {
+   "name": "tilt_Zn-N9-C36-C35",
+   "kind": "D",
+   "atoms": [
+    0,
+    9,
+    36,
+    35
+   ],
+   "branch": "pos",
+   "v0": -7.475396323331889,
+   "start": -7.475396323331889,
+   "end": 2.524603676668111,
+   "npoints": 11,
+   "dir": "scans/ZAHCAM/tilt_Zn-N9-C36-C35_pos"
+  }
+ ]
+}

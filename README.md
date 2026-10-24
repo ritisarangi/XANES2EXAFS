@@ -8,70 +8,150 @@
 
 A complex is added when all its branches have terminated normally and `aurora/audit.py` finds no problem (every ORCA output matches its own folder's input; no folder run twice at once).
 
-## Published (60 complexes, 17006 points)
+## Published (140 complexes, 39652 points)
 
 | Complex | Atoms | Branches | Points | Passing | Published |
 |---|---|---|---|---|---|
+| ABIDEU | 69 | 30 | 302 | 302 | 2026-10-24 |
+| AHOQIY | 39 | 30 | 302 | 293 | 2026-10-24 |
 | ALACUL | 39 | 30 | 302 | 294 | 2026-10-23 |
 | AMETZN | 33 | 30 | 302 | 294 | 2026-10-23 |
 | AYIFAP | 43 | 30 | 302 | 291 | 2026-10-23 |
 | AYUQOC | 51 | 30 | 302 | 290 | 2026-10-23 |
+| BELFEE | 47 | 30 | 302 | 297 | 2026-10-24 |
+| BELFII | 44 | 30 | 302 | 297 | 2026-10-24 |
 | BMBTZN | 61 | 30 | 302 | 297 | 2026-10-23 |
 | BUNTOW | 25 | 30 | 302 | 300 | 2026-10-23 |
 | CADKUO | 45 | 30 | 302 | 302 | 2026-10-23 |
+| CAXBIQ | 59 | 30 | 302 | 294 | 2026-10-24 |
 | CUCJAL | 53 | 30 | 302 | 292 | 2026-10-23 |
+| CURLOQ | 25 | 30 | 302 | 302 | 2026-10-24 |
 | CURLUW | 39 | 30 | 302 | 302 | 2026-10-23 |
+| DASFUY | 21 | 30 | 302 | 298 | 2026-10-24 |
+| DASMOZ | 41 | 30 | 302 | 296 | 2026-10-24 |
+| DASPOC | 43 | 30 | 302 | 295 | 2026-10-24 |
+| DIFBOK | 55 | 30 | 302 | 264 | 2026-10-24 |
 | DILGUA | 53 | 30 | 302 | 302 | 2026-10-20 |
+| DOMMOH | 37 | 30 | 302 | 294 | 2026-10-24 |
+| DOMMUN | 45 | 30 | 302 | 291 | 2026-10-24 |
 | DUFYUY | 17 | 30 | 302 | 299 | 2026-10-23 |
 | EDUPEZ | 47 | 30 | 302 | 225 | 2026-10-23 |
 | EFEWUI | 38 | 30 | 302 | 298 | 2026-10-23 |
 | EGORAT | 65 | 30 | 302 | 286 | 2026-10-23 |
 | EVOJOO | 49 | 30 | 302 | 287 | 2026-10-23 |
 | FATJUG | 49 | 30 | 302 | 280 | 2026-10-19 |
+| FEKTAQ | 29 | 30 | 302 | 291 | 2026-10-24 |
 | FEYNUT | 93 | 30 | 302 | 286 | 2026-10-23 |
+| FILGEN | 43 | 30 | 302 | 298 | 2026-10-24 |
+| FIYQIP | 69 | 26 | 258 | 248 | 2026-10-24 |
 | GADFUO | 51 | 30 | 302 | 294 | 2026-10-23 |
 | GAKKUY | 49 | 30 | 302 | 234 | 2026-10-21 |
+| GALGAC | 47 | 30 | 302 | 296 | 2026-10-24 |
 | GALGEG | 49 | 30 | 302 | 298 | 2026-10-19 |
+| GALGIK | 47 | 30 | 302 | 274 | 2026-10-24 |
 | GILZEG | 49 | 30 | 302 | 299 | 2026-10-23 |
 | GUYHEN | 49 | 30 | 302 | 204 | 2026-10-21 |
 | HEFHUX | 53 | 30 | 302 | 286 | 2026-10-23 |
+| HIJGEM | 13 | 30 | 302 | 298 | 2026-10-24 |
 | HOSXAR | 61 | 30 | 302 | 294 | 2026-10-23 |
+| HOZGIN | 95 | 30 | 302 | 298 | 2026-10-24 |
 | HUCCIU | 50 | 30 | 302 | 296 | 2026-10-19 |
+| HULBIZ | 57 | 30 | 302 | 243 | 2026-10-24 |
+| ICEHOP | 73 | 30 | 302 | 293 | 2026-10-24 |
+| ICUCAL | 46 | 30 | 302 | 218 | 2026-10-24 |
+| ICUCEP | 46 | 30 | 302 | 296 | 2026-10-24 |
 | ICUCIT | 49 | 30 | 302 | 272 | 2026-10-23 |
 | ICUCOZ | 49 | 30 | 302 | 295 | 2026-10-23 |
+| ICUDAM | 49 | 30 | 302 | 242 | 2026-10-24 |
+| IQETOP | 39 | 30 | 302 | 268 | 2026-10-24 |
+| JADMAG | 65 | 30 | 302 | 257 | 2026-10-24 |
 | JADMEK | 71 | 30 | 302 | 290 | 2026-10-23 |
+| JAMJAJ | 47 | 30 | 302 | 298 | 2026-10-24 |
 | JEYTAI | 33 | 30 | 302 | 296 | 2026-10-23 |
+| KAKVEX | 53 | 30 | 302 | 286 | 2026-10-24 |
+| KAKYEA | 51 | 30 | 302 | 299 | 2026-10-24 |
+| KOMLIH01 | 53 | 30 | 302 | 295 | 2026-10-24 |
 | KOPYOD | 47 | 30 | 302 | 291 | 2026-10-23 |
+| KOXDIN | 55 | 30 | 302 | 297 | 2026-10-24 |
+| LAPYOR | 75 | 30 | 302 | 286 | 2026-10-24 |
 | LAQBIP | 51 | 30 | 302 | 302 | 2026-10-21 |
+| LEMVAB | 37 | 30 | 302 | 294 | 2026-10-24 |
+| LEMVEF | 49 | 30 | 302 | 292 | 2026-10-24 |
 | LEQHAU | 17 | 30 | 302 | 300 | 2026-10-23 |
+| LIYFEG01 | 59 | 30 | 302 | 281 | 2026-10-24 |
 | LUKREP | 53 | 30 | 302 | 291 | 2026-10-23 |
+| MEPWOT | 38 | 28 | 280 | 248 | 2026-10-24 |
 | MIYPAM | 89 | 30 | 302 | 245 | 2026-10-23 |
+| MIYVIA | 63 | 30 | 302 | 294 | 2026-10-24 |
+| MIYVOG | 59 | 30 | 302 | 294 | 2026-10-24 |
+| MIYVUM | 67 | 30 | 302 | 294 | 2026-10-24 |
 | MOZSIE | 53 | 30 | 302 | 282 | 2026-10-21 |
+| MUJJUW | 55 | 30 | 302 | 249 | 2026-10-24 |
 | NEHKIU | 53 | 30 | 302 | 300 | 2026-10-20 |
 | NIGTEC | 96 | 30 | 302 | 302 | 2026-10-21 |
+| NITZEW | 35 | 30 | 302 | 292 | 2026-10-24 |
+| NOCNEY | 65 | 30 | 302 | 270 | 2026-10-24 |
+| NUYWOV | 55 | 30 | 302 | 282 | 2026-10-24 |
+| OCOZAJ | 43 | 30 | 302 | 286 | 2026-10-24 |
+| OCOZOX | 37 | 30 | 302 | 296 | 2026-10-24 |
+| OJEKIX | 95 | 30 | 302 | 174 | 2026-10-24 |
 | OJELEU | 135 | 30 | 302 | 302 | 2026-10-22 |
 | OKAROJ | 47 | 30 | 302 | 294 | 2026-10-23 |
+| PAGFEM | 33 | 30 | 302 | 295 | 2026-10-24 |
+| PEQSEK | 70 | 30 | 302 | 287 | 2026-10-24 |
+| POHTOV | 43 | 30 | 302 | 290 | 2026-10-24 |
+| PUMRAQ | 57 | 30 | 302 | 285 | 2026-10-24 |
+| PUZKUQ | 33 | 30 | 302 | 289 | 2026-10-24 |
+| QASRIL | 53 | 30 | 302 | 263 | 2026-10-24 |
+| QELPED | 49 | 30 | 302 | 282 | 2026-10-24 |
+| QOBKAW | 37 | 30 | 302 | 291 | 2026-10-24 |
 | QOQYEA | 50 | 30 | 302 | 292 | 2026-10-19 |
 | QORPUI | 52 | 30 | 302 | 302 | 2026-10-20 |
 | QUFSAL | 17 | 30 | 302 | 298 | 2026-10-23 |
+| QUQGEO | 31 | 30 | 302 | 295 | 2026-10-24 |
+| RADPOB | 81 | 26 | 258 | 254 | 2026-10-24 |
+| RAJHOA | 57 | 40 | 405 | 317 | 2026-10-24 |
 | RATHOL | 55 | 30 | 302 | 294 | 2026-10-21 |
+| RAXDAV | 37 | 30 | 302 | 292 | 2026-10-24 |
+| RIBMIZ | 53 | 30 | 302 | 235 | 2026-10-24 |
+| RUKJAL | 37 | 30 | 302 | 294 | 2026-10-24 |
 | SENFOG | 59 | 30 | 302 | 296 | 2026-10-23 |
 | SEWZUS | 57 | 30 | 302 | 261 | 2026-10-23 |
 | SEYCIL | 61 | 30 | 302 | 281 | 2026-10-23 |
+| SIJKUR | 47 | 30 | 302 | 293 | 2026-10-24 |
 | SOCSAE | 51 | 30 | 302 | 299 | 2026-10-20 |
 | SUYTIR | 53 | 30 | 302 | 291 | 2026-10-21 |
+| SUYTOX | 67 | 30 | 302 | 281 | 2026-10-24 |
 | TACIZN | 41 | 30 | 302 | 302 | 2026-10-23 |
+| TAKZUB | 17 | 30 | 302 | 294 | 2026-10-24 |
+| TARNIJ | 53 | 30 | 302 | 281 | 2026-10-24 |
+| TAVZEW | 75 | 48 | 486 | 484 | 2026-10-24 |
 | TBZZNP01 | 51 | 30 | 302 | 226 | 2026-10-21 |
 | TIQLOU | 69 | 30 | 302 | 302 | 2026-10-23 |
 | TIXQOH | 92 | 30 | 302 | 302 | 2026-10-22 |
 | TIXREY | 48 | 30 | 302 | 302 | 2026-10-23 |
+| UFUROC | 29 | 30 | 302 | 181 | 2026-10-24 |
+| UMEVOY | 39 | 30 | 302 | 291 | 2026-10-24 |
+| UQOWIH | 65 | 30 | 302 | 287 | 2026-10-24 |
+| VAGJES | 35 | 30 | 302 | 296 | 2026-10-24 |
+| VEPXOD | 49 | 30 | 302 | 293 | 2026-10-24 |
 | VOJHIO | 53 | 30 | 302 | 97 | 2026-10-21 |
 | VUVVAM | 55 | 30 | 302 | 254 | 2026-10-21 |
+| WAJNEA | 65 | 30 | 302 | 297 | 2026-10-24 |
 | WEDVEG | 51 | 30 | 302 | 293 | 2026-10-23 |
 | WUCGIN | 51 | 30 | 302 | 249 | 2026-10-20 |
 | XAJQAB | 95 | 30 | 302 | 277 | 2026-10-23 |
+| XENWET | 25 | 30 | 302 | 298 | 2026-10-24 |
+| XILGIJ | 49 | 30 | 302 | 290 | 2026-10-24 |
+| XOGZAX | 61 | 30 | 302 | 272 | 2026-10-24 |
 | XUSTAG | 21 | 30 | 302 | 302 | 2026-10-23 |
+| YOLCOR | 45 | 30 | 302 | 234 | 2026-10-24 |
+| YOTFEU | 17 | 30 | 302 | 299 | 2026-10-24 |
+| ZACWOP | 45 | 30 | 302 | 294 | 2026-10-24 |
+| ZAHCAM | 71 | 30 | 302 | 302 | 2026-10-24 |
 | ZEFGAS | 51 | 30 | 302 | 294 | 2026-10-19 |
+| ZIBCAR | 57 | 30 | 302 | 282 | 2026-10-24 |
+| ZNDITZ11 | 59 | 30 | 302 | 178 | 2026-10-24 |
 
 ## Lower minimum than stage 2
 
@@ -79,10 +159,14 @@ A branch fell more than 2 kJ/mol below its start (`energy_drop`), so the complex
 
 - GAKKUY: angle_S2-Zn-S3 neg step 9 at -4.906 kJ/mol
 - ICUCIT: angle_N2-Zn-N3 pos step 8 at -10.556 kJ/mol
+- TARNIJ: angle_S1-Zn-S2 neg step 8 at -2.476 kJ/mol
+- UFUROC: bond_Zn-S1 neg step 3 at -2.655 kJ/mol; bond_Zn-S2 pos step 2 at -3.299 kJ/mol; bond_Zn-S3 neg step 1 at -3.613 kJ/mol; bond_Zn-S4 pos step 3 at -3.064 kJ/mol; angle_S1-Zn-S2 neg step 1 at -3.621 kJ/mol; angle_S1-Zn-S3 pos step 1 at -3.152 kJ/mol; angle_S1-Zn-S4 neg step 1 at -2.971 kJ/mol; angle_S2-Zn-S3 pos step 3 at -3.3 kJ/mol; angle_S2-Zn-S4 neg step 1 at -3.606 kJ/mol; angle_S3-Zn-S4 pos step 2 at -3.615 kJ/mol; twist_S1-S2-S3-S4 neg step 1 at -3.334 kJ/mol; tilt_Zn-S2-C12-O11 neg step 3 at -3.564 kJ/mol; tilt_Zn-S3-C18-C19 neg step 2 at -3.22 kJ/mol; tilt_Zn-S4-C24-O23 neg step 2 at -3.615 kJ/mol
 - XAJQAB: angle_N22-Zn-N69 neg step 9 at -21.073 kJ/mol
+- ZNDITZ11: bond_Zn-N3 pos step 4 at -2.047 kJ/mol; angle_S1-Zn-S2 pos step 4 at -2.225 kJ/mol; angle_S1-Zn-N3 neg step 2 at -2.201 kJ/mol; angle_S1-Zn-N7 pos step 2 at -2.522 kJ/mol; angle_S2-Zn-N3 pos step 1 at -2.373 kJ/mol; tilt_Zn-S1-C11-N4 pos step 7 at -2.373 kJ/mol; tilt_Zn-S2-C34-N8 neg step 6 at -2.658 kJ/mol; tilt_Zn-S2-C34-N8 pos step 5 at -2.413 kJ/mol
 
 ## Finished but not exported
 
 No branch start passes validation, so no point is usable as defined (for example a non-donor atom within 2.6 A of Zn at the stage-2 minimum).
 
+- GECLUZ: all 29 branches finished; branch starts fail validation (new_contact 29)
 - OGUGON: all 30 branches finished; branch starts fail validation (new_contact 30)

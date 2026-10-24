@@ -1,0 +1,464 @@
+{
+ "ref": "SUYTOX",
+ "zn": 0,
+ "donors": [
+  1,
+  2,
+  7,
+  8
+ ],
+ "coords": [
+  {
+   "name": "bond_Zn-S1",
+   "kind": "B",
+   "atoms": [
+    0,
+    1
+   ],
+   "branch": "neg",
+   "v0": 2.3081069015524225,
+   "start": 2.3081069015524225,
+   "end": 2.2481069015524224,
+   "npoints": 4,
+   "dir": "scans/SUYTOX/bond_Zn-S1_neg"
+  },
+  {
+   "name": "bond_Zn-S1",
+   "kind": "B",
+   "atoms": [
+    0,
+    1
+   ],
+   "branch": "pos",
+   "v0": 2.3081069015524225,
+   "start": 2.3081069015524225,
+   "end": 2.5081069015524227,
+   "npoints": 11,
+   "dir": "scans/SUYTOX/bond_Zn-S1_pos"
+  },
+  {
+   "name": "bond_Zn-S2",
+   "kind": "B",
+   "atoms": [
+    0,
+    2
+   ],
+   "branch": "neg",
+   "v0": 2.308110966317287,
+   "start": 2.308110966317287,
+   "end": 2.248110966317287,
+   "npoints": 4,
+   "dir": "scans/SUYTOX/bond_Zn-S2_neg"
+  },
+  {
+   "name": "bond_Zn-S2",
+   "kind": "B",
+   "atoms": [
+    0,
+    2
+   ],
+   "branch": "pos",
+   "v0": 2.308110966317287,
+   "start": 2.308110966317287,
+   "end": 2.5081109663172874,
+   "npoints": 11,
+   "dir": "scans/SUYTOX/bond_Zn-S2_pos"
+  },
+  {
+   "name": "bond_Zn-N7",
+   "kind": "B",
+   "atoms": [
+    0,
+    7
+   ],
+   "branch": "neg",
+   "v0": 2.0857240188639805,
+   "start": 2.0857240188639805,
+   "end": 2.0257240188639805,
+   "npoints": 4,
+   "dir": "scans/SUYTOX/bond_Zn-N7_neg"
+  },
+  {
+   "name": "bond_Zn-N7",
+   "kind": "B",
+   "atoms": [
+    0,
+    7
+   ],
+   "branch": "pos",
+   "v0": 2.0857240188639805,
+   "start": 2.0857240188639805,
+   "end": 2.2857240188639807,
+   "npoints": 11,
+   "dir": "scans/SUYTOX/bond_Zn-N7_pos"
+  },
+  {
+   "name": "bond_Zn-N8",
+   "kind": "B",
+   "atoms": [
+    0,
+    8
+   ],
+   "branch": "neg",
+   "v0": 2.0857119411507288,
+   "start": 2.0857119411507288,
+   "end": 2.0257119411507287,
+   "npoints": 4,
+   "dir": "scans/SUYTOX/bond_Zn-N8_neg"
+  },
+  {
+   "name": "bond_Zn-N8",
+   "kind": "B",
+   "atoms": [
+    0,
+    8
+   ],
+   "branch": "pos",
+   "v0": 2.0857119411507288,
+   "start": 2.0857119411507288,
+   "end": 2.285711941150729,
+   "npoints": 11,
+   "dir": "scans/SUYTOX/bond_Zn-N8_pos"
+  },
+  {
+   "name": "angle_S1-Zn-S2",
+   "kind": "A",
+   "atoms": [
+    1,
+    0,
+    2
+   ],
+   "branch": "neg",
+   "v0": 127.7710646854891,
+   "start": 127.7710646854891,
+   "end": 112.7710646854891,
+   "npoints": 11,
+   "dir": "scans/SUYTOX/angle_S1-Zn-S2_neg"
+  },
+  {
+   "name": "angle_S1-Zn-S2",
+   "kind": "A",
+   "atoms": [
+    1,
+    0,
+    2
+   ],
+   "branch": "pos",
+   "v0": 127.7710646854891,
+   "start": 127.7710646854891,
+   "end": 142.77106468548908,
+   "npoints": 11,
+   "dir": "scans/SUYTOX/angle_S1-Zn-S2_pos"
+  },
+  {
+   "name": "angle_S1-Zn-N7",
+   "kind": "A",
+   "atoms": [
+    1,
+    0,
+    7
+   ],
+   "branch": "neg",
+   "v0": 86.26670377208724,
+   "start": 86.26670377208724,
+   "end": 71.26670377208724,
+   "npoints": 11,
+   "dir": "scans/SUYTOX/angle_S1-Zn-N7_neg"
+  },
+  {
+   "name": "angle_S1-Zn-N7",
+   "kind": "A",
+   "atoms": [
+    1,
+    0,
+    7
+   ],
+   "branch": "pos",
+   "v0": 86.26670377208724,
+   "start": 86.26670377208724,
+   "end": 101.26670377208724,
+   "npoints": 11,
+   "dir": "scans/SUYTOX/angle_S1-Zn-N7_pos"
+  },
+  {
+   "name": "angle_S1-Zn-N8",
+   "kind": "A",
+   "atoms": [
+    1,
+    0,
+    8
+   ],
+   "branch": "neg",
+   "v0": 127.42684326015754,
+   "start": 127.42684326015754,
+   "end": 112.42684326015754,
+   "npoints": 11,
+   "dir": "scans/SUYTOX/angle_S1-Zn-N8_neg"
+  },
+  {
+   "name": "angle_S1-Zn-N8",
+   "kind": "A",
+   "atoms": [
+    1,
+    0,
+    8
+   ],
+   "branch": "pos",
+   "v0": 127.42684326015754,
+   "start": 127.42684326015754,
+   "end": 142.42684326015754,
+   "npoints": 11,
+   "dir": "scans/SUYTOX/angle_S1-Zn-N8_pos"
+  },
+  {
+   "name": "angle_S2-Zn-N7",
+   "kind": "A",
+   "atoms": [
+    2,
+    0,
+    7
+   ],
+   "branch": "neg",
+   "v0": 127.43812114926871,
+   "start": 127.43812114926871,
+   "end": 112.43812114926871,
+   "npoints": 11,
+   "dir": "scans/SUYTOX/angle_S2-Zn-N7_neg"
+  },
+  {
+   "name": "angle_S2-Zn-N7",
+   "kind": "A",
+   "atoms": [
+    2,
+    0,
+    7
+   ],
+   "branch": "pos",
+   "v0": 127.43812114926871,
+   "start": 127.43812114926871,
+   "end": 142.4381211492687,
+   "npoints": 11,
+   "dir": "scans/SUYTOX/angle_S2-Zn-N7_pos"
+  },
+  {
+   "name": "angle_S2-Zn-N8",
+   "kind": "A",
+   "atoms": [
+    2,
+    0,
+    8
+   ],
+   "branch": "neg",
+   "v0": 86.26724750660689,
+   "start": 86.26724750660689,
+   "end": 71.26724750660689,
+   "npoints": 11,
+   "dir": "scans/SUYTOX/angle_S2-Zn-N8_neg"
+  },
+  {
+   "name": "angle_S2-Zn-N8",
+   "kind": "A",
+   "atoms": [
+    2,
+    0,
+    8
+   ],
+   "branch": "pos",
+   "v0": 86.26724750660689,
+   "start": 86.26724750660689,
+   "end": 101.26724750660689,
+   "npoints": 11,
+   "dir": "scans/SUYTOX/angle_S2-Zn-N8_pos"
+  },
+  {
+   "name": "angle_N7-Zn-N8",
+   "kind": "A",
+   "atoms": [
+    7,
+    0,
+    8
+   ],
+   "branch": "neg",
+   "v0": 103.87899321072639,
+   "start": 103.87899321072639,
+   "end": 88.87899321072639,
+   "npoints": 11,
+   "dir": "scans/SUYTOX/angle_N7-Zn-N8_neg"
+  },
+  {
+   "name": "angle_N7-Zn-N8",
+   "kind": "A",
+   "atoms": [
+    7,
+    0,
+    8
+   ],
+   "branch": "pos",
+   "v0": 103.87899321072639,
+   "start": 103.87899321072639,
+   "end": 118.87899321072639,
+   "npoints": 11,
+   "dir": "scans/SUYTOX/angle_N7-Zn-N8_pos"
+  },
+  {
+   "name": "twist_S1-N7-S2-N8",
+   "kind": "D",
+   "atoms": [
+    1,
+    7,
+    2,
+    8
+   ],
+   "branch": "neg",
+   "v0": -89.20078097839503,
+   "start": -89.20078097839503,
+   "end": -99.20078097839503,
+   "npoints": 11,
+   "dir": "scans/SUYTOX/twist_S1-N7-S2-N8_neg"
+  },
+  {
+   "name": "twist_S1-N7-S2-N8",
+   "kind": "D",
+   "atoms": [
+    1,
+    7,
+    2,
+    8
+   ],
+   "branch": "pos",
+   "v0": -89.20078097839503,
+   "start": -89.20078097839503,
+   "end": -79.20078097839503,
+   "npoints": 11,
+   "dir": "scans/SUYTOX/twist_S1-N7-S2-N8_pos"
+  },
+  {
+   "name": "tilt_Zn-S1-C31-N5",
+   "kind": "D",
+   "atoms": [
+    0,
+    1,
+    31,
+    5
+   ],
+   "branch": "neg",
+   "v0": -0.315907159457097,
+   "start": -0.315907159457097,
+   "end": -10.315907159457097,
+   "npoints": 11,
+   "dir": "scans/SUYTOX/tilt_Zn-S1-C31-N5_neg"
+  },
+  {
+   "name": "tilt_Zn-S1-C31-N5",
+   "kind": "D",
+   "atoms": [
+    0,
+    1,
+    31,
+    5
+   ],
+   "branch": "pos",
+   "v0": -0.315907159457097,
+   "start": -0.315907159457097,
+   "end": 9.684092840542903,
+   "npoints": 11,
+   "dir": "scans/SUYTOX/tilt_Zn-S1-C31-N5_pos"
+  },
+  {
+   "name": "tilt_Zn-S2-C32-N6",
+   "kind": "D",
+   "atoms": [
+    0,
+    2,
+    32,
+    6
+   ],
+   "branch": "neg",
+   "v0": -0.294624528774048,
+   "start": -0.294624528774048,
+   "end": -10.294624528774047,
+   "npoints": 11,
+   "dir": "scans/SUYTOX/tilt_Zn-S2-C32-N6_neg"
+  },
+  {
+   "name": "tilt_Zn-S2-C32-N6",
+   "kind": "D",
+   "atoms": [
+    0,
+    2,
+    32,
+    6
+   ],
+   "branch": "pos",
+   "v0": -0.294624528774048,
+   "start": -0.294624528774048,
+   "end": 9.705375471225953,
+   "npoints": 11,
+   "dir": "scans/SUYTOX/tilt_Zn-S2-C32-N6_pos"
+  },
+  {
+   "name": "tilt_Zn-N7-C33-C35",
+   "kind": "D",
+   "atoms": [
+    0,
+    7,
+    33,
+    35
+   ],
+   "branch": "neg",
+   "v0": 12.384707748637737,
+   "start": 12.384707748637737,
+   "end": 2.3847077486377373,
+   "npoints": 11,
+   "dir": "scans/SUYTOX/tilt_Zn-N7-C33-C35_neg"
+  },
+  {
+   "name": "tilt_Zn-N7-C33-C35",
+   "kind": "D",
+   "atoms": [
+    0,
+    7,
+    33,
+    35
+   ],
+   "branch": "pos",
+   "v0": 12.384707748637737,
+   "start": 12.384707748637737,
+   "end": 22.384707748637737,
+   "npoints": 11,
+   "dir": "scans/SUYTOX/tilt_Zn-N7-C33-C35_pos"
+  },
+  {
+   "name": "tilt_Zn-N8-C34-C36",
+   "kind": "D",
+   "atoms": [
+    0,
+    8,
+    34,
+    36
+   ],
+   "branch": "neg",
+   "v0": 12.377020646318977,
+   "start": 12.377020646318977,
+   "end": 2.377020646318977,
+   "npoints": 11,
+   "dir": "scans/SUYTOX/tilt_Zn-N8-C34-C36_neg"
+  },
+  {
+   "name": "tilt_Zn-N8-C34-C36",
+   "kind": "D",
+   "atoms": [
+    0,
+    8,
+    34,
+    36
+   ],
+   "branch": "pos",
+   "v0": 12.377020646318977,
+   "start": 12.377020646318977,
+   "end": 22.377020646318975,
+   "npoints": 11,
+   "dir": "scans/SUYTOX/tilt_Zn-N8-C34-C36_pos"
+  }
+ ]
+}

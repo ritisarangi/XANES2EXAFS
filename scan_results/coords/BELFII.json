@@ -1,0 +1,464 @@
+{
+ "ref": "BELFII",
+ "zn": 0,
+ "donors": [
+  1,
+  2,
+  3,
+  4
+ ],
+ "coords": [
+  {
+   "name": "bond_Zn-S1",
+   "kind": "B",
+   "atoms": [
+    0,
+    1
+   ],
+   "branch": "neg",
+   "v0": 2.2928785390499127,
+   "start": 2.2928785390499127,
+   "end": 2.2328785390499126,
+   "npoints": 4,
+   "dir": "scans/BELFII/bond_Zn-S1_neg"
+  },
+  {
+   "name": "bond_Zn-S1",
+   "kind": "B",
+   "atoms": [
+    0,
+    1
+   ],
+   "branch": "pos",
+   "v0": 2.2928785390499127,
+   "start": 2.2928785390499127,
+   "end": 2.492878539049913,
+   "npoints": 11,
+   "dir": "scans/BELFII/bond_Zn-S1_pos"
+  },
+  {
+   "name": "bond_Zn-S2",
+   "kind": "B",
+   "atoms": [
+    0,
+    2
+   ],
+   "branch": "neg",
+   "v0": 2.3221317669845845,
+   "start": 2.3221317669845845,
+   "end": 2.2621317669845844,
+   "npoints": 4,
+   "dir": "scans/BELFII/bond_Zn-S2_neg"
+  },
+  {
+   "name": "bond_Zn-S2",
+   "kind": "B",
+   "atoms": [
+    0,
+    2
+   ],
+   "branch": "pos",
+   "v0": 2.3221317669845845,
+   "start": 2.3221317669845845,
+   "end": 2.5221317669845846,
+   "npoints": 11,
+   "dir": "scans/BELFII/bond_Zn-S2_pos"
+  },
+  {
+   "name": "bond_Zn-N3",
+   "kind": "B",
+   "atoms": [
+    0,
+    3
+   ],
+   "branch": "neg",
+   "v0": 2.1099073944427014,
+   "start": 2.1099073944427014,
+   "end": 2.0499073944427013,
+   "npoints": 4,
+   "dir": "scans/BELFII/bond_Zn-N3_neg"
+  },
+  {
+   "name": "bond_Zn-N3",
+   "kind": "B",
+   "atoms": [
+    0,
+    3
+   ],
+   "branch": "pos",
+   "v0": 2.1099073944427014,
+   "start": 2.1099073944427014,
+   "end": 2.3099073944427015,
+   "npoints": 11,
+   "dir": "scans/BELFII/bond_Zn-N3_pos"
+  },
+  {
+   "name": "bond_Zn-N4",
+   "kind": "B",
+   "atoms": [
+    0,
+    4
+   ],
+   "branch": "neg",
+   "v0": 2.100155975645614,
+   "start": 2.100155975645614,
+   "end": 2.040155975645614,
+   "npoints": 4,
+   "dir": "scans/BELFII/bond_Zn-N4_neg"
+  },
+  {
+   "name": "bond_Zn-N4",
+   "kind": "B",
+   "atoms": [
+    0,
+    4
+   ],
+   "branch": "pos",
+   "v0": 2.100155975645614,
+   "start": 2.100155975645614,
+   "end": 2.3001559756456142,
+   "npoints": 11,
+   "dir": "scans/BELFII/bond_Zn-N4_pos"
+  },
+  {
+   "name": "angle_S1-Zn-S2",
+   "kind": "A",
+   "atoms": [
+    1,
+    0,
+    2
+   ],
+   "branch": "neg",
+   "v0": 107.83616596258999,
+   "start": 107.83616596258999,
+   "end": 92.83616596258999,
+   "npoints": 11,
+   "dir": "scans/BELFII/angle_S1-Zn-S2_neg"
+  },
+  {
+   "name": "angle_S1-Zn-S2",
+   "kind": "A",
+   "atoms": [
+    1,
+    0,
+    2
+   ],
+   "branch": "pos",
+   "v0": 107.83616596258999,
+   "start": 107.83616596258999,
+   "end": 122.83616596258999,
+   "npoints": 11,
+   "dir": "scans/BELFII/angle_S1-Zn-S2_pos"
+  },
+  {
+   "name": "angle_S1-Zn-N3",
+   "kind": "A",
+   "atoms": [
+    1,
+    0,
+    3
+   ],
+   "branch": "neg",
+   "v0": 117.38005502052019,
+   "start": 117.38005502052019,
+   "end": 102.38005502052019,
+   "npoints": 11,
+   "dir": "scans/BELFII/angle_S1-Zn-N3_neg"
+  },
+  {
+   "name": "angle_S1-Zn-N3",
+   "kind": "A",
+   "atoms": [
+    1,
+    0,
+    3
+   ],
+   "branch": "pos",
+   "v0": 117.38005502052019,
+   "start": 117.38005502052019,
+   "end": 132.3800550205202,
+   "npoints": 11,
+   "dir": "scans/BELFII/angle_S1-Zn-N3_pos"
+  },
+  {
+   "name": "angle_S1-Zn-N4",
+   "kind": "A",
+   "atoms": [
+    1,
+    0,
+    4
+   ],
+   "branch": "neg",
+   "v0": 118.82617040519801,
+   "start": 118.82617040519801,
+   "end": 103.82617040519801,
+   "npoints": 11,
+   "dir": "scans/BELFII/angle_S1-Zn-N4_neg"
+  },
+  {
+   "name": "angle_S1-Zn-N4",
+   "kind": "A",
+   "atoms": [
+    1,
+    0,
+    4
+   ],
+   "branch": "pos",
+   "v0": 118.82617040519801,
+   "start": 118.82617040519801,
+   "end": 133.826170405198,
+   "npoints": 11,
+   "dir": "scans/BELFII/angle_S1-Zn-N4_pos"
+  },
+  {
+   "name": "angle_S2-Zn-N3",
+   "kind": "A",
+   "atoms": [
+    2,
+    0,
+    3
+   ],
+   "branch": "neg",
+   "v0": 114.69888956292942,
+   "start": 114.69888956292942,
+   "end": 99.69888956292942,
+   "npoints": 11,
+   "dir": "scans/BELFII/angle_S2-Zn-N3_neg"
+  },
+  {
+   "name": "angle_S2-Zn-N3",
+   "kind": "A",
+   "atoms": [
+    2,
+    0,
+    3
+   ],
+   "branch": "pos",
+   "v0": 114.69888956292942,
+   "start": 114.69888956292942,
+   "end": 129.69888956292942,
+   "npoints": 11,
+   "dir": "scans/BELFII/angle_S2-Zn-N3_pos"
+  },
+  {
+   "name": "angle_S2-Zn-N4",
+   "kind": "A",
+   "atoms": [
+    2,
+    0,
+    4
+   ],
+   "branch": "neg",
+   "v0": 115.99620475258713,
+   "start": 115.99620475258713,
+   "end": 100.99620475258713,
+   "npoints": 11,
+   "dir": "scans/BELFII/angle_S2-Zn-N4_neg"
+  },
+  {
+   "name": "angle_S2-Zn-N4",
+   "kind": "A",
+   "atoms": [
+    2,
+    0,
+    4
+   ],
+   "branch": "pos",
+   "v0": 115.99620475258713,
+   "start": 115.99620475258713,
+   "end": 130.99620475258712,
+   "npoints": 11,
+   "dir": "scans/BELFII/angle_S2-Zn-N4_pos"
+  },
+  {
+   "name": "angle_N3-Zn-N4",
+   "kind": "A",
+   "atoms": [
+    3,
+    0,
+    4
+   ],
+   "branch": "neg",
+   "v0": 80.34855576414724,
+   "start": 80.34855576414724,
+   "end": 65.34855576414724,
+   "npoints": 11,
+   "dir": "scans/BELFII/angle_N3-Zn-N4_neg"
+  },
+  {
+   "name": "angle_N3-Zn-N4",
+   "kind": "A",
+   "atoms": [
+    3,
+    0,
+    4
+   ],
+   "branch": "pos",
+   "v0": 80.34855576414724,
+   "start": 80.34855576414724,
+   "end": 95.34855576414724,
+   "npoints": 11,
+   "dir": "scans/BELFII/angle_N3-Zn-N4_pos"
+  },
+  {
+   "name": "twist_S1-S2-N3-N4",
+   "kind": "D",
+   "atoms": [
+    1,
+    2,
+    3,
+    4
+   ],
+   "branch": "neg",
+   "v0": 77.59301920596457,
+   "start": 77.59301920596457,
+   "end": 67.59301920596457,
+   "npoints": 11,
+   "dir": "scans/BELFII/twist_S1-S2-N3-N4_neg"
+  },
+  {
+   "name": "twist_S1-S2-N3-N4",
+   "kind": "D",
+   "atoms": [
+    1,
+    2,
+    3,
+    4
+   ],
+   "branch": "pos",
+   "v0": 77.59301920596457,
+   "start": 77.59301920596457,
+   "end": 87.59301920596457,
+   "npoints": 11,
+   "dir": "scans/BELFII/twist_S1-S2-N3-N4_pos"
+  },
+  {
+   "name": "tilt_Zn-S1-C31-C34",
+   "kind": "D",
+   "atoms": [
+    0,
+    1,
+    31,
+    34
+   ],
+   "branch": "neg",
+   "v0": -64.84202608453819,
+   "start": -64.84202608453819,
+   "end": -74.84202608453819,
+   "npoints": 11,
+   "dir": "scans/BELFII/tilt_Zn-S1-C31-C34_neg"
+  },
+  {
+   "name": "tilt_Zn-S1-C31-C34",
+   "kind": "D",
+   "atoms": [
+    0,
+    1,
+    31,
+    34
+   ],
+   "branch": "pos",
+   "v0": -64.84202608453819,
+   "start": -64.84202608453819,
+   "end": -54.84202608453819,
+   "npoints": 11,
+   "dir": "scans/BELFII/tilt_Zn-S1-C31-C34_pos"
+  },
+  {
+   "name": "tilt_Zn-S2-C43-C34",
+   "kind": "D",
+   "atoms": [
+    0,
+    2,
+    43,
+    34
+   ],
+   "branch": "neg",
+   "v0": -51.32733126298787,
+   "start": -51.32733126298787,
+   "end": -61.32733126298787,
+   "npoints": 11,
+   "dir": "scans/BELFII/tilt_Zn-S2-C43-C34_neg"
+  },
+  {
+   "name": "tilt_Zn-S2-C43-C34",
+   "kind": "D",
+   "atoms": [
+    0,
+    2,
+    43,
+    34
+   ],
+   "branch": "pos",
+   "v0": -51.32733126298787,
+   "start": -51.32733126298787,
+   "end": -41.32733126298787,
+   "npoints": 11,
+   "dir": "scans/BELFII/tilt_Zn-S2-C43-C34_pos"
+  },
+  {
+   "name": "tilt_Zn-N3-C5-C23",
+   "kind": "D",
+   "atoms": [
+    0,
+    3,
+    5,
+    23
+   ],
+   "branch": "neg",
+   "v0": -1.6966224600890893,
+   "start": -1.6966224600890893,
+   "end": -11.69662246008909,
+   "npoints": 11,
+   "dir": "scans/BELFII/tilt_Zn-N3-C5-C23_neg"
+  },
+  {
+   "name": "tilt_Zn-N3-C5-C23",
+   "kind": "D",
+   "atoms": [
+    0,
+    3,
+    5,
+    23
+   ],
+   "branch": "pos",
+   "v0": -1.6966224600890893,
+   "start": -1.6966224600890893,
+   "end": 8.30337753991091,
+   "npoints": 11,
+   "dir": "scans/BELFII/tilt_Zn-N3-C5-C23_pos"
+  },
+  {
+   "name": "tilt_Zn-N4-C12-C11",
+   "kind": "D",
+   "atoms": [
+    0,
+    4,
+    12,
+    11
+   ],
+   "branch": "neg",
+   "v0": -1.1539297635500165,
+   "start": -1.1539297635500165,
+   "end": -11.153929763550016,
+   "npoints": 11,
+   "dir": "scans/BELFII/tilt_Zn-N4-C12-C11_neg"
+  },
+  {
+   "name": "tilt_Zn-N4-C12-C11",
+   "kind": "D",
+   "atoms": [
+    0,
+    4,
+    12,
+    11
+   ],
+   "branch": "pos",
+   "v0": -1.1539297635500165,
+   "start": -1.1539297635500165,
+   "end": 8.846070236449984,
+   "npoints": 11,
+   "dir": "scans/BELFII/tilt_Zn-N4-C12-C11_pos"
+  }
+ ]
+}

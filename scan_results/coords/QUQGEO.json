@@ -1,0 +1,464 @@
+{
+ "ref": "QUQGEO",
+ "zn": 0,
+ "donors": [
+  1,
+  2,
+  3,
+  10
+ ],
+ "coords": [
+  {
+   "name": "bond_Zn-S1",
+   "kind": "B",
+   "atoms": [
+    0,
+    1
+   ],
+   "branch": "neg",
+   "v0": 2.3393654196298934,
+   "start": 2.3393654196298934,
+   "end": 2.2793654196298934,
+   "npoints": 4,
+   "dir": "scans/QUQGEO/bond_Zn-S1_neg"
+  },
+  {
+   "name": "bond_Zn-S1",
+   "kind": "B",
+   "atoms": [
+    0,
+    1
+   ],
+   "branch": "pos",
+   "v0": 2.3393654196298934,
+   "start": 2.3393654196298934,
+   "end": 2.5393654196298936,
+   "npoints": 11,
+   "dir": "scans/QUQGEO/bond_Zn-S1_pos"
+  },
+  {
+   "name": "bond_Zn-S2",
+   "kind": "B",
+   "atoms": [
+    0,
+    2
+   ],
+   "branch": "neg",
+   "v0": 2.3345355708920765,
+   "start": 2.3345355708920765,
+   "end": 2.2745355708920765,
+   "npoints": 4,
+   "dir": "scans/QUQGEO/bond_Zn-S2_neg"
+  },
+  {
+   "name": "bond_Zn-S2",
+   "kind": "B",
+   "atoms": [
+    0,
+    2
+   ],
+   "branch": "pos",
+   "v0": 2.3345355708920765,
+   "start": 2.3345355708920765,
+   "end": 2.5345355708920767,
+   "npoints": 11,
+   "dir": "scans/QUQGEO/bond_Zn-S2_pos"
+  },
+  {
+   "name": "bond_Zn-N3",
+   "kind": "B",
+   "atoms": [
+    0,
+    3
+   ],
+   "branch": "neg",
+   "v0": 2.0655426122280036,
+   "start": 2.0655426122280036,
+   "end": 2.0055426122280036,
+   "npoints": 4,
+   "dir": "scans/QUQGEO/bond_Zn-N3_neg"
+  },
+  {
+   "name": "bond_Zn-N3",
+   "kind": "B",
+   "atoms": [
+    0,
+    3
+   ],
+   "branch": "pos",
+   "v0": 2.0655426122280036,
+   "start": 2.0655426122280036,
+   "end": 2.265542612228004,
+   "npoints": 11,
+   "dir": "scans/QUQGEO/bond_Zn-N3_pos"
+  },
+  {
+   "name": "bond_Zn-N10",
+   "kind": "B",
+   "atoms": [
+    0,
+    10
+   ],
+   "branch": "neg",
+   "v0": 2.0721176298673245,
+   "start": 2.0721176298673245,
+   "end": 2.0121176298673245,
+   "npoints": 4,
+   "dir": "scans/QUQGEO/bond_Zn-N10_neg"
+  },
+  {
+   "name": "bond_Zn-N10",
+   "kind": "B",
+   "atoms": [
+    0,
+    10
+   ],
+   "branch": "pos",
+   "v0": 2.0721176298673245,
+   "start": 2.0721176298673245,
+   "end": 2.2721176298673247,
+   "npoints": 11,
+   "dir": "scans/QUQGEO/bond_Zn-N10_pos"
+  },
+  {
+   "name": "angle_S1-Zn-S2",
+   "kind": "A",
+   "atoms": [
+    1,
+    0,
+    2
+   ],
+   "branch": "neg",
+   "v0": 95.11508828526765,
+   "start": 95.11508828526765,
+   "end": 80.11508828526765,
+   "npoints": 11,
+   "dir": "scans/QUQGEO/angle_S1-Zn-S2_neg"
+  },
+  {
+   "name": "angle_S1-Zn-S2",
+   "kind": "A",
+   "atoms": [
+    1,
+    0,
+    2
+   ],
+   "branch": "pos",
+   "v0": 95.11508828526765,
+   "start": 95.11508828526765,
+   "end": 110.11508828526765,
+   "npoints": 11,
+   "dir": "scans/QUQGEO/angle_S1-Zn-S2_pos"
+  },
+  {
+   "name": "angle_S1-Zn-N3",
+   "kind": "A",
+   "atoms": [
+    1,
+    0,
+    3
+   ],
+   "branch": "neg",
+   "v0": 113.59986889343851,
+   "start": 113.59986889343851,
+   "end": 98.59986889343851,
+   "npoints": 11,
+   "dir": "scans/QUQGEO/angle_S1-Zn-N3_neg"
+  },
+  {
+   "name": "angle_S1-Zn-N3",
+   "kind": "A",
+   "atoms": [
+    1,
+    0,
+    3
+   ],
+   "branch": "pos",
+   "v0": 113.59986889343851,
+   "start": 113.59986889343851,
+   "end": 128.5998688934385,
+   "npoints": 11,
+   "dir": "scans/QUQGEO/angle_S1-Zn-N3_pos"
+  },
+  {
+   "name": "angle_S1-Zn-N10",
+   "kind": "A",
+   "atoms": [
+    1,
+    0,
+    10
+   ],
+   "branch": "neg",
+   "v0": 116.57542544411159,
+   "start": 116.57542544411159,
+   "end": 101.57542544411159,
+   "npoints": 11,
+   "dir": "scans/QUQGEO/angle_S1-Zn-N10_neg"
+  },
+  {
+   "name": "angle_S1-Zn-N10",
+   "kind": "A",
+   "atoms": [
+    1,
+    0,
+    10
+   ],
+   "branch": "pos",
+   "v0": 116.57542544411159,
+   "start": 116.57542544411159,
+   "end": 131.5754254441116,
+   "npoints": 11,
+   "dir": "scans/QUQGEO/angle_S1-Zn-N10_pos"
+  },
+  {
+   "name": "angle_S2-Zn-N3",
+   "kind": "A",
+   "atoms": [
+    2,
+    0,
+    3
+   ],
+   "branch": "neg",
+   "v0": 118.6055552740122,
+   "start": 118.6055552740122,
+   "end": 103.6055552740122,
+   "npoints": 11,
+   "dir": "scans/QUQGEO/angle_S2-Zn-N3_neg"
+  },
+  {
+   "name": "angle_S2-Zn-N3",
+   "kind": "A",
+   "atoms": [
+    2,
+    0,
+    3
+   ],
+   "branch": "pos",
+   "v0": 118.6055552740122,
+   "start": 118.6055552740122,
+   "end": 133.6055552740122,
+   "npoints": 11,
+   "dir": "scans/QUQGEO/angle_S2-Zn-N3_pos"
+  },
+  {
+   "name": "angle_S2-Zn-N10",
+   "kind": "A",
+   "atoms": [
+    2,
+    0,
+    10
+   ],
+   "branch": "neg",
+   "v0": 113.98968559771691,
+   "start": 113.98968559771691,
+   "end": 98.98968559771691,
+   "npoints": 11,
+   "dir": "scans/QUQGEO/angle_S2-Zn-N10_neg"
+  },
+  {
+   "name": "angle_S2-Zn-N10",
+   "kind": "A",
+   "atoms": [
+    2,
+    0,
+    10
+   ],
+   "branch": "pos",
+   "v0": 113.98968559771691,
+   "start": 113.98968559771691,
+   "end": 128.9896855977169,
+   "npoints": 11,
+   "dir": "scans/QUQGEO/angle_S2-Zn-N10_pos"
+  },
+  {
+   "name": "angle_N3-Zn-N10",
+   "kind": "A",
+   "atoms": [
+    3,
+    0,
+    10
+   ],
+   "branch": "neg",
+   "v0": 100.08721987134446,
+   "start": 100.08721987134446,
+   "end": 85.08721987134446,
+   "npoints": 11,
+   "dir": "scans/QUQGEO/angle_N3-Zn-N10_neg"
+  },
+  {
+   "name": "angle_N3-Zn-N10",
+   "kind": "A",
+   "atoms": [
+    3,
+    0,
+    10
+   ],
+   "branch": "pos",
+   "v0": 100.08721987134446,
+   "start": 100.08721987134446,
+   "end": 115.08721987134446,
+   "npoints": 11,
+   "dir": "scans/QUQGEO/angle_N3-Zn-N10_pos"
+  },
+  {
+   "name": "twist_S1-S2-N3-N10",
+   "kind": "D",
+   "atoms": [
+    1,
+    2,
+    3,
+    10
+   ],
+   "branch": "neg",
+   "v0": 77.9924552853137,
+   "start": 77.9924552853137,
+   "end": 67.9924552853137,
+   "npoints": 11,
+   "dir": "scans/QUQGEO/twist_S1-S2-N3-N10_neg"
+  },
+  {
+   "name": "twist_S1-S2-N3-N10",
+   "kind": "D",
+   "atoms": [
+    1,
+    2,
+    3,
+    10
+   ],
+   "branch": "pos",
+   "v0": 77.9924552853137,
+   "start": 77.9924552853137,
+   "end": 87.9924552853137,
+   "npoints": 11,
+   "dir": "scans/QUQGEO/twist_S1-S2-N3-N10_pos"
+  },
+  {
+   "name": "tilt_Zn-S1-C4-C8",
+   "kind": "D",
+   "atoms": [
+    0,
+    1,
+    4,
+    8
+   ],
+   "branch": "neg",
+   "v0": 0.45508734174640403,
+   "start": 0.45508734174640403,
+   "end": -9.544912658253596,
+   "npoints": 11,
+   "dir": "scans/QUQGEO/tilt_Zn-S1-C4-C8_neg"
+  },
+  {
+   "name": "tilt_Zn-S1-C4-C8",
+   "kind": "D",
+   "atoms": [
+    0,
+    1,
+    4,
+    8
+   ],
+   "branch": "pos",
+   "v0": 0.45508734174640403,
+   "start": 0.45508734174640403,
+   "end": 10.455087341746404,
+   "npoints": 11,
+   "dir": "scans/QUQGEO/tilt_Zn-S1-C4-C8_pos"
+  },
+  {
+   "name": "tilt_Zn-S2-C8-C4",
+   "kind": "D",
+   "atoms": [
+    0,
+    2,
+    8,
+    4
+   ],
+   "branch": "neg",
+   "v0": -0.7009723569566085,
+   "start": -0.7009723569566085,
+   "end": -10.700972356956608,
+   "npoints": 11,
+   "dir": "scans/QUQGEO/tilt_Zn-S2-C8-C4_neg"
+  },
+  {
+   "name": "tilt_Zn-S2-C8-C4",
+   "kind": "D",
+   "atoms": [
+    0,
+    2,
+    8,
+    4
+   ],
+   "branch": "pos",
+   "v0": -0.7009723569566085,
+   "start": -0.7009723569566085,
+   "end": 9.299027643043392,
+   "npoints": 11,
+   "dir": "scans/QUQGEO/tilt_Zn-S2-C8-C4_pos"
+  },
+  {
+   "name": "tilt_Zn-N3-C15-H21",
+   "kind": "D",
+   "atoms": [
+    0,
+    3,
+    15,
+    21
+   ],
+   "branch": "neg",
+   "v0": 0.5756011872218866,
+   "start": 0.5756011872218866,
+   "end": -9.424398812778113,
+   "npoints": 11,
+   "dir": "scans/QUQGEO/tilt_Zn-N3-C15-H21_neg"
+  },
+  {
+   "name": "tilt_Zn-N3-C15-H21",
+   "kind": "D",
+   "atoms": [
+    0,
+    3,
+    15,
+    21
+   ],
+   "branch": "pos",
+   "v0": 0.5756011872218866,
+   "start": 0.5756011872218866,
+   "end": 10.575601187221887,
+   "npoints": 11,
+   "dir": "scans/QUQGEO/tilt_Zn-N3-C15-H21_pos"
+  },
+  {
+   "name": "tilt_Zn-N10-C14-H26",
+   "kind": "D",
+   "atoms": [
+    0,
+    10,
+    14,
+    26
+   ],
+   "branch": "neg",
+   "v0": -1.5777700090802416,
+   "start": -1.5777700090802416,
+   "end": -11.577770009080242,
+   "npoints": 11,
+   "dir": "scans/QUQGEO/tilt_Zn-N10-C14-H26_neg"
+  },
+  {
+   "name": "tilt_Zn-N10-C14-H26",
+   "kind": "D",
+   "atoms": [
+    0,
+    10,
+    14,
+    26
+   ],
+   "branch": "pos",
+   "v0": -1.5777700090802416,
+   "start": -1.5777700090802416,
+   "end": 8.422229990919758,
+   "npoints": 11,
+   "dir": "scans/QUQGEO/tilt_Zn-N10-C14-H26_pos"
+  }
+ ]
+}
