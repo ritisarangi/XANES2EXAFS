@@ -67,8 +67,12 @@ def stopped_dirs(dft):
         mt = os.path.getmtime(lg)
         if d not in latest or mt > latest[d][0]:
             latest[d] = (mt, bool(re.search(r"DUE TO TIME LIMIT|CANCELLED", t)))
+    rp = os.path.join(dft, "remote_refs.txt")      # complexes run at another facility: left alone here
+    away = set(l.split()[0] for l in open(rp) if l.strip() and not l.startswith("#")) if os.path.exists(rp) else set()
     out = []
     for d, (_, stopped) in sorted(latest.items()):
+        if d.split("/")[1] in away:
+            continue
         full = os.path.join(dft, d)
         prepared = (os.path.exists(os.path.join(full, "scan_orig.inp")) and not os.path.exists(os.path.join(full, "scan.out"))
                     and not os.path.exists(os.path.join(full, "scan_cont.out")))   # continuation written, not run yet

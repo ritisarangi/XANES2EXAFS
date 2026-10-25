@@ -58,7 +58,15 @@ def state(work, d):
     return "fresh"
 
 
+def remote(work):
+    """Complexes run at another facility (remote_refs.txt in the run folder): never queued here."""
+    p = os.path.join(work, "remote_refs.txt")
+    return set(l.split()[0] for l in open(p) if l.strip() and not l.startswith("#")) if os.path.exists(p) else set()
+
+
 def in_pool(work, jobs):
+    away = remote(work)
+    jobs = [d for d in jobs if d.split("/")[1] not in away]
     lo, hi = int(os.environ.get("NATOMS_MIN", 0)), int(os.environ.get("NATOMS_MAX", 10 ** 6))
     size = {}
     for d in jobs:
@@ -148,7 +156,8 @@ def main():
         r = d.split("/")[1]
         if r not in size:
             size[r] = json.load(open(os.path.join(work, "stage2_b3lyp", r, r + ".meta")))["natoms"]
-    jobs = [d for d in jobs if lo <= size[d.split("/")[1]] < hi]
+    away = remote(work)
+    jobs = [d for d in jobs if lo <= size[d.split("/")[1]] < hi and d.split("/")[1] not in away]
     cont, fresh = [], []
     for d in jobs:
         s = state(work, d)
