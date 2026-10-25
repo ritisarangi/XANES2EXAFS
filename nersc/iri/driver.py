@@ -112,7 +112,7 @@ ENDED = {"completed", "failed", "canceled", "cancelled", "timeout", "timed_out",
 
 def cycle(st, tc):
     paused = os.path.exists(os.path.join(HERE, "PAUSE"))
-    active = {b: s["job"] for b, s in st.items() if s.get("job") and not s.get("ended")}
+    active = {b: s["job"] for b, s in st.items() if not b.startswith("_") and s.get("job") and not s.get("ended")}
     states = job_states(list(active.values())) if active else {}
     for b, jid in active.items():
         if states.get(jid) not in ENDED:
@@ -134,6 +134,8 @@ def cycle(st, tc):
             log("%s FAILED (job %s, state %s): %s" % (b, jid, states.get(jid), lg.strip().splitlines()[-1:] if lg.strip() else ""))
     n = 0
     for b, s in sorted(st.items()):
+        if b.startswith("_"):
+            continue
         if paused or s.get("done") or s.get("fails", 0) > MAX_FAIL or (s.get("job") and not s.get("ended")):
             continue
         try:
