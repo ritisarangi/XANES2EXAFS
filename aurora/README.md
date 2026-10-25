@@ -169,6 +169,7 @@ Other options: `CORES`, `HT`, `HBM`, `MAXCORE`, `SCRATCH` (see `sites/aurora.sh`
 - 2026-10-25 02:46: 20 more complexes published (5,177 passing points; audit passed), including OJEKOD (135 atoms, finished on Aurora): 160 complexes, 44,829 points on `aurora-results`. For Riti: KERJOI finished and is not exported (all 29 branch starts fail validation, `shell`); XIXTEG has a lower minimum than stage 2 (bond_Zn-N5/N9 pos step 4, -6.3/-6.4 kJ/mol); fewest passing points: OLIPEG 189, XIXTEG 195, TANRAE 200 of 302.
 - 2026-10-25 03:25: GEXZOY, KAKVAT, NIHTEG, NIHTIK and QIBVAZ published (1,371 passing points): 165 complexes, 46,200 points on `aurora-results`. NERSC driver started at 03:22 in `screen -S zn_nersc` (495 big branches; a 10-min test job on 10/24 ran ORCA with 8 ranks in the shared QOS and stopped cleanly).
 - 2026-10-25 04:00: all 495 big branches submitted to Perlmutter (shared QOS, 8 cores, 48 h each, account m5268); jobs started within minutes. The NERSC part of `aurora/STATUS.md` is written by the driver each cycle.
+- 2026-10-25 04:50: on Perlmutter only ~40 of the 495 shared-QOS branch jobs could start (Slurm reason `Priority`: the shared partition is busy; no per-user limit, normal charge). 160 of the queued branches were moved into 10 whole-node regular-QOS jobs (16 branches x 8 cores, pinned, 48 h; normal charge) after their shared jobs were cancelled and confirmed cancelled; the other ~295 stay queued in shared. Aurora: main farm 8957984 ended 04:09 (370 branches re-queued), replacement 8962257 submitted 04:27.
 
 ## Results for Riti
 

@@ -94,6 +94,45 @@ def submit(d):
     return I.submit_compute_job("compute", p)
 
 
+def cancel(jid):
+    r = I.requests.delete("%s/compute/cancel/compute/%s" % (I.BASE_URL, jid), headers=I.headers(), timeout=I.TIMEOUT)
+    return r.status_code
+
+
+def pack(st, states, nodes):
+    """take up to 16*nodes branches whose shared job is still queued, cancel those jobs (keeping
+    only branches whose cancel is confirmed), and run them 16 per node in regular-QOS node jobs"""
+    cand = sorted(b for b, s in st.items() if not b.startswith("_") and s.get("job") and not s.get("ended")
+                  and states.get(s["job"]) == "queued")[:16 * nodes]
+    if not cand:
+        return
+    for b in cand:
+        cancel(st[b]["job"])
+    time.sleep(30)
+    now = job_states([st[b]["job"] for b in cand])
+    ok = [b for b in cand if now.get(st[b]["job"]) in ("canceled", "cancelled")]
+    for b in cand:
+        if b not in ok:
+            log("pack: %s job %s not cancelled (%s); left in shared" % (b, st[b]["job"], now.get(st[b]["job"])))
+    for k in range(0, len(ok), 16):
+        grp = ok[k:k + 16]
+        p = {"name": "zn_node_%d" % (k // 16), "executable": "/bin/bash",
+             "arguments": [T + "/code/pm_node.sh", str(LIMIT)] + grp, "directory": R,
+             "stdout_path": R + "/logs/slurm_node_%j.out", "stderr_path": R + "/logs/slurm_node_%j.out", "inherit_environment": True,
+             "resources": {"node_count": 1, "process_count": 1, "processes_per_node": 1, "cpu_cores_per_process": 256},
+             "attributes": {"duration": WALL, "queue_name": "regular", "account": ACCOUNT, "custom_attributes": {"constraint": "cpu"}}}
+        try:
+            jid = str(I.submit_compute_job("compute", p))
+        except Exception as e:
+            for b in grp:                 # their shared jobs are gone: resubmit them there next cycle
+                st[b]["ended"] = True
+            log("pack: node job submit failed (%s); %d branches go back to shared" % (str(e)[:150], len(grp)))
+            continue
+        for b in grp:
+            st[b].update(job=jid, ended=False, packed=True)
+        log("pack: node job %s runs %d branches (%s ...)" % (jid, len(grp), grp[0]))
+
+
 def job_states(ids):
     """state of each of our job ids (the job-list endpoint returns every user's jobs, so ask per job)"""
     from concurrent.futures import ThreadPoolExecutor
@@ -113,7 +152,7 @@ ENDED = {"completed", "failed", "canceled", "cancelled", "timeout", "timed_out",
 def cycle(st, tc):
     paused = os.path.exists(os.path.join(HERE, "PAUSE"))
     active = {b: s["job"] for b, s in st.items() if not b.startswith("_") and s.get("job") and not s.get("ended")}
-    states = job_states(list(active.values())) if active else {}
+    states = job_states(sorted(set(active.values()))) if active else {}
     for b, jid in active.items():
         if states.get(jid) not in ENDED:
             continue
@@ -132,6 +171,16 @@ def cycle(st, tc):
         else:
             s["fails"] = s.get("fails", 0) + 1
             log("%s FAILED (job %s, state %s): %s" % (b, jid, states.get(jid), lg.strip().splitlines()[-1:] if lg.strip() else ""))
+    # PACK file (a number N): move N nodes' worth of still-queued branches from shared-QOS jobs
+    # into whole-node regular-QOS jobs, 16 branches per node; their shared jobs are cancelled first
+    pf = os.path.join(HERE, "PACK")
+    if os.path.exists(pf) and not paused:
+        try:
+            nodes = int(open(pf).read().strip() or 0)
+        except ValueError:
+            nodes = 0
+        os.remove(pf)
+        pack(st, states, nodes)
     n = 0
     for b, s in sorted(st.items()):
         if b.startswith("_"):

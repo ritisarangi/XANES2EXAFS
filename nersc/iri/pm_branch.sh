@@ -21,8 +21,8 @@ if [ -f $D/scan_cont.out ] || [ -f $D/scan.out ]; then
 fi
 out=scan.out; [ -f $D/scan_orig.inp ] && out=scan_cont.out
 sed -i -e "s/^%pal nprocs [0-9]* end/%pal nprocs 8 end/" -e "s/^%maxcore [0-9]*/%maxcore 3000/" $D/scan.inp
-run=/tmp/zn_${SLURM_JOB_ID:-x}; rm -rf $run; mkdir -p $run; cp $D/scan.inp $run/
-( cd $run && OMPI_MCA_orte_tmpdir_base=$run OMPI_MCA_btl_vader_backing_directory=$run timeout -s TERM $LIMIT $ORCA/orca scan.inp > $R/$D/$out 2>&1 ); rc=$?
+run=/tmp/zn_${SLURM_JOB_ID:-x}_$(echo $D | tr / _); rm -rf $run; mkdir -p $run; cp $D/scan.inp $run/
+( cd $run && OMPI_MCA_orte_tmpdir_base=$run OMPI_MCA_btl_vader_backing_directory=$run timeout -s TERM $LIMIT ${CPUSET:+taskset -c $CPUSET} $ORCA/orca scan.inp > $R/$D/$out 2>&1 ); rc=$?
 rm -rf $run
 if ok $R/$D/$out; then
   [ $out = scan_cont.out ] && python3 $T/code/restart.py $R --stitch $D >> $log 2>&1
