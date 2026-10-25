@@ -20,7 +20,11 @@ if [ -f $D/scan_cont.out ] || [ -f $D/scan.out ]; then
   RESUME_PARTIAL=1 python3 -c "import sys; sys.path.insert(0,'$T/code'); import restart; print(restart.prepare('$R','$D',False))" >> $log 2>&1 || { echo "$D prepare failed" >> $log; exit 4; }
 fi
 out=scan.out; [ -f $D/scan_orig.inp ] && out=scan_cont.out
-sed -i -e "s/^%pal nprocs [0-9]* end/%pal nprocs 8 end/" -e "s/^%maxcore [0-9]*/%maxcore 3000/" $D/scan.inp
+# a shared job has 30 GB for 8 ranks: maxcore 2000 MB leaves headroom (ORCA can exceed maxcore, and an
+# allocation failure shows as a segmentation fault); a whole-node job has the node's memory, as on Aurora.
+# maxcore only sets ORCA's batching, not the results.
+mc=3000; [ -z "${CPUSET:-}" ] && mc=2000
+sed -i -e "s/^%pal nprocs [0-9]* end/%pal nprocs 8 end/" -e "s/^%maxcore [0-9]*/%maxcore $mc/" $D/scan.inp
 # ORCA scratch: /tmp is memory on Perlmutter and counts against a shared job's memory limit, so a
 # shared job (no CPUSET) keeps its scratch on $PSCRATCH; a whole-node job uses /tmp
 tmpd=/tmp; [ -z "${CPUSET:-}" ] && tmpd=$T/tmp
