@@ -1,0 +1,464 @@
+{
+ "ref": "VUHDIL",
+ "zn": 0,
+ "donors": [
+  1,
+  2,
+  3,
+  4
+ ],
+ "coords": [
+  {
+   "name": "bond_Zn-S1",
+   "kind": "B",
+   "atoms": [
+    0,
+    1
+   ],
+   "branch": "neg",
+   "v0": 2.323627641994508,
+   "start": 2.323627641994508,
+   "end": 2.263627641994508,
+   "npoints": 4,
+   "dir": "scans/VUHDIL/bond_Zn-S1_neg"
+  },
+  {
+   "name": "bond_Zn-S1",
+   "kind": "B",
+   "atoms": [
+    0,
+    1
+   ],
+   "branch": "pos",
+   "v0": 2.323627641994508,
+   "start": 2.323627641994508,
+   "end": 2.523627641994508,
+   "npoints": 11,
+   "dir": "scans/VUHDIL/bond_Zn-S1_pos"
+  },
+  {
+   "name": "bond_Zn-S2",
+   "kind": "B",
+   "atoms": [
+    0,
+    2
+   ],
+   "branch": "neg",
+   "v0": 2.322254159129529,
+   "start": 2.322254159129529,
+   "end": 2.262254159129529,
+   "npoints": 4,
+   "dir": "scans/VUHDIL/bond_Zn-S2_neg"
+  },
+  {
+   "name": "bond_Zn-S2",
+   "kind": "B",
+   "atoms": [
+    0,
+    2
+   ],
+   "branch": "pos",
+   "v0": 2.322254159129529,
+   "start": 2.322254159129529,
+   "end": 2.5222541591295293,
+   "npoints": 11,
+   "dir": "scans/VUHDIL/bond_Zn-S2_pos"
+  },
+  {
+   "name": "bond_Zn-N3",
+   "kind": "B",
+   "atoms": [
+    0,
+    3
+   ],
+   "branch": "neg",
+   "v0": 2.058127157141954,
+   "start": 2.058127157141954,
+   "end": 1.9981271571419539,
+   "npoints": 4,
+   "dir": "scans/VUHDIL/bond_Zn-N3_neg"
+  },
+  {
+   "name": "bond_Zn-N3",
+   "kind": "B",
+   "atoms": [
+    0,
+    3
+   ],
+   "branch": "pos",
+   "v0": 2.058127157141954,
+   "start": 2.058127157141954,
+   "end": 2.258127157141954,
+   "npoints": 11,
+   "dir": "scans/VUHDIL/bond_Zn-N3_pos"
+  },
+  {
+   "name": "bond_Zn-N4",
+   "kind": "B",
+   "atoms": [
+    0,
+    4
+   ],
+   "branch": "neg",
+   "v0": 2.0559570254032775,
+   "start": 2.0559570254032775,
+   "end": 1.9959570254032775,
+   "npoints": 4,
+   "dir": "scans/VUHDIL/bond_Zn-N4_neg"
+  },
+  {
+   "name": "bond_Zn-N4",
+   "kind": "B",
+   "atoms": [
+    0,
+    4
+   ],
+   "branch": "pos",
+   "v0": 2.0559570254032775,
+   "start": 2.0559570254032775,
+   "end": 2.2559570254032777,
+   "npoints": 11,
+   "dir": "scans/VUHDIL/bond_Zn-N4_pos"
+  },
+  {
+   "name": "angle_S1-Zn-S2",
+   "kind": "A",
+   "atoms": [
+    1,
+    0,
+    2
+   ],
+   "branch": "neg",
+   "v0": 109.80325662794957,
+   "start": 109.80325662794957,
+   "end": 94.80325662794957,
+   "npoints": 11,
+   "dir": "scans/VUHDIL/angle_S1-Zn-S2_neg"
+  },
+  {
+   "name": "angle_S1-Zn-S2",
+   "kind": "A",
+   "atoms": [
+    1,
+    0,
+    2
+   ],
+   "branch": "pos",
+   "v0": 109.80325662794957,
+   "start": 109.80325662794957,
+   "end": 124.80325662794957,
+   "npoints": 11,
+   "dir": "scans/VUHDIL/angle_S1-Zn-S2_pos"
+  },
+  {
+   "name": "angle_S1-Zn-N3",
+   "kind": "A",
+   "atoms": [
+    1,
+    0,
+    3
+   ],
+   "branch": "neg",
+   "v0": 96.12353702012174,
+   "start": 96.12353702012174,
+   "end": 81.12353702012174,
+   "npoints": 11,
+   "dir": "scans/VUHDIL/angle_S1-Zn-N3_neg"
+  },
+  {
+   "name": "angle_S1-Zn-N3",
+   "kind": "A",
+   "atoms": [
+    1,
+    0,
+    3
+   ],
+   "branch": "pos",
+   "v0": 96.12353702012174,
+   "start": 96.12353702012174,
+   "end": 111.12353702012174,
+   "npoints": 11,
+   "dir": "scans/VUHDIL/angle_S1-Zn-N3_pos"
+  },
+  {
+   "name": "angle_S1-Zn-N4",
+   "kind": "A",
+   "atoms": [
+    1,
+    0,
+    4
+   ],
+   "branch": "neg",
+   "v0": 122.9680787744993,
+   "start": 122.9680787744993,
+   "end": 107.9680787744993,
+   "npoints": 11,
+   "dir": "scans/VUHDIL/angle_S1-Zn-N4_neg"
+  },
+  {
+   "name": "angle_S1-Zn-N4",
+   "kind": "A",
+   "atoms": [
+    1,
+    0,
+    4
+   ],
+   "branch": "pos",
+   "v0": 122.9680787744993,
+   "start": 122.9680787744993,
+   "end": 137.9680787744993,
+   "npoints": 11,
+   "dir": "scans/VUHDIL/angle_S1-Zn-N4_pos"
+  },
+  {
+   "name": "angle_S2-Zn-N3",
+   "kind": "A",
+   "atoms": [
+    2,
+    0,
+    3
+   ],
+   "branch": "neg",
+   "v0": 122.41487285029251,
+   "start": 122.41487285029251,
+   "end": 107.41487285029251,
+   "npoints": 11,
+   "dir": "scans/VUHDIL/angle_S2-Zn-N3_neg"
+  },
+  {
+   "name": "angle_S2-Zn-N3",
+   "kind": "A",
+   "atoms": [
+    2,
+    0,
+    3
+   ],
+   "branch": "pos",
+   "v0": 122.41487285029251,
+   "start": 122.41487285029251,
+   "end": 137.4148728502925,
+   "npoints": 11,
+   "dir": "scans/VUHDIL/angle_S2-Zn-N3_pos"
+  },
+  {
+   "name": "angle_S2-Zn-N4",
+   "kind": "A",
+   "atoms": [
+    2,
+    0,
+    4
+   ],
+   "branch": "neg",
+   "v0": 96.34651850404335,
+   "start": 96.34651850404335,
+   "end": 81.34651850404335,
+   "npoints": 11,
+   "dir": "scans/VUHDIL/angle_S2-Zn-N4_neg"
+  },
+  {
+   "name": "angle_S2-Zn-N4",
+   "kind": "A",
+   "atoms": [
+    2,
+    0,
+    4
+   ],
+   "branch": "pos",
+   "v0": 96.34651850404335,
+   "start": 96.34651850404335,
+   "end": 111.34651850404335,
+   "npoints": 11,
+   "dir": "scans/VUHDIL/angle_S2-Zn-N4_pos"
+  },
+  {
+   "name": "angle_N3-Zn-N4",
+   "kind": "A",
+   "atoms": [
+    3,
+    0,
+    4
+   ],
+   "branch": "neg",
+   "v0": 111.31545092388036,
+   "start": 111.31545092388036,
+   "end": 96.31545092388036,
+   "npoints": 11,
+   "dir": "scans/VUHDIL/angle_N3-Zn-N4_neg"
+  },
+  {
+   "name": "angle_N3-Zn-N4",
+   "kind": "A",
+   "atoms": [
+    3,
+    0,
+    4
+   ],
+   "branch": "pos",
+   "v0": 111.31545092388036,
+   "start": 111.31545092388036,
+   "end": 126.31545092388036,
+   "npoints": 11,
+   "dir": "scans/VUHDIL/angle_N3-Zn-N4_pos"
+  },
+  {
+   "name": "twist_S1-N3-S2-N4",
+   "kind": "D",
+   "atoms": [
+    1,
+    3,
+    2,
+    4
+   ],
+   "branch": "neg",
+   "v0": -84.36813828501309,
+   "start": -84.36813828501309,
+   "end": -94.36813828501309,
+   "npoints": 11,
+   "dir": "scans/VUHDIL/twist_S1-N3-S2-N4_neg"
+  },
+  {
+   "name": "twist_S1-N3-S2-N4",
+   "kind": "D",
+   "atoms": [
+    1,
+    3,
+    2,
+    4
+   ],
+   "branch": "pos",
+   "v0": -84.36813828501309,
+   "start": -84.36813828501309,
+   "end": -74.36813828501309,
+   "npoints": 11,
+   "dir": "scans/VUHDIL/twist_S1-N3-S2-N4_pos"
+  },
+  {
+   "name": "tilt_Zn-S1-C5-C6",
+   "kind": "D",
+   "atoms": [
+    0,
+    1,
+    5,
+    6
+   ],
+   "branch": "neg",
+   "v0": 21.66577363666465,
+   "start": 21.66577363666465,
+   "end": 11.66577363666465,
+   "npoints": 11,
+   "dir": "scans/VUHDIL/tilt_Zn-S1-C5-C6_neg"
+  },
+  {
+   "name": "tilt_Zn-S1-C5-C6",
+   "kind": "D",
+   "atoms": [
+    0,
+    1,
+    5,
+    6
+   ],
+   "branch": "pos",
+   "v0": 21.66577363666465,
+   "start": 21.66577363666465,
+   "end": 31.66577363666465,
+   "npoints": 11,
+   "dir": "scans/VUHDIL/tilt_Zn-S1-C5-C6_pos"
+  },
+  {
+   "name": "tilt_Zn-S2-C23-C24",
+   "kind": "D",
+   "atoms": [
+    0,
+    2,
+    23,
+    24
+   ],
+   "branch": "neg",
+   "v0": 21.057888460838466,
+   "start": 21.057888460838466,
+   "end": 11.057888460838466,
+   "npoints": 11,
+   "dir": "scans/VUHDIL/tilt_Zn-S2-C23-C24_neg"
+  },
+  {
+   "name": "tilt_Zn-S2-C23-C24",
+   "kind": "D",
+   "atoms": [
+    0,
+    2,
+    23,
+    24
+   ],
+   "branch": "pos",
+   "v0": 21.057888460838466,
+   "start": 21.057888460838466,
+   "end": 31.057888460838466,
+   "npoints": 11,
+   "dir": "scans/VUHDIL/tilt_Zn-S2-C23-C24_pos"
+  },
+  {
+   "name": "tilt_Zn-N3-C7-C6",
+   "kind": "D",
+   "atoms": [
+    0,
+    3,
+    7,
+    6
+   ],
+   "branch": "neg",
+   "v0": -5.509172933273718,
+   "start": -5.509172933273718,
+   "end": -15.509172933273717,
+   "npoints": 11,
+   "dir": "scans/VUHDIL/tilt_Zn-N3-C7-C6_neg"
+  },
+  {
+   "name": "tilt_Zn-N3-C7-C6",
+   "kind": "D",
+   "atoms": [
+    0,
+    3,
+    7,
+    6
+   ],
+   "branch": "pos",
+   "v0": -5.509172933273718,
+   "start": -5.509172933273718,
+   "end": 4.490827066726282,
+   "npoints": 11,
+   "dir": "scans/VUHDIL/tilt_Zn-N3-C7-C6_pos"
+  },
+  {
+   "name": "tilt_Zn-N4-C25-C24",
+   "kind": "D",
+   "atoms": [
+    0,
+    4,
+    25,
+    24
+   ],
+   "branch": "neg",
+   "v0": -5.463398778480064,
+   "start": -5.463398778480064,
+   "end": -15.463398778480064,
+   "npoints": 11,
+   "dir": "scans/VUHDIL/tilt_Zn-N4-C25-C24_neg"
+  },
+  {
+   "name": "tilt_Zn-N4-C25-C24",
+   "kind": "D",
+   "atoms": [
+    0,
+    4,
+    25,
+    24
+   ],
+   "branch": "pos",
+   "v0": -5.463398778480064,
+   "start": -5.463398778480064,
+   "end": 4.536601221519936,
+   "npoints": 11,
+   "dir": "scans/VUHDIL/tilt_Zn-N4-C25-C24_pos"
+  }
+ ]
+}
