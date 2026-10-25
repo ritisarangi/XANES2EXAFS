@@ -1,11 +1,11 @@
 # Zn scan campaign on Aurora and NERSC Perlmutter: status
 
-Generated 2026-10-25 11:39 UTC by `aurora/autopilot.sh`. Human-written notes are in the run log of `aurora/README.md`; validated results are on the `aurora-results` branch.
+Generated 2026-10-25 13:44 UTC by `aurora/autopilot.sh`. Human-written notes are in the run log of `aurora/README.md`; validated results are on the `aurora-results` branch.
 
 ## Branches
 
 ```
-branches: 7080 done, 0 started (running/stopped/failed), 2791 continuations ready, 304 not started, 10175 total
+branches: 7081 done, 0 started (running/stopped/failed), 2790 continuations ready, 304 not started, 10175 total
 queue main: 2600 of 39624 waiting, 0 ORCA runs active
 queue big: 0 of 0 waiting, 0 ORCA runs active
 failed ORCA runs not retried: 2
@@ -24,9 +24,9 @@ allocation: 43,851.1 Node Hours available on ModCon
 The 18 unfinished big complexes (`remote_refs.txt`) run on Perlmutter: one shared-QOS job per branch (8 cores, 48 h), driven from Aurora through the NERSC IRI API; finished branches are copied back here and published like the others.
 
 ```
-branches: 45 finished (45 copied back to Aurora), 399 running, 96 queued, 0 need review, 540 total
-stops at the 48 h limit so far: 0; failed runs: 12
-85 of your 3982 CPU node-hours on m5268 used
+branches: 46 finished (46 copied back to Aurora), 446 running, 48 queued, 0 need review, 540 total
+stops at the 48 h limit so far: 0; failed runs: 15
+136 of your 3982 CPU node-hours on m5268 used
 ```
 
 | Complex | Branches finished |
@@ -41,7 +41,7 @@ stops at the 48 h limit so far: 0; failed runs: 12
 | NAMSOJ | 0 / 30 |
 | NECTOG | 0 / 30 |
 | NONLEI | 0 / 30 |
-| OJEKUJ | 16 / 30 |
+| OJEKUJ | 17 / 30 |
 | OJELOE | 0 / 30 |
 | RAYBIC | 2 / 30 |
 | REJBUD | 0 / 30 |
@@ -53,25 +53,25 @@ stops at the 48 h limit so far: 0; failed runs: 12
 Last driver actions:
 
 ```
-[2026-10-25 10:49:14] submitted 1 jobs
-[2026-10-25 10:49:14] status: 495 jobs queued/running, 45 branches finished (45 back on Aurora), 0 need review
-[2026-10-25 11:01:39] status: 495 jobs queued/running, 45 branches finished (45 back on Aurora), 0 need review
-[2026-10-25 11:14:15] scans/NECTOG/angle_N4-Zn-N7_pos FAILED (job 60240216, state completed): ['scans/NECTOG/angle_N4-Zn-N7_pos end 2026-10-25 04:05:22']
-[2026-10-25 11:14:21] submitted 1 jobs
-[2026-10-25 11:14:21] status: 495 jobs queued/running, 45 branches finished (45 back on Aurora), 0 need review
-[2026-10-25 11:26:30] status: 495 jobs queued/running, 45 branches finished (45 back on Aurora), 0 need review
-[2026-10-25 11:38:33] status: 495 jobs queued/running, 45 branches finished (45 back on Aurora), 0 need review
+[2026-10-25 12:41:25] status: 494 jobs queued/running, 46 branches finished (46 back on Aurora), 0 need review
+[2026-10-25 12:54:08] scans/NECTOG/tilt_Zn-N5-C11-C8_neg FAILED (job 60240293, state completed): ['scans/NECTOG/tilt_Zn-N5-C11-C8_neg end 2026-10-25 05:51:03']
+[2026-10-25 12:54:14] submitted 1 jobs
+[2026-10-25 12:54:14] status: 494 jobs queued/running, 46 branches finished (46 back on Aurora), 0 need review
+[2026-10-25 13:06:26] status: 494 jobs queued/running, 46 branches finished (46 back on Aurora), 0 need review
+[2026-10-25 13:18:33] status: 494 jobs queued/running, 46 branches finished (46 back on Aurora), 0 need review
+[2026-10-25 13:30:41] status: 494 jobs queued/running, 46 branches finished (46 back on Aurora), 0 need review
+[2026-10-25 13:42:44] status: 494 jobs queued/running, 46 branches finished (46 back on Aurora), 0 need review
 ```
 
 ## Last autopilot actions
 
 ```
+prioritize big: 0 of 0 pending branches belong to complexes at least half done
 prioritize main: 131 of 2600 pending branches belong to complexes at least half done
 prioritize big: 0 of 0 pending branches belong to complexes at least half done
-[2026-10-25 09:26:11] publish: publish: 2 complexes added (486 passing points), 0 not exported; 167 complexes published in total pushed: d6b91b9 Aurora results: 167 complexes published (2026-10-25 09:26) 
-[2026-10-25 09:39:47] STATUS.md pushed
 prioritize main: 131 of 2600 pending branches belong to complexes at least half done
 prioritize big: 0 of 0 pending branches belong to complexes at least half done
+[2026-10-25 11:41:05] STATUS.md pushed
 prioritize main: 131 of 2600 pending branches belong to complexes at least half done
 prioritize big: 0 of 0 pending branches belong to complexes at least half done
 prioritize main: 131 of 2600 pending branches belong to complexes at least half done
