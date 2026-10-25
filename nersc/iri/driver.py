@@ -73,6 +73,13 @@ def text(path):
         return s
 
 
+def exists(path):
+    try:
+        return bool(I.ls("scratch", path).get("output"))
+    except Exception:
+        return False
+
+
 def branches():
     refs = set(l.split()[0] for l in open(os.path.join(WORK, "remote_refs.txt")) if l.strip() and not l.startswith("#"))
     out = []
@@ -204,6 +211,10 @@ def cycle(st, tc):
                                          sync_level="checksum", verify_checksum=True)
             for b in todo:
                 for f in ("scan.out", "scan_acc.txt"):
+                    # a branch that finished in its first run has no scan_acc.txt; Globus would retry a
+                    # missing file until its deadline
+                    if f == "scan_acc.txt" and not exists("%s/%s/%s" % (R, b, f)):
+                        continue
                     td.add_item("%s/%s/%s" % (R, b, f), "/ModCon/dsokaras/zn_scans/%s/%s" % (b, f))
             tid = tc.submit_transfer(td)["task_id"]
             tc.task_wait(tid, timeout=3000, polling_interval=20)

@@ -4,6 +4,8 @@ Same scans as `nersc/README.md` (relaxed one-coordinate scans at the stage-2 lev
 
 Workload from `scan_bundle.tar.gz`: 338 complexes, 10,175 branches, 92,589 constrained optimisations (the first point of each branch is the stage-2 minimum and is cheap).
 
+Lessons from running this campaign (walltimes, queues, charging, failures) are in `HPC_LESSONS.md` at the top of the repository.
+
 ## How it differs from Perlmutter
 
 Aurora charges whole nodes (2 x Xeon Max 9470C, 104 cores, 1 TB DDR5, 128 GB HBM; cores 0 and 52 belong to the OS, so 102 are usable) and has no shared QOS or Slurm arrays. One PBS job (a "farm") runs many pinned ORCA jobs on every node and keeps them fed from a shared queue on Lustre (`$WORK/queue/<pool>`, locked with `flock`), largest complexes first.
@@ -67,7 +69,7 @@ Shorter `prod` jobs start sooner because they fit the backfill gaps before large
 | 1 | `bash XANES2EXAFS/aurora/go.sh setup scan_bundle.tar.gz` | Unpacks into `$WORK` and checks ORCA and MPI. |
 | 2 | `bash XANES2EXAFS/aurora/go.sh test` | One debug node runs 6 packed ORCA test jobs. |
 | 3 | `POOL=main QUEUE=debug-scaling NODES=4 HOURS=1 bash XANES2EXAFS/aurora/go.sh submit REF1 REF2` | Pilot of some complexes for one hour; submit again when it ends to exercise the continuation. |
-| 4 | `POOL=main QUEUE=prod NODES=256 HOURS=12 bash XANES2EXAFS/aurora/go.sh submit` | Production: continues stopped branches, queues everything not yet run, submits a farm. |
+| 4 | `POOL=main QUEUE=prod NODES=256 HOURS=6 bash XANES2EXAFS/aurora/go.sh submit` | Production: continues stopped branches, queues everything not yet run, submits a farm. Ask for 6 h: priority falls with the cube of the requested walltime (`HPC_LESSONS.md`). |
 | 5 | `POOL=big QUEUE=capacity NODES=4 HOURS=96 bash XANES2EXAFS/aurora/go.sh submit` | Same for the large complexes. |
 | 6 | `NODES=0 bash XANES2EXAFS/aurora/go.sh submit` | After a farm ends while others of the pool still run: re-queue its stopped branches without submitting a new job. |
 | 7 | `bash XANES2EXAFS/aurora/go.sh status` / `watch`, or `bash XANES2EXAFS/aurora/monitor.sh` | Farm jobs, queues, branch states, validated points; `monitor.sh` prints a line a minute and ALERT lines on ORCA failures or a farm leaving the queue. |
@@ -174,6 +176,7 @@ Other options: `CORES`, `HT`, `HBM`, `MAXCORE`, `SCRATCH` (see `sites/aurora.sh`
 - 2026-10-25 09:15: a fifth shared-QOS crash (RAYBIC angle_N1-Zn-S4_pos, segmentation fault in the guess) started after the scratch fix, so memory headroom is the remaining suspect: all 5 crashes were shared jobs (30 GB for 8 ranks), none in the whole-node jobs or on Aurora. Shared jobs now run ORCA with maxcore 2000 MB (16 GB for the ranks; maxcore sets ORCA's batching, not the results); whole-node jobs keep 3000 MB as on Aurora. A larger memory request would raise the NERSC charge. Crashed branches continue from their last converged geometry when resubmitted.
 - 2026-10-25 09:40: Aurora published 2 more complexes (486 passing points; 167 complexes on `aurora-results`). Perlmutter: two more shared-QOS crashes (BUNNII bond_Zn-S130_pos, NAMSOJ tilt_Zn-S4-C5-O7_neg), both started before the 09:15 maxcore change (03:25 and 06:02 UTC); none of the jobs started after it has crashed so far. Both were resubmitted and continue from their last geometry. NERSC: 495 jobs queued or running, 45 branches finished and copied back. Aurora: farms 8939977 (256 nodes) and 8962257 (16 nodes) are still queued; 2,600 main branches are pending.
 - 2026-10-25 10:10: a shared-QOS crash on Perlmutter (WORMAR tilt_Zn-N8-C34-C33_neg) started at 09:23 UTC with maxcore 2000 in effect, so memory is not the cause. The crashes (9 of about 410 branch jobs started, 2%) are segmentation faults in `orca_startup_mpi`, ORCA's per-step startup, minutes to hours into a run; none so far in whole-node jobs, none on Aurora. Each crash costs one step plus the wait for a new shared slot, because the branch continues from its last converged geometry, and no branch has failed twice. Packing everything into whole-node jobs would charge for idle cores while a node waits for its slowest branch, so the branches stay in shared QOS. A branch that fails 3 times is held for review. maxcore stays at 2000 in shared jobs (it does not change results).
+- 2026-10-25 15:30: the NERSC driver stopped logging at 14:59: its Globus copy of 3 finished branches kept retrying `scan_acc.txt` of NAMSOJ bond_Zn-N2_neg, which does not exist because that branch finished in its first run (945 Aurora branches are the same). The driver now copies `scan_acc.txt` only when it exists; the transfer was cancelled and the driver restarted (no state lost; the 3 branches go back at the next copy). Added `HPC_LESSONS.md`: lessons from this campaign on Aurora and Perlmutter for future ORCA campaigns, linked from `CLAUDE.md` and the READMEs.
 
 ## Results for Riti
 

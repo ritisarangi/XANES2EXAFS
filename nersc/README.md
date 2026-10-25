@@ -2,6 +2,8 @@
 
 Relaxed one-coordinate scans around the B3LYP-D3(BJ) minima of about 335 Zn model complexes, at the stage-2 level, 16 cores per ORCA job in the `shared` QOS. Everything runs through one script, `nersc/go.sh`.
 
+Lessons from running this campaign (walltimes, queues, charging, failures) are in `HPC_LESSONS.md` at the top of the repository.
+
 ## One-time setup
 
 1. Download ORCA 6.0.1 for Linux x86-64 (`orca_6_0_1_linux_x86-64_shared_openmpi416.tar.xz`) from https://orcaforum.kofo.mpg.de under your own account, and copy it and `scan_bundle.tar.gz` to your Perlmutter home folder.

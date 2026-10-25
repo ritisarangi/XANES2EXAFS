@@ -4,6 +4,8 @@ Since 2026-10-25 the 18 unfinished big complexes (`$WORK/remote_refs.txt`) run o
 Aurora runs the main pool. Aurora never queues or prepares a complex listed in `remote_refs.txt`
 (`aurora/queue.py`, `scans/restart.py`), so no branch runs at both sites.
 
+Lessons from running this campaign (walltimes, queues, charging, failures) are in `HPC_LESSONS.md` at the top of the repository.
+
 | File | What it does |
 |---|---|
 | `pm_install.sh` | unpacks the user's own ORCA 6.0.1 archive (same file as on Aurora, SHA-256 checked) and builds OpenMPI 4.1.6 with the Aurora configure options, in `$PSCRATCH/zn_nersc_test/sw` |
