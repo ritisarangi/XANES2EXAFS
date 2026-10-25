@@ -8,7 +8,7 @@
 
 A complex is added when all its branches have terminated normally and `aurora/audit.py` finds no problem (every ORCA output matches its own folder's input; no folder run twice at once).
 
-## Published (160 complexes, 44829 points)
+## Published (165 complexes, 46200 points)
 
 | Complex | Atoms | Branches | Points | Passing | Published |
 |---|---|---|---|---|---|
@@ -51,6 +51,7 @@ A complex is added when all its branches have terminated normally and `aurora/au
 | GALGAC | 47 | 30 | 302 | 296 | 2026-10-24 |
 | GALGEG | 49 | 30 | 302 | 298 | 2026-10-19 |
 | GALGIK | 47 | 30 | 302 | 274 | 2026-10-24 |
+| GEXZOY | 81 | 30 | 302 | 276 | 2026-10-25 |
 | GILZEG | 49 | 30 | 302 | 299 | 2026-10-23 |
 | GOLCIU01 | 43 | 30 | 302 | 295 | 2026-10-25 |
 | GUYHEN | 49 | 30 | 302 | 204 | 2026-10-21 |
@@ -71,6 +72,7 @@ A complex is added when all its branches have terminated normally and `aurora/au
 | JADMEK | 71 | 30 | 302 | 290 | 2026-10-23 |
 | JAMJAJ | 47 | 30 | 302 | 298 | 2026-10-24 |
 | JEYTAI | 33 | 30 | 302 | 296 | 2026-10-23 |
+| KAKVAT | 45 | 30 | 302 | 221 | 2026-10-25 |
 | KAKVEX | 53 | 30 | 302 | 286 | 2026-10-24 |
 | KAKYEA | 51 | 30 | 302 | 299 | 2026-10-24 |
 | KOMLIH01 | 53 | 30 | 302 | 295 | 2026-10-24 |
@@ -95,6 +97,8 @@ A complex is added when all its branches have terminated normally and `aurora/au
 | MUJJUW | 55 | 30 | 302 | 249 | 2026-10-24 |
 | NEHKIU | 53 | 30 | 302 | 300 | 2026-10-20 |
 | NIGTEC | 96 | 30 | 302 | 302 | 2026-10-21 |
+| NIHTEG | 45 | 30 | 302 | 280 | 2026-10-25 |
+| NIHTIK | 51 | 30 | 302 | 294 | 2026-10-25 |
 | NITZEW | 35 | 30 | 302 | 292 | 2026-10-24 |
 | NOCNEY | 65 | 30 | 302 | 270 | 2026-10-24 |
 | NUYWOV | 55 | 30 | 302 | 282 | 2026-10-24 |
@@ -112,6 +116,7 @@ A complex is added when all its branches have terminated normally and `aurora/au
 | PUZKUQ | 33 | 30 | 302 | 289 | 2026-10-24 |
 | QASRIL | 53 | 30 | 302 | 263 | 2026-10-24 |
 | QELPED | 49 | 30 | 302 | 282 | 2026-10-24 |
+| QIBVAZ | 45 | 30 | 302 | 300 | 2026-10-25 |
 | QOBKAW | 37 | 30 | 302 | 291 | 2026-10-24 |
 | QOQYEA | 50 | 30 | 302 | 292 | 2026-10-19 |
 | QORPUI | 52 | 30 | 302 | 302 | 2026-10-20 |
