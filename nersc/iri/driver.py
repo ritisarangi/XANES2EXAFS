@@ -22,6 +22,25 @@ sys.path.insert(0, os.path.expanduser("~/dev/iri/iri_team_bundle"))
 import iridriver as I  # noqa: E402
 import globus_sdk  # noqa: E402
 
+_tok = {"t": None, "exp": 0}
+_get_token = I.get_token
+
+
+def _cached_token():
+    """the IRI token from token_manager.py, kept until 10 min before it expires"""
+    if not _tok["t"] or time.time() > _tok["exp"] - 600:
+        _tok["t"] = _get_token()
+        try:
+            d = json.load(open(os.path.expanduser("~/.globus/auth_tokens.json")))
+            exp = [o.get("expires_at_seconds") for o in d.get("other_tokens", []) if "iri_api" in o.get("scope", "")]
+            _tok["exp"] = int(exp[0]) if exp and exp[0] else time.time() + 3600
+        except Exception:
+            _tok["exp"] = time.time() + 3600
+    return _tok["t"]
+
+
+I.get_token = _cached_token
+
 WORK = "/lus/flare/projects/ModCon/dsokaras/zn_scans"
 T = "/pscratch/sd/d/dsokaras/zn_nersc"
 R = T + "/run"
@@ -76,28 +95,16 @@ def submit(d):
 
 
 def job_states(ids):
-    """state of each of our job ids (one call per page of the job list)."""
-    want, out, off = set(ids), {}, 0
-    while want - set(out):
-        r = I.requests.post("%s/compute/status/compute" % I.BASE_URL, headers={**I.headers(), "Content-Type": "application/json"},
-                            params={"offset": off, "limit": 500, "historical": "true"}, json={}, timeout=I.TIMEOUT)
-        r.raise_for_status()
-        page = r.json()
-        if not page:
-            break
-        for j in page:
-            jid = str(j.get("id"))
-            if jid in want:
-                out[jid] = ((j.get("status") or {}).get("state") or "").lower()
-        off += len(page)
-        if len(page) < 500:
-            break
-    for jid in want - set(out):          # not in the list (aged out): ask for it directly
+    """state of each of our job ids (the job-list endpoint returns every user's jobs, so ask per job)"""
+    from concurrent.futures import ThreadPoolExecutor
+
+    def one(jid):
         try:
-            out[jid] = ((I._get("/compute/status/compute/%s" % jid).get("status") or {}).get("state") or "").lower()
+            return jid, ((I._get("/compute/status/compute/%s" % jid).get("status") or {}).get("state") or "").lower()
         except Exception:
-            out[jid] = "unknown"
-    return out
+            return jid, "unknown"
+    with ThreadPoolExecutor(10) as ex:
+        return dict(ex.map(one, ids))
 
 
 ENDED = {"completed", "failed", "canceled", "cancelled", "timeout", "timed_out", "node_fail", "out_of_memory"}
