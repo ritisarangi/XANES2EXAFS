@@ -8,7 +8,7 @@
 
 A complex is added when all its branches have terminated normally and `aurora/audit.py` finds no problem (every ORCA output matches its own folder's input; no folder run twice at once).
 
-## Published (165 complexes, 46200 points)
+## Published (167 complexes, 46686 points)
 
 | Complex | Atoms | Branches | Points | Passing | Published |
 |---|---|---|---|---|---|
@@ -74,6 +74,7 @@ A complex is added when all its branches have terminated normally and `aurora/au
 | JEYTAI | 33 | 30 | 302 | 296 | 2026-10-23 |
 | KAKVAT | 45 | 30 | 302 | 221 | 2026-10-25 |
 | KAKVEX | 53 | 30 | 302 | 286 | 2026-10-24 |
+| KAKVIB01 | 49 | 30 | 302 | 204 | 2026-10-25 |
 | KAKYEA | 51 | 30 | 302 | 299 | 2026-10-24 |
 | KOMLIH01 | 53 | 30 | 302 | 295 | 2026-10-24 |
 | KOPYOD | 47 | 30 | 302 | 291 | 2026-10-23 |
@@ -95,6 +96,7 @@ A complex is added when all its branches have terminated normally and `aurora/au
 | MOZSIE | 53 | 30 | 302 | 282 | 2026-10-21 |
 | MUJJOQ | 49 | 30 | 302 | 295 | 2026-10-25 |
 | MUJJUW | 55 | 30 | 302 | 249 | 2026-10-24 |
+| NAYXAM | 71 | 30 | 302 | 282 | 2026-10-25 |
 | NEHKIU | 53 | 30 | 302 | 300 | 2026-10-20 |
 | NIGTEC | 96 | 30 | 302 | 302 | 2026-10-21 |
 | NIHTEG | 45 | 30 | 302 | 280 | 2026-10-25 |
