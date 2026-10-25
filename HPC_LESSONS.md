@@ -74,13 +74,14 @@ Check them again for other work:
 - **Layout:** one `shared` job per branch (8 physical cores = 16 CPUs, 30 GB, 48 h). `shared` charges
   nothing for idle cores, which suits a thinning tail; whole-node `regular` jobs (16 branches x 8
   cores) are charged until their slowest branch ends.
-- **Expect about 2% of `shared` jobs to die with a segmentation fault in `orca_startup_mpi`.** Scratch
-  location and `%maxcore` do not change it, and it has not been seen in whole-node jobs or on Aurora.
-  Resubmit automatically from the last geometry, up to 3 tries; move a branch that keeps failing to a
-  whole-node job.
 - **OpenMPI 4.1.6** for ORCA 6.0.1 builds only with its internal hwloc, PMIx and libevent
-  (`nersc/iri/pm_install.sh`). Keep ORCA scratch on `$PSCRATCH` in `shared` jobs (`/tmp` is memory and
-  counts against the job).
+  (`nersc/iri/pm_install.sh`). It also detects Cray XPMEM and uses it for single copies between ranks
+  by default, and with XPMEM about 2% of runs die at random with a segmentation fault in
+  `vader_return_registration`. **Always set `OMPI_MCA_btl_vader_single_copy_mechanism=cma`** (Linux CMA;
+  results unchanged). Check with `ompi_info --param btl vader --level 9 | grep single_copy`.
+- Keep ORCA scratch on `$PSCRATCH` in `shared` jobs (`/tmp` is memory and counts against the job).
+- Resubmit a crashed branch automatically from its last geometry (up to 3 tries), but **read the
+  backtrace of the first crashes before calling them random**: the frames name the library at fault.
 - **IRI API** (`api.iri.nersc.gov`), driven from an Aurora login node (`nersc/iri/driver.py`):
   - login is a two-step PKCE flow; stamp tokens with `expires_at`, or refreshes race;
   - uploads are limited to 5 MB, and scratch downloads come back base64-encoded;

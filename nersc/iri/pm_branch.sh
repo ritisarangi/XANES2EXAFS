@@ -8,6 +8,9 @@ T=/pscratch/sd/d/dsokaras/zn_nersc; R=$T/run; D=$1; LIMIT=$2
 SW=/pscratch/sd/d/dsokaras/zn_nersc_test/sw; ORCA=$SW/orca_6_0_1_linux_x86-64_shared_openmpi416; MPI=$SW/openmpi-4.1.6
 export PATH=$ORCA:$MPI/bin:$PATH LD_LIBRARY_PATH=$ORCA:$MPI/lib:${LD_LIBRARY_PATH:-} OPAL_PREFIX=$MPI
 export OMPI_MCA_btl=self,vader OMPI_MCA_pml=ob1 OMPI_MCA_mtl=^ofi OMPI_MCA_hwloc_base_binding_policy=none OMPI_MCA_rmaps_base_oversubscribe=1
+# OpenMPI found Cray XPMEM here and uses it for single copies by default; ~2% of branch runs then died
+# with a segfault in vader_return_registration (the XPMEM registration cache). Linux CMA instead.
+export OMPI_MCA_btl_vader_single_copy_mechanism=cma
 for v in $(env | grep -oE '^(PMI|PMIX|SLURM_STEP|SLURM_SRUN)[A-Za-z0-9_]*'); do unset "$v"; done
 ulimit -s unlimited
 cd $R || exit 1
