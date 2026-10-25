@@ -1,0 +1,32 @@
+#!/bin/bash
+# pm_branch.sh <branch folder, e.g. scans/REF/coord_branch> <seconds ORCA may run>
+# One scan branch as one Perlmutter job (shared QOS). Same ORCA build, inputs and restart.py as on
+# Aurora: a branch stopped by the time limit is continued from its last geometry (RESUME_PARTIAL),
+# and a finished continuation is stitched into scan.out, so the folder ends as Aurora's would.
+set -u
+T=/pscratch/sd/d/dsokaras/zn_nersc; R=$T/run; D=$1; LIMIT=$2
+SW=/pscratch/sd/d/dsokaras/zn_nersc_test/sw; ORCA=$SW/orca_6_0_1_linux_x86-64_shared_openmpi416; MPI=$SW/openmpi-4.1.6
+export PATH=$ORCA:$MPI/bin:$PATH LD_LIBRARY_PATH=$ORCA:$MPI/lib:${LD_LIBRARY_PATH:-} OPAL_PREFIX=$MPI
+export OMPI_MCA_btl=self,vader OMPI_MCA_pml=ob1 OMPI_MCA_mtl=^ofi OMPI_MCA_hwloc_base_binding_policy=none OMPI_MCA_rmaps_base_oversubscribe=1
+for v in $(env | grep -oE '^(PMI|PMIX|SLURM_STEP|SLURM_SRUN)[A-Za-z0-9_]*'); do unset "$v"; done
+ulimit -s unlimited
+cd $R || exit 1
+mkdir -p logs; log=$R/logs/$(echo $D | tr / _)_${SLURM_JOB_ID:-x}.log
+ok() { [ -f "$1" ] && tail -c 4096 "$1" | grep -q "ORCA TERMINATED NORMALLY"; }
+echo "$D start $(date '+%F %T') on $(hostname) job ${SLURM_JOB_ID:-x}" > $log
+ok $D/scan.out && { echo "$D already finished" >> $log; exit 0; }
+exec 7>>$D/.run.lock; flock -n 7 || { echo "$D locked by another job; not run" >> $log; exit 3; }
+if [ -f $D/scan_cont.out ] || [ -f $D/scan.out ]; then
+  RESUME_PARTIAL=1 python3 -c "import sys; sys.path.insert(0,'$T/code'); import restart; print(restart.prepare('$R','$D',False))" >> $log 2>&1 || { echo "$D prepare failed" >> $log; exit 4; }
+fi
+out=scan.out; [ -f $D/scan_orig.inp ] && out=scan_cont.out
+sed -i -e "s/^%pal nprocs [0-9]* end/%pal nprocs 8 end/" -e "s/^%maxcore [0-9]*/%maxcore 3000/" $D/scan.inp
+run=/tmp/zn_${SLURM_JOB_ID:-x}; rm -rf $run; mkdir -p $run; cp $D/scan.inp $run/
+( cd $run && OMPI_MCA_orte_tmpdir_base=$run OMPI_MCA_btl_vader_backing_directory=$run timeout -s TERM $LIMIT $ORCA/orca scan.inp > $R/$D/$out 2>&1 ); rc=$?
+rm -rf $run
+if ok $R/$D/$out; then
+  [ $out = scan_cont.out ] && python3 $T/code/restart.py $R --stitch $D >> $log 2>&1
+  echo "$D finished" >> $log
+elif [ $rc = 124 ]; then echo "DUE TO TIME LIMIT" >> $log
+else echo "$D ORCA did not terminate normally (rc $rc)" >> $log; fi
+echo "$D end $(date '+%F %T')" >> $log

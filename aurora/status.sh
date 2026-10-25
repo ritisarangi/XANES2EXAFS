@@ -3,7 +3,7 @@
 set -u
 cd "${WORK:?}" || exit 1
 R=$(cd "$(dirname "$0")" && pwd)
-echo "# Zn scan campaign on Aurora: status"
+echo "# Zn scan campaign on Aurora and NERSC Perlmutter: status"
 echo
 echo "Generated $(date '+%F %H:%M %Z') by \`aurora/autopilot.sh\`. Human-written notes are in the run log of \`aurora/README.md\`; validated results are on the \`aurora-results\` branch."
 echo
@@ -24,6 +24,8 @@ echo '| Job | Pool | Queue | Nodes | Walltime | State | Elapsed |'
 echo '|---|---|---|---|---|---|---|'
 qstat -u "$USER" 2>/dev/null | awk '$4 ~ /^zn_(main|big)$/ {sub(/\..*/, "", $1); printf "| %s | %s | %s | %s | %s | %s | %s |\n", $1, $4, $3, $6, $9, $10, $11}'
 echo
+# the big pool runs on NERSC Perlmutter (remote_refs.txt); ~/dev/iri/nersc_run/driver.py writes its part
+if [ -s nersc_status.md ]; then cat nersc_status.md; echo; fi
 echo "## Last autopilot actions"
 echo
 echo '```'
