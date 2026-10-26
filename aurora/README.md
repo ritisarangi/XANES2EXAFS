@@ -187,6 +187,7 @@ Other options: `CORES`, `HT`, `HBM`, `MAXCORE`, `SCRATCH` (see `sites/aurora.sh`
 - 2026-10-26 14:20: OJEKUJ is the first complex finished on Perlmutter (30 of 30 branches, all copied back); it goes out with the next publish. NERSC: 184 of 540 big branches finished; seven branches resubmitted with the CMA fix have finished and none started after the fix has crashed. The whole-node regular-QOS jobs also crashed with the XPMEM segfault (seen only when a job ends, because the driver checks a node job's branches then), and they hold idle slots while their slowest branch runs. Aurora: no farm since 00:03; 8965440 and 8939977 queued.
 - 2026-10-26 16:08: OJEKUJ published, the first complex computed on Perlmutter (266 passing points; the audit passed it); 188 complexes on `aurora-results`, no new notes for Riti.
 - 2026-10-26 17:30: Aurora has run no farm since 00:03 because of large reservations on the `lustre_scaling` queue: 335 nodes daily 14:00-05:00 (Oct 26-28) and 1,024 nodes 16:00-21:00 today. 8965440 waits on a reservation, 8939977 (205 h eligible) on free nodes; 2,468 main branches pending. NERSC: 240 of 540 big branches finished.
+- 2026-10-26 18:30: WUJZOS is the second complex finished on Perlmutter (30 of 30). Since 18:13 UTC the ALCF Globus endpoint alcf#dtn_flare refuses connections (Error (connect) to 140.221.68.111), so finished NERSC branches (WUJZOS's last one among them) wait on Perlmutter scratch; the driver retries the copy every cycle and keeps running jobs meanwhile.
 
 ## Results for Riti
 
