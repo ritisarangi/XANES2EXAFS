@@ -183,6 +183,7 @@ Other options: `CORES`, `HT`, `HBM`, `MAXCORE`, `SCRATCH` (see `sites/aurora.sh`
 - 2026-10-25 22:31: queued the next main capacity farm 8965440 (16 nodes x 6 h, ModCon) while 8962257 still runs (it stops ORCA at 23:44), so the next farm gains queue priority now instead of after 8962257 ends; `capacity` allows 2 running jobs per user. 2,123 main branches pending; 256-node farm 8939977 still queued.
 - 2026-10-26 00:03: capacity farm 8962257 ended normally after 5 h 50 min; its 381 stopped branches were handed back to the front of `main` (queue now 2,468 pending). Next main farm 8965440 (16 nodes) and 256-node 8939977 queued. NERSC: 92 branches finished; every crash since 19:37 UTC was in a job started before the CMA fix.
 - 2026-10-26 04:05: 4 more complexes published (1,007 passing points; the audit passed all): BELDUS LUZTEF PTOLZN01 UDOCUL; 187 complexes on `aurora-results`, no new notes for Riti. NERSC: 104 of 540 big branches finished, all copied back; no crash in a job started after the 19:37 CMA fix. Aurora farms 8965440 and 8939977 still queued (2,468 main branches pending).
+- 2026-10-26 08:25: no Aurora farm has run since 00:03 (8965440 waits on a reservation or top job, 8939977 on free nodes); 2,468 main branches pending. Perlmutter carried the campaign overnight: 119 of 540 big branches finished and copied back, 421 running; the first branch run with the CMA fix finished normally and no job started after the fix has crashed.
 
 ## Results for Riti
 
