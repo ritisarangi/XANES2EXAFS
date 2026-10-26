@@ -8,7 +8,7 @@
 
 A complex is added when all its branches have terminated normally and `aurora/audit.py` finds no problem (every ORCA output matches its own folder's input; no folder run twice at once).
 
-## Published (183 complexes, 50812 points)
+## Published (187 complexes, 51819 points)
 
 | Complex | Atoms | Branches | Points | Passing | Published |
 |---|---|---|---|---|---|
@@ -18,6 +18,7 @@ A complex is added when all its branches have terminated normally and `aurora/au
 | AMETZN | 33 | 30 | 302 | 294 | 2026-10-23 |
 | AYIFAP | 43 | 30 | 302 | 291 | 2026-10-23 |
 | AYUQOC | 51 | 30 | 302 | 290 | 2026-10-23 |
+| BELDUS | 59 | 30 | 302 | 238 | 2026-10-26 |
 | BELFEE | 47 | 30 | 302 | 297 | 2026-10-24 |
 | BELFII | 44 | 30 | 302 | 297 | 2026-10-24 |
 | BMBTZN | 61 | 30 | 302 | 297 | 2026-10-23 |
@@ -96,6 +97,7 @@ A complex is added when all its branches have terminated normally and `aurora/au
 | LIYFEG01 | 59 | 30 | 302 | 281 | 2026-10-24 |
 | LUKREP | 53 | 30 | 302 | 291 | 2026-10-23 |
 | LUVFUD | 60 | 30 | 302 | 301 | 2026-10-25 |
+| LUZTEF | 81 | 30 | 302 | 298 | 2026-10-26 |
 | MEPWOT | 38 | 28 | 280 | 248 | 2026-10-24 |
 | MIYPAM | 89 | 30 | 302 | 245 | 2026-10-23 |
 | MIYVIA | 63 | 30 | 302 | 294 | 2026-10-24 |
@@ -124,6 +126,7 @@ A complex is added when all its branches have terminated normally and `aurora/au
 | PAGFEM | 33 | 30 | 302 | 295 | 2026-10-24 |
 | PEQSEK | 70 | 30 | 302 | 287 | 2026-10-24 |
 | POHTOV | 43 | 30 | 302 | 290 | 2026-10-24 |
+| PTOLZN01 | 53 | 30 | 302 | 171 | 2026-10-26 |
 | PUMRAQ | 57 | 30 | 302 | 285 | 2026-10-24 |
 | PUZKUQ | 33 | 30 | 302 | 289 | 2026-10-24 |
 | QAGWII | 73 | 30 | 302 | 284 | 2026-10-25 |
@@ -161,6 +164,7 @@ A complex is added when all its branches have terminated normally and `aurora/au
 | TIQLOU | 69 | 30 | 302 | 302 | 2026-10-23 |
 | TIXQOH | 92 | 30 | 302 | 302 | 2026-10-22 |
 | TIXREY | 48 | 30 | 302 | 302 | 2026-10-23 |
+| UDOCUL | 70 | 30 | 302 | 300 | 2026-10-26 |
 | UFUROC | 29 | 30 | 302 | 181 | 2026-10-24 |
 | UMEVOY | 39 | 30 | 302 | 291 | 2026-10-24 |
 | UQOWIH | 65 | 30 | 302 | 287 | 2026-10-24 |
