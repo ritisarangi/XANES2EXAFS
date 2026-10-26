@@ -190,6 +190,7 @@ Other options: `CORES`, `HT`, `HBM`, `MAXCORE`, `SCRATCH` (see `sites/aurora.sh`
 - 2026-10-26 18:30: WUJZOS is the second complex finished on Perlmutter (30 of 30). Since 18:13 UTC the ALCF Globus endpoint alcf#dtn_flare refuses connections (Error (connect) to 140.221.68.111), so finished NERSC branches (WUJZOS's last one among them) wait on Perlmutter scratch; the driver retries the copy every cycle and keeps running jobs meanwhile.
 - 2026-10-26 22:19: WUJZOS published, the second complex computed on Perlmutter; 189 complexes on `aurora-results`. For Riti: WUJZOS has a lower minimum than stage 2 in many branches (down to -5.7 kJ/mol, e.g. angle_N1-Zn-N9 pos step 2), so only 154 of its 302 points pass. Aurora still idle (farms wait on busy nodes after the reservations); NERSC 275 of 540 big branches finished, no crash in any job started after the CMA fix.
 - 2026-10-26 23:00: capacity farm 8965440 (`main`, ModCon, 16 nodes x 6 h) started after 24.5 h in the queue (queued early, at 22:31 on Oct 25), ending 23 hours without an Aurora farm. 256-node farm 8939977 still queued.
+- 2026-10-26 23:40: queued the next main capacity farm 8970790 (16 nodes x 6 h, ModCon) while 8965440 runs, so it gains queue priority now (2,082 main branches pending). A first attempt was stopped by a 15 min time limit on my side while waiting for the go.sh lock; it changed nothing (no stopped branches, queue untouched).
 
 ## Results for Riti
 
