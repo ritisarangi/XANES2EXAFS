@@ -72,8 +72,10 @@ Check them again for other work:
 - **Speed:** a CPU node (2 x EPYC 7763, 128 cores) does 1.25-1.33x the work of an Aurora node; a
   single job runs at the same speed on both.
 - **Layout:** one `shared` job per branch (8 physical cores = 16 CPUs, 30 GB, 48 h). `shared` charges
-  nothing for idle cores, which suits a thinning tail; whole-node `regular` jobs (16 branches x 8
-  cores) are charged until their slowest branch ends.
+  nothing for idle cores, which suits a thinning tail. Avoid packing branches into whole-node
+  `regular` jobs (16 branches x 8 cores): the node is charged until its slowest branch ends, a slot
+  whose branch finishes or crashes stays idle, and a crash is seen and resubmitted only when the whole
+  job ends (here up to 25 h later). If you must pack, have the node job refill its own slots.
 - **OpenMPI 4.1.6** for ORCA 6.0.1 builds only with its internal hwloc, PMIx and libevent
   (`nersc/iri/pm_install.sh`). It also detects Cray XPMEM and uses it for single copies between ranks
   by default, and with XPMEM about 2% of runs die at random with a segmentation fault in
