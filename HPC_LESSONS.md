@@ -42,7 +42,12 @@ Check them again for other work:
 6. **Split the work by cost.** Give the largest molecules more cores per job (8 instead of 4 here) and
    start them first, or send them to a second site from day one: they finish last and set the end
    date.
-7. **Use every facility you have from the start.** Adding a second site late helps less than running
+7. **Check every optimised starting structure before scanning it.** Compare the donor list with the
+   atoms actually near the metal (within about 2.8 A) at the reference minimum. In this campaign six of
+   338 complexes had changed coordination during the reference optimisation (weak crystal contacts at
+   2.5-3.1 A pulled in to bonds, one ligand switched binding atom). Every point of their 30 branches
+   then failed validation, and that compute was wasted.
+8. **Use every facility you have from the start.** Adding a second site late helps less than running
    both in parallel from day one.
 
 ## Aurora (PBS)
