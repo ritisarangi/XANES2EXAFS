@@ -21,6 +21,8 @@ ok $D/scan.out && { echo "$D already finished" >> $log; exit 0; }
 exec 7>>$D/.run.lock; flock -n 7 || { echo "$D locked by another job; not run" >> $log; exit 3; }
 if [ -f $D/scan_cont.out ] || [ -f $D/scan.out ]; then
   RESUME_PARTIAL=1 python3 -c "import sys; sys.path.insert(0,'$T/code'); import restart; print(restart.prepare('$R','$D',False))" >> $log 2>&1 || { echo "$D prepare failed" >> $log; exit 4; }
+  # every step had converged before the last run stopped: prepare wrote the finished scan.out
+  ok $D/scan.out && { echo "$D finished"; echo "$D end $(date '+%F %T')"; } >> $log && exit 0
 fi
 out=scan.out; [ -f $D/scan_orig.inp ] && out=scan_cont.out
 # a shared job has 30 GB for 8 ranks: maxcore 2000 MB leaves headroom (ORCA can exceed maxcore, and an
