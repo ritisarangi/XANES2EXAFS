@@ -1,0 +1,464 @@
+{
+ "ref": "REJBUD",
+ "zn": 0,
+ "donors": [
+  1,
+  2,
+  3,
+  4
+ ],
+ "coords": [
+  {
+   "name": "bond_Zn-N1",
+   "kind": "B",
+   "atoms": [
+    0,
+    1
+   ],
+   "branch": "neg",
+   "v0": 2.1020375398414046,
+   "start": 2.1020375398414046,
+   "end": 2.0420375398414046,
+   "npoints": 4,
+   "dir": "scans/REJBUD/bond_Zn-N1_neg"
+  },
+  {
+   "name": "bond_Zn-N1",
+   "kind": "B",
+   "atoms": [
+    0,
+    1
+   ],
+   "branch": "pos",
+   "v0": 2.1020375398414046,
+   "start": 2.1020375398414046,
+   "end": 2.302037539841405,
+   "npoints": 11,
+   "dir": "scans/REJBUD/bond_Zn-N1_pos"
+  },
+  {
+   "name": "bond_Zn-N2",
+   "kind": "B",
+   "atoms": [
+    0,
+    2
+   ],
+   "branch": "neg",
+   "v0": 2.086136899971947,
+   "start": 2.086136899971947,
+   "end": 2.026136899971947,
+   "npoints": 4,
+   "dir": "scans/REJBUD/bond_Zn-N2_neg"
+  },
+  {
+   "name": "bond_Zn-N2",
+   "kind": "B",
+   "atoms": [
+    0,
+    2
+   ],
+   "branch": "pos",
+   "v0": 2.086136899971947,
+   "start": 2.086136899971947,
+   "end": 2.286136899971947,
+   "npoints": 11,
+   "dir": "scans/REJBUD/bond_Zn-N2_pos"
+  },
+  {
+   "name": "bond_Zn-N3",
+   "kind": "B",
+   "atoms": [
+    0,
+    3
+   ],
+   "branch": "neg",
+   "v0": 2.0913931509217014,
+   "start": 2.0913931509217014,
+   "end": 2.0313931509217014,
+   "npoints": 4,
+   "dir": "scans/REJBUD/bond_Zn-N3_neg"
+  },
+  {
+   "name": "bond_Zn-N3",
+   "kind": "B",
+   "atoms": [
+    0,
+    3
+   ],
+   "branch": "pos",
+   "v0": 2.0913931509217014,
+   "start": 2.0913931509217014,
+   "end": 2.2913931509217016,
+   "npoints": 11,
+   "dir": "scans/REJBUD/bond_Zn-N3_pos"
+  },
+  {
+   "name": "bond_Zn-S4",
+   "kind": "B",
+   "atoms": [
+    0,
+    4
+   ],
+   "branch": "neg",
+   "v0": 2.263781770857026,
+   "start": 2.263781770857026,
+   "end": 2.203781770857026,
+   "npoints": 4,
+   "dir": "scans/REJBUD/bond_Zn-S4_neg"
+  },
+  {
+   "name": "bond_Zn-S4",
+   "kind": "B",
+   "atoms": [
+    0,
+    4
+   ],
+   "branch": "pos",
+   "v0": 2.263781770857026,
+   "start": 2.263781770857026,
+   "end": 2.463781770857026,
+   "npoints": 11,
+   "dir": "scans/REJBUD/bond_Zn-S4_pos"
+  },
+  {
+   "name": "angle_N1-Zn-N2",
+   "kind": "A",
+   "atoms": [
+    1,
+    0,
+    2
+   ],
+   "branch": "neg",
+   "v0": 89.64306354255636,
+   "start": 89.64306354255636,
+   "end": 74.64306354255636,
+   "npoints": 11,
+   "dir": "scans/REJBUD/angle_N1-Zn-N2_neg"
+  },
+  {
+   "name": "angle_N1-Zn-N2",
+   "kind": "A",
+   "atoms": [
+    1,
+    0,
+    2
+   ],
+   "branch": "pos",
+   "v0": 89.64306354255636,
+   "start": 89.64306354255636,
+   "end": 104.64306354255636,
+   "npoints": 11,
+   "dir": "scans/REJBUD/angle_N1-Zn-N2_pos"
+  },
+  {
+   "name": "angle_N1-Zn-N3",
+   "kind": "A",
+   "atoms": [
+    1,
+    0,
+    3
+   ],
+   "branch": "neg",
+   "v0": 90.14713666884407,
+   "start": 90.14713666884407,
+   "end": 75.14713666884407,
+   "npoints": 11,
+   "dir": "scans/REJBUD/angle_N1-Zn-N3_neg"
+  },
+  {
+   "name": "angle_N1-Zn-N3",
+   "kind": "A",
+   "atoms": [
+    1,
+    0,
+    3
+   ],
+   "branch": "pos",
+   "v0": 90.14713666884407,
+   "start": 90.14713666884407,
+   "end": 105.14713666884407,
+   "npoints": 11,
+   "dir": "scans/REJBUD/angle_N1-Zn-N3_pos"
+  },
+  {
+   "name": "angle_N1-Zn-S4",
+   "kind": "A",
+   "atoms": [
+    1,
+    0,
+    4
+   ],
+   "branch": "neg",
+   "v0": 126.00031303524969,
+   "start": 126.00031303524969,
+   "end": 111.00031303524969,
+   "npoints": 11,
+   "dir": "scans/REJBUD/angle_N1-Zn-S4_neg"
+  },
+  {
+   "name": "angle_N1-Zn-S4",
+   "kind": "A",
+   "atoms": [
+    1,
+    0,
+    4
+   ],
+   "branch": "pos",
+   "v0": 126.00031303524969,
+   "start": 126.00031303524969,
+   "end": 141.0003130352497,
+   "npoints": 11,
+   "dir": "scans/REJBUD/angle_N1-Zn-S4_pos"
+  },
+  {
+   "name": "angle_N2-Zn-N3",
+   "kind": "A",
+   "atoms": [
+    2,
+    0,
+    3
+   ],
+   "branch": "neg",
+   "v0": 90.26157617867999,
+   "start": 90.26157617867999,
+   "end": 75.26157617867999,
+   "npoints": 11,
+   "dir": "scans/REJBUD/angle_N2-Zn-N3_neg"
+  },
+  {
+   "name": "angle_N2-Zn-N3",
+   "kind": "A",
+   "atoms": [
+    2,
+    0,
+    3
+   ],
+   "branch": "pos",
+   "v0": 90.26157617867999,
+   "start": 90.26157617867999,
+   "end": 105.26157617867999,
+   "npoints": 11,
+   "dir": "scans/REJBUD/angle_N2-Zn-N3_pos"
+  },
+  {
+   "name": "angle_N2-Zn-S4",
+   "kind": "A",
+   "atoms": [
+    2,
+    0,
+    4
+   ],
+   "branch": "neg",
+   "v0": 128.42860956968323,
+   "start": 128.42860956968323,
+   "end": 113.42860956968323,
+   "npoints": 11,
+   "dir": "scans/REJBUD/angle_N2-Zn-S4_neg"
+  },
+  {
+   "name": "angle_N2-Zn-S4",
+   "kind": "A",
+   "atoms": [
+    2,
+    0,
+    4
+   ],
+   "branch": "pos",
+   "v0": 128.42860956968323,
+   "start": 128.42860956968323,
+   "end": 143.42860956968323,
+   "npoints": 11,
+   "dir": "scans/REJBUD/angle_N2-Zn-S4_pos"
+  },
+  {
+   "name": "angle_N3-Zn-S4",
+   "kind": "A",
+   "atoms": [
+    3,
+    0,
+    4
+   ],
+   "branch": "neg",
+   "v0": 121.191136611508,
+   "start": 121.191136611508,
+   "end": 106.191136611508,
+   "npoints": 11,
+   "dir": "scans/REJBUD/angle_N3-Zn-S4_neg"
+  },
+  {
+   "name": "angle_N3-Zn-S4",
+   "kind": "A",
+   "atoms": [
+    3,
+    0,
+    4
+   ],
+   "branch": "pos",
+   "v0": 121.191136611508,
+   "start": 121.191136611508,
+   "end": 136.191136611508,
+   "npoints": 11,
+   "dir": "scans/REJBUD/angle_N3-Zn-S4_pos"
+  },
+  {
+   "name": "twist_N1-N2-N3-S4",
+   "kind": "D",
+   "atoms": [
+    1,
+    2,
+    3,
+    4
+   ],
+   "branch": "neg",
+   "v0": -76.93072375196543,
+   "start": -76.93072375196543,
+   "end": -86.93072375196543,
+   "npoints": 11,
+   "dir": "scans/REJBUD/twist_N1-N2-N3-S4_neg"
+  },
+  {
+   "name": "twist_N1-N2-N3-S4",
+   "kind": "D",
+   "atoms": [
+    1,
+    2,
+    3,
+    4
+   ],
+   "branch": "pos",
+   "v0": -76.93072375196543,
+   "start": -76.93072375196543,
+   "end": -66.93072375196543,
+   "npoints": 11,
+   "dir": "scans/REJBUD/twist_N1-N2-N3-S4_pos"
+  },
+  {
+   "name": "tilt_Zn-N1-C16-C21",
+   "kind": "D",
+   "atoms": [
+    0,
+    1,
+    16,
+    21
+   ],
+   "branch": "neg",
+   "v0": 31.759750428713147,
+   "start": 31.759750428713147,
+   "end": 21.759750428713147,
+   "npoints": 11,
+   "dir": "scans/REJBUD/tilt_Zn-N1-C16-C21_neg"
+  },
+  {
+   "name": "tilt_Zn-N1-C16-C21",
+   "kind": "D",
+   "atoms": [
+    0,
+    1,
+    16,
+    21
+   ],
+   "branch": "pos",
+   "v0": 31.759750428713147,
+   "start": 31.759750428713147,
+   "end": 41.75975042871315,
+   "npoints": 11,
+   "dir": "scans/REJBUD/tilt_Zn-N1-C16-C21_pos"
+  },
+  {
+   "name": "tilt_Zn-N2-C44-C49",
+   "kind": "D",
+   "atoms": [
+    0,
+    2,
+    44,
+    49
+   ],
+   "branch": "neg",
+   "v0": 27.710474913674634,
+   "start": 27.710474913674634,
+   "end": 17.710474913674634,
+   "npoints": 11,
+   "dir": "scans/REJBUD/tilt_Zn-N2-C44-C49_neg"
+  },
+  {
+   "name": "tilt_Zn-N2-C44-C49",
+   "kind": "D",
+   "atoms": [
+    0,
+    2,
+    44,
+    49
+   ],
+   "branch": "pos",
+   "v0": 27.710474913674634,
+   "start": 27.710474913674634,
+   "end": 37.71047491367463,
+   "npoints": 11,
+   "dir": "scans/REJBUD/tilt_Zn-N2-C44-C49_pos"
+  },
+  {
+   "name": "tilt_Zn-N3-C72-C77",
+   "kind": "D",
+   "atoms": [
+    0,
+    3,
+    72,
+    77
+   ],
+   "branch": "neg",
+   "v0": 25.75347467057551,
+   "start": 25.75347467057551,
+   "end": 15.75347467057551,
+   "npoints": 11,
+   "dir": "scans/REJBUD/tilt_Zn-N3-C72-C77_neg"
+  },
+  {
+   "name": "tilt_Zn-N3-C72-C77",
+   "kind": "D",
+   "atoms": [
+    0,
+    3,
+    72,
+    77
+   ],
+   "branch": "pos",
+   "v0": 25.75347467057551,
+   "start": 25.75347467057551,
+   "end": 35.753474670575514,
+   "npoints": 11,
+   "dir": "scans/REJBUD/tilt_Zn-N3-C72-C77_pos"
+  },
+  {
+   "name": "tilt_Zn-S4-C5-C8",
+   "kind": "D",
+   "atoms": [
+    0,
+    4,
+    5,
+    8
+   ],
+   "branch": "neg",
+   "v0": 155.1502894629278,
+   "start": 155.1502894629278,
+   "end": 145.1502894629278,
+   "npoints": 11,
+   "dir": "scans/REJBUD/tilt_Zn-S4-C5-C8_neg"
+  },
+  {
+   "name": "tilt_Zn-S4-C5-C8",
+   "kind": "D",
+   "atoms": [
+    0,
+    4,
+    5,
+    8
+   ],
+   "branch": "pos",
+   "v0": 155.1502894629278,
+   "start": 155.1502894629278,
+   "end": 165.1502894629278,
+   "npoints": 11,
+   "dir": "scans/REJBUD/tilt_Zn-S4-C5-C8_pos"
+  }
+ ]
+}
