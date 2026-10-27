@@ -58,9 +58,11 @@ Check them again for other work:
 - **Only submit a 256-node farm when the queue can fill it** (6,144 slots at 24 per node). Idle nodes
   in a running farm are charged. With less work, use 16-node farms, mixed farms that give spare nodes
   to another pool (`node.sh`), or another site.
-- **Leave time for the end-of-run hand-back.** Preparing thousands of stopped jobs for continuation
-  takes 20-30 min on a busy Lustre. Farms of 64 nodes or more stop ORCA 50 min before the walltime
-  (`MARGIN_MIN`).
+- **Leave time for the end-of-run hand-back, and keep a backup for when it runs out.** Preparing stopped
+  jobs for continuation takes 20-30 min for thousands of jobs, and on a slow Lustre even a few hundred
+  can take longer than 25 min. Farms of 64 nodes or more stop ORCA 50 min before the walltime
+  (`MARGIN_MIN`); smaller farms keep 25 min, and when one is killed mid-hand-back the autopilot's
+  re-queue (`NODES=0 go.sh submit`) recovers its branches. Never rely on the margin alone.
 - `qhold`/`qrls` and `qalter -A <project>` keep a queued job's eligible time. Hold queued farms rather
   than letting them start into an empty queue. `qalter -v` is not supported.
 - Production reads ORCA and OpenMPI from `/lus/flare`, not `$HOME`; set `OPAL_PREFIX`.
@@ -103,6 +105,9 @@ Check them again for other work:
 - **One list says which work runs where** (`remote_refs.txt`); every tool at the other site skips it.
 - **Audit before publishing** (each output matches its folder's input, nothing ran twice), audit only
   what is about to be published, and publish a complex only when all its branches ended normally.
+- **A problem in one item must not stop the rest.** Hold back the item with the problem and carry on
+  with the others; check that a script running with `set -e` does not quit on a checker's non-zero
+  exit (one complex with an audit finding once blocked every publication).
 - **Keep a record people can follow:** a dated Run log, a status page regenerated every 2 h, and
   hourly checks (autopilot alive, alerts, farms, failures without a time-limit or cancel tag).
 - **Watch for silence as well as errors.** A driver or farm that stops logging is as bad as one that
