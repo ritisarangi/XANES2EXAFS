@@ -8,11 +8,12 @@
 
 A complex is added when all its branches have terminated normally and `aurora/audit.py` finds no problem (every ORCA output matches its own folder's input; no folder run twice at once).
 
-## Published (202 complexes, 55729 points)
+## Published (206 complexes, 57006 points)
 
 | Complex | Atoms | Branches | Points | Passing | Published |
 |---|---|---|---|---|---|
 | ABIDEU | 69 | 30 | 302 | 302 | 2026-10-24 |
+| ADOLOU | 81 | 53 | 541 | 477 | 2026-10-27 |
 | AHOQIY | 39 | 30 | 302 | 293 | 2026-10-24 |
 | ALACUL | 39 | 30 | 302 | 294 | 2026-10-23 |
 | AMETZN | 33 | 30 | 302 | 294 | 2026-10-23 |
@@ -65,12 +66,14 @@ A complex is added when all its branches have terminated normally and `aurora/au
 | GUYHEN | 49 | 30 | 302 | 204 | 2026-10-21 |
 | HEFHUX | 53 | 30 | 302 | 286 | 2026-10-23 |
 | HIJGEM | 13 | 30 | 302 | 298 | 2026-10-24 |
+| HOMQAC | 115 | 30 | 302 | 297 | 2026-10-27 |
 | HOSXAR | 61 | 30 | 302 | 294 | 2026-10-23 |
 | HOZGEJ | 99 | 30 | 302 | 282 | 2026-10-25 |
 | HOZGIN | 95 | 30 | 302 | 298 | 2026-10-24 |
 | HUCCIU | 50 | 30 | 302 | 296 | 2026-10-19 |
 | HULBIZ | 57 | 30 | 302 | 243 | 2026-10-24 |
 | ICATOW | 77 | 30 | 302 | 272 | 2026-10-25 |
+| ICAVAK | 101 | 30 | 302 | 291 | 2026-10-27 |
 | ICEHOP | 73 | 30 | 302 | 293 | 2026-10-24 |
 | ICUCAL | 46 | 30 | 302 | 218 | 2026-10-24 |
 | ICUCEP | 46 | 30 | 302 | 296 | 2026-10-24 |
@@ -113,6 +116,7 @@ A complex is added when all its branches have terminated normally and `aurora/au
 | MOZSIE | 53 | 30 | 302 | 282 | 2026-10-21 |
 | MUJJOQ | 49 | 30 | 302 | 295 | 2026-10-25 |
 | MUJJUW | 55 | 30 | 302 | 249 | 2026-10-24 |
+| NAMSOJ | 104 | 30 | 302 | 212 | 2026-10-27 |
 | NAYXAM | 71 | 30 | 302 | 282 | 2026-10-25 |
 | NECTOG | 102 | 30 | 302 | 278 | 2026-10-27 |
 | NEHKIU | 53 | 30 | 302 | 300 | 2026-10-20 |
@@ -221,8 +225,10 @@ A branch fell more than 2 kJ/mol below its start (`energy_drop`), so the complex
 
 - FEKRAO: angle_S1-Zn-N3 neg step 2 at -2.508 kJ/mol; angle_S1-Zn-N4 neg step 3 at -2.483 kJ/mol; angle_S2-Zn-N3 neg step 2 at -2.345 kJ/mol; twist_S1-S2-N3-N4 neg step 3 at -2.489 kJ/mol; tilt_Zn-S2-C32-C38 neg step 9 at -3.29 kJ/mol
 - GAKKUY: angle_S2-Zn-S3 neg step 9 at -4.906 kJ/mol
+- ICAVAK: angle_S1-Zn-N2 pos step 8 at -2.533 kJ/mol
 - ICUCIT: angle_N2-Zn-N3 pos step 8 at -10.556 kJ/mol
 - KAKYAW: angle_N29-Zn-N50 pos step 3 at -10.288 kJ/mol
+- NAMSOJ: bond_Zn-N1 neg step 2 at -16.558 kJ/mol; bond_Zn-S4 neg step 3 at -15.584 kJ/mol; angle_N1-Zn-N2 pos step 3 at -15.459 kJ/mol; angle_N1-Zn-N3 neg step 2 at -16.738 kJ/mol; angle_N1-Zn-S4 neg step 1 at -16.718 kJ/mol; angle_N2-Zn-S4 neg step 3 at -15.969 kJ/mol; angle_N2-Zn-S4 pos step 4 at -16.305 kJ/mol; angle_N3-Zn-S4 pos step 1 at -16.76 kJ/mol; twist_N1-N2-N3-S4 neg step 1 at -16.653 kJ/mol; tilt_Zn-N1-C19-C24 pos step 3 at -4.152 kJ/mol; tilt_Zn-S4-C5-O7 neg step 8 at -15.792 kJ/mol
 - TARNIJ: angle_S1-Zn-S2 neg step 8 at -2.476 kJ/mol
 - UFUROC: bond_Zn-S1 neg step 3 at -2.655 kJ/mol; bond_Zn-S2 pos step 2 at -3.299 kJ/mol; bond_Zn-S3 neg step 1 at -3.613 kJ/mol; bond_Zn-S4 pos step 3 at -3.064 kJ/mol; angle_S1-Zn-S2 neg step 1 at -3.621 kJ/mol; angle_S1-Zn-S3 pos step 1 at -3.152 kJ/mol; angle_S1-Zn-S4 neg step 1 at -2.971 kJ/mol; angle_S2-Zn-S3 pos step 3 at -3.3 kJ/mol; angle_S2-Zn-S4 neg step 1 at -3.606 kJ/mol; angle_S3-Zn-S4 pos step 2 at -3.615 kJ/mol; twist_S1-S2-S3-S4 neg step 1 at -3.334 kJ/mol; tilt_Zn-S2-C12-O11 neg step 3 at -3.564 kJ/mol; tilt_Zn-S3-C18-C19 neg step 2 at -3.22 kJ/mol; tilt_Zn-S4-C24-O23 neg step 2 at -3.615 kJ/mol
 - WUJZOS: bond_Zn-N4 pos step 5 at -4.526 kJ/mol; angle_N1-Zn-N6 neg step 5 at -2.591 kJ/mol; angle_N1-Zn-N9 pos step 2 at -5.665 kJ/mol; angle_N4-Zn-N6 neg step 2 at -5.635 kJ/mol; twist_N1-N4-N6-N9 neg step 3 at -5.18 kJ/mol; tilt_Zn-N1-C11-C43 neg step 4 at -5.43 kJ/mol; tilt_Zn-N4-C43-C11 neg step 5 at -4.602 kJ/mol; tilt_Zn-N6-C69-C101 pos step 9 at -4.898 kJ/mol; tilt_Zn-N9-C75-C74 neg step 3 at -5.495 kJ/mol
