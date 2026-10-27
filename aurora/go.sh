@@ -142,7 +142,8 @@ publish)
   refs=$(python3 "$HERE/publish.py" . scans/jobs_scan_full.txt "$RESULTS" --pending) || { echo "publish: no newly finished complexes"; exit 0; }
   # a complex with an audit problem is held back (and reported); the others are published
   bad=$WORK/autopilot/audit_bad.txt
-  AUDIT_BAD=$bad python3 "$HERE/audit.py" . scans/jobs_scan_full.txt $refs
+  # audit.py exits 1 when it finds a problem; the problems are in $bad and handled below
+  AUDIT_BAD=$bad python3 "$HERE/audit.py" . scans/jobs_scan_full.txt $refs || true
   grep -qx ALL "$bad" 2>/dev/null && { echo "audit found a queue problem: nothing published"; exit 1; }
   ok=$(for r in $refs; do grep -qx "$r" "$bad" 2>/dev/null || echo "$r"; done | tr '\n' ' ')
   [ -s "$bad" ] && echo "audit problems in $(tr '\n' ' ' < "$bad"): held back"
