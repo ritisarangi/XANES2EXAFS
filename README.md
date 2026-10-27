@@ -8,7 +8,7 @@
 
 A complex is added when all its branches have terminated normally and `aurora/audit.py` finds no problem (every ORCA output matches its own folder's input; no folder run twice at once).
 
-## Published (200 complexes, 55193 points)
+## Published (202 complexes, 55729 points)
 
 | Complex | Atoms | Branches | Points | Passing | Published |
 |---|---|---|---|---|---|
@@ -175,6 +175,7 @@ A complex is added when all its branches have terminated normally and `aurora/au
 | TIXQOH | 92 | 30 | 302 | 302 | 2026-10-22 |
 | TIXREY | 48 | 30 | 302 | 302 | 2026-10-23 |
 | UDOCUL | 70 | 30 | 302 | 300 | 2026-10-26 |
+| UDODOG | 90 | 30 | 302 | 234 | 2026-10-27 |
 | UFUROC | 29 | 30 | 302 | 181 | 2026-10-24 |
 | UMEVOY | 39 | 30 | 302 | 291 | 2026-10-24 |
 | UQOWIH | 65 | 30 | 302 | 287 | 2026-10-24 |
@@ -194,6 +195,7 @@ A complex is added when all its branches have terminated normally and `aurora/au
 | WITLAM | 43 | 30 | 302 | 291 | 2026-10-25 |
 | WONYUW | 33 | 28 | 280 | 254 | 2026-10-25 |
 | WORLUK | 69 | 30 | 302 | 293 | 2026-10-27 |
+| WORMAR | 113 | 30 | 302 | 302 | 2026-10-27 |
 | WUCGIN | 51 | 30 | 302 | 249 | 2026-10-20 |
 | WUJZOS | 127 | 30 | 302 | 154 | 2026-10-26 |
 | XAJQAB | 95 | 30 | 302 | 277 | 2026-10-23 |
