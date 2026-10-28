@@ -199,6 +199,7 @@ Other options: `CORES`, `HT`, `HBM`, `MAXCORE`, `SCRATCH` (see `sites/aurora.sh`
 - 2026-10-28 04:11: second capacity farm 8972593 started (queued since 14:52 Oct 27); both 16-node farms now run (768 slots). RAYBIC finished on Perlmutter (30 of 30).
 - 2026-10-28 07:04: 3 more complexes published (597 passing points): GIXTAL, NONLEI and RAYBIC (the last two from Perlmutter); 209 on `aurora-results`. For Riti: GIXTAL has a lower minimum than stage 2 (angle_N6-Zn-N7 pos step 6, -4.9 kJ/mol).
 - 2026-10-28 08:20: first failure in a Perlmutter job started after the CMA fix, and not a crash: OJELOE angle_S3-Zn-N100_neg (9 of 11 steps done) spent about 23 h on step 10 and reached ORCA's 100 optimisation cycles without converging; the properties step that followed then failed. The driver resubmits it once from the last geometry. For Riti: a non-converged step fails validation and makes the rest of its branch after_fail, so such steps are worth reviewing before more compute goes into them.
+- 2026-10-28 09:36: OJELOE angle_S3-Zn-N100_neg finished on its resubmission (job 60430468) and is back on Aurora. Aurora farm 8972496 (16 nodes) was killed at its walltime during the hand-back, as expected for small farms; the autopilot re-queued its 380 stopped branches at 09:02 (1,909 pending). The autopilot keeps only one capacity farm (WANT_MAIN_CAP=1) and 8972593 is running, so the second capacity slot was filled by hand: 8976721 (16 nodes, 6 h, ModCon). 8939977 (256 nodes) still waits.
 
 ## Results for Riti
 
