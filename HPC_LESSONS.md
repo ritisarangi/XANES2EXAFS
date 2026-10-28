@@ -60,6 +60,8 @@ Check them again for other work:
   unpredictable (minutes to days), and priority only grows while a job waits, so **keep one or two
   256-node farms queued at all times while there is work to fill them**: submit the next one when the
   previous one starts, not when it ends.
+- **Keep both `capacity` slots busy** (2 running jobs per user, 16 nodes each): queue two 16-node farms,
+  not one, so the second slot is not idle while the first farm hands back (autopilot `WANT_MAIN_CAP=2`).
 - **Only submit a 256-node farm when the queue can fill it** (6,144 slots at 24 per node). Idle nodes
   in a running farm are charged. With less work, use 16-node farms, mixed farms that give spare nodes
   to another pool (`node.sh`), or another site.
