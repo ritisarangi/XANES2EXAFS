@@ -1,0 +1,464 @@
+{
+ "ref": "GIXTAL",
+ "zn": 0,
+ "donors": [
+  5,
+  6,
+  7,
+  34
+ ],
+ "coords": [
+  {
+   "name": "bond_Zn-N5",
+   "kind": "B",
+   "atoms": [
+    0,
+    5
+   ],
+   "branch": "neg",
+   "v0": 2.013285958132704,
+   "start": 2.013285958132704,
+   "end": 1.953285958132704,
+   "npoints": 4,
+   "dir": "scans/GIXTAL/bond_Zn-N5_neg"
+  },
+  {
+   "name": "bond_Zn-N5",
+   "kind": "B",
+   "atoms": [
+    0,
+    5
+   ],
+   "branch": "pos",
+   "v0": 2.013285958132704,
+   "start": 2.013285958132704,
+   "end": 2.2132859581327042,
+   "npoints": 11,
+   "dir": "scans/GIXTAL/bond_Zn-N5_pos"
+  },
+  {
+   "name": "bond_Zn-N6",
+   "kind": "B",
+   "atoms": [
+    0,
+    6
+   ],
+   "branch": "neg",
+   "v0": 2.009572112854932,
+   "start": 2.009572112854932,
+   "end": 1.949572112854932,
+   "npoints": 4,
+   "dir": "scans/GIXTAL/bond_Zn-N6_neg"
+  },
+  {
+   "name": "bond_Zn-N6",
+   "kind": "B",
+   "atoms": [
+    0,
+    6
+   ],
+   "branch": "pos",
+   "v0": 2.009572112854932,
+   "start": 2.009572112854932,
+   "end": 2.209572112854932,
+   "npoints": 11,
+   "dir": "scans/GIXTAL/bond_Zn-N6_pos"
+  },
+  {
+   "name": "bond_Zn-N7",
+   "kind": "B",
+   "atoms": [
+    0,
+    7
+   ],
+   "branch": "neg",
+   "v0": 2.009742560170802,
+   "start": 2.009742560170802,
+   "end": 1.9497425601708018,
+   "npoints": 4,
+   "dir": "scans/GIXTAL/bond_Zn-N7_neg"
+  },
+  {
+   "name": "bond_Zn-N7",
+   "kind": "B",
+   "atoms": [
+    0,
+    7
+   ],
+   "branch": "pos",
+   "v0": 2.009742560170802,
+   "start": 2.009742560170802,
+   "end": 2.209742560170802,
+   "npoints": 11,
+   "dir": "scans/GIXTAL/bond_Zn-N7_pos"
+  },
+  {
+   "name": "bond_Zn-N34",
+   "kind": "B",
+   "atoms": [
+    0,
+    34
+   ],
+   "branch": "neg",
+   "v0": 2.0125871447317074,
+   "start": 2.0125871447317074,
+   "end": 1.9525871447317074,
+   "npoints": 4,
+   "dir": "scans/GIXTAL/bond_Zn-N34_neg"
+  },
+  {
+   "name": "bond_Zn-N34",
+   "kind": "B",
+   "atoms": [
+    0,
+    34
+   ],
+   "branch": "pos",
+   "v0": 2.0125871447317074,
+   "start": 2.0125871447317074,
+   "end": 2.2125871447317076,
+   "npoints": 11,
+   "dir": "scans/GIXTAL/bond_Zn-N34_pos"
+  },
+  {
+   "name": "angle_N5-Zn-N6",
+   "kind": "A",
+   "atoms": [
+    5,
+    0,
+    6
+   ],
+   "branch": "neg",
+   "v0": 85.20459480595001,
+   "start": 85.20459480595001,
+   "end": 70.20459480595001,
+   "npoints": 11,
+   "dir": "scans/GIXTAL/angle_N5-Zn-N6_neg"
+  },
+  {
+   "name": "angle_N5-Zn-N6",
+   "kind": "A",
+   "atoms": [
+    5,
+    0,
+    6
+   ],
+   "branch": "pos",
+   "v0": 85.20459480595001,
+   "start": 85.20459480595001,
+   "end": 100.20459480595001,
+   "npoints": 11,
+   "dir": "scans/GIXTAL/angle_N5-Zn-N6_pos"
+  },
+  {
+   "name": "angle_N5-Zn-N7",
+   "kind": "A",
+   "atoms": [
+    5,
+    0,
+    7
+   ],
+   "branch": "neg",
+   "v0": 122.59407631371202,
+   "start": 122.59407631371202,
+   "end": 107.59407631371202,
+   "npoints": 11,
+   "dir": "scans/GIXTAL/angle_N5-Zn-N7_neg"
+  },
+  {
+   "name": "angle_N5-Zn-N7",
+   "kind": "A",
+   "atoms": [
+    5,
+    0,
+    7
+   ],
+   "branch": "pos",
+   "v0": 122.59407631371202,
+   "start": 122.59407631371202,
+   "end": 137.59407631371204,
+   "npoints": 11,
+   "dir": "scans/GIXTAL/angle_N5-Zn-N7_pos"
+  },
+  {
+   "name": "angle_N5-Zn-N34",
+   "kind": "A",
+   "atoms": [
+    5,
+    0,
+    34
+   ],
+   "branch": "neg",
+   "v0": 123.08311797443419,
+   "start": 123.08311797443419,
+   "end": 108.08311797443419,
+   "npoints": 11,
+   "dir": "scans/GIXTAL/angle_N5-Zn-N34_neg"
+  },
+  {
+   "name": "angle_N5-Zn-N34",
+   "kind": "A",
+   "atoms": [
+    5,
+    0,
+    34
+   ],
+   "branch": "pos",
+   "v0": 123.08311797443419,
+   "start": 123.08311797443419,
+   "end": 138.08311797443417,
+   "npoints": 11,
+   "dir": "scans/GIXTAL/angle_N5-Zn-N34_pos"
+  },
+  {
+   "name": "angle_N6-Zn-N7",
+   "kind": "A",
+   "atoms": [
+    6,
+    0,
+    7
+   ],
+   "branch": "neg",
+   "v0": 124.73903116515078,
+   "start": 124.73903116515078,
+   "end": 109.73903116515078,
+   "npoints": 11,
+   "dir": "scans/GIXTAL/angle_N6-Zn-N7_neg"
+  },
+  {
+   "name": "angle_N6-Zn-N7",
+   "kind": "A",
+   "atoms": [
+    6,
+    0,
+    7
+   ],
+   "branch": "pos",
+   "v0": 124.73903116515078,
+   "start": 124.73903116515078,
+   "end": 139.73903116515078,
+   "npoints": 11,
+   "dir": "scans/GIXTAL/angle_N6-Zn-N7_pos"
+  },
+  {
+   "name": "angle_N6-Zn-N34",
+   "kind": "A",
+   "atoms": [
+    6,
+    0,
+    34
+   ],
+   "branch": "neg",
+   "v0": 120.88385521658368,
+   "start": 120.88385521658368,
+   "end": 105.88385521658368,
+   "npoints": 11,
+   "dir": "scans/GIXTAL/angle_N6-Zn-N34_neg"
+  },
+  {
+   "name": "angle_N6-Zn-N34",
+   "kind": "A",
+   "atoms": [
+    6,
+    0,
+    34
+   ],
+   "branch": "pos",
+   "v0": 120.88385521658368,
+   "start": 120.88385521658368,
+   "end": 135.8838552165837,
+   "npoints": 11,
+   "dir": "scans/GIXTAL/angle_N6-Zn-N34_pos"
+  },
+  {
+   "name": "angle_N7-Zn-N34",
+   "kind": "A",
+   "atoms": [
+    7,
+    0,
+    34
+   ],
+   "branch": "neg",
+   "v0": 85.13856489663836,
+   "start": 85.13856489663836,
+   "end": 70.13856489663836,
+   "npoints": 11,
+   "dir": "scans/GIXTAL/angle_N7-Zn-N34_neg"
+  },
+  {
+   "name": "angle_N7-Zn-N34",
+   "kind": "A",
+   "atoms": [
+    7,
+    0,
+    34
+   ],
+   "branch": "pos",
+   "v0": 85.13856489663836,
+   "start": 85.13856489663836,
+   "end": 100.13856489663836,
+   "npoints": 11,
+   "dir": "scans/GIXTAL/angle_N7-Zn-N34_pos"
+  },
+  {
+   "name": "twist_N5-N6-N7-N34",
+   "kind": "D",
+   "atoms": [
+    5,
+    6,
+    7,
+    34
+   ],
+   "branch": "neg",
+   "v0": 81.46225147173196,
+   "start": 81.46225147173196,
+   "end": 71.46225147173196,
+   "npoints": 11,
+   "dir": "scans/GIXTAL/twist_N5-N6-N7-N34_neg"
+  },
+  {
+   "name": "twist_N5-N6-N7-N34",
+   "kind": "D",
+   "atoms": [
+    5,
+    6,
+    7,
+    34
+   ],
+   "branch": "pos",
+   "v0": 81.46225147173196,
+   "start": 81.46225147173196,
+   "end": 91.46225147173196,
+   "npoints": 11,
+   "dir": "scans/GIXTAL/twist_N5-N6-N7-N34_pos"
+  },
+  {
+   "name": "tilt_Zn-N5-C15-C13",
+   "kind": "D",
+   "atoms": [
+    0,
+    5,
+    15,
+    13
+   ],
+   "branch": "neg",
+   "v0": 3.293225457352644,
+   "start": 3.293225457352644,
+   "end": -6.706774542647356,
+   "npoints": 11,
+   "dir": "scans/GIXTAL/tilt_Zn-N5-C15-C13_neg"
+  },
+  {
+   "name": "tilt_Zn-N5-C15-C13",
+   "kind": "D",
+   "atoms": [
+    0,
+    5,
+    15,
+    13
+   ],
+   "branch": "pos",
+   "v0": 3.293225457352644,
+   "start": 3.293225457352644,
+   "end": 13.293225457352644,
+   "npoints": 11,
+   "dir": "scans/GIXTAL/tilt_Zn-N5-C15-C13_pos"
+  },
+  {
+   "name": "tilt_Zn-N6-C8-C11",
+   "kind": "D",
+   "atoms": [
+    0,
+    6,
+    8,
+    11
+   ],
+   "branch": "neg",
+   "v0": -11.0729806610924,
+   "start": -11.0729806610924,
+   "end": -21.0729806610924,
+   "npoints": 11,
+   "dir": "scans/GIXTAL/tilt_Zn-N6-C8-C11_neg"
+  },
+  {
+   "name": "tilt_Zn-N6-C8-C11",
+   "kind": "D",
+   "atoms": [
+    0,
+    6,
+    8,
+    11
+   ],
+   "branch": "pos",
+   "v0": -11.0729806610924,
+   "start": -11.0729806610924,
+   "end": -1.0729806610923998,
+   "npoints": 11,
+   "dir": "scans/GIXTAL/tilt_Zn-N6-C8-C11_pos"
+  },
+  {
+   "name": "tilt_Zn-N7-C9-C36",
+   "kind": "D",
+   "atoms": [
+    0,
+    7,
+    9,
+    36
+   ],
+   "branch": "neg",
+   "v0": -1.34464340311824,
+   "start": -1.34464340311824,
+   "end": -11.34464340311824,
+   "npoints": 11,
+   "dir": "scans/GIXTAL/tilt_Zn-N7-C9-C36_neg"
+  },
+  {
+   "name": "tilt_Zn-N7-C9-C36",
+   "kind": "D",
+   "atoms": [
+    0,
+    7,
+    9,
+    36
+   ],
+   "branch": "pos",
+   "v0": -1.34464340311824,
+   "start": -1.34464340311824,
+   "end": 8.65535659688176,
+   "npoints": 11,
+   "dir": "scans/GIXTAL/tilt_Zn-N7-C9-C36_pos"
+  },
+  {
+   "name": "tilt_Zn-N34-C36-C9",
+   "kind": "D",
+   "atoms": [
+    0,
+    34,
+    36,
+    9
+   ],
+   "branch": "neg",
+   "v0": -1.7978325335671244,
+   "start": -1.7978325335671244,
+   "end": -11.797832533567124,
+   "npoints": 11,
+   "dir": "scans/GIXTAL/tilt_Zn-N34-C36-C9_neg"
+  },
+  {
+   "name": "tilt_Zn-N34-C36-C9",
+   "kind": "D",
+   "atoms": [
+    0,
+    34,
+    36,
+    9
+   ],
+   "branch": "pos",
+   "v0": -1.7978325335671244,
+   "start": -1.7978325335671244,
+   "end": 8.202167466432876,
+   "npoints": 11,
+   "dir": "scans/GIXTAL/tilt_Zn-N34-C36-C9_pos"
+  }
+ ]
+}

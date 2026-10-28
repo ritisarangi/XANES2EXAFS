@@ -8,7 +8,7 @@
 
 A complex is added when all its branches have terminated normally and `aurora/audit.py` finds no problem (every ORCA output matches its own folder's input; no folder run twice at once).
 
-## Published (206 complexes, 57006 points)
+## Published (209 complexes, 57603 points)
 
 | Complex | Atoms | Branches | Points | Passing | Published |
 |---|---|---|---|---|---|
@@ -61,6 +61,7 @@ A complex is added when all its branches have terminated normally and `aurora/au
 | GALGIK | 47 | 30 | 302 | 274 | 2026-10-24 |
 | GEXZOY | 81 | 30 | 302 | 276 | 2026-10-25 |
 | GILZEG | 49 | 30 | 302 | 299 | 2026-10-23 |
+| GIXTAL | 57 | 30 | 302 | 153 | 2026-10-28 |
 | GOLCIU01 | 43 | 30 | 302 | 295 | 2026-10-25 |
 | GOWRAL | 53 | 30 | 302 | 240 | 2026-10-25 |
 | GUYHEN | 49 | 30 | 302 | 204 | 2026-10-21 |
@@ -126,6 +127,7 @@ A complex is added when all its branches have terminated normally and `aurora/au
 | NIHTIK | 51 | 30 | 302 | 294 | 2026-10-25 |
 | NITZEW | 35 | 30 | 302 | 292 | 2026-10-24 |
 | NOCNEY | 65 | 30 | 302 | 270 | 2026-10-24 |
+| NONLEI | 117 | 30 | 302 | 288 | 2026-10-28 |
 | NUYWOV | 55 | 30 | 302 | 282 | 2026-10-24 |
 | OCOZAJ | 43 | 30 | 302 | 286 | 2026-10-24 |
 | OCOZOX | 37 | 30 | 302 | 296 | 2026-10-24 |
@@ -156,6 +158,7 @@ A complex is added when all its branches have terminated normally and `aurora/au
 | RAJHOA | 57 | 40 | 405 | 317 | 2026-10-24 |
 | RATHOL | 55 | 30 | 302 | 294 | 2026-10-21 |
 | RAXDAV | 37 | 30 | 302 | 292 | 2026-10-24 |
+| RAYBIC | 124 | 30 | 302 | 156 | 2026-10-28 |
 | REJBUD | 102 | 30 | 302 | 284 | 2026-10-27 |
 | RIBMEV | 59 | 30 | 302 | 205 | 2026-10-25 |
 | RIBMIZ | 53 | 30 | 302 | 235 | 2026-10-24 |
@@ -225,6 +228,7 @@ A branch fell more than 2 kJ/mol below its start (`energy_drop`), so the complex
 
 - FEKRAO: angle_S1-Zn-N3 neg step 2 at -2.508 kJ/mol; angle_S1-Zn-N4 neg step 3 at -2.483 kJ/mol; angle_S2-Zn-N3 neg step 2 at -2.345 kJ/mol; twist_S1-S2-N3-N4 neg step 3 at -2.489 kJ/mol; tilt_Zn-S2-C32-C38 neg step 9 at -3.29 kJ/mol
 - GAKKUY: angle_S2-Zn-S3 neg step 9 at -4.906 kJ/mol
+- GIXTAL: angle_N6-Zn-N7 pos step 6 at -4.886 kJ/mol
 - ICAVAK: angle_S1-Zn-N2 pos step 8 at -2.533 kJ/mol
 - ICUCIT: angle_N2-Zn-N3 pos step 8 at -10.556 kJ/mol
 - KAKYAW: angle_N29-Zn-N50 pos step 3 at -10.288 kJ/mol
