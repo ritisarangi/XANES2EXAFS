@@ -39,9 +39,13 @@ Check them again for other work:
    each new site** before moving work there. Agreement should be about 0.01 kJ/mol and 0.01 A.
 5. **Run a short test farm in a debug queue before every new kind of production job**, including its
    end-of-run steps (stopping ORCA before the walltime, handing unfinished jobs back to the queue).
-6. **Split the work by cost.** Give the largest molecules more cores per job (8 instead of 4 here) and
-   start them first, or send them to a second site from day one: they finish last and set the end
-   date.
+6. **Split the work by cost, and size the cores by the time one step takes.** Each scan step starts
+   from the previous one, so a branch's wall time is (steps) x (time per step), and the largest
+   molecules set the campaign's end date. Measure one constrained optimisation per complex first. Here
+   ~140 atoms / ~1,400 basis functions (def2-SVP) took 9-15 h per step on 8 cores (30-50 optimisation
+   cycles), so an 11-step branch needed 4-6 days. Give such molecules 16-32 cores per job from day one
+   (fewer node-hours per step are lost to poor scaling than days are lost to the tail), keep 4 cores
+   for the rest, start the largest first, or send them to a second site from day one.
 7. **Check every optimised starting structure before scanning it.** Compare the donor list with the
    atoms actually near the metal (within about 2.8 A) at the reference minimum. In this campaign six of
    338 complexes had changed coordination during the reference optimisation (weak crystal contacts at
