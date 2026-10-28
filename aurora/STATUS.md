@@ -1,11 +1,11 @@
 # Zn scan campaign on Aurora and NERSC Perlmutter: status
 
-Generated 2026-10-28 21:32 UTC by `aurora/autopilot.sh`. Human-written notes are in the run log of `aurora/README.md`; validated results are on the `aurora-results` branch.
+Generated 2026-10-28 23:24 UTC by `aurora/autopilot.sh`. Human-written notes are in the run log of `aurora/README.md`; validated results are on the `aurora-results` branch.
 
 ## Branches
 
 ```
-branches: 7960 done, 0 started (running/stopped/failed), 2209 continuations ready, 6 not started, 10175 total
+branches: 7962 done, 0 started (running/stopped/failed), 2207 continuations ready, 6 not started, 10175 total
 queue main: 2152 of 42267 waiting, 0 ORCA runs active
 queue big: 0 of 0 waiting, 0 ORCA runs active
 failed ORCA runs not retried: 2
@@ -25,9 +25,9 @@ allocation: 43,150.9 Node Hours available on ModCon
 The 18 unfinished big complexes (`remote_refs.txt`) run on Perlmutter: one shared-QOS job per branch (8 cores, 48 h), driven from Aurora through the NERSC IRI API; finished branches are copied back here and published like the others.
 
 ```
-branches: 477 finished (477 copied back to Aurora), 63 running, 0 queued, 0 need review, 540 total
-stops at the 48 h limit so far: 122; failed runs: 91
-1332 of your 3982 CPU node-hours on m5268 used
+branches: 479 finished (479 copied back to Aurora), 60 running, 1 queued, 0 need review, 540 total
+stops at the 48 h limit so far: 123; failed runs: 91
+1340 of your 3982 CPU node-hours on m5268 used
 ```
 
 | Complex | Branches finished |
@@ -47,36 +47,36 @@ stops at the 48 h limit so far: 122; failed runs: 91
 | RAYBIC | 30 / 30 |
 | REJBUD | 30 / 30 |
 | SONROE | 30 / 30 |
-| WIGBIX | 25 / 30 |
+| WIGBIX | 27 / 30 |
 | WORMAR | 30 / 30 |
 | WUJZOS | 30 / 30 |
 
 Last driver actions:
 
 ```
-[2026-10-28 20:28:28] status: 63 jobs queued/running, 477 branches finished (476 back on Aurora), 0 need review
-[2026-10-28 20:41:30] copied 1 finished branches back to Aurora: SUCCEEDED
-[2026-10-28 20:41:30] status: 63 jobs queued/running, 477 branches finished (477 back on Aurora), 0 need review
-[2026-10-28 20:52:26] status: 63 jobs queued/running, 477 branches finished (477 back on Aurora), 0 need review
-[2026-10-28 21:02:51] status: 63 jobs queued/running, 477 branches finished (477 back on Aurora), 0 need review
-[2026-10-28 21:13:29] status: 63 jobs queued/running, 477 branches finished (477 back on Aurora), 0 need review
-[2026-10-28 21:24:53] status: 63 jobs queued/running, 477 branches finished (477 back on Aurora), 0 need review
-[2026-10-28 21:35:22] status: 63 jobs queued/running, 477 branches finished (477 back on Aurora), 0 need review
+[2026-10-28 22:49:49] status: 62 jobs queued/running, 478 branches finished (478 back on Aurora), 0 need review
+[2026-10-28 23:00:55] scans/WIGBIX/angle_S20-Zn-N45_neg finished (job 60361259)
+[2026-10-28 23:00:55] status: 61 jobs queued/running, 479 branches finished (478 back on Aurora), 0 need review
+[2026-10-28 23:11:20] status: 61 jobs queued/running, 479 branches finished (478 back on Aurora), 0 need review
+[2026-10-28 23:22:19] scans/BUNNII/angle_S132-Zn-S134_pos stopped at the time limit (job 60341606); continues
+[2026-10-28 23:22:22] submitted 1 jobs
+[2026-10-28 23:23:16] copied 1 finished branches back to Aurora: SUCCEEDED
+[2026-10-28 23:23:16] status: 61 jobs queued/running, 479 branches finished (479 back on Aurora), 0 need review
 ```
 
 ## Last autopilot actions
 
 ```
-prioritize big: 0 of 0 pending branches belong to complexes at least half done
-[2026-10-28 19:59:32] STATUS.md pushed
-[2026-10-28 20:10:47] submitting main capacity farm on ModCon, 6 h (queue 2152 left)
-logs tagged as cancelled: 0
-no stopped branches found
-main farm jobs already queued or running (8939977 8978689): continuations go to the front of the live queue
-queue: 0 continuations added to the front of queue/main (2152 pending now)
-2026-10-28 20:13:47 farm 8978755.aurora-pbs-0001.hostmgmt.cm.aurora.alcf.anl.gov pool=main cores=4 queue=capacity nodes=16 hours=6 account=ModCon tasks_left=2152
 prioritize main: 156 of 2152 pending branches belong to complexes at least half done
 prioritize big: 0 of 0 pending branches belong to complexes at least half done
 prioritize main: 156 of 2152 pending branches belong to complexes at least half done
 prioritize big: 0 of 0 pending branches belong to complexes at least half done
+[2026-10-28 21:39:45] STATUS.md pushed
+prioritize main: 156 of 2152 pending branches belong to complexes at least half done
+prioritize big: 0 of 0 pending branches belong to complexes at least half done
+prioritize main: 156 of 2152 pending branches belong to complexes at least half done
+prioritize big: 0 of 0 pending branches belong to complexes at least half done
+prioritize main: 156 of 2152 pending branches belong to complexes at least half done
+prioritize big: 0 of 0 pending branches belong to complexes at least half done
+[2026-10-28 23:13:04] publish: publish: no newly finished complexes 
 ```
