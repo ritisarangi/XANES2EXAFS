@@ -1,6 +1,6 @@
 # Zn scan campaign on Aurora and NERSC Perlmutter: status
 
-Generated 2026-10-29 05:54 UTC by `aurora/autopilot.sh`. Human-written notes are in the run log of `aurora/README.md`; validated results are on the `aurora-results` branch.
+Generated 2026-10-29 07:59 UTC by `aurora/autopilot.sh`. Human-written notes are in the run log of `aurora/README.md`; validated results are on the `aurora-results` branch.
 
 ## Branches
 
@@ -25,9 +25,9 @@ allocation: 43,150.9 Node Hours available on ModCon
 The 18 unfinished big complexes (`remote_refs.txt`) run on Perlmutter: one shared-QOS job per branch (8 cores, 48 h), driven from Aurora through the NERSC IRI API; finished branches are copied back here and published like the others.
 
 ```
-branches: 481 finished (481 copied back to Aurora), 44 running, 15 queued, 0 need review, 540 total
-stops at the 48 h limit so far: 154; failed runs: 92
-1360 of your 3982 CPU node-hours on m5268 used
+branches: 481 finished (481 copied back to Aurora), 50 running, 9 queued, 0 need review, 540 total
+stops at the 48 h limit so far: 165; failed runs: 91
+1368 of your 3982 CPU node-hours on m5268 used
 ```
 
 | Complex | Branches finished |
@@ -54,29 +54,29 @@ stops at the 48 h limit so far: 154; failed runs: 92
 Last driver actions:
 
 ```
-[2026-10-29 05:38:49] submitted 2 jobs
-[2026-10-29 05:38:49] status: 59 jobs queued/running, 481 branches finished (481 back on Aurora), 0 need review
-[2026-10-29 05:49:49] scans/CATZUS10/bond_Zn-N58_pos stopped at the time limit (job 60356341); continues
-[2026-10-29 05:50:21] scans/CATZUS10/bond_Zn-N40_pos stopped at the time limit (job 60356339); continues
-[2026-10-29 05:50:54] scans/CATZUS10/bond_Zn-N22_pos stopped at the time limit (job 60356335); continues
-[2026-10-29 05:51:26] scans/CATZUS10/bond_Zn-N4_pos stopped at the time limit (job 60356340); continues
-[2026-10-29 05:51:43] submitted 4 jobs
-[2026-10-29 05:51:43] status: 59 jobs queued/running, 481 branches finished (481 back on Aurora), 0 need review
+[2026-10-29 06:50:53] driver started (540 branches, account m5268)
+[2026-10-29 06:51:14] status: 59 jobs queued/running, 481 branches finished (481 back on Aurora), 0 need review
+[2026-10-29 07:01:37] status: 59 jobs queued/running, 481 branches finished (481 back on Aurora), 0 need review
+[2026-10-29 07:12:01] status: 59 jobs queued/running, 481 branches finished (481 back on Aurora), 0 need review
+[2026-10-29 07:22:27] status: 59 jobs queued/running, 481 branches finished (481 back on Aurora), 0 need review
+[2026-10-29 07:32:50] status: 59 jobs queued/running, 481 branches finished (481 back on Aurora), 0 need review
+[2026-10-29 07:43:17] status: 59 jobs queued/running, 481 branches finished (481 back on Aurora), 0 need review
+[2026-10-29 07:53:40] status: 59 jobs queued/running, 481 branches finished (481 back on Aurora), 0 need review
 ```
 
 ## Last autopilot actions
 
 ```
-prioritize main: 156 of 2152 pending branches belong to complexes at least half done
-prioritize big: 0 of 0 pending branches belong to complexes at least half done
-[2026-10-29 03:48:05] STATUS.md pushed
-prioritize main: 156 of 2152 pending branches belong to complexes at least half done
-prioritize big: 0 of 0 pending branches belong to complexes at least half done
-prioritize main: 156 of 2152 pending branches belong to complexes at least half done
-prioritize big: 0 of 0 pending branches belong to complexes at least half done
-prioritize main: 156 of 2152 pending branches belong to complexes at least half done
-prioritize big: 0 of 0 pending branches belong to complexes at least half done
 [2026-10-29 05:27:53] publish: publish: 1 complexes added (294 passing points), 0 not exported; 214 complexes published in total pushed: 8d37ba8 Aurora results: 214 complexes published (2026-10-29 05:27) 
+prioritize main: 156 of 2152 pending branches belong to complexes at least half done
+prioritize big: 0 of 0 pending branches belong to complexes at least half done
+[2026-10-29 05:58:50] STATUS.md pushed
+prioritize main: 156 of 2152 pending branches belong to complexes at least half done
+prioritize big: 0 of 0 pending branches belong to complexes at least half done
+prioritize main: 156 of 2152 pending branches belong to complexes at least half done
+prioritize big: 0 of 0 pending branches belong to complexes at least half done
+prioritize main: 156 of 2152 pending branches belong to complexes at least half done
+prioritize big: 0 of 0 pending branches belong to complexes at least half done
 prioritize main: 156 of 2152 pending branches belong to complexes at least half done
 prioritize big: 0 of 0 pending branches belong to complexes at least half done
 ```
