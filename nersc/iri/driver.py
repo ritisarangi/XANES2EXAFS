@@ -164,11 +164,18 @@ def cycle(st, tc):
         if states.get(jid) not in ENDED:
             continue
         s = st[b]
-        s["ended"] = True
         try:
             lg = text("%s/logs/%s_%s.log" % (R, b.replace("/", "_"), jid))
         except Exception as e:
+            # the IRI file service fails now and then: read the log again next cycle instead of
+            # counting a run that may have ended normally as a failure (a missing log stays a failure)
+            s["log_tries"] = s.get("log_tries", 0) + 1
+            if s["log_tries"] < 3:
+                log("%s ended (job %s) but its log could not be read (%s); retried next cycle" % (b, jid, str(e)[:80]))
+                continue
             lg = "no log (%s)" % str(e)[:80]
+        s.pop("log_tries", None)
+        s["ended"] = True
         if "finished" in lg:
             s["done"] = True
             log("%s finished (job %s)" % (b, jid))

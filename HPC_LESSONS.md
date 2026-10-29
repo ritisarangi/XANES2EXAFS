@@ -103,6 +103,8 @@ Check them again for other work:
   - the job list returns every user's jobs: poll your own jobs one by one;
   - times in NERSC logs are Pacific;
   - deploy a script by uploading `name.new` and renaming it, never by overwriting it in place.
+  - file reads fail now and then: when a job's log cannot be read, read it again next cycle (up to
+    3 times) rather than counting the run as a failure.
 - **Globus Transfer** moves results (ALCF `dtn_flare`, NERSC Perlmutter collection; link the identities
   first). A missing source file makes a transfer retry until its deadline and blocks whatever waits on
   it, so add only files that exist (a branch finished in one run has no `scan_acc.txt`).
