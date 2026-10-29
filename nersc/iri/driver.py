@@ -49,6 +49,11 @@ ALCF, NERSC = "f39a7a0f-5bfc-46ce-9615-ba9f8592814f", "6bdc7956-fc0f-4ad2-989c-7
 WALL = 48 * 3600 - 60
 LIMIT = WALL - 1800          # ORCA stops 30 min before the walltime (stitch and clean-up)
 MAX_FAIL, COPY_EVERY, CYCLE = 2, 1800, 600
+# node-hour caps per account (upper bound: a shared job of 16 CPUs is 1/16 node from submission to the
+# cycle that sees it end, so queue time counts too): at BUDGET no new jobs go to that account, at CUTOFF
+# its running jobs are cancelled (they lose only the step in progress)
+BUDGET, CUTOFF = {"m2464": 450}, {"m2464": 490}
+NODE_FRAC = 16 / 256
 STATE, LOG = os.path.join(HERE, "state.json"), os.path.join(HERE, "driver.log")
 
 
@@ -80,6 +85,23 @@ def exists(path):
         return False
 
 
+def accounts():
+    """REF -> NERSC account: the second column of remote_refs.txt, ACCOUNT when there is none"""
+    acc = {}
+    for l in open(os.path.join(WORK, "remote_refs.txt")):
+        if l.strip() and not l.startswith("#"):
+            p = l.split()
+            acc[p[0]] = p[1] if len(p) > 1 else ACCOUNT
+    return acc
+
+
+def spent(st, acct):
+    """node-hours used on acct so far (upper bound, see BUDGET)"""
+    now = time.time()
+    return sum(s.get("used", 0) + ((now - s["t0"]) / 3600 * NODE_FRAC if s.get("t0") else 0)
+               for b, s in st.items() if not b.startswith("_") and s.get("acct", ACCOUNT) == acct)
+
+
 def branches():
     refs = set(l.split()[0] for l in open(os.path.join(WORK, "remote_refs.txt")) if l.strip() and not l.startswith("#"))
     out = []
@@ -89,14 +111,14 @@ def branches():
     return out
 
 
-def submit(d):
+def submit(d, account=ACCOUNT):
     name = "zn_" + d.split("/", 1)[1].replace("/", "__")
     p = {"name": name[:120], "executable": "/bin/bash", "arguments": [T + "/code/pm_branch.sh", d, str(LIMIT)],
          "directory": R, "stdout_path": R + "/logs/slurm_%j.out", "stderr_path": R + "/logs/slurm_%j.out",
          "inherit_environment": True,
          "resources": {"node_count": 1, "process_count": 1, "processes_per_node": 1, "cpu_cores_per_process": 16,
                        "exclusive_node_use": False, "memory": 30 * 1024 ** 3},
-         "attributes": {"duration": WALL, "queue_name": "shared", "account": ACCOUNT,
+         "attributes": {"duration": WALL, "queue_name": "shared", "account": account,
                         "custom_attributes": {"constraint": "cpu"}}}
     return I.submit_compute_job("compute", p)
 
@@ -176,6 +198,8 @@ def cycle(st, tc):
             lg = "no log (%s)" % str(e)[:80]
         s.pop("log_tries", None)
         s["ended"] = True
+        if s.get("t0"):
+            s["used"] = s.get("used", 0) + (time.time() - s.pop("t0")) / 3600 * NODE_FRAC
         if "finished" in lg:
             s["done"] = True
             log("%s finished (job %s)" % (b, jid))
@@ -195,18 +219,31 @@ def cycle(st, tc):
             nodes = 0
         os.remove(pf)
         pack(st, states, nodes)
+    over = set()
+    for acct, cap in BUDGET.items():
+        used = spent(st, acct)
+        if used >= cap:
+            over.add(acct)
+            log("BUDGET %s: %.0f node-hours used (cap %d): no new jobs on it" % (acct, used, cap))
+        if used >= CUTOFF[acct]:
+            for b, s in st.items():
+                if not b.startswith("_") and s.get("acct") == acct and s.get("job") and not s.get("ended"):
+                    cancel(s["job"])
+                    log("BUDGET %s: cancelled job %s of %s at %.0f node-hours" % (acct, s["job"], b, used))
     n = 0
     for b, s in sorted(st.items()):
         if b.startswith("_"):
             continue
         if paused or s.get("done") or s.get("fails", 0) > MAX_FAIL or (s.get("job") and not s.get("ended")):
             continue
+        if s.get("acct", ACCOUNT) in over:
+            continue
         try:
-            jid = str(submit(b))
+            jid = str(submit(b, s.get("acct", ACCOUNT)))
         except Exception as e:
             log("submit %s failed: %s" % (b, str(e)[:200]))
             break
-        s.update(job=jid, ended=False, submits=s.get("submits", 0) + 1)
+        s.update(job=jid, ended=False, submits=s.get("submits", 0) + 1, t0=time.time())
         n += 1
     if n:
         log("submitted %d jobs" % n)
@@ -280,8 +317,19 @@ def write_status(st, states, run, done, back, bad):
 
 def main():
     st = json.load(open(STATE)) if os.path.exists(STATE) else {}
+    acc = accounts()
     for b in branches():
-        st.setdefault(b, {})
+        if b not in st:
+            st[b] = {"acct": acc[b.split("/")[1]]}
+            if acc[b.split("/")[1]] != ACCOUNT:
+                # a complex moved later: its branches that already finished on Aurora are done
+                try:
+                    with open(os.path.join(WORK, b, "scan.out"), "rb") as f:
+                        f.seek(0, 2); f.seek(max(0, f.tell() - 4096))
+                        if b"ORCA TERMINATED NORMALLY" in f.read():
+                            st[b].update(done=True, back=True)
+                except OSError:
+                    pass
     tc = transfer_client()
     log("driver started (%d branches, account %s)" % (sum(1 for k in st if not k.startswith("_")), ACCOUNT))
     while True:

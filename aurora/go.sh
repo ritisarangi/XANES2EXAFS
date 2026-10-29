@@ -20,7 +20,8 @@
 #
 # Needs in the environment (put them in ~/.bashrc): ACCOUNT (ALCF project), ORCA_DIR, MPI_DIR, WORK.
 # Options for submit: QUEUE (default capacity), NODES (16), HOURS (48), TAIL_FRAC (0.25, 0 = off),
-# MIN_START_MIN (20: no new branch with less time left), and the layout settings CORES, HT, HBM,
+# MIN_START_MIN (20: no new branch with less time left), AUTO_CORES (1: size the slots to the queue
+# at start, sites/aurora.sh), and the layout settings CORES, HT, HBM,
 # MAXCORE, SCRATCH described in sites/aurora.sh.
 set -e
 HERE=$(cd "$(dirname "$0")" && pwd)
@@ -52,7 +53,7 @@ farm() {  # farm <job name> <queue dir> <queue> <nodes> <hours> [extra -v settin
   mkdir -p "$snap" && cp -r "$REPO/aurora" "$REPO/scans" "$REPO/sites" "$snap/"
   source "$snap/sites/aurora.sh"
   qsub $QSUB_SITE -N "$name" -q "$q" -l select="$n" -l walltime="$wt" -o "$WORK/logs/" \
-       -v "WORK=$WORK,REPO=$snap,QDIR=$qd,HOURS=$h,ACCOUNT=$ACCOUNT,ORCA_DIR=$ORCA_DIR,MPI_DIR=$MPI_DIR,CORES=$CORES,HT=$HT,HBM=$HBM,MAXCORE=$MAXCORE,SCRATCH=$SCRATCH,TAIL_FRAC=${TAIL_FRAC:-0.25},MIN_START_MIN=${MIN_START_MIN:-20}${extra}" \
+       -v "WORK=$WORK,REPO=$snap,QDIR=$qd,HOURS=$h,ACCOUNT=$ACCOUNT,ORCA_DIR=$ORCA_DIR,MPI_DIR=$MPI_DIR,CORES=$CORES,HT=$HT,HBM=$HBM,MAXCORE=$MAXCORE,SCRATCH=$SCRATCH,TAIL_FRAC=${TAIL_FRAC:-0.25},MIN_START_MIN=${MIN_START_MIN:-20},AUTO_CORES=${AUTO_CORES:-1}${extra}" \
        "$snap/aurora/farm.pbs"
 }
 

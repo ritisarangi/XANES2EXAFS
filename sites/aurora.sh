@@ -13,6 +13,18 @@
 ACCOUNT=${ACCOUNT:?set ACCOUNT to the ALCF project}
 QSUB_SITE="-A $ACCOUNT -l filesystems=flare -j oe"
 CORES=${CORES:-16} HT=${HT:-0} HBM=${HBM:-0} MAXCORE=${MAXCORE:-3000} SCRATCH=${SCRATCH:-tmp}
+# AUTO_CORES=1: when the farm starts with fewer queued branches than it has slots, give each branch
+# more ranks (4, 6, 8, 12 or 16) so the slots roughly match the queue: fewer idle nodes, and each
+# branch runs faster. Decided once in the job script (farm.pbs) and inherited by the node scripts.
+if [ "${AUTO_CORES:-0}" = 1 ] && [ -z "${ZN_CORES_SET:-}" ] && [ -n "${PBS_NODEFILE:-}" ] && [ -f "${QDIR:-}/next" ]; then
+  _nn=$(sort -u "$PBS_NODEFILE" | wc -l)
+  _left=$(( $(grep -c . "$QDIR/tasks.txt") - $(cat "$QDIR/next") ))
+  for _c in 4 6 8 12 16; do
+    CORES=$_c
+    [ $(( _nn * 2 * (51 / _c) )) -le $(( _left + _left / 10 )) ] && break
+  done
+  export CORES ZN_CORES_SET=1
+fi
 
 slot_list() {   # one "cpulist hbm_node" line per slot on this node
   local phys=$CORES s k lo hi cl

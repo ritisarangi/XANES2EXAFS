@@ -56,19 +56,34 @@ Check them again for other work:
 
 ## Aurora (PBS)
 
-- **Request 6 h walltimes.** Priority grows with eligible time squared and falls with requested
-  walltime cubed: 12 h has about 1/8 the priority of 6 h. With stop-and-continue, short farms lose only
-  a few percent to restarts.
+- **Project priority decides most of the wait.** PBS orders jobs by roughly
+  eligible_time^2 / walltime^3 x project_priority x nodes, with walltime clamped to 6-12 h. Most queued
+  work carries project_priority 25; discretionary projects (ModCon, isaac here) carry 2, so their
+  256-node jobs start only when the machine is quiet. When the end date matters, ask ALCF support
+  early for a temporary priority boost or a reservation (for example 256 nodes x 12 h), and ask the
+  allocation program for an award with a higher priority; nothing in the job script matters as much.
+- **Request 6 h for 256-node farms, never 12 h.** 12 h has 1/8 the priority of 6 h at equal wait, and
+  a 12 h job never fits a backfill window: here 256-node farms of 6 h started after 5 min, 6 h and
+  67 h, one of 4 h after 13 h, while the one 12 h farm waited more than 11 days. Below 6 h priority no
+  longer rises (the clamp), but a 2-4 h job can backfill the hole PBS drains before a large job or a
+  reservation (Aurora had a daily 335-node reservation, 14:00-05:00 Central). Stop-and-continue
+  makes short farms cost only a few percent in restarts.
 - **Throughput comes from 256-node farms.** `capacity` allows 2 running jobs of up to 16 nodes per
   user, so most of the node-hours come from `prod` (routed to `small`, 256 nodes and up). Their start is
   unpredictable (minutes to days), and priority only grows while a job waits, so **keep one or two
   256-node farms queued at all times while there is work to fill them**: submit the next one when the
-  previous one starts, not when it ends.
+  previous one starts, not when it ends. Never cancel a farm that has waited long: its eligible time
+  is its priority. Resize what it does instead (`AUTO_CORES`, below).
 - **Keep both `capacity` slots busy** (2 running jobs per user, 16 nodes each): queue two 16-node farms,
   not one, so the second slot is not idle while the first farm hands back (autopilot `WANT_MAIN_CAP=2`).
-- **Only submit a 256-node farm when the queue can fill it** (6,144 slots at 24 per node). Idle nodes
-  in a running farm are charged. With less work, use 16-node farms, mixed farms that give spare nodes
-  to another pool (`node.sh`), or another site.
+- **Match a farm's slots to the queue when it starts, not when it is submitted.** A 256-node farm has
+  6,144 slots at 4 cores; idle nodes in a running farm are charged. Farms take `AUTO_CORES=1`
+  (`sites/aurora.sh`): at start they give each branch 4, 6, 8, 12 or 16 cores so the slots roughly
+  match the branches waiting, which also makes each branch faster in the tail (12 cores: 2,048 slots;
+  16 cores: 1,536). With even less work, use 16-node farms or another site.
+- **A queued job runs the scripts of its own snapshot** (`$WORK/.repo/<time>`), however old. When a rule
+  changes (a new list of complexes run elsewhere, a new layout), update the snapshots of queued jobs
+  too, or they will start with the old behaviour.
 - **Leave time for the end-of-run hand-back, and keep a backup for when it runs out.** Preparing stopped
   jobs for continuation takes 20-30 min for thousands of jobs, and on a slow Lustre even a few hundred
   can take longer than 25 min. Farms of 64 nodes or more stop ORCA 50 min before the walltime
@@ -82,6 +97,12 @@ Check them again for other work:
 
 - **Charging:** use `shared` (charged per core used), `regular` or `debug`. Never use `premium` (a
   charge multiple) for a campaign. A pending reason `Priority` is Slurm's reason code, not a QOS.
+- **Check the project's balance before moving work, and cap what the driver may spend.** NERSC
+  projects are shared by their members: here m2464 had 1,900 of 29,500 CPU node-hours left and m5268
+  1,600 of 39,800. The IRI API reports them (`/account/projects/<id>/project_allocations`). A job
+  still running when its project hits zero is killed. `driver.py` takes the account per complex from
+  the second column of `remote_refs.txt` and caps each account (`BUDGET`: no new jobs; `CUTOFF`:
+  running jobs cancelled), counting each shared job as 1/16 node from submission.
 - **Speed:** a CPU node (2 x EPYC 7763, 128 cores) does 1.25-1.33x the work of an Aurora node; a
   single job runs at the same speed on both.
 - **Layout:** one `shared` job per branch (8 physical cores = 16 CPUs, 30 GB, 48 h). `shared` charges
