@@ -8,7 +8,7 @@
 
 A complex is added when all its branches have terminated normally and `aurora/audit.py` finds no problem (every ORCA output matches its own folder's input; no folder run twice at once).
 
-## Published (214 complexes, 58994 points)
+## Published (215 complexes, 59210 points)
 
 | Complex | Atoms | Branches | Points | Passing | Published |
 |---|---|---|---|---|---|
@@ -204,6 +204,7 @@ A complex is added when all its branches have terminated normally and `aurora/au
 | WACPAS | 61 | 30 | 302 | 278 | 2026-10-25 |
 | WAJNEA | 65 | 30 | 302 | 297 | 2026-10-24 |
 | WEDVEG | 51 | 30 | 302 | 293 | 2026-10-23 |
+| WIGBIX | 121 | 30 | 302 | 216 | 2026-10-29 |
 | WITLAM | 43 | 30 | 302 | 291 | 2026-10-25 |
 | WONYUW | 33 | 28 | 280 | 254 | 2026-10-25 |
 | WORLUK | 69 | 30 | 302 | 293 | 2026-10-27 |
@@ -241,6 +242,7 @@ A branch fell more than 2 kJ/mol below its start (`energy_drop`), so the complex
 - OJELOE: angle_S4-Zn-N100 pos step 4 at -2.003 kJ/mol; twist_S3-S4-N100-S5 neg step 7 at -2.511 kJ/mol
 - TARNIJ: angle_S1-Zn-S2 neg step 8 at -2.476 kJ/mol
 - UFUROC: bond_Zn-S1 neg step 3 at -2.655 kJ/mol; bond_Zn-S2 pos step 2 at -3.299 kJ/mol; bond_Zn-S3 neg step 1 at -3.613 kJ/mol; bond_Zn-S4 pos step 3 at -3.064 kJ/mol; angle_S1-Zn-S2 neg step 1 at -3.621 kJ/mol; angle_S1-Zn-S3 pos step 1 at -3.152 kJ/mol; angle_S1-Zn-S4 neg step 1 at -2.971 kJ/mol; angle_S2-Zn-S3 pos step 3 at -3.3 kJ/mol; angle_S2-Zn-S4 neg step 1 at -3.606 kJ/mol; angle_S3-Zn-S4 pos step 2 at -3.615 kJ/mol; twist_S1-S2-S3-S4 neg step 1 at -3.334 kJ/mol; tilt_Zn-S2-C12-O11 neg step 3 at -3.564 kJ/mol; tilt_Zn-S3-C18-C19 neg step 2 at -3.22 kJ/mol; tilt_Zn-S4-C24-O23 neg step 2 at -3.615 kJ/mol
+- WIGBIX: angle_S20-Zn-N39 pos step 7 at -2.309 kJ/mol
 - WUJZOS: bond_Zn-N4 pos step 5 at -4.526 kJ/mol; angle_N1-Zn-N6 neg step 5 at -2.591 kJ/mol; angle_N1-Zn-N9 pos step 2 at -5.665 kJ/mol; angle_N4-Zn-N6 neg step 2 at -5.635 kJ/mol; twist_N1-N4-N6-N9 neg step 3 at -5.18 kJ/mol; tilt_Zn-N1-C11-C43 neg step 4 at -5.43 kJ/mol; tilt_Zn-N4-C43-C11 neg step 5 at -4.602 kJ/mol; tilt_Zn-N6-C69-C101 pos step 9 at -4.898 kJ/mol; tilt_Zn-N9-C75-C74 neg step 3 at -5.495 kJ/mol
 - XAJQAB: angle_N22-Zn-N69 neg step 9 at -21.073 kJ/mol
 - XIXTEG: bond_Zn-N5 pos step 4 at -6.315 kJ/mol; bond_Zn-N9 pos step 4 at -6.38 kJ/mol; angle_S2-Zn-S4 pos step 3 at -6.376 kJ/mol; angle_S2-Zn-N5 neg step 3 at -4.432 kJ/mol; angle_S4-Zn-N5 pos step 6 at -3.541 kJ/mol; angle_S4-Zn-N9 neg step 3 at -4.737 kJ/mol; angle_N5-Zn-N9 neg step 2 at -6.213 kJ/mol; twist_S2-N5-S4-N9 neg step 8 at -3.992 kJ/mol; tilt_Zn-S4-C54-N10 pos step 10 at -6.57 kJ/mol; tilt_Zn-N5-C26-C27 pos step 4 at -4.229 kJ/mol; tilt_Zn-N9-C49-C50 pos step 4 at -4.473 kJ/mol
