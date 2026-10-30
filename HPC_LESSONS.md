@@ -139,12 +139,79 @@ Check them again for other work:
 - **One job per folder at a time:** a per-folder `flock`, a check that no output is still growing
   before a restart, and a snapshot of the queue length before adding continuations.
 - **One list says which work runs where** (`remote_refs.txt`); every tool at the other site skips it.
+  Move work between sites by whole complex, under the same locks the farms and the autopilot use,
+  and only while no farm is running it.
 - **Audit before publishing** (each output matches its folder's input, nothing ran twice), audit only
   what is about to be published, and publish a complex only when all its branches ended normally.
 - **A problem in one item must not stop the rest.** Hold back the item with the problem and carry on
   with the others; check that a script running with `set -e` does not quit on a checker's non-zero
   exit (one complex with an audit finding once blocked every publication).
-- **Keep a record people can follow:** a dated Run log, a status page regenerated every 2 h, and
-  hourly checks (autopilot alive, alerts, farms, failures without a time-limit or cancel tag).
 - **Watch for silence as well as errors.** A driver or farm that stops logging is as bad as one that
   fails; alert on a stale log, not only on error lines.
+
+## Running a campaign with an agent
+
+This campaign ran for more than two weeks with an AI coding agent (Claude Code) in charge day and
+night, with the user away for most of it. What made that work:
+
+**Layers.** Routine work is done by plain scripts that need no agent; the agent watches them, handles
+what they cannot, and talks to the user.
+
+| Layer | Runs | Does |
+|---|---|---|
+| Farms (`aurora/farm.pbs`, `node.sh`) | PBS jobs | run branches, stop before the walltime, hand stopped branches back |
+| Autopilot (`aurora/autopilot.sh`) | `screen -S zn_autopilot`, 10-min cycle | re-queue after farm ends (backup), keep farms queued, publish finished complexes, push `STATUS.md` |
+| NERSC driver (`nersc/iri/driver.py`) | `screen -S zn_nersc`, 10-min cycle | one Slurm job per branch, resubmit at the time limit, copy results back, per-account budget caps |
+| Pair watcher (`aurora/bigpair.sh`) | `screen -S zn_bigpair` | never let two 256-node farms run at once |
+| Agent (Claude Code) | `screen` on a login node: `claude --continue --remote-control <name>` | events, hourly check-ins, diagnosis, fixes, decisions, records |
+
+**The agent's session.**
+- Start it inside `screen` on a login node, so it outlives the user's connection. `--continue` resumes
+  the conversation after a restart. `--remote-control` lets the user follow and steer it from a phone
+  or browser.
+- The agent works from three sources: the repo (this file, `CLAUDE.md`, the READMEs and Run log),
+  its memory files, and the conversation. When the conversation is compacted, the repo must hold
+  everything needed to carry on.
+
+**How the agent keeps watch.**
+- **Event watches** (the Monitor tool): one watch tails the autopilot log, the NERSC driver log and
+  the pair-watcher log, filtered to alerts, farm ends, submissions, publications, failures, budget
+  lines and log-read retries. It also prints the farm list from `qstat` whenever it changes. A watch
+  expires after 30 min: re-arm it at once, and print the state at start so nothing is missed between
+  watches. Keep exactly one watch; stop duplicates.
+- **Hourly check-ins** (a scheduled prompt, cron `17 * * * *`): check that the screens are alive, read
+  the logs, check that ended farms were re-queued and both capacity slots are covered, count failures
+  that have no time-limit or cancel tag, check budgets, re-arm the watch, refresh the progress page
+  every few hours, log what was notable. **Scheduled prompts live only in the session and expire
+  after 7 days**: when a session is restarted or a week has passed, re-create the check-in, and keep
+  a one-shot reminder to renew it. In this campaign they expired silently once.
+- Long waits (a queued job, a transfer) go in a background command that exits when the condition is
+  met, not in a sleep loop.
+
+**How the agent acts.**
+- Act on the obvious next step without asking: re-queue, resubmit, fill an empty capacity slot,
+  re-arm a watch, fix a script bug, correct a false failure. Ask the user before anything that spends
+  a large share of an allocation, moves work to another project, cancels a job that has waited long,
+  or changes the science (inputs, methods, what counts as a valid point). Give a recommendation with
+  each question.
+- **Read the evidence before naming a cause**: the backtrace, the job comment (`qstat -f`), the
+  project balance, the actual step counts. Several first explanations in this campaign were wrong
+  until the logs were read.
+- Put limits in code, not in good intentions: budget caps in the driver, the pair watcher, locks,
+  atomic file replacement, frozen script copies. Restart a daemon only between cycles, and check
+  afterwards that exactly one copy runs.
+- Before moving or deleting anything, look at it. Before submitting with a script, check which
+  account and settings it will use (a submission once went to an expired project).
+- A false alarm still gets an explanation and, if it can recur, a fix (log reads that fail now and
+  then are retried instead of counted as failures).
+
+**How the agent keeps people informed.**
+- Run log (`aurora/README.md`): one dated entry per notable event or decision, with the user's
+  decisions marked as such. This file: rules only, rewritten in place when they change.
+- `STATUS.md` (pushed every 2 h) and a progress page (an artifact with the finished-branch curve,
+  farms and NERSC runs, republished on request and every few hours). If a page cannot be updated,
+  publish a new one and give the link.
+- In chat: one or two lines per routine event, a short summary when something changes, and the
+  open decisions repeated until answered.
+- Memory files hold facts that must survive a new session: where things live, the user's standing
+  rules (frugal NERSC charging, the Aurora job comes first), links.
