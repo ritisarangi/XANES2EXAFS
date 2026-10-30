@@ -8,7 +8,7 @@
 
 A complex is added when all its branches have terminated normally and `aurora/audit.py` finds no problem (every ORCA output matches its own folder's input; no folder run twice at once).
 
-## Published (215 complexes, 59210 points)
+## Published (218 complexes, 60075 points)
 
 | Complex | Atoms | Branches | Points | Passing | Published |
 |---|---|---|---|---|---|
@@ -78,11 +78,13 @@ A complex is added when all its branches have terminated normally and `aurora/au
 | ICATOW | 77 | 30 | 302 | 272 | 2026-10-25 |
 | ICAVAK | 101 | 30 | 302 | 291 | 2026-10-27 |
 | ICEHOP | 73 | 30 | 302 | 293 | 2026-10-24 |
+| ICONOE | 85 | 30 | 302 | 302 | 2026-10-30 |
 | ICUCAL | 46 | 30 | 302 | 218 | 2026-10-24 |
 | ICUCEP | 46 | 30 | 302 | 296 | 2026-10-24 |
 | ICUCIT | 49 | 30 | 302 | 272 | 2026-10-23 |
 | ICUCOZ | 49 | 30 | 302 | 295 | 2026-10-23 |
 | ICUDAM | 49 | 30 | 302 | 242 | 2026-10-24 |
+| IGURAD | 81 | 30 | 302 | 296 | 2026-10-30 |
 | IQETOP | 39 | 30 | 302 | 268 | 2026-10-24 |
 | JADMAG | 65 | 30 | 302 | 257 | 2026-10-24 |
 | JADMEK | 71 | 30 | 302 | 290 | 2026-10-23 |
@@ -140,6 +142,7 @@ A complex is added when all its branches have terminated normally and `aurora/au
 | OJELOE | 109 | 30 | 302 | 229 | 2026-10-28 |
 | OKAROJ | 47 | 30 | 302 | 294 | 2026-10-23 |
 | OLIPEG | 57 | 30 | 302 | 189 | 2026-10-25 |
+| OVAQIM | 81 | 30 | 302 | 267 | 2026-10-30 |
 | OYATEQ | 92 | 30 | 302 | 291 | 2026-10-28 |
 | PAGFEM | 33 | 30 | 302 | 295 | 2026-10-24 |
 | PEQSEK | 70 | 30 | 302 | 287 | 2026-10-24 |
