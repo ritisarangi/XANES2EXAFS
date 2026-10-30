@@ -74,6 +74,8 @@ Check them again for other work:
   256-node farms queued at all times while there is work to fill them**: submit the next one when the
   previous one starts, not when it ends. Never cancel a farm that has waited long: its eligible time
   is its priority. Resize what it does instead (`AUTO_CORES`, below).
+  With two large farms queued for one pool, hold the second when the first starts (`aurora/bigpair.sh`)
+  and release it when the first ends.
 - **Keep both `capacity` slots busy** (2 running jobs per user, 16 nodes each): queue two 16-node farms,
   not one, so the second slot is not idle while the first farm hands back (autopilot `WANT_MAIN_CAP=2`).
 - **Match a farm's slots to the queue when it starts, not when it is submitted.** A 256-node farm has
