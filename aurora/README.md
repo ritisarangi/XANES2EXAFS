@@ -74,6 +74,7 @@ Shorter `prod` jobs start sooner because they fit the backfill gaps before large
 | 6 | `NODES=0 bash XANES2EXAFS/aurora/go.sh submit` | After a farm ends while others of the pool still run: re-queue its stopped branches without submitting a new job. |
 | 7 | `bash XANES2EXAFS/aurora/go.sh status` / `watch`, or `bash XANES2EXAFS/aurora/monitor.sh` | Farm jobs, queues, branch states, validated points; `monitor.sh` prints a line a minute and ALERT lines on ORCA failures or a farm leaving the queue. |
 | 8 | `bash XANES2EXAFS/aurora/go.sh export` | Validates every point and packs the passing geometries into `scan_results.tar.gz`. |
+| 9 | `screen -dmS zn_watchdog bash $WORK/autopilot/watchdog.sh` | Unattended running (and after a login-node reboot or maintenance): the watchdog starts and keeps alive the agent session, the autopilot, the NERSC driver and the pair watcher (`HPC_LESSONS.md`, Running a campaign with an agent). |
 
 The layout benchmark is `aurora/bench/bench.pbs` (see its header); `aurora/bench/mkinp.py` writes the stage-2-level test input for any complex.
 
