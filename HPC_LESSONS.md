@@ -163,6 +163,7 @@ what they cannot, and talks to the user.
 | Autopilot (`aurora/autopilot.sh`) | `screen -S zn_autopilot`, 10-min cycle | re-queue after farm ends (backup), keep farms queued, publish finished complexes, push `STATUS.md` |
 | NERSC driver (`nersc/iri/driver.py`) | `screen -S zn_nersc`, 10-min cycle | one Slurm job per branch, resubmit at the time limit, copy results back, per-account budget caps |
 | Pair watcher (`aurora/bigpair.sh`) | `screen -S zn_bigpair` | never let two 256-node farms run at once |
+| Watchdog (`aurora/watchdog.sh`) | `screen -S zn_watchdog`, 5-min cycle | restart the agent and any of the scripts above if its screen is gone |
 | Agent (Claude Code) | `screen` on a login node: `claude --continue --remote-control <name>` | events, hourly check-ins, diagnosis, fixes, decisions, records |
 
 **The agent's session.**
@@ -182,9 +183,17 @@ what they cannot, and talks to the user.
 - **Hourly check-ins** (a scheduled prompt, cron `17 * * * *`): check that the screens are alive, read
   the logs, check that ended farms were re-queued and both capacity slots are covered, count failures
   that have no time-limit or cancel tag, check budgets, re-arm the watch, refresh the progress page
-  every few hours, log what was notable. **Scheduled prompts live only in the session and expire
-  after 7 days**: when a session is restarted or a week has passed, re-create the check-in, and keep
-  a one-shot reminder to renew it. In this campaign they expired silently once.
+  every few hours, log what was notable. The autopilot and the watches cover the routine; the
+  check-in catches what makes no noise (a dead or hung process, a slow drift).
+- **Keep the check-in alive for weeks.** Scheduled prompts live only in the agent's session and
+  expire after 7 days (in this campaign they once expired silently). So the check-in renews itself:
+  its first step re-creates it when it is 6 days old and records the date in a memory file. A
+  one-shot backup reminder re-creates it if it is missing, then reschedules itself.
+- **Keep the agent itself alive.** `aurora/watchdog.sh` (its own `screen`, 5-min cycle) restarts the
+  agent with `claude --continue` and an instruction to re-create its check-in and watches if the
+  session dies, and restarts the autopilot, the NERSC driver and the pair watcher if their screens
+  are gone. There is no `crontab` on Aurora login nodes. A login-node reboot ends everything,
+  watchdog included: after a maintenance, start the watchdog again and it brings back the rest.
 - Long waits (a queued job, a transfer) go in a background command that exits when the condition is
   met, not in a sleep loop.
 
