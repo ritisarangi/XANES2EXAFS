@@ -8,7 +8,7 @@
 
 A complex is added when all its branches have terminated normally and `aurora/audit.py` finds no problem (every ORCA output matches its own folder's input; no folder run twice at once).
 
-## Published (219 complexes, 60359 points)
+## Published (227 complexes, 62616 points)
 
 | Complex | Atoms | Branches | Points | Passing | Published |
 |---|---|---|---|---|---|
@@ -19,6 +19,7 @@ A complex is added when all its branches have terminated normally and `aurora/au
 | AMETZN | 33 | 30 | 302 | 294 | 2026-10-23 |
 | AYIFAP | 43 | 30 | 302 | 291 | 2026-10-23 |
 | AYUQOC | 51 | 30 | 302 | 290 | 2026-10-23 |
+| AZIJIC | 78 | 30 | 302 | 302 | 2026-10-30 |
 | BELDUS | 59 | 30 | 302 | 238 | 2026-10-26 |
 | BELFEE | 47 | 30 | 302 | 297 | 2026-10-24 |
 | BELFII | 44 | 30 | 302 | 297 | 2026-10-24 |
@@ -31,6 +32,7 @@ A complex is added when all its branches have terminated normally and `aurora/au
 | CUCJAL | 53 | 30 | 302 | 292 | 2026-10-23 |
 | CURLOQ | 25 | 30 | 302 | 302 | 2026-10-24 |
 | CURLUW | 39 | 30 | 302 | 302 | 2026-10-23 |
+| CUSGEE | 82 | 30 | 302 | 275 | 2026-10-30 |
 | DASFUY | 21 | 30 | 302 | 298 | 2026-10-24 |
 | DASMOZ | 41 | 30 | 302 | 296 | 2026-10-24 |
 | DASPOC | 43 | 30 | 302 | 295 | 2026-10-24 |
@@ -74,6 +76,7 @@ A complex is added when all its branches have terminated normally and `aurora/au
 | HOSXAR | 61 | 30 | 302 | 294 | 2026-10-23 |
 | HOZGEJ | 99 | 30 | 302 | 282 | 2026-10-25 |
 | HOZGIN | 95 | 30 | 302 | 298 | 2026-10-24 |
+| HUBBIQ | 80 | 30 | 302 | 300 | 2026-10-30 |
 | HUCCIU | 50 | 30 | 302 | 296 | 2026-10-19 |
 | HULBIZ | 57 | 30 | 302 | 243 | 2026-10-24 |
 | ICATOW | 77 | 30 | 302 | 272 | 2026-10-25 |
@@ -98,6 +101,7 @@ A complex is added when all its branches have terminated normally and `aurora/au
 | KAKYEA | 51 | 30 | 302 | 299 | 2026-10-24 |
 | KAKYUQ | 47 | 30 | 302 | 244 | 2026-10-25 |
 | KALDIK | 49 | 30 | 302 | 271 | 2026-10-25 |
+| KEXQEK | 82 | 30 | 302 | 264 | 2026-10-30 |
 | KOMLIH01 | 53 | 30 | 302 | 295 | 2026-10-24 |
 | KOPYOD | 47 | 30 | 302 | 291 | 2026-10-23 |
 | KOXDIN | 55 | 30 | 302 | 297 | 2026-10-24 |
@@ -144,6 +148,7 @@ A complex is added when all its branches have terminated normally and `aurora/au
 | OKAROJ | 47 | 30 | 302 | 294 | 2026-10-23 |
 | OLIPEG | 57 | 30 | 302 | 189 | 2026-10-25 |
 | OVAQIM | 81 | 30 | 302 | 267 | 2026-10-30 |
+| OYASOZ | 89 | 30 | 302 | 287 | 2026-10-30 |
 | OYATEQ | 92 | 30 | 302 | 291 | 2026-10-28 |
 | PAGFEM | 33 | 30 | 302 | 295 | 2026-10-24 |
 | PEQSEK | 70 | 30 | 302 | 287 | 2026-10-24 |
@@ -153,6 +158,7 @@ A complex is added when all its branches have terminated normally and `aurora/au
 | PUZKUQ | 33 | 30 | 302 | 289 | 2026-10-24 |
 | QAGWII | 73 | 30 | 302 | 284 | 2026-10-25 |
 | QASRIL | 53 | 30 | 302 | 263 | 2026-10-24 |
+| QAWBAS | 79 | 30 | 302 | 302 | 2026-10-30 |
 | QELPED | 49 | 30 | 302 | 282 | 2026-10-24 |
 | QIBVAZ | 45 | 30 | 302 | 300 | 2026-10-25 |
 | QOBKAW | 37 | 30 | 302 | 291 | 2026-10-24 |
@@ -187,6 +193,7 @@ A complex is added when all its branches have terminated normally and `aurora/au
 | TAVZEW | 75 | 48 | 486 | 484 | 2026-10-24 |
 | TBZZNP01 | 51 | 30 | 302 | 226 | 2026-10-21 |
 | TIFNOO | 55 | 30 | 302 | 241 | 2026-10-27 |
+| TIQLEK | 83 | 30 | 302 | 285 | 2026-10-30 |
 | TIQLOU | 69 | 30 | 302 | 302 | 2026-10-23 |
 | TIXQOH | 92 | 30 | 302 | 302 | 2026-10-22 |
 | TIXREY | 48 | 30 | 302 | 302 | 2026-10-23 |
@@ -195,6 +202,7 @@ A complex is added when all its branches have terminated normally and `aurora/au
 | UFUROC | 29 | 30 | 302 | 181 | 2026-10-24 |
 | UMEVOY | 39 | 30 | 302 | 291 | 2026-10-24 |
 | UQOWIH | 65 | 30 | 302 | 287 | 2026-10-24 |
+| UTAXAQ | 81 | 30 | 302 | 242 | 2026-10-30 |
 | VAGJES | 35 | 30 | 302 | 296 | 2026-10-24 |
 | VAGJIW | 55 | 30 | 302 | 292 | 2026-10-25 |
 | VEKDUL | 65 | 30 | 302 | 212 | 2026-10-25 |
