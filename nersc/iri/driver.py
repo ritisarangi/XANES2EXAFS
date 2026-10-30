@@ -52,7 +52,7 @@ MAX_FAIL, COPY_EVERY, CYCLE = 2, 1800, 600
 # node-hour caps per account (upper bound: a shared job of 16 CPUs is 1/16 node from submission to the
 # cycle that sees it end, so queue time counts too): at BUDGET no new jobs go to that account, at CUTOFF
 # its running jobs are cancelled (they lose only the step in progress)
-BUDGET, CUTOFF = {"m2464": 450}, {"m2464": 490}
+BUDGET, CUTOFF = {"m2464": 700}, {"m2464": 740}
 NODE_FRAC = 16 / 256
 STATE, LOG = os.path.join(HERE, "state.json"), os.path.join(HERE, "driver.log")
 
