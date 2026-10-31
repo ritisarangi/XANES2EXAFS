@@ -72,7 +72,9 @@ slot() {
     if [ -z "$D" ]; then
       # empty queue while another farm of this pool still runs: its stopped branches come back
       # when it ends, so wait for them (at most WAIT_MIN, default 45) instead of giving up the nodes
-      [ "$(ls "$QDIR/active" 2>/dev/null | grep -vc "^${JOB}_")" -gt 0 ] && [ $idle -lt $(( ${WAIT_MIN:-45} * 60 )) ] || break
+      # (WAIT_ALWAYS=1: wait even when no other farm is active, e.g. while a stopped farm re-queues)
+      { [ "$(ls "$QDIR/active" 2>/dev/null | grep -vc "^${JOB}_")" -gt 0 ] || [ "${WAIT_ALWAYS:-0}" = 1 ]; } \
+        && [ $idle -lt $(( ${WAIT_MIN:-45} * 60 )) ] || break
       sleep 120; idle=$((idle + 120)); continue
     fi
     idle=0

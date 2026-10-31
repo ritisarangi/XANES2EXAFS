@@ -57,7 +57,7 @@ farm() {  # farm <job name> <queue dir> <queue> <nodes> <hours> [extra -v settin
   mkdir -p "$snap" && cp -r "$REPO/aurora" "$REPO/scans" "$REPO/sites" "$snap/"
   source "$snap/sites/aurora.sh"
   qsub $QSUB_SITE -N "$name" -q "$q" -l select="$n" -l walltime="$wt" -o "$WORK/logs/" \
-       -v "WORK=$WORK,REPO=$snap,QDIR=$qd,HOURS=$h,ACCOUNT=$ACCOUNT,ORCA_DIR=$ORCA_DIR,MPI_DIR=$MPI_DIR,CORES=$CORES,HT=$HT,HBM=$HBM,MAXCORE=$MAXCORE,SCRATCH=$SCRATCH,TAIL_FRAC=$tail,MIN_START_MIN=${MIN_START_MIN:-20},AUTO_CORES=${AUTO_CORES:-1}${extra}" \
+       -v "WORK=$WORK,REPO=$snap,QDIR=$qd,HOURS=$h,ACCOUNT=$ACCOUNT,ORCA_DIR=$ORCA_DIR,MPI_DIR=$MPI_DIR,CORES=$CORES,HT=$HT,HBM=$HBM,MAXCORE=$MAXCORE,SCRATCH=$SCRATCH,TAIL_FRAC=$tail,MIN_START_MIN=${MIN_START_MIN:-20},AUTO_CORES=${AUTO_CORES:-1},WAIT_MIN=${WAIT_MIN:-45},WAIT_ALWAYS=${WAIT_ALWAYS:-0}${extra}" \
        "$snap/aurora/farm.pbs"
 }
 
@@ -109,7 +109,9 @@ submit)
     rm -f "$QD/STOP"
   fi
   left=$(( $(grep -c . "$QD/tasks.txt") - $(cat "$QD/next") ))
-  [ $left -gt 0 ] || { echo "nothing left to run"; exit 0; }
+  # ALLOW_EMPTY=1: submit even with an empty queue (branches running in other farms come back to it;
+  # the new farm's slots wait for them up to WAIT_MIN minutes)
+  [ $left -gt 0 ] || [ "${ALLOW_EMPTY:-0}" = 1 ] || { echo "nothing left to run"; exit 0; }
   [ "${NODES:-16}" = 0 ] && { echo "NODES=0: queue updated, no farm submitted"; exit 0; }
   Q=${QUEUE:-capacity} N=${NODES:-16} H=${HOURS:-48}
   id=$(farm "zn_$POOL" "$WORK/$QD" "$Q" "$N" "$H")

@@ -8,6 +8,14 @@ echo "[$(date -u '+%F %T')] watching all zn_main farms of 256 nodes or more" >> 
 while true; do
   big=$(qstat -u "$USER" 2>/dev/null | awk '$4 == "zn_main" && $6 >= 256 {sub(/\..*/, "", $1); print $1, $10}')
   run=$(echo "$big" | awk '$2 == "R" {print $1; exit}')
+  # a 256-node farm just started: stop the 16-node main farms still running, so their branches come back
+  # to the queue and the large farm runs them on more cores (AUTO_CORES); once per large farm
+  if [ -n "$run" ] && ! grep -q "stopped capacity farms for $run" $L; then
+    for c in $(qstat -u "$USER" 2>/dev/null | awk '$4 == "zn_main" && $3 == "capacity" && $10 == "R" {sub(/\..*/, "", $1); print $1}'); do
+      touch /lus/flare/projects/ModCon/dsokaras/zn_scans/queue/main/stop_$c
+    done
+    echo "[$(date -u '+%F %T')] stopped capacity farms for $run" >> $L
+  fi
   echo "$big" | while read -r j s; do
     [ -z "$j" ] && continue
     if [ -n "$run" ] && [ "$s" = Q ]; then qhold "$j" && echo "[$(date -u '+%F %T')] $run running: held $j" >> $L; fi
