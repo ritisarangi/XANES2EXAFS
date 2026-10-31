@@ -24,34 +24,38 @@ Check them again for other work:
 
 ## Before the first production job
 
-1. **Check every project's allocation end date and storage quota.** After an allocation ends, its
+1. **Ask which allocations are cheap and which are precious, and plan around it.** Here the standing
+   Aurora project (ModCon) could be spent freely, so speed beat efficiency there (idle nodes in a
+   farm, extra farms queued, small farms released early), while isaac and the NERSC projects, shared
+   by a group until the yearly reset, had to be protected with hard caps and the user's approval.
+2. **Check every project's allocation end date and storage quota.** After an allocation ends, its
    storage quota can drop to almost nothing, and writes then fail silently: ORCA outputs are cut off
    with no error. Move to the next project and folder before the end date, and show quota and balance
    (`myquota`, `sbank-list-allocations`) on the status page.
-2. **Estimate the total in node-hours, and measure progress in finished points (optimisations), not
+3. **Estimate the total in node-hours, and measure progress in finished points (optimisations), not
    only finished branches.** A branch counts only when its whole scan is done, so branch counts lag
    far behind the real work early on.
-3. **Benchmark the layout on one full node** with the median-cost molecule (`aurora/bench/`,
+4. **Benchmark the layout on one full node** with the median-cost molecule (`aurora/bench/`,
    `nersc/iri/pm_bench.sh`). For throughput, many narrow jobs beat few wide ones: on Aurora 24 jobs x
    4 cores per node did 21% more work than 6 x 16. Node-local scratch helped a little (+4%),
    hyperthreading barely (+2%), HBM not at all.
-4. **Use the same ORCA build everywhere** (compare the archive's SHA-256) and **reproduce a few jobs at
+5. **Use the same ORCA build everywhere** (compare the archive's SHA-256) and **reproduce a few jobs at
    each new site** before moving work there. Agreement should be about 0.01 kJ/mol and 0.01 A.
-5. **Run a short test farm in a debug queue before every new kind of production job**, including its
+6. **Run a short test farm in a debug queue before every new kind of production job**, including its
    end-of-run steps (stopping ORCA before the walltime, handing unfinished jobs back to the queue).
-6. **Split the work by cost, and size the cores by the time one step takes.** Each scan step starts
+7. **Split the work by cost, and size the cores by the time one step takes.** Each scan step starts
    from the previous one, so a branch's wall time is (steps) x (time per step), and the largest
    molecules set the campaign's end date. Measure one constrained optimisation per complex first. Here
    ~140 atoms / ~1,400 basis functions (def2-SVP) took 9-15 h per step on 8 cores (30-50 optimisation
    cycles), so an 11-step branch needed 4-6 days. Give such molecules 16-32 cores per job from day one
    (fewer node-hours per step are lost to poor scaling than days are lost to the tail), keep 4 cores
    for the rest, start the largest first, or send them to a second site from day one.
-7. **Check every optimised starting structure before scanning it.** Compare the donor list with the
+8. **Check every optimised starting structure before scanning it.** Compare the donor list with the
    atoms actually near the metal (within about 2.8 A) at the reference minimum. In this campaign six of
    338 complexes had changed coordination during the reference optimisation (weak crystal contacts at
    2.5-3.1 A pulled in to bonds, one ligand switched binding atom). Every point of their 30 branches
    then failed validation, and that compute was wasted.
-8. **Use every facility you have from the start, and judge a site by how soon jobs start, not by its
+9. **Use every facility you have from the start, and judge a site by how soon jobs start, not by its
    size.** For many small restartable jobs, a site where each job starts within minutes (Perlmutter
    `shared` here) finishes sooner than a much larger machine where the project's priority is low and
    large jobs wait for days (Aurora with a discretionary award here: about 85% of the work, but in
