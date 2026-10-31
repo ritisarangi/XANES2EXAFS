@@ -1,11 +1,11 @@
 # Zn scan campaign on Aurora and NERSC Perlmutter: status
 
-Generated 2026-10-31 13:47 UTC by `aurora/autopilot.sh`. Human-written notes are in the run log of `aurora/README.md`; validated results are on the `aurora-results` branch.
+Generated 2026-10-31 15:51 UTC by `aurora/autopilot.sh`. Human-written notes are in the run log of `aurora/README.md`; validated results are on the `aurora-results` branch.
 
 ## Branches
 
 ```
-branches: 8964 done, 0 started (running/stopped/failed), 1211 continuations ready, 0 not started, 10175 total
+branches: 8985 done, 0 started (running/stopped/failed), 1190 continuations ready, 0 not started, 10175 total
 queue main: 992 of 44884 waiting, 0 ORCA runs active
 queue big: 0 of 0 waiting, 0 ORCA runs active
 failed ORCA runs not retried: 2
@@ -26,9 +26,9 @@ allocation: 42,321.6 Node Hours available on ModCon
 The 32 unfinished big complexes (`remote_refs.txt`) run on Perlmutter: one shared-QOS job per branch (8 cores, 48 h), driven from Aurora through the NERSC IRI API; finished branches are copied back here and published like the others.
 
 ```
-branches: 749 finished (741 copied back to Aurora), 124 running, 87 queued, 0 need review, 960 total
+branches: 765 finished (765 copied back to Aurora), 168 running, 27 queued, 0 need review, 960 total
 stops at the 48 h limit so far: 177; failed runs: 91
-1451 of your 3982 CPU node-hours on m5268 used
+1452 of your 3982 CPU node-hours on m5268 used
 ```
 
 | Complex | Branches finished |
@@ -44,9 +44,9 @@ stops at the 48 h limit so far: 177; failed runs: 91
 | GUFHEU | 30 / 30 |
 | HOMQAC | 30 / 30 |
 | ICAVAK | 30 / 30 |
-| JOCZEG | 26 / 30 |
-| JUQXUO | 20 / 30 |
-| LAJGIM | 21 / 30 |
+| JOCZEG | 29 / 30 |
+| JUQXUO | 25 / 30 |
+| LAJGIM | 23 / 30 |
 | NAMSOJ | 30 / 30 |
 | NECTOG | 30 / 30 |
 | NONLEI | 30 / 30 |
@@ -58,7 +58,7 @@ stops at the 48 h limit so far: 177; failed runs: 91
 | SONROE | 30 / 30 |
 | TELRUZ | 4 / 30 |
 | TEYSOG | 5 / 30 |
-| TIFNUU | 15 / 30 |
+| TIFNUU | 21 / 30 |
 | UWAVOF | 4 / 30 |
 | UYORAE | 4 / 30 |
 | WEQZAT01 | 4 / 30 |
@@ -69,29 +69,29 @@ stops at the 48 h limit so far: 177; failed runs: 91
 Last driver actions:
 
 ```
-[2026-10-31 13:33:51] scans/LAJGIM/tilt_Zn-S3-C7-C27_pos finished (job 60502634)
-[2026-10-31 13:34:24] scans/JUQXUO/angle_S2-Zn-N11_neg finished (job 60553186)
-[2026-10-31 13:34:57] scans/SEJZOW/tilt_Zn-S3-C27-C28_neg finished (job 60553307)
-[2026-10-31 13:35:30] scans/SEJZOW/tilt_Zn-S3-C27-C28_pos finished (job 60553309)
-[2026-10-31 13:35:30] status: 213 jobs queued/running, 747 branches finished (741 back on Aurora), 0 need review
-[2026-10-31 13:47:14] scans/FUXMAM/twist_S1-S2-N3-N4_neg finished (job 60553131)
-[2026-10-31 13:47:46] scans/TIFNUU/tilt_Zn-S5-C21-N17_pos finished (job 60553369)
-[2026-10-31 13:47:46] status: 211 jobs queued/running, 749 branches finished (741 back on Aurora), 0 need review
+[2026-10-31 15:25:21] status: 198 jobs queued/running, 762 branches finished (762 back on Aurora), 0 need review
+[2026-10-31 15:36:37] status: 198 jobs queued/running, 762 branches finished (762 back on Aurora), 0 need review
+[2026-10-31 15:48:13] scans/JUQXUO/bond_Zn-N9_pos finished (job 60553203)
+[2026-10-31 15:48:46] scans/JUQXUO/angle_S1-Zn-S2_neg finished (job 60553179)
+[2026-10-31 15:48:46] status: 196 jobs queued/running, 764 branches finished (762 back on Aurora), 0 need review
+[2026-10-31 16:00:21] scans/TIFNUU/twist_S5-S6-S7-S8_neg finished (job 60553389)
+[2026-10-31 16:02:41] copied 3 finished branches back to Aurora: SUCCEEDED
+[2026-10-31 16:02:41] status: 195 jobs queued/running, 765 branches finished (765 back on Aurora), 0 need review
 ```
 
 ## Last autopilot actions
 
 ```
-prioritize main: 224 of 1120 pending branches belong to complexes at least half done
-prioritize big: 0 of 0 pending branches belong to complexes at least half done
-prioritize main: 224 of 1120 pending branches belong to complexes at least half done
-prioritize big: 0 of 0 pending branches belong to complexes at least half done
-[2026-10-31 11:33:26] STATUS.md pushed
-prioritize main: 224 of 1120 pending branches belong to complexes at least half done
-prioritize big: 0 of 0 pending branches belong to complexes at least half done
 prioritize main: 224 of 992 pending branches belong to complexes at least half done
 prioritize big: 0 of 0 pending branches belong to complexes at least half done
 [2026-10-31 13:22:26] publish: publish: 1 complexes added (293 passing points), 0 not exported; 239 complexes published in total pushed: 875bc80 Aurora results: 239 complexes published (2026-10-31 13:22) 
+prioritize main: 224 of 992 pending branches belong to complexes at least half done
+prioritize big: 0 of 0 pending branches belong to complexes at least half done
+[2026-10-31 14:00:09] STATUS.md pushed
+prioritize main: 224 of 992 pending branches belong to complexes at least half done
+prioritize big: 0 of 0 pending branches belong to complexes at least half done
+prioritize main: 224 of 992 pending branches belong to complexes at least half done
+prioritize big: 0 of 0 pending branches belong to complexes at least half done
 prioritize main: 224 of 992 pending branches belong to complexes at least half done
 prioritize big: 0 of 0 pending branches belong to complexes at least half done
 ```
