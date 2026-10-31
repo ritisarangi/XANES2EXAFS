@@ -19,7 +19,7 @@
 # node throughput; the large complexes get more cores so their branches do not trail for days.
 #
 # Needs in the environment (put them in ~/.bashrc): ACCOUNT (ALCF project), ORCA_DIR, MPI_DIR, WORK.
-# Options for submit: QUEUE (default capacity), NODES (16), HOURS (48), TAIL_FRAC (0.25, 0 = off),
+# Options for submit: QUEUE (default capacity), NODES (16), HOURS (48), TAIL_FRAC (0.25, 0 = off; default 0 on CHEAP_ACCOUNTS, ModCon),
 # MIN_START_MIN (20: no new branch with less time left), AUTO_CORES (1: size the slots to the queue
 # at start, sites/aurora.sh), and the layout settings CORES, HT, HBM,
 # MAXCORE, SCRATCH described in sites/aurora.sh.
@@ -45,6 +45,10 @@ active_jobs() { qstat -u "$USER" 2>/dev/null | awk -v n="zn_$POOL" '$4 == n && $
 farm() {  # farm <job name> <queue dir> <queue> <nodes> <hours> [extra -v settings]
   local name=$1 qd=$2 q=$3 n=$4 h=$5 extra=${6:-}
   local wt=$(printf '%02d:00:00' "$h") snap=$WORK/.repo/$(date +%Y%m%d_%H%M%S)
+  # the tail cutoff ends a farm early to save node-hours: off on accounts whose hours are cheap
+  # (CHEAP_ACCOUNTS, default ModCon), 0.25 on every other account
+  local tail=${TAIL_FRAC:-0.25}
+  [ -z "${TAIL_FRAC:-}" ] && case " ${CHEAP_ACCOUNTS-ModCon} " in *" $ACCOUNT "*) tail=0 ;; esac
   # a 256-node farm stops ~6,000 branches; re-queueing them takes 25+ min on a busy Lustre, so
   # large farms stop ORCA earlier (MARGIN_MIN, default 25) to finish that before the walltime
   case "$extra" in *MARGIN_MIN=*) ;; *) if [ "$n" -ge 64 ]; then extra="$extra,MARGIN_MIN=${MARGIN_MIN:-50}"; fi ;; esac
@@ -53,7 +57,7 @@ farm() {  # farm <job name> <queue dir> <queue> <nodes> <hours> [extra -v settin
   mkdir -p "$snap" && cp -r "$REPO/aurora" "$REPO/scans" "$REPO/sites" "$snap/"
   source "$snap/sites/aurora.sh"
   qsub $QSUB_SITE -N "$name" -q "$q" -l select="$n" -l walltime="$wt" -o "$WORK/logs/" \
-       -v "WORK=$WORK,REPO=$snap,QDIR=$qd,HOURS=$h,ACCOUNT=$ACCOUNT,ORCA_DIR=$ORCA_DIR,MPI_DIR=$MPI_DIR,CORES=$CORES,HT=$HT,HBM=$HBM,MAXCORE=$MAXCORE,SCRATCH=$SCRATCH,TAIL_FRAC=${TAIL_FRAC:-0.25},MIN_START_MIN=${MIN_START_MIN:-20},AUTO_CORES=${AUTO_CORES:-1}${extra}" \
+       -v "WORK=$WORK,REPO=$snap,QDIR=$qd,HOURS=$h,ACCOUNT=$ACCOUNT,ORCA_DIR=$ORCA_DIR,MPI_DIR=$MPI_DIR,CORES=$CORES,HT=$HT,HBM=$HBM,MAXCORE=$MAXCORE,SCRATCH=$SCRATCH,TAIL_FRAC=$tail,MIN_START_MIN=${MIN_START_MIN:-20},AUTO_CORES=${AUTO_CORES:-1}${extra}" \
        "$snap/aurora/farm.pbs"
 }
 
