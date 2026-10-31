@@ -105,8 +105,13 @@ while :; do
     # they start (AUTO_CORES, sites/aurora.sh), so a small queue no longer leaves nodes idle; bigpair.sh
     # keeps only one of them running at a time
     if [ "$n_main" -lt "$WANT_MAIN" ] && [ "$left_main" -gt "${MAIN_MIN_LEFT:-300}" ]; then
-      say "submitting main farm on $ACCOUNT (queue $left_main left, $n_main main farms)"
-      POOL=main QUEUE=prod NODES=256 HOURS=$(hours) $GO submit >> "$LOG" 2>&1
+      # keep one short (SHORT_HOURS, 4 h) farm among them: on a busy machine a 256-node job starts only
+      # when that many nodes are free for its whole walltime, and short ones fit many more gaps
+      h=$(hours)
+      qstat -u "$USER" 2>/dev/null | awk '$4 == "zn_main" && $6 >= 256 {split($9, t, ":"); if (t[1] + 0 <= 4) f = 1} END {exit !f}' \
+        || { [ "$h" -gt "${SHORT_HOURS:-4}" ] && h=${SHORT_HOURS:-4}; }
+      say "submitting main farm on $ACCOUNT, $h h (queue $left_main left, $n_main main farms)"
+      POOL=main QUEUE=prod NODES=256 HOURS=$h $GO submit >> "$LOG" 2>&1
     fi
     # and one 16-node main farm in capacity, which starts far more often than the 256-node ones
     if [ "$n_main_cap" -lt "$WANT_MAIN_CAP" ] && [ "$left_main" -gt 0 ] && [ "$n_cap" -lt 5 ]; then

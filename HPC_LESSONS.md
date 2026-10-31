@@ -51,8 +51,13 @@ Check them again for other work:
    338 complexes had changed coordination during the reference optimisation (weak crystal contacts at
    2.5-3.1 A pulled in to bonds, one ligand switched binding atom). Every point of their 30 branches
    then failed validation, and that compute was wasted.
-8. **Use every facility you have from the start.** Adding a second site late helps less than running
-   both in parallel from day one.
+8. **Use every facility you have from the start, and judge a site by how soon jobs start, not by its
+   size.** For many small restartable jobs, a site where each job starts within minutes (Perlmutter
+   `shared` here) finishes sooner than a much larger machine where the project's priority is low and
+   large jobs wait for days (Aurora with a discretionary award here: about 85% of the work, but in
+   bursts with days of idle queue between). Adding a second site late helps less than running both
+   in parallel from day one. Know each project's priority class and balance before planning, and ask
+   for a priority boost, a reservation or more hours in the first days, not after two weeks.
 
 ## Aurora (PBS)
 
@@ -62,22 +67,38 @@ Check them again for other work:
   256-node jobs start only when the machine is quiet. When the end date matters, ask ALCF support
   early for a temporary priority boost or a reservation (for example 256 nodes x 12 h), and ask the
   allocation program for an award with a higher priority; nothing in the job script matters as much.
-- **Request 6 h for 256-node farms, never 12 h.** 12 h has 1/8 the priority of 6 h at equal wait, and
-  a 12 h job never fits a backfill window: here 256-node farms of 6 h started after 5 min, 6 h and
-  67 h, one of 4 h after 13 h, while the one 12 h farm waited more than 11 days. Below 6 h priority no
-  longer rises (the clamp), but a 2-4 h job can backfill the hole PBS drains before a large job or a
-  reservation (Aurora had a daily 335-node reservation, 14:00-05:00 Central). Stop-and-continue
-  makes short farms cost only a few percent in restarts.
+- **A large job starts when the nodes are free for its whole walltime, so keep short ones queued.**
+  On a busy machine PBS plans the top-priority jobs ahead and starts any other job only if enough
+  nodes are free from now until its walltime ends. Priority decides the order; the walltime decides
+  whether a job fits at all. Here a 256-node farm of 4 h started after 42 h in the queue while the
+  12 h farm, with 326 h of eligible time and about 8 times its priority score, still had "Not enough
+  free nodes available" after two weeks. Earlier 6 h farms started after 5 min to 67 h, a 4 h farm
+  after 13 h. Rules: never queue only long farms; keep a 4 h and a 6 h 256-node farm queued at all
+  times (the autopilot keeps one of at most `SHORT_HOURS` = 4 h); a 12 h farm is at most an extra.
+  Below about 3 h a farm is not worth it: the end-of-run hand-back takes 25-50 min on 256 nodes, and
+  every restart loses the optimiser's history.
+- **Never cancel a farm that has waited long, and never let the queue of large farms lapse.** Eligible
+  time counts squared in the priority and is lost on cancel; `qhold` keeps it. From Oct 24 to Oct 30
+  the only 256-node farm queued was a 12 h one, because the autopilot submitted new ones only when the
+  queue could fill all 6,144 slots; that week was mostly lost on Aurora. Farms now size their slots at
+  start (`AUTO_CORES`), so a small queue is no reason to stop submitting.
+- **Read the PBS comment before guessing.** `qstat -f <job> | grep comment`: "Not enough free nodes
+  available" means waiting for a fitting gap (shorter walltime helps); "Job would conflict with
+  reservation or top job" means it would overlap a reservation or a planned job (shorter helps, or wait);
+  "would exceed overall limit on resource nodect in queue" or "Insufficient amount of resource:
+  at_queue" mean the queue itself is full or limited by the admins (often before a maintenance): only
+  waiting helps. `pbs_rstat` lists reservations; a job must end before a full-machine one starts.
 - **Throughput comes from 256-node farms.** `capacity` allows 2 running jobs of up to 16 nodes per
   user, so most of the node-hours come from `prod` (routed to `small`, 256 nodes and up). Their start is
   unpredictable (minutes to days), and priority only grows while a job waits, so **keep one or two
   256-node farms queued at all times while there is work to fill them**: submit the next one when the
-  previous one starts, not when it ends. Never cancel a farm that has waited long: its eligible time
-  is its priority. Resize what it does instead (`AUTO_CORES`, below).
-  With two large farms queued for one pool, hold the second when the first starts (`aurora/bigpair.sh`)
-  and release it when the first ends.
+  previous one starts, not when it ends. With several large farms queued for one pool,
+  `aurora/bigpair.sh` holds the others while one runs and releases them when it ends.
 - **Keep both `capacity` slots busy** (2 running jobs per user, 16 nodes each): queue two 16-node farms,
   not one, so the second slot is not idle while the first farm hands back (autopilot `WANT_MAIN_CAP=2`).
+- **Hold the small farms while a large one has taken the whole queue.** When a 256-node farm starts on
+  fewer branches than it has slots, a 16-node farm starting next would find nothing to run: `qhold` it
+  until the large farm hands its branches back, then `qrls`.
 - **Match a farm's slots to the queue when it starts, not when it is submitted.** A 256-node farm has
   6,144 slots at 4 cores; idle nodes in a running farm are charged. Farms take `AUTO_CORES=1`
   (`sites/aurora.sh`): at start they give each branch 4, 6, 8, 12 or 16 cores so the slots roughly
