@@ -1,11 +1,11 @@
 # Zn scan campaign on Aurora and NERSC Perlmutter: status
 
-Generated 2026-10-31 00:52 UTC by `aurora/autopilot.sh`. Human-written notes are in the run log of `aurora/README.md`; validated results are on the `aurora-results` branch.
+Generated 2026-10-31 02:59 UTC by `aurora/autopilot.sh`. Human-written notes are in the run log of `aurora/README.md`; validated results are on the `aurora-results` branch.
 
 ## Branches
 
 ```
-branches: 8846 done, 0 started (running/stopped/failed), 1329 continuations ready, 0 not started, 10175 total
+branches: 8859 done, 0 started (running/stopped/failed), 1316 continuations ready, 0 not started, 10175 total
 queue main: 1120 of 45012 waiting, 0 ORCA runs active
 queue big: 0 of 0 waiting, 0 ORCA runs active
 failed ORCA runs not retried: 2
@@ -26,26 +26,26 @@ allocation: 42,321.6 Node Hours available on ModCon
 The 27 unfinished big complexes (`remote_refs.txt`) run on Perlmutter: one shared-QOS job per branch (8 cores, 48 h), driven from Aurora through the NERSC IRI API; finished branches are copied back here and published like the others.
 
 ```
-branches: 601 finished (601 copied back to Aurora), 209 running, 0 queued, 0 need review, 810 total
+branches: 617 finished (614 copied back to Aurora), 193 running, 0 queued, 0 need review, 810 total
 stops at the 48 h limit so far: 173; failed runs: 91
-1447 of your 3982 CPU node-hours on m5268 used
+1448 of your 3982 CPU node-hours on m5268 used
 ```
 
 | Complex | Branches finished |
 |---|---|
-| BUNNII | 29 / 30 |
+| BUNNII | 30 / 30 |
 | CAPWIB | 30 / 30 |
-| CATZUS10 | 23 / 30 |
+| CATZUS10 | 25 / 30 |
 | CAWKIW | 4 / 30 |
 | DOZVOF | 30 / 30 |
-| FUXMAM | 5 / 30 |
+| FUXMAM | 9 / 30 |
 | GUCSED | 30 / 30 |
 | GUFHEU | 30 / 30 |
 | HOMQAC | 30 / 30 |
 | ICAVAK | 30 / 30 |
-| JOCZEG | 10 / 30 |
+| JOCZEG | 15 / 30 |
 | JUQXUO | 4 / 30 |
-| LAJGIM | 4 / 30 |
+| LAJGIM | 8 / 30 |
 | NAMSOJ | 30 / 30 |
 | NECTOG | 30 / 30 |
 | NONLEI | 30 / 30 |
@@ -64,27 +64,27 @@ stops at the 48 h limit so far: 173; failed runs: 91
 Last driver actions:
 
 ```
-[2026-10-31 00:09:03] copied 2 finished branches back to Aurora: SUCCEEDED
-[2026-10-31 00:09:03] status: 211 jobs queued/running, 599 branches finished (599 back on Aurora), 0 need review
-[2026-10-31 00:20:16] status: 211 jobs queued/running, 599 branches finished (599 back on Aurora), 0 need review
-[2026-10-31 00:31:27] status: 211 jobs queued/running, 599 branches finished (599 back on Aurora), 0 need review
-[2026-10-31 00:43:07] scans/CATZUS10/angle_N22-Zn-N58_neg finished (job 60478586)
-[2026-10-31 00:43:39] scans/FUXMAM/tilt_Zn-S2-C17-C18_pos finished (job 60553130)
-[2026-10-31 00:45:06] copied 2 finished branches back to Aurora: SUCCEEDED
-[2026-10-31 00:45:06] status: 209 jobs queued/running, 601 branches finished (601 back on Aurora), 0 need review
+[2026-10-31 02:25:26] status: 196 jobs queued/running, 614 branches finished (607 back on Aurora), 0 need review
+[2026-10-31 02:40:44] copied 7 finished branches back to Aurora: SUCCEEDED
+[2026-10-31 02:40:44] status: 196 jobs queued/running, 614 branches finished (614 back on Aurora), 0 need review
+[2026-10-31 02:52:23] scans/BUNNII/twist_S128-S130-S132-S134_neg finished (job 60478581)
+[2026-10-31 02:52:23] status: 195 jobs queued/running, 615 branches finished (614 back on Aurora), 0 need review
+[2026-10-31 03:04:00] scans/FUXMAM/angle_S2-Zn-N4_neg finished (job 60553106)
+[2026-10-31 03:04:32] scans/FUXMAM/tilt_Zn-S1-C7-C8_pos finished (job 60553127)
+[2026-10-31 03:04:32] status: 193 jobs queued/running, 617 branches finished (614 back on Aurora), 0 need review
 ```
 
 ## Last autopilot actions
 
 ```
-queue: 0 continuations added to the front of queue/main (1120 pending now)
-NODES=0: queue updated, no farm submitted
-[2026-10-30 23:52:22] submitting main capacity farm on ModCon, 6 h (queue 1120 left)
-logs tagged as cancelled: 0
-no stopped branches found
-main farm jobs already queued or running (8939977 8987775 8994906): continuations go to the front of the live queue
-queue: 0 continuations added to the front of queue/main (1120 pending now)
-2026-10-31 00:23:13 farm 8995873.aurora-pbs-0001.hostmgmt.cm.aurora.alcf.anl.gov pool=main cores=4 queue=capacity nodes=16 hours=6 account=ModCon tasks_left=1120
+prioritize main: 224 of 1120 pending branches belong to complexes at least half done
+prioritize big: 0 of 0 pending branches belong to complexes at least half done
+prioritize main: 224 of 1120 pending branches belong to complexes at least half done
+prioritize big: 0 of 0 pending branches belong to complexes at least half done
+[2026-10-31 00:54:14] STATUS.md pushed
+[2026-10-31 01:11:03] publish: publish: 10 complexes added (2853 passing points), 0 not exported; 237 complexes published in total pushed: 8aa56d8 Aurora results: 237 complexes published (2026-10-31 01:10) 
+prioritize main: 224 of 1120 pending branches belong to complexes at least half done
+prioritize big: 0 of 0 pending branches belong to complexes at least half done
 prioritize main: 224 of 1120 pending branches belong to complexes at least half done
 prioritize big: 0 of 0 pending branches belong to complexes at least half done
 prioritize main: 224 of 1120 pending branches belong to complexes at least half done
