@@ -105,6 +105,10 @@ Check them again for other work:
   still running when its project hits zero is killed. `driver.py` takes the account per complex from
   the second column of `remote_refs.txt` and caps each account (`BUDGET`: no new jobs; `CUTOFF`:
   running jobs cancelled), counting each shared job as 1/16 node from submission.
+  Size a batch by its worst case, not by steps: N branches submitted together can each run their
+  full walltime, so a batch can cost N x walltime x 1/16 node-hours before any finishes (128 branches
+  x 48 h = 384 node-hours), however few steps they have left. Decide up front whether reaching the cap
+  should cancel running jobs (they lose the step in progress) or only stop new submissions.
 - **Speed:** a CPU node (2 x EPYC 7763, 128 cores) does 1.25-1.33x the work of an Aurora node; a
   single job runs at the same speed on both.
 - **Layout:** one `shared` job per branch (8 physical cores = 16 CPUs, 30 GB, 48 h). `shared` charges
