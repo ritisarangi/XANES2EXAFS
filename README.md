@@ -8,7 +8,7 @@
 
 A complex is added when all its branches have terminated normally and `aurora/audit.py` finds no problem (every ORCA output matches its own folder's input; no folder run twice at once).
 
-## Published (239 complexes, 65944 points)
+## Published (241 complexes, 66528 points)
 
 | Complex | Atoms | Branches | Points | Passing | Published |
 |---|---|---|---|---|---|
@@ -60,6 +60,7 @@ A complex is added when all its branches have terminated normally and `aurora/au
 | FEYNUT | 93 | 30 | 302 | 286 | 2026-10-23 |
 | FILGEN | 43 | 30 | 302 | 298 | 2026-10-24 |
 | FIYQIP | 69 | 26 | 258 | 248 | 2026-10-24 |
+| FUXMAM | 73 | 30 | 302 | 288 | 2026-10-31 |
 | GADFUO | 51 | 30 | 302 | 294 | 2026-10-23 |
 | GAKKUY | 49 | 30 | 302 | 234 | 2026-10-21 |
 | GALGAC | 47 | 30 | 302 | 296 | 2026-10-24 |
@@ -100,6 +101,7 @@ A complex is added when all its branches have terminated normally and `aurora/au
 | JAMJAJ | 47 | 30 | 302 | 298 | 2026-10-24 |
 | JAXFEW | 81 | 30 | 302 | 289 | 2026-10-31 |
 | JEYTAI | 33 | 30 | 302 | 296 | 2026-10-23 |
+| JOCZEG | 81 | 30 | 302 | 296 | 2026-10-31 |
 | KAKVAT | 45 | 30 | 302 | 221 | 2026-10-25 |
 | KAKVEX | 53 | 30 | 302 | 286 | 2026-10-24 |
 | KAKVIB01 | 49 | 30 | 302 | 204 | 2026-10-25 |
