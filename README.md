@@ -8,7 +8,7 @@
 
 A complex is added when all its branches have terminated normally and `aurora/audit.py` finds no problem (every ORCA output matches its own folder's input; no folder run twice at once).
 
-## Published (227 complexes, 62616 points)
+## Published (237 complexes, 65469 points)
 
 | Complex | Atoms | Branches | Points | Passing | Published |
 |---|---|---|---|---|---|
@@ -26,6 +26,7 @@ A complex is added when all its branches have terminated normally and `aurora/au
 | BMBTZN | 61 | 30 | 302 | 297 | 2026-10-23 |
 | BUNTOW | 25 | 30 | 302 | 300 | 2026-10-23 |
 | CADKUO | 45 | 30 | 302 | 302 | 2026-10-23 |
+| CAPWIB | 65 | 30 | 302 | 292 | 2026-10-31 |
 | CAXBEM | 69 | 30 | 302 | 286 | 2026-10-27 |
 | CAXBIQ | 59 | 30 | 302 | 294 | 2026-10-24 |
 | CAXBUC | 64 | 30 | 302 | 227 | 2026-10-25 |
@@ -81,6 +82,7 @@ A complex is added when all its branches have terminated normally and `aurora/au
 | HULBIZ | 57 | 30 | 302 | 243 | 2026-10-24 |
 | ICATOW | 77 | 30 | 302 | 272 | 2026-10-25 |
 | ICAVAK | 101 | 30 | 302 | 291 | 2026-10-27 |
+| ICAVEO | 81 | 30 | 302 | 300 | 2026-10-31 |
 | ICEHOP | 73 | 30 | 302 | 293 | 2026-10-24 |
 | ICONOE | 85 | 30 | 302 | 302 | 2026-10-30 |
 | ICUCAL | 46 | 30 | 302 | 218 | 2026-10-24 |
@@ -89,10 +91,12 @@ A complex is added when all its branches have terminated normally and `aurora/au
 | ICUCOZ | 49 | 30 | 302 | 295 | 2026-10-23 |
 | ICUDAM | 49 | 30 | 302 | 242 | 2026-10-24 |
 | IGURAD | 81 | 30 | 302 | 296 | 2026-10-30 |
+| IGURIL | 78 | 30 | 302 | 288 | 2026-10-31 |
 | IQETOP | 39 | 30 | 302 | 268 | 2026-10-24 |
 | JADMAG | 65 | 30 | 302 | 257 | 2026-10-24 |
 | JADMEK | 71 | 30 | 302 | 290 | 2026-10-23 |
 | JAMJAJ | 47 | 30 | 302 | 298 | 2026-10-24 |
+| JAXFEW | 81 | 30 | 302 | 289 | 2026-10-31 |
 | JEYTAI | 33 | 30 | 302 | 296 | 2026-10-23 |
 | KAKVAT | 45 | 30 | 302 | 221 | 2026-10-25 |
 | KAKVEX | 53 | 30 | 302 | 286 | 2026-10-24 |
@@ -101,6 +105,7 @@ A complex is added when all its branches have terminated normally and `aurora/au
 | KAKYEA | 51 | 30 | 302 | 299 | 2026-10-24 |
 | KAKYUQ | 47 | 30 | 302 | 244 | 2026-10-25 |
 | KALDIK | 49 | 30 | 302 | 271 | 2026-10-25 |
+| KEXPEJ | 80 | 30 | 302 | 285 | 2026-10-31 |
 | KEXQEK | 82 | 30 | 302 | 264 | 2026-10-30 |
 | KOMLIH01 | 53 | 30 | 302 | 295 | 2026-10-24 |
 | KOPYOD | 47 | 30 | 302 | 291 | 2026-10-23 |
@@ -140,6 +145,7 @@ A complex is added when all its branches have terminated normally and `aurora/au
 | NUYWOV | 55 | 30 | 302 | 282 | 2026-10-24 |
 | OCOZAJ | 43 | 30 | 302 | 286 | 2026-10-24 |
 | OCOZOX | 37 | 30 | 302 | 296 | 2026-10-24 |
+| OGUWUJ | 86 | 30 | 302 | 291 | 2026-10-31 |
 | OJEKIX | 95 | 30 | 302 | 174 | 2026-10-24 |
 | OJEKOD | 135 | 30 | 302 | 291 | 2026-10-25 |
 | OJEKUJ | 137 | 30 | 302 | 266 | 2026-10-26 |
@@ -149,6 +155,7 @@ A complex is added when all its branches have terminated normally and `aurora/au
 | OLIPEG | 57 | 30 | 302 | 189 | 2026-10-25 |
 | OVAQIM | 81 | 30 | 302 | 267 | 2026-10-30 |
 | OYASOZ | 89 | 30 | 302 | 287 | 2026-10-30 |
+| OYASUF | 87 | 30 | 302 | 295 | 2026-10-31 |
 | OYATEQ | 92 | 30 | 302 | 291 | 2026-10-28 |
 | PAGFEM | 33 | 30 | 302 | 295 | 2026-10-24 |
 | PEQSEK | 70 | 30 | 302 | 287 | 2026-10-24 |
@@ -158,6 +165,7 @@ A complex is added when all its branches have terminated normally and `aurora/au
 | PUZKUQ | 33 | 30 | 302 | 289 | 2026-10-24 |
 | QAGWII | 73 | 30 | 302 | 284 | 2026-10-25 |
 | QASRIL | 53 | 30 | 302 | 263 | 2026-10-24 |
+| QASROR | 81 | 30 | 302 | 281 | 2026-10-31 |
 | QAWBAS | 79 | 30 | 302 | 302 | 2026-10-30 |
 | QELPED | 49 | 30 | 302 | 282 | 2026-10-24 |
 | QIBVAZ | 45 | 30 | 302 | 300 | 2026-10-25 |
@@ -211,6 +219,7 @@ A complex is added when all its branches have terminated normally and `aurora/au
 | VIBLAT | 72 | 30 | 302 | 302 | 2026-10-25 |
 | VIKDUP | 37 | 30 | 302 | 289 | 2026-10-25 |
 | VOJHIO | 53 | 30 | 302 | 97 | 2026-10-21 |
+| VOYFUN | 81 | 30 | 302 | 289 | 2026-10-31 |
 | VUHDIL | 89 | 30 | 302 | 294 | 2026-10-25 |
 | VUVVAM | 55 | 30 | 302 | 254 | 2026-10-21 |
 | WACPAS | 61 | 30 | 302 | 278 | 2026-10-25 |
@@ -232,6 +241,7 @@ A complex is added when all its branches have terminated normally and `aurora/au
 | XOGYUQ | 49 | 30 | 302 | 204 | 2026-10-25 |
 | XOGZAX | 61 | 30 | 302 | 272 | 2026-10-24 |
 | XUSTAG | 21 | 30 | 302 | 302 | 2026-10-23 |
+| YACTUV | 78 | 30 | 302 | 243 | 2026-10-31 |
 | YOLCOR | 45 | 30 | 302 | 234 | 2026-10-24 |
 | YOTFEU | 17 | 30 | 302 | 299 | 2026-10-24 |
 | ZACWOP | 45 | 30 | 302 | 294 | 2026-10-24 |
