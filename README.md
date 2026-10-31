@@ -8,7 +8,7 @@
 
 A complex is added when all its branches have terminated normally and `aurora/audit.py` finds no problem (every ORCA output matches its own folder's input; no folder run twice at once).
 
-## Published (241 complexes, 66528 points)
+## Published (249 complexes, 68652 points)
 
 | Complex | Atoms | Branches | Points | Passing | Published |
 |---|---|---|---|---|---|
@@ -78,11 +78,13 @@ A complex is added when all its branches have terminated normally and `aurora/au
 | HIJGEM | 13 | 30 | 302 | 298 | 2026-10-24 |
 | HOMQAC | 115 | 30 | 302 | 297 | 2026-10-27 |
 | HOSXAR | 61 | 30 | 302 | 294 | 2026-10-23 |
+| HOZGAF | 96 | 30 | 302 | 137 | 2026-10-31 |
 | HOZGEJ | 99 | 30 | 302 | 282 | 2026-10-25 |
 | HOZGIN | 95 | 30 | 302 | 298 | 2026-10-24 |
 | HUBBIQ | 80 | 30 | 302 | 300 | 2026-10-30 |
 | HUCCIU | 50 | 30 | 302 | 296 | 2026-10-19 |
 | HULBIZ | 57 | 30 | 302 | 243 | 2026-10-24 |
+| IBEQUB | 79 | 30 | 302 | 296 | 2026-10-31 |
 | ICATOW | 77 | 30 | 302 | 272 | 2026-10-25 |
 | ICAVAK | 101 | 30 | 302 | 291 | 2026-10-27 |
 | ICAVEO | 81 | 30 | 302 | 300 | 2026-10-31 |
@@ -110,6 +112,8 @@ A complex is added when all its branches have terminated normally and `aurora/au
 | KAKYUQ | 47 | 30 | 302 | 244 | 2026-10-25 |
 | KALDIK | 49 | 30 | 302 | 271 | 2026-10-25 |
 | KEXPEJ | 80 | 30 | 302 | 285 | 2026-10-31 |
+| KEXPIN | 75 | 30 | 302 | 296 | 2026-10-31 |
+| KEXQAG | 79 | 30 | 302 | 288 | 2026-10-31 |
 | KEXQEK | 82 | 30 | 302 | 264 | 2026-10-30 |
 | KOMLIH01 | 53 | 30 | 302 | 295 | 2026-10-24 |
 | KOPYOD | 47 | 30 | 302 | 291 | 2026-10-23 |
@@ -125,6 +129,7 @@ A complex is added when all its branches have terminated normally and `aurora/au
 | LUKREP | 53 | 30 | 302 | 291 | 2026-10-23 |
 | LUVFUD | 60 | 30 | 302 | 301 | 2026-10-25 |
 | LUZTEF | 81 | 30 | 302 | 298 | 2026-10-26 |
+| LUZTUV | 81 | 30 | 302 | 254 | 2026-10-31 |
 | MAZBZN10 | 49 | 30 | 302 | 288 | 2026-10-27 |
 | MEPWOT | 38 | 28 | 280 | 248 | 2026-10-24 |
 | MIYPAM | 89 | 30 | 302 | 245 | 2026-10-23 |
@@ -139,6 +144,8 @@ A complex is added when all its branches have terminated normally and `aurora/au
 | NAYXAM | 71 | 30 | 302 | 282 | 2026-10-25 |
 | NECTOG | 102 | 30 | 302 | 278 | 2026-10-27 |
 | NEHKIU | 53 | 30 | 302 | 300 | 2026-10-20 |
+| NEQXUC | 80 | 30 | 302 | 301 | 2026-10-31 |
+| NEQYAJ01 | 78 | 30 | 302 | 299 | 2026-10-31 |
 | NESCAR | 63 | 30 | 302 | 168 | 2026-10-25 |
 | NIGTEC | 96 | 30 | 302 | 302 | 2026-10-21 |
 | NIHTEG | 45 | 30 | 302 | 280 | 2026-10-25 |
@@ -162,6 +169,7 @@ A complex is added when all its branches have terminated normally and `aurora/au
 | OYASUF | 87 | 30 | 302 | 295 | 2026-10-31 |
 | OYATEQ | 92 | 30 | 302 | 291 | 2026-10-28 |
 | PAGFEM | 33 | 30 | 302 | 295 | 2026-10-24 |
+| PAGJOA | 77 | 30 | 302 | 253 | 2026-10-31 |
 | PEQSEK | 70 | 30 | 302 | 287 | 2026-10-24 |
 | POHTOV | 43 | 30 | 302 | 290 | 2026-10-24 |
 | PTOLZN01 | 53 | 30 | 302 | 171 | 2026-10-26 |
@@ -261,6 +269,7 @@ A branch fell more than 2 kJ/mol below its start (`energy_drop`), so the complex
 - FEKRAO: angle_S1-Zn-N3 neg step 2 at -2.508 kJ/mol; angle_S1-Zn-N4 neg step 3 at -2.483 kJ/mol; angle_S2-Zn-N3 neg step 2 at -2.345 kJ/mol; twist_S1-S2-N3-N4 neg step 3 at -2.489 kJ/mol; tilt_Zn-S2-C32-C38 neg step 9 at -3.29 kJ/mol
 - GAKKUY: angle_S2-Zn-S3 neg step 9 at -4.906 kJ/mol
 - GIXTAL: angle_N6-Zn-N7 pos step 6 at -4.886 kJ/mol
+- HOZGAF: bond_Zn-S1 pos step 2 at -15.858 kJ/mol; bond_Zn-N3 pos step 1 at -16.087 kJ/mol; bond_Zn-N5 pos step 1 at -15.996 kJ/mol; bond_Zn-N6 neg step 1 at -15.931 kJ/mol; angle_S1-Zn-N3 neg step 1 at -16.095 kJ/mol; angle_S1-Zn-N3 pos step 3 at -15.406 kJ/mol; angle_S1-Zn-N5 neg step 1 at -16.028 kJ/mol; angle_S1-Zn-N6 pos step 1 at -16.09 kJ/mol; angle_N3-Zn-N5 neg step 1 at -16.099 kJ/mol; angle_N3-Zn-N6 neg step 1 at -16.094 kJ/mol; angle_N3-Zn-N6 pos step 8 at -2.22 kJ/mol; angle_N5-Zn-N6 pos step 1 at -15.968 kJ/mol; twist_S1-N3-N5-N6 neg step 1 at -16.089 kJ/mol; tilt_Zn-N3-C10-C21 neg step 6 at -16.006 kJ/mol; tilt_Zn-N6-C14-C15 pos step 7 at -15.659 kJ/mol
 - ICAVAK: angle_S1-Zn-N2 pos step 8 at -2.533 kJ/mol
 - ICUCIT: angle_N2-Zn-N3 pos step 8 at -10.556 kJ/mol
 - KAKYAW: angle_N29-Zn-N50 pos step 3 at -10.288 kJ/mol
