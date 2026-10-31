@@ -101,8 +101,10 @@ while :; do
     n_big=$(echo "$cur" | awk -v a="$ACCOUNT" '$2 == "zn_big" && ($4 == "R" || $5 == a)' | grep -c .)
     n_cap=$(echo "$cur" | awk '$3 == "capacity"' | grep -c .)
     n_main_cap=$(echo "$cur" | awk -v a="$ACCOUNT" '$2 == "zn_main" && $3 == "capacity" && ($4 == "R" || $5 == a)' | grep -c .)
-    # 256-node farms only while the main queue can fill them (24 slots per node)
-    if [ "$n_main" -lt "$WANT_MAIN" ] && [ "$left_main" -gt 3000 ]; then
+    # 256-node farms while the main queue has work for them: they size their slots to the queue when
+    # they start (AUTO_CORES, sites/aurora.sh), so a small queue no longer leaves nodes idle; bigpair.sh
+    # keeps only one of them running at a time
+    if [ "$n_main" -lt "$WANT_MAIN" ] && [ "$left_main" -gt "${MAIN_MIN_LEFT:-300}" ]; then
       say "submitting main farm on $ACCOUNT (queue $left_main left, $n_main main farms)"
       POOL=main QUEUE=prod NODES=256 HOURS=$(hours) $GO submit >> "$LOG" 2>&1
     fi
