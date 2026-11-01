@@ -228,6 +228,12 @@ what they cannot, and talks to the user.
   session dies, and restarts the autopilot, the NERSC driver and the pair watcher if their screens
   are gone. There is no `crontab` on Aurora login nodes. A login-node reboot ends everything,
   watchdog included: after a maintenance, start the watchdog again and it brings back the rest.
+- **To restart a watched script, quit its screen and let the watchdog bring it back** (within 5
+  min); never quit and re-launch it yourself, or the two launches race and two copies run (two
+  autopilots submit duplicate farms). Every long-running script also takes a `flock` at start and
+  exits if another copy holds it.
+- **Never edit a running bash script in place.** bash reads it while it runs; replace the file
+  (`sed -i`, `git checkout`, or write-and-`mv` all make a new file) and restart the script.
 - Long waits (a queued job, a transfer) go in a background command that exits when the condition is
   met, not in a sleep loop.
 
