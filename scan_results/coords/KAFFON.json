@@ -1,0 +1,464 @@
+{
+ "ref": "KAFFON",
+ "zn": 0,
+ "donors": [
+  1,
+  2,
+  3,
+  4
+ ],
+ "coords": [
+  {
+   "name": "bond_Zn-S1",
+   "kind": "B",
+   "atoms": [
+    0,
+    1
+   ],
+   "branch": "neg",
+   "v0": 2.3909437736641097,
+   "start": 2.3909437736641097,
+   "end": 2.3309437736641097,
+   "npoints": 4,
+   "dir": "scans/KAFFON/bond_Zn-S1_neg"
+  },
+  {
+   "name": "bond_Zn-S1",
+   "kind": "B",
+   "atoms": [
+    0,
+    1
+   ],
+   "branch": "pos",
+   "v0": 2.3909437736641097,
+   "start": 2.3909437736641097,
+   "end": 2.59094377366411,
+   "npoints": 11,
+   "dir": "scans/KAFFON/bond_Zn-S1_pos"
+  },
+  {
+   "name": "bond_Zn-S2",
+   "kind": "B",
+   "atoms": [
+    0,
+    2
+   ],
+   "branch": "neg",
+   "v0": 2.3894430521725973,
+   "start": 2.3894430521725973,
+   "end": 2.3294430521725973,
+   "npoints": 4,
+   "dir": "scans/KAFFON/bond_Zn-S2_neg"
+  },
+  {
+   "name": "bond_Zn-S2",
+   "kind": "B",
+   "atoms": [
+    0,
+    2
+   ],
+   "branch": "pos",
+   "v0": 2.3894430521725973,
+   "start": 2.3894430521725973,
+   "end": 2.5894430521725975,
+   "npoints": 11,
+   "dir": "scans/KAFFON/bond_Zn-S2_pos"
+  },
+  {
+   "name": "bond_Zn-S3",
+   "kind": "B",
+   "atoms": [
+    0,
+    3
+   ],
+   "branch": "neg",
+   "v0": 2.3898068139899613,
+   "start": 2.3898068139899613,
+   "end": 2.3298068139899613,
+   "npoints": 4,
+   "dir": "scans/KAFFON/bond_Zn-S3_neg"
+  },
+  {
+   "name": "bond_Zn-S3",
+   "kind": "B",
+   "atoms": [
+    0,
+    3
+   ],
+   "branch": "pos",
+   "v0": 2.3898068139899613,
+   "start": 2.3898068139899613,
+   "end": 2.5898068139899615,
+   "npoints": 11,
+   "dir": "scans/KAFFON/bond_Zn-S3_pos"
+  },
+  {
+   "name": "bond_Zn-S4",
+   "kind": "B",
+   "atoms": [
+    0,
+    4
+   ],
+   "branch": "neg",
+   "v0": 2.3837914958314435,
+   "start": 2.3837914958314435,
+   "end": 2.3237914958314434,
+   "npoints": 4,
+   "dir": "scans/KAFFON/bond_Zn-S4_neg"
+  },
+  {
+   "name": "bond_Zn-S4",
+   "kind": "B",
+   "atoms": [
+    0,
+    4
+   ],
+   "branch": "pos",
+   "v0": 2.3837914958314435,
+   "start": 2.3837914958314435,
+   "end": 2.5837914958314436,
+   "npoints": 11,
+   "dir": "scans/KAFFON/bond_Zn-S4_pos"
+  },
+  {
+   "name": "angle_S1-Zn-S2",
+   "kind": "A",
+   "atoms": [
+    1,
+    0,
+    2
+   ],
+   "branch": "neg",
+   "v0": 109.82948950156485,
+   "start": 109.82948950156485,
+   "end": 94.82948950156485,
+   "npoints": 11,
+   "dir": "scans/KAFFON/angle_S1-Zn-S2_neg"
+  },
+  {
+   "name": "angle_S1-Zn-S2",
+   "kind": "A",
+   "atoms": [
+    1,
+    0,
+    2
+   ],
+   "branch": "pos",
+   "v0": 109.82948950156485,
+   "start": 109.82948950156485,
+   "end": 124.82948950156485,
+   "npoints": 11,
+   "dir": "scans/KAFFON/angle_S1-Zn-S2_pos"
+  },
+  {
+   "name": "angle_S1-Zn-S3",
+   "kind": "A",
+   "atoms": [
+    1,
+    0,
+    3
+   ],
+   "branch": "neg",
+   "v0": 98.28995096617409,
+   "start": 98.28995096617409,
+   "end": 83.28995096617409,
+   "npoints": 11,
+   "dir": "scans/KAFFON/angle_S1-Zn-S3_neg"
+  },
+  {
+   "name": "angle_S1-Zn-S3",
+   "kind": "A",
+   "atoms": [
+    1,
+    0,
+    3
+   ],
+   "branch": "pos",
+   "v0": 98.28995096617409,
+   "start": 98.28995096617409,
+   "end": 113.28995096617409,
+   "npoints": 11,
+   "dir": "scans/KAFFON/angle_S1-Zn-S3_pos"
+  },
+  {
+   "name": "angle_S1-Zn-S4",
+   "kind": "A",
+   "atoms": [
+    1,
+    0,
+    4
+   ],
+   "branch": "neg",
+   "v0": 120.0972459514125,
+   "start": 120.0972459514125,
+   "end": 105.0972459514125,
+   "npoints": 11,
+   "dir": "scans/KAFFON/angle_S1-Zn-S4_neg"
+  },
+  {
+   "name": "angle_S1-Zn-S4",
+   "kind": "A",
+   "atoms": [
+    1,
+    0,
+    4
+   ],
+   "branch": "pos",
+   "v0": 120.0972459514125,
+   "start": 120.0972459514125,
+   "end": 135.0972459514125,
+   "npoints": 11,
+   "dir": "scans/KAFFON/angle_S1-Zn-S4_pos"
+  },
+  {
+   "name": "angle_S2-Zn-S3",
+   "kind": "A",
+   "atoms": [
+    2,
+    0,
+    3
+   ],
+   "branch": "neg",
+   "v0": 119.50182114853007,
+   "start": 119.50182114853007,
+   "end": 104.50182114853007,
+   "npoints": 11,
+   "dir": "scans/KAFFON/angle_S2-Zn-S3_neg"
+  },
+  {
+   "name": "angle_S2-Zn-S3",
+   "kind": "A",
+   "atoms": [
+    2,
+    0,
+    3
+   ],
+   "branch": "pos",
+   "v0": 119.50182114853007,
+   "start": 119.50182114853007,
+   "end": 134.50182114853007,
+   "npoints": 11,
+   "dir": "scans/KAFFON/angle_S2-Zn-S3_pos"
+  },
+  {
+   "name": "angle_S2-Zn-S4",
+   "kind": "A",
+   "atoms": [
+    2,
+    0,
+    4
+   ],
+   "branch": "neg",
+   "v0": 98.90391223372103,
+   "start": 98.90391223372103,
+   "end": 83.90391223372103,
+   "npoints": 11,
+   "dir": "scans/KAFFON/angle_S2-Zn-S4_neg"
+  },
+  {
+   "name": "angle_S2-Zn-S4",
+   "kind": "A",
+   "atoms": [
+    2,
+    0,
+    4
+   ],
+   "branch": "pos",
+   "v0": 98.90391223372103,
+   "start": 98.90391223372103,
+   "end": 113.90391223372103,
+   "npoints": 11,
+   "dir": "scans/KAFFON/angle_S2-Zn-S4_pos"
+  },
+  {
+   "name": "angle_S3-Zn-S4",
+   "kind": "A",
+   "atoms": [
+    3,
+    0,
+    4
+   ],
+   "branch": "neg",
+   "v0": 111.56252969119033,
+   "start": 111.56252969119033,
+   "end": 96.56252969119033,
+   "npoints": 11,
+   "dir": "scans/KAFFON/angle_S3-Zn-S4_neg"
+  },
+  {
+   "name": "angle_S3-Zn-S4",
+   "kind": "A",
+   "atoms": [
+    3,
+    0,
+    4
+   ],
+   "branch": "pos",
+   "v0": 111.56252969119033,
+   "start": 111.56252969119033,
+   "end": 126.56252969119033,
+   "npoints": 11,
+   "dir": "scans/KAFFON/angle_S3-Zn-S4_pos"
+  },
+  {
+   "name": "twist_S1-S2-S3-S4",
+   "kind": "D",
+   "atoms": [
+    1,
+    2,
+    3,
+    4
+   ],
+   "branch": "neg",
+   "v0": -81.09205770816325,
+   "start": -81.09205770816325,
+   "end": -91.09205770816325,
+   "npoints": 11,
+   "dir": "scans/KAFFON/twist_S1-S2-S3-S4_neg"
+  },
+  {
+   "name": "twist_S1-S2-S3-S4",
+   "kind": "D",
+   "atoms": [
+    1,
+    2,
+    3,
+    4
+   ],
+   "branch": "pos",
+   "v0": -81.09205770816325,
+   "start": -81.09205770816325,
+   "end": -71.09205770816325,
+   "npoints": 11,
+   "dir": "scans/KAFFON/twist_S1-S2-S3-S4_pos"
+  },
+  {
+   "name": "tilt_Zn-S1-C11-C12",
+   "kind": "D",
+   "atoms": [
+    0,
+    1,
+    11,
+    12
+   ],
+   "branch": "neg",
+   "v0": -38.38652880341363,
+   "start": -38.38652880341363,
+   "end": -48.38652880341363,
+   "npoints": 11,
+   "dir": "scans/KAFFON/tilt_Zn-S1-C11-C12_neg"
+  },
+  {
+   "name": "tilt_Zn-S1-C11-C12",
+   "kind": "D",
+   "atoms": [
+    0,
+    1,
+    11,
+    12
+   ],
+   "branch": "pos",
+   "v0": -38.38652880341363,
+   "start": -38.38652880341363,
+   "end": -28.386528803413633,
+   "npoints": 11,
+   "dir": "scans/KAFFON/tilt_Zn-S1-C11-C12_pos"
+  },
+  {
+   "name": "tilt_Zn-S2-C22-C20",
+   "kind": "D",
+   "atoms": [
+    0,
+    2,
+    22,
+    20
+   ],
+   "branch": "neg",
+   "v0": -37.94123742457459,
+   "start": -37.94123742457459,
+   "end": -47.94123742457459,
+   "npoints": 11,
+   "dir": "scans/KAFFON/tilt_Zn-S2-C22-C20_neg"
+  },
+  {
+   "name": "tilt_Zn-S2-C22-C20",
+   "kind": "D",
+   "atoms": [
+    0,
+    2,
+    22,
+    20
+   ],
+   "branch": "pos",
+   "v0": -37.94123742457459,
+   "start": -37.94123742457459,
+   "end": -27.941237424574588,
+   "npoints": 11,
+   "dir": "scans/KAFFON/tilt_Zn-S2-C22-C20_pos"
+  },
+  {
+   "name": "tilt_Zn-S3-C33-C31",
+   "kind": "D",
+   "atoms": [
+    0,
+    3,
+    33,
+    31
+   ],
+   "branch": "neg",
+   "v0": -36.575602778199375,
+   "start": -36.575602778199375,
+   "end": -46.575602778199375,
+   "npoints": 11,
+   "dir": "scans/KAFFON/tilt_Zn-S3-C33-C31_neg"
+  },
+  {
+   "name": "tilt_Zn-S3-C33-C31",
+   "kind": "D",
+   "atoms": [
+    0,
+    3,
+    33,
+    31
+   ],
+   "branch": "pos",
+   "v0": -36.575602778199375,
+   "start": -36.575602778199375,
+   "end": -26.575602778199375,
+   "npoints": 11,
+   "dir": "scans/KAFFON/tilt_Zn-S3-C33-C31_pos"
+  },
+  {
+   "name": "tilt_Zn-S4-C44-C45",
+   "kind": "D",
+   "atoms": [
+    0,
+    4,
+    44,
+    45
+   ],
+   "branch": "neg",
+   "v0": -36.97839873106315,
+   "start": -36.97839873106315,
+   "end": -46.97839873106315,
+   "npoints": 11,
+   "dir": "scans/KAFFON/tilt_Zn-S4-C44-C45_neg"
+  },
+  {
+   "name": "tilt_Zn-S4-C44-C45",
+   "kind": "D",
+   "atoms": [
+    0,
+    4,
+    44,
+    45
+   ],
+   "branch": "pos",
+   "v0": -36.97839873106315,
+   "start": -36.97839873106315,
+   "end": -26.97839873106315,
+   "npoints": 11,
+   "dir": "scans/KAFFON/tilt_Zn-S4-C44-C45_pos"
+  }
+ ]
+}

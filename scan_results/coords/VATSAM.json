@@ -1,0 +1,464 @@
+{
+ "ref": "VATSAM",
+ "zn": 66,
+ "donors": [
+  56,
+  57,
+  64,
+  65
+ ],
+ "coords": [
+  {
+   "name": "bond_Zn-N56",
+   "kind": "B",
+   "atoms": [
+    66,
+    56
+   ],
+   "branch": "neg",
+   "v0": 2.100094564117377,
+   "start": 2.100094564117377,
+   "end": 2.040094564117377,
+   "npoints": 4,
+   "dir": "scans/VATSAM/bond_Zn-N56_neg"
+  },
+  {
+   "name": "bond_Zn-N56",
+   "kind": "B",
+   "atoms": [
+    66,
+    56
+   ],
+   "branch": "pos",
+   "v0": 2.100094564117377,
+   "start": 2.100094564117377,
+   "end": 2.3000945641173773,
+   "npoints": 11,
+   "dir": "scans/VATSAM/bond_Zn-N56_pos"
+  },
+  {
+   "name": "bond_Zn-N57",
+   "kind": "B",
+   "atoms": [
+    66,
+    57
+   ],
+   "branch": "neg",
+   "v0": 2.100224669616146,
+   "start": 2.100224669616146,
+   "end": 2.040224669616146,
+   "npoints": 4,
+   "dir": "scans/VATSAM/bond_Zn-N57_neg"
+  },
+  {
+   "name": "bond_Zn-N57",
+   "kind": "B",
+   "atoms": [
+    66,
+    57
+   ],
+   "branch": "pos",
+   "v0": 2.100224669616146,
+   "start": 2.100224669616146,
+   "end": 2.300224669616146,
+   "npoints": 11,
+   "dir": "scans/VATSAM/bond_Zn-N57_pos"
+  },
+  {
+   "name": "bond_Zn-S64",
+   "kind": "B",
+   "atoms": [
+    66,
+    64
+   ],
+   "branch": "neg",
+   "v0": 2.3174155237324787,
+   "start": 2.3174155237324787,
+   "end": 2.2574155237324787,
+   "npoints": 4,
+   "dir": "scans/VATSAM/bond_Zn-S64_neg"
+  },
+  {
+   "name": "bond_Zn-S64",
+   "kind": "B",
+   "atoms": [
+    66,
+    64
+   ],
+   "branch": "pos",
+   "v0": 2.3174155237324787,
+   "start": 2.3174155237324787,
+   "end": 2.517415523732479,
+   "npoints": 11,
+   "dir": "scans/VATSAM/bond_Zn-S64_pos"
+  },
+  {
+   "name": "bond_Zn-S65",
+   "kind": "B",
+   "atoms": [
+    66,
+    65
+   ],
+   "branch": "neg",
+   "v0": 2.3173879139684974,
+   "start": 2.3173879139684974,
+   "end": 2.2573879139684974,
+   "npoints": 4,
+   "dir": "scans/VATSAM/bond_Zn-S65_neg"
+  },
+  {
+   "name": "bond_Zn-S65",
+   "kind": "B",
+   "atoms": [
+    66,
+    65
+   ],
+   "branch": "pos",
+   "v0": 2.3173879139684974,
+   "start": 2.3173879139684974,
+   "end": 2.5173879139684976,
+   "npoints": 11,
+   "dir": "scans/VATSAM/bond_Zn-S65_pos"
+  },
+  {
+   "name": "angle_N56-Zn-N57",
+   "kind": "A",
+   "atoms": [
+    56,
+    66,
+    57
+   ],
+   "branch": "neg",
+   "v0": 98.53954929505315,
+   "start": 98.53954929505315,
+   "end": 83.53954929505315,
+   "npoints": 11,
+   "dir": "scans/VATSAM/angle_N56-Zn-N57_neg"
+  },
+  {
+   "name": "angle_N56-Zn-N57",
+   "kind": "A",
+   "atoms": [
+    56,
+    66,
+    57
+   ],
+   "branch": "pos",
+   "v0": 98.53954929505315,
+   "start": 98.53954929505315,
+   "end": 113.53954929505315,
+   "npoints": 11,
+   "dir": "scans/VATSAM/angle_N56-Zn-N57_pos"
+  },
+  {
+   "name": "angle_N56-Zn-S64",
+   "kind": "A",
+   "atoms": [
+    56,
+    66,
+    64
+   ],
+   "branch": "neg",
+   "v0": 85.41855555442262,
+   "start": 85.41855555442262,
+   "end": 70.41855555442262,
+   "npoints": 11,
+   "dir": "scans/VATSAM/angle_N56-Zn-S64_neg"
+  },
+  {
+   "name": "angle_N56-Zn-S64",
+   "kind": "A",
+   "atoms": [
+    56,
+    66,
+    64
+   ],
+   "branch": "pos",
+   "v0": 85.41855555442262,
+   "start": 85.41855555442262,
+   "end": 100.41855555442262,
+   "npoints": 11,
+   "dir": "scans/VATSAM/angle_N56-Zn-S64_pos"
+  },
+  {
+   "name": "angle_N56-Zn-S65",
+   "kind": "A",
+   "atoms": [
+    56,
+    66,
+    65
+   ],
+   "branch": "neg",
+   "v0": 136.9230684753676,
+   "start": 136.9230684753676,
+   "end": 121.92306847536759,
+   "npoints": 11,
+   "dir": "scans/VATSAM/angle_N56-Zn-S65_neg"
+  },
+  {
+   "name": "angle_N56-Zn-S65",
+   "kind": "A",
+   "atoms": [
+    56,
+    66,
+    65
+   ],
+   "branch": "pos",
+   "v0": 136.9230684753676,
+   "start": 136.9230684753676,
+   "end": 151.9230684753676,
+   "npoints": 11,
+   "dir": "scans/VATSAM/angle_N56-Zn-S65_pos"
+  },
+  {
+   "name": "angle_N57-Zn-S64",
+   "kind": "A",
+   "atoms": [
+    57,
+    66,
+    64
+   ],
+   "branch": "neg",
+   "v0": 136.90099736044442,
+   "start": 136.90099736044442,
+   "end": 121.90099736044442,
+   "npoints": 11,
+   "dir": "scans/VATSAM/angle_N57-Zn-S64_neg"
+  },
+  {
+   "name": "angle_N57-Zn-S64",
+   "kind": "A",
+   "atoms": [
+    57,
+    66,
+    64
+   ],
+   "branch": "pos",
+   "v0": 136.90099736044442,
+   "start": 136.90099736044442,
+   "end": 151.90099736044442,
+   "npoints": 11,
+   "dir": "scans/VATSAM/angle_N57-Zn-S64_pos"
+  },
+  {
+   "name": "angle_N57-Zn-S65",
+   "kind": "A",
+   "atoms": [
+    57,
+    66,
+    65
+   ],
+   "branch": "neg",
+   "v0": 85.41575245330836,
+   "start": 85.41575245330836,
+   "end": 70.41575245330836,
+   "npoints": 11,
+   "dir": "scans/VATSAM/angle_N57-Zn-S65_neg"
+  },
+  {
+   "name": "angle_N57-Zn-S65",
+   "kind": "A",
+   "atoms": [
+    57,
+    66,
+    65
+   ],
+   "branch": "pos",
+   "v0": 85.41575245330836,
+   "start": 85.41575245330836,
+   "end": 100.41575245330836,
+   "npoints": 11,
+   "dir": "scans/VATSAM/angle_N57-Zn-S65_pos"
+  },
+  {
+   "name": "angle_S64-Zn-S65",
+   "kind": "A",
+   "atoms": [
+    64,
+    66,
+    65
+   ],
+   "branch": "neg",
+   "v0": 120.21210063012899,
+   "start": 120.21210063012899,
+   "end": 105.21210063012899,
+   "npoints": 11,
+   "dir": "scans/VATSAM/angle_S64-Zn-S65_neg"
+  },
+  {
+   "name": "angle_S64-Zn-S65",
+   "kind": "A",
+   "atoms": [
+    64,
+    66,
+    65
+   ],
+   "branch": "pos",
+   "v0": 120.21210063012899,
+   "start": 120.21210063012899,
+   "end": 135.212100630129,
+   "npoints": 11,
+   "dir": "scans/VATSAM/angle_S64-Zn-S65_pos"
+  },
+  {
+   "name": "twist_N56-S64-N57-S65",
+   "kind": "D",
+   "atoms": [
+    56,
+    64,
+    57,
+    65
+   ],
+   "branch": "neg",
+   "v0": 103.42977631671856,
+   "start": 103.42977631671856,
+   "end": 93.42977631671856,
+   "npoints": 11,
+   "dir": "scans/VATSAM/twist_N56-S64-N57-S65_neg"
+  },
+  {
+   "name": "twist_N56-S64-N57-S65",
+   "kind": "D",
+   "atoms": [
+    56,
+    64,
+    57,
+    65
+   ],
+   "branch": "pos",
+   "v0": 103.42977631671856,
+   "start": 103.42977631671856,
+   "end": 113.42977631671856,
+   "npoints": 11,
+   "dir": "scans/VATSAM/twist_N56-S64-N57-S65_pos"
+  },
+  {
+   "name": "tilt_Zn-N56-C22-C0",
+   "kind": "D",
+   "atoms": [
+    66,
+    56,
+    22,
+    0
+   ],
+   "branch": "neg",
+   "v0": -18.778842925947057,
+   "start": -18.778842925947057,
+   "end": -28.778842925947057,
+   "npoints": 11,
+   "dir": "scans/VATSAM/tilt_Zn-N56-C22-C0_neg"
+  },
+  {
+   "name": "tilt_Zn-N56-C22-C0",
+   "kind": "D",
+   "atoms": [
+    66,
+    56,
+    22,
+    0
+   ],
+   "branch": "pos",
+   "v0": -18.778842925947057,
+   "start": -18.778842925947057,
+   "end": -8.778842925947057,
+   "npoints": 11,
+   "dir": "scans/VATSAM/tilt_Zn-N56-C22-C0_pos"
+  },
+  {
+   "name": "tilt_Zn-N57-C23-C1",
+   "kind": "D",
+   "atoms": [
+    66,
+    57,
+    23,
+    1
+   ],
+   "branch": "neg",
+   "v0": -18.79301141007294,
+   "start": -18.79301141007294,
+   "end": -28.79301141007294,
+   "npoints": 11,
+   "dir": "scans/VATSAM/tilt_Zn-N57-C23-C1_neg"
+  },
+  {
+   "name": "tilt_Zn-N57-C23-C1",
+   "kind": "D",
+   "atoms": [
+    66,
+    57,
+    23,
+    1
+   ],
+   "branch": "pos",
+   "v0": -18.79301141007294,
+   "start": -18.79301141007294,
+   "end": -8.793011410072939,
+   "npoints": 11,
+   "dir": "scans/VATSAM/tilt_Zn-N57-C23-C1_pos"
+  },
+  {
+   "name": "tilt_Zn-S64-C24-N58",
+   "kind": "D",
+   "atoms": [
+    66,
+    64,
+    24,
+    58
+   ],
+   "branch": "neg",
+   "v0": -15.300738755083412,
+   "start": -15.300738755083412,
+   "end": -25.30073875508341,
+   "npoints": 11,
+   "dir": "scans/VATSAM/tilt_Zn-S64-C24-N58_neg"
+  },
+  {
+   "name": "tilt_Zn-S64-C24-N58",
+   "kind": "D",
+   "atoms": [
+    66,
+    64,
+    24,
+    58
+   ],
+   "branch": "pos",
+   "v0": -15.300738755083412,
+   "start": -15.300738755083412,
+   "end": -5.300738755083412,
+   "npoints": 11,
+   "dir": "scans/VATSAM/tilt_Zn-S64-C24-N58_pos"
+  },
+  {
+   "name": "tilt_Zn-S65-C25-N59",
+   "kind": "D",
+   "atoms": [
+    66,
+    65,
+    25,
+    59
+   ],
+   "branch": "neg",
+   "v0": -15.29775385533308,
+   "start": -15.29775385533308,
+   "end": -25.297753855333077,
+   "npoints": 11,
+   "dir": "scans/VATSAM/tilt_Zn-S65-C25-N59_neg"
+  },
+  {
+   "name": "tilt_Zn-S65-C25-N59",
+   "kind": "D",
+   "atoms": [
+    66,
+    65,
+    25,
+    59
+   ],
+   "branch": "pos",
+   "v0": -15.29775385533308,
+   "start": -15.29775385533308,
+   "end": -5.297753855333079,
+   "npoints": 11,
+   "dir": "scans/VATSAM/tilt_Zn-S65-C25-N59_pos"
+  }
+ ]
+}

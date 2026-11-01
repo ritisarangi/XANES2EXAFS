@@ -1,0 +1,464 @@
+{
+ "ref": "OVAPIL",
+ "zn": 74,
+ "donors": [
+  64,
+  67,
+  70,
+  73
+ ],
+ "coords": [
+  {
+   "name": "bond_Zn-N64",
+   "kind": "B",
+   "atoms": [
+    74,
+    64
+   ],
+   "branch": "neg",
+   "v0": 2.1037530867111407,
+   "start": 2.1037530867111407,
+   "end": 2.0437530867111406,
+   "npoints": 4,
+   "dir": "scans/OVAPIL/bond_Zn-N64_neg"
+  },
+  {
+   "name": "bond_Zn-N64",
+   "kind": "B",
+   "atoms": [
+    74,
+    64
+   ],
+   "branch": "pos",
+   "v0": 2.1037530867111407,
+   "start": 2.1037530867111407,
+   "end": 2.303753086711141,
+   "npoints": 11,
+   "dir": "scans/OVAPIL/bond_Zn-N64_pos"
+  },
+  {
+   "name": "bond_Zn-N67",
+   "kind": "B",
+   "atoms": [
+    74,
+    67
+   ],
+   "branch": "neg",
+   "v0": 2.0796454193523877,
+   "start": 2.0796454193523877,
+   "end": 2.0196454193523876,
+   "npoints": 4,
+   "dir": "scans/OVAPIL/bond_Zn-N67_neg"
+  },
+  {
+   "name": "bond_Zn-N67",
+   "kind": "B",
+   "atoms": [
+    74,
+    67
+   ],
+   "branch": "pos",
+   "v0": 2.0796454193523877,
+   "start": 2.0796454193523877,
+   "end": 2.279645419352388,
+   "npoints": 11,
+   "dir": "scans/OVAPIL/bond_Zn-N67_pos"
+  },
+  {
+   "name": "bond_Zn-N70",
+   "kind": "B",
+   "atoms": [
+    74,
+    70
+   ],
+   "branch": "neg",
+   "v0": 2.0973306063759884,
+   "start": 2.0973306063759884,
+   "end": 2.0373306063759884,
+   "npoints": 4,
+   "dir": "scans/OVAPIL/bond_Zn-N70_neg"
+  },
+  {
+   "name": "bond_Zn-N70",
+   "kind": "B",
+   "atoms": [
+    74,
+    70
+   ],
+   "branch": "pos",
+   "v0": 2.0973306063759884,
+   "start": 2.0973306063759884,
+   "end": 2.2973306063759886,
+   "npoints": 11,
+   "dir": "scans/OVAPIL/bond_Zn-N70_pos"
+  },
+  {
+   "name": "bond_Zn-S73",
+   "kind": "B",
+   "atoms": [
+    74,
+    73
+   ],
+   "branch": "neg",
+   "v0": 2.2739604323845812,
+   "start": 2.2739604323845812,
+   "end": 2.213960432384581,
+   "npoints": 4,
+   "dir": "scans/OVAPIL/bond_Zn-S73_neg"
+  },
+  {
+   "name": "bond_Zn-S73",
+   "kind": "B",
+   "atoms": [
+    74,
+    73
+   ],
+   "branch": "pos",
+   "v0": 2.2739604323845812,
+   "start": 2.2739604323845812,
+   "end": 2.4739604323845814,
+   "npoints": 11,
+   "dir": "scans/OVAPIL/bond_Zn-S73_pos"
+  },
+  {
+   "name": "angle_N64-Zn-N67",
+   "kind": "A",
+   "atoms": [
+    64,
+    74,
+    67
+   ],
+   "branch": "neg",
+   "v0": 91.33992493207666,
+   "start": 91.33992493207666,
+   "end": 76.33992493207666,
+   "npoints": 11,
+   "dir": "scans/OVAPIL/angle_N64-Zn-N67_neg"
+  },
+  {
+   "name": "angle_N64-Zn-N67",
+   "kind": "A",
+   "atoms": [
+    64,
+    74,
+    67
+   ],
+   "branch": "pos",
+   "v0": 91.33992493207666,
+   "start": 91.33992493207666,
+   "end": 106.33992493207666,
+   "npoints": 11,
+   "dir": "scans/OVAPIL/angle_N64-Zn-N67_pos"
+  },
+  {
+   "name": "angle_N64-Zn-N70",
+   "kind": "A",
+   "atoms": [
+    64,
+    74,
+    70
+   ],
+   "branch": "neg",
+   "v0": 89.29650427513849,
+   "start": 89.29650427513849,
+   "end": 74.29650427513849,
+   "npoints": 11,
+   "dir": "scans/OVAPIL/angle_N64-Zn-N70_neg"
+  },
+  {
+   "name": "angle_N64-Zn-N70",
+   "kind": "A",
+   "atoms": [
+    64,
+    74,
+    70
+   ],
+   "branch": "pos",
+   "v0": 89.29650427513849,
+   "start": 89.29650427513849,
+   "end": 104.29650427513849,
+   "npoints": 11,
+   "dir": "scans/OVAPIL/angle_N64-Zn-N70_pos"
+  },
+  {
+   "name": "angle_N64-Zn-S73",
+   "kind": "A",
+   "atoms": [
+    64,
+    74,
+    73
+   ],
+   "branch": "neg",
+   "v0": 125.15629987086312,
+   "start": 125.15629987086312,
+   "end": 110.15629987086312,
+   "npoints": 11,
+   "dir": "scans/OVAPIL/angle_N64-Zn-S73_neg"
+  },
+  {
+   "name": "angle_N64-Zn-S73",
+   "kind": "A",
+   "atoms": [
+    64,
+    74,
+    73
+   ],
+   "branch": "pos",
+   "v0": 125.15629987086312,
+   "start": 125.15629987086312,
+   "end": 140.1562998708631,
+   "npoints": 11,
+   "dir": "scans/OVAPIL/angle_N64-Zn-S73_pos"
+  },
+  {
+   "name": "angle_N67-Zn-N70",
+   "kind": "A",
+   "atoms": [
+    67,
+    74,
+    70
+   ],
+   "branch": "neg",
+   "v0": 89.81335872662058,
+   "start": 89.81335872662058,
+   "end": 74.81335872662058,
+   "npoints": 11,
+   "dir": "scans/OVAPIL/angle_N67-Zn-N70_neg"
+  },
+  {
+   "name": "angle_N67-Zn-N70",
+   "kind": "A",
+   "atoms": [
+    67,
+    74,
+    70
+   ],
+   "branch": "pos",
+   "v0": 89.81335872662058,
+   "start": 89.81335872662058,
+   "end": 104.81335872662058,
+   "npoints": 11,
+   "dir": "scans/OVAPIL/angle_N67-Zn-N70_pos"
+  },
+  {
+   "name": "angle_N67-Zn-S73",
+   "kind": "A",
+   "atoms": [
+    67,
+    74,
+    73
+   ],
+   "branch": "neg",
+   "v0": 124.35700195824204,
+   "start": 124.35700195824204,
+   "end": 109.35700195824204,
+   "npoints": 11,
+   "dir": "scans/OVAPIL/angle_N67-Zn-S73_neg"
+  },
+  {
+   "name": "angle_N67-Zn-S73",
+   "kind": "A",
+   "atoms": [
+    67,
+    74,
+    73
+   ],
+   "branch": "pos",
+   "v0": 124.35700195824204,
+   "start": 124.35700195824204,
+   "end": 139.35700195824205,
+   "npoints": 11,
+   "dir": "scans/OVAPIL/angle_N67-Zn-S73_pos"
+  },
+  {
+   "name": "angle_N70-Zn-S73",
+   "kind": "A",
+   "atoms": [
+    70,
+    74,
+    73
+   ],
+   "branch": "neg",
+   "v0": 125.96848800101897,
+   "start": 125.96848800101897,
+   "end": 110.96848800101897,
+   "npoints": 11,
+   "dir": "scans/OVAPIL/angle_N70-Zn-S73_neg"
+  },
+  {
+   "name": "angle_N70-Zn-S73",
+   "kind": "A",
+   "atoms": [
+    70,
+    74,
+    73
+   ],
+   "branch": "pos",
+   "v0": 125.96848800101897,
+   "start": 125.96848800101897,
+   "end": 140.96848800101895,
+   "npoints": 11,
+   "dir": "scans/OVAPIL/angle_N70-Zn-S73_pos"
+  },
+  {
+   "name": "twist_N64-N67-N70-S73",
+   "kind": "D",
+   "atoms": [
+    64,
+    67,
+    70,
+    73
+   ],
+   "branch": "neg",
+   "v0": 76.26249071848017,
+   "start": 76.26249071848017,
+   "end": 66.26249071848017,
+   "npoints": 11,
+   "dir": "scans/OVAPIL/twist_N64-N67-N70-S73_neg"
+  },
+  {
+   "name": "twist_N64-N67-N70-S73",
+   "kind": "D",
+   "atoms": [
+    64,
+    67,
+    70,
+    73
+   ],
+   "branch": "pos",
+   "v0": 76.26249071848017,
+   "start": 76.26249071848017,
+   "end": 86.26249071848017,
+   "npoints": 11,
+   "dir": "scans/OVAPIL/twist_N64-N67-N70-S73_pos"
+  },
+  {
+   "name": "tilt_Zn-N64-C7-C8",
+   "kind": "D",
+   "atoms": [
+    74,
+    64,
+    7,
+    8
+   ],
+   "branch": "neg",
+   "v0": -15.455427745601725,
+   "start": -15.455427745601725,
+   "end": -25.455427745601725,
+   "npoints": 11,
+   "dir": "scans/OVAPIL/tilt_Zn-N64-C7-C8_neg"
+  },
+  {
+   "name": "tilt_Zn-N64-C7-C8",
+   "kind": "D",
+   "atoms": [
+    74,
+    64,
+    7,
+    8
+   ],
+   "branch": "pos",
+   "v0": -15.455427745601725,
+   "start": -15.455427745601725,
+   "end": -5.455427745601725,
+   "npoints": 11,
+   "dir": "scans/OVAPIL/tilt_Zn-N64-C7-C8_pos"
+  },
+  {
+   "name": "tilt_Zn-N67-C24-C25",
+   "kind": "D",
+   "atoms": [
+    74,
+    67,
+    24,
+    25
+   ],
+   "branch": "neg",
+   "v0": -12.940962947480983,
+   "start": -12.940962947480983,
+   "end": -22.940962947480983,
+   "npoints": 11,
+   "dir": "scans/OVAPIL/tilt_Zn-N67-C24-C25_neg"
+  },
+  {
+   "name": "tilt_Zn-N67-C24-C25",
+   "kind": "D",
+   "atoms": [
+    74,
+    67,
+    24,
+    25
+   ],
+   "branch": "pos",
+   "v0": -12.940962947480983,
+   "start": -12.940962947480983,
+   "end": -2.9409629474809833,
+   "npoints": 11,
+   "dir": "scans/OVAPIL/tilt_Zn-N67-C24-C25_pos"
+  },
+  {
+   "name": "tilt_Zn-N70-C41-C42",
+   "kind": "D",
+   "atoms": [
+    74,
+    70,
+    41,
+    42
+   ],
+   "branch": "neg",
+   "v0": 12.028525174742903,
+   "start": 12.028525174742903,
+   "end": 2.028525174742903,
+   "npoints": 11,
+   "dir": "scans/OVAPIL/tilt_Zn-N70-C41-C42_neg"
+  },
+  {
+   "name": "tilt_Zn-N70-C41-C42",
+   "kind": "D",
+   "atoms": [
+    74,
+    70,
+    41,
+    42
+   ],
+   "branch": "pos",
+   "v0": 12.028525174742903,
+   "start": 12.028525174742903,
+   "end": 22.028525174742903,
+   "npoints": 11,
+   "dir": "scans/OVAPIL/tilt_Zn-N70-C41-C42_pos"
+  },
+  {
+   "name": "tilt_Zn-S73-C53-C54",
+   "kind": "D",
+   "atoms": [
+    74,
+    73,
+    53,
+    54
+   ],
+   "branch": "neg",
+   "v0": -2.569250600217571,
+   "start": -2.569250600217571,
+   "end": -12.569250600217572,
+   "npoints": 11,
+   "dir": "scans/OVAPIL/tilt_Zn-S73-C53-C54_neg"
+  },
+  {
+   "name": "tilt_Zn-S73-C53-C54",
+   "kind": "D",
+   "atoms": [
+    74,
+    73,
+    53,
+    54
+   ],
+   "branch": "pos",
+   "v0": -2.569250600217571,
+   "start": -2.569250600217571,
+   "end": 7.430749399782429,
+   "npoints": 11,
+   "dir": "scans/OVAPIL/tilt_Zn-S73-C53-C54_pos"
+  }
+ ]
+}
