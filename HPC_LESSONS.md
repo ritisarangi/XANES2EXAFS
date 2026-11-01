@@ -108,6 +108,12 @@ Check them again for other work:
   (`sites/aurora.sh`): at start they give each branch 4, 6, 8, 12 or 16 cores so the slots roughly
   match the branches waiting, which also makes each branch faster in the tail (12 cores: 2,048 slots;
   16 cores: 1,536). With even less work, use 16-node farms or another site.
+- **Send the last few dozen slow branches to a site that runs one long job per branch.** The end of a
+  campaign is a tail of the hardest branches (largest molecules, many attempts), each needing several
+  more hours of compute. On Aurora every 6 h farm run then costs a 4-6 h queue wait and a restart, and
+  a maintenance can add days; on Perlmutter one shared-QOS job per branch (48 h) runs straight
+  through for a few node-hours in total. Check how many points each branch still needs (`scan_acc.txt`
+  against the scan's step count) and move them once the work left needs more than one farm run.
 - **A queued job runs the scripts of its own snapshot** (`$WORK/.repo/<time>`), however old. When a rule
   changes (a new list of complexes run elsewhere, a new layout), update the snapshots of queued jobs
   too, or they will start with the old behaviour.
