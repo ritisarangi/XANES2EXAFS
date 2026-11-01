@@ -145,7 +145,9 @@ folder on Aurora.
 Aurora CPU farms ran on ALCF project isaac until 10-21, then on ModCon. ModCon also holds the storage since
 10-24. On 10-25 the unfinished `big` complexes moved to NERSC Perlmutter on project m5268. On 10-29, 10-30 and
 10-31 some `main` complexes with long tails moved to m2464; the user capped that project and it is shared by a
-group. A complex listed in `remote_refs.txt` is never queued or prepared on Aurora, so no branch ran at both
+group. On 11-01 the last 22 `main` branches (DIVKAW, UCOLON, FAZJAT, GIXSUE, LOHZAM, FEKQUH, QISJUA; 65-97
+atoms, up to 24 attempts each) also moved to m2464, the user's decision: each needed one to five more points,
+and on Aurora every 6 h farm run waited 4-6 h to start, with a maintenance on Nov 2-5. A complex listed in `remote_refs.txt` is never queued or prepared on Aurora, so no branch ran at both
 sites at once. Finished branches are copied back to Aurora by Globus (`scan.out` and `scan_acc.txt`) and
 published there like all others. The HPC side of the campaign is distilled in `HPC_LESSONS.md` and not
 repeated here.
@@ -267,16 +269,22 @@ is not a constraint. The real costs are wall time and a code change.
 | OGUGON | (a) redo with chlorides (~4-9 node-hours), or (b) as a labelled N4O2 solution model -> 238 points |
 | KERJOI | (c) drop, or (b) only if an explicit N-bound linkage isomer is wanted (285 points, 11 branches mislabelled) |
 | KUBVEJ | (c) drop, or (b) with a caveat (153 points) |
+| EPOFUL | (b), as for KECGEI and LIVNAG (O chelate closes, 4 -> 6) |
+| FECYIZ | (c) drop, or (b) only if an explicit N-bound linkage isomer is wanted, as for KERJOI |
 
-**Two more complexes will join this list.** EPOFUL and FECYIZ are still running. Their stage-2 shells, checked
-on 2026-10-31 at step 0 of finished branches, fail every branch start in the same way. **EPOFUL** has
+**Two more complexes joined this list on 2026-11-01, as predicted on 10-31.** EPOFUL and FECYIZ finished that
+day, and every branch start failed in the same way: `new_contact` for EPOFUL (30 of 30), `shell` for FECYIZ
+(30 of 30). Their stage-2 shells had been checked on 2026-10-31 at step 0 of finished branches. **EPOFUL** has
 non-donors O62/O63 at 2.404/2.399 A at stage 2, against 2.703 A in the crystal. This is the KECGEI/LIVNAG
 pattern: an O closes a chelate, 4 -> 6. **FECYIZ** has non-donor N10 at 1.98 A, while its donor S1 sits at
 3.702 A. This is the KERJOI pattern, an S -> N linkage switch at stage 2; its `bond_Zn-S1` branches stretch a
-non-bond. Both will be recorded `not_exported` when their last branches finish. The same options apply. See
-section (f).
+non-bond. Both are recorded `not_exported`. The same options apply. See section (f).
 
 <!-- lower_minima -->
+**Not yet examined.** Complexes published after 2026-10-31 appear in the list above but are not covered by the
+geometry check below. The deepest among them are WEDVIK (-29.3 kJ/mol, a `shell` failure), TEYSOG (-27.5),
+GEQCUE (-14.8) and LAPYAD (-12.2). They will get the same check when the campaign ends.
+
 **What the structures show.** This is a read-only geometry check of the lowest first-failing point of each
 complex on 2026-10-31: the Zn-donor distances at step 0 and at the failing step, the nearest non-donors, and
 the heavy-atom pair that changed most. Three kinds stand out.
@@ -363,14 +371,15 @@ five branches by hand, recovers the points in the table at zero compute. Recomme
 
 <!-- shell_check -->
 **Reading this list.** Exactly eight complexes have a non-donor below 2.6 A, or a donor beyond 2.8 A, at
-stage 2. Six are the not-exported complexes: GECLUZ, KECGEI, KERJOI, KUBVEJ, LIVNAG and OGUGON (KERJOI and
-FECYIZ show both). The other two are still running: EPOFUL and FECYIZ. No other complex has this signature.
+stage 2. All eight are the not-exported complexes: GECLUZ, KECGEI, KERJOI, KUBVEJ, LIVNAG and OGUGON, plus
+EPOFUL and FECYIZ, which finished on 11-01 and failed every branch start as predicted here (KERJOI and FECYIZ
+show both). No other complex has this signature.
 
 The complexes at risk have a non-donor O, N or F at 2.6-2.8 A at stage 2. Their branches fail early as
 `new_contact` when a scan pulls that atom inside 2.6 A. Published examples: UDODOG O2 2.637 (9 `new_contact`),
 NOCNEY N5 2.661 (7), ICATOW O9 2.668 (7), YACTUV F65 2.631 (8), FEYNUT F2 2.689 (2), and TIFNOO N9/N10 2.76,
-whose N switch is the lower minimum in (b). **ICATUC**, still running, has O8 at 2.606 A at stage 2, 0.006 A
-above the limit; expect many `new_contact` failures. Crystal contacts between 2.53 and 2.6 A (non-donors only
+whose N switch is the lower minimum in (b). **ICATUC** has O8 at 2.606 A at stage 2, 0.006 A above the limit;
+it was published on 11-01 with 196 of 302 points passing and 11 `new_contact` failures. Crystal contacts between 2.53 and 2.6 A (non-donors only
 because of the 2.53 A curation cut-off) are listed with the prefix `crystal:`.
 
 **Recommended action.** Align the two cut-offs. The cleanest fix is to take the donor list from the stage-2
@@ -381,11 +390,12 @@ minimum with the validation limits, and to record "secondary" contacts of 2.6-2.
 ## Decisions for Riti
 
 Each item gives our recommendation and its cost. ModCon node-hours are not a constraint for the user. The NERSC
-projects are shared and are not to be used for more of this work unless DOE adds hours. "0 compute" means a
+projects are shared and are not to be used for more of this work unless DOE adds hours (the user made one
+exception, for the last 22 slow branches on 11-01). "0 compute" means a
 re-validation or inspection of results that already exist.
 
 1. **Donor overrides for the eight shell-changed complexes**: GECLUZ, KECGEI, LIVNAG, OGUGON, KERJOI, KUBVEJ,
-   plus EPOFUL and FECYIZ when they finish. *Recommended:* yes for GECLUZ, KECGEI and LIVNAG (about 800 points),
+   EPOFUL and FECYIZ (both finished 11-01). *Recommended:* yes for GECLUZ, KECGEI and LIVNAG (about 800 points),
    and EPOFUL by the same argument. *Cost:* 0 compute; a small code change (a per-complex `donors` override read
    by `validate.py` and `publish.py`). The results layout stays as is.
 2. **OGUGON**: redo stage 2 and the scans as neutral [Zn(L)2]Cl2 with the crystal chlorides, or publish the

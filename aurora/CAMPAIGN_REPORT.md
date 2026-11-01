@@ -1,17 +1,17 @@
 # Zn relaxed-scan campaign: report for Riti Sarangi (SSRL)
 
-Generated 2026-10-31 23:03 UTC by `aurora/campaign_report.py` from the run folder `/lus/flare/projects/ModCon/dsokaras/zn_scans` and the results checkout `/home/dsokaras/dev/xanes2exafs/XANES2EXAFS-results` (branch `aurora-results`). Rebuild with `python3 aurora/campaign_report.py /lus/flare/projects/ModCon/dsokaras/zn_scans > aurora/CAMPAIGN_REPORT.md`. Hand-written sections come from `aurora/campaign_report_notes.md`. Numbers in tables are computed; statements marked *(inference)* are interpretation.
+Generated 2026-11-01 19:54 UTC by `aurora/campaign_report.py` from the run folder `/lus/flare/projects/ModCon/dsokaras/zn_scans` and the results checkout `/home/dsokaras/dev/xanes2exafs/XANES2EXAFS-results` (branch `aurora-results`). Rebuild with `python3 aurora/campaign_report.py /lus/flare/projects/ModCon/dsokaras/zn_scans > aurora/CAMPAIGN_REPORT.md`. Hand-written sections come from `aurora/campaign_report_notes.md`. Numbers in tables are computed; statements marked *(inference)* are interpretation.
 
 ## Summary
 
-Relaxed one-coordinate scans (B3LYP-D3(BJ), def2-TZVP on Zn and donors, def2-SVP elsewhere, RIJCOSX, CPCM(water), ORCA 6.0.1) around the stage-2 minima of **338 Zn complexes**: 10,175 scan branches, 102,426 planned points (constrained optimisations, two branch starts per coordinate included). 9,684 of 10,175 branches have terminated normally (95.2%). **263 complexes are published** on `aurora-results` (79,798 points validated, **72,372 pass**, **90.7%**); **6 finished complexes are not exported** (every branch start fails validation: the stage-2 minimum has a different Zn first shell than the donor list); **69 complexes are still running** (1,579 of their 2,070 branches done; Aurora `main` queue: 0 pending, 367 running). 26 published complexes fall below their stage-2 energy by more than 2 kJ/mol in some branch, and 30 pass fewer than 75% of their points; both lists are below.
+Relaxed one-coordinate scans (B3LYP-D3(BJ), def2-TZVP on Zn and donors, def2-SVP elsewhere, RIJCOSX, CPCM(water), ORCA 6.0.1) around the stage-2 minima of **338 Zn complexes**: 10,175 scan branches, 102,426 planned points (constrained optimisations, two branch starts per coordinate included). 10,150 of 10,175 branches have terminated normally (99.8%). **322 complexes are published** on `aurora-results` (97,616 points validated, **87,905 pass**, **90.1%**); **8 finished complexes are not exported** (every branch start fails validation: the stage-2 minimum has a different Zn first shell than the donor list); **8 complexes are still running** (215 of their 240 branches done; Aurora `main` queue: 0 pending, 0 running). 36 published complexes fall below their stage-2 energy by more than 2 kJ/mol in some branch, and 44 pass fewer than 75% of their points; both lists are below.
 
 |  | Complexes | Branches | Points | Passing |
 |---|---|---|---|---|
-| Published | 263 | 7,927 | 79,798 | 72,372 |
-| Not exported | 6 | 178 | 1,790 | 0 |
-| In progress | 69 | 2,070 (1,579 done) | 20,838 | - |
-| Total | 338 | 10,175 | 102,426 | 72,372 |
+| Published | 322 | 9,697 | 97,616 | 87,905 |
+| Not exported | 8 | 238 | 2,394 | 0 |
+| In progress | 8 | 240 (215 done) | 2,416 | - |
+| Total | 338 | 10,175 | 102,426 | 87,905 |
 
 **Reading guide.** The results are the `scan_results/` folder on branch `aurora-results`. Its layout and its
 README are the deliverable; this report does not change them. Each published point is one constrained
@@ -152,7 +152,9 @@ folder on Aurora.
 Aurora CPU farms ran on ALCF project isaac until 10-21, then on ModCon. ModCon also holds the storage since
 10-24. On 10-25 the unfinished `big` complexes moved to NERSC Perlmutter on project m5268. On 10-29, 10-30 and
 10-31 some `main` complexes with long tails moved to m2464; the user capped that project and it is shared by a
-group. A complex listed in `remote_refs.txt` is never queued or prepared on Aurora, so no branch ran at both
+group. On 11-01 the last 22 `main` branches (DIVKAW, UCOLON, FAZJAT, GIXSUE, LOHZAM, FEKQUH, QISJUA; 65-97
+atoms, up to 24 attempts each) also moved to m2464, the user's decision: each needed one to five more points,
+and on Aurora every 6 h farm run waited 4-6 h to start, with a maintenance on Nov 2-5. A complex listed in `remote_refs.txt` is never queued or prepared on Aurora, so no branch ran at both
 sites at once. Finished branches are copied back to Aurora by Globus (`scan.out` and `scan_acc.txt`) and
 published there like all others. The HPC side of the campaign is distilled in `HPC_LESSONS.md` and not
 repeated here.
@@ -165,20 +167,27 @@ From `remote_refs.txt`; branch counts from the NERSC driver state. Every complex
 |---|---|---|---|---|
 | CAPWIB | 65 | m2464 | 30 / 30 | published 2026-10-31 |
 | CAWKIW | 65 | m2464 | 26 / 30 | published 2026-10-31 |
-| FAXYIP | 77 | m2464 | 25 / 30 | in progress (14/30 done) |
+| DIVKAW | 96 | m2464 | 6 / 30 | in progress (25/30 done) |
+| FAXYIP | 77 | m2464 | 25 / 30 | published 2026-11-01 |
+| FAZJAT | 97 | m2464 | 3 / 30 | in progress (27/30 done) |
+| FEKQUH | 90 | m2464 | 2 / 30 | in progress (28/30 done) |
 | FUXMAM | 73 | m2464 | 26 / 30 | published 2026-10-31 |
+| GIXSUE | 65 | m2464 | 3 / 30 | in progress (27/30 done) |
 | JOCZEG | 81 | m2464 | 30 / 30 | published 2026-10-31 |
-| JUQXUO | 77 | m2464 | 27 / 30 | in progress (29/30 done) |
-| LAJGIM | 89 | m2464 | 30 / 30 | in progress (27/30 done) |
-| SEJZOW | 85 | m2464 | 26 / 30 | in progress (21/30 done) |
-| TELRUZ | 77 | m2464 | 26 / 30 | in progress (18/30 done) |
-| TEYSOG | 73 | m2464 | 25 / 30 | in progress (14/30 done) |
-| TIFNUU | 65 | m2464 | 27 / 30 | in progress (28/30 done) |
-| UWAVOF | 71 | m2464 | 26 / 30 | in progress (5/30 done) |
-| UYORAE | 93 | m2464 | 30 / 30 | in progress (7/30 done) |
-| WEQZAT01 | 48 | m2464 | 26 / 30 | in progress (16/30 done) |
+| JUQXUO | 77 | m2464 | 27 / 30 | published 2026-11-01 |
+| LAJGIM | 89 | m2464 | 30 / 30 | published 2026-11-01 |
+| LOHZAM | 85 | m2464 | 3 / 30 | in progress (27/30 done) |
+| QISJUA | 91 | m2464 | 1 / 30 | in progress (29/30 done) |
+| SEJZOW | 85 | m2464 | 26 / 30 | published 2026-11-01 |
+| TELRUZ | 77 | m2464 | 26 / 30 | published 2026-11-01 |
+| TEYSOG | 73 | m2464 | 25 / 30 | published 2026-11-01 |
+| TIFNUU | 65 | m2464 | 27 / 30 | published 2026-11-01 |
+| UCOLON | 82 | m2464 | 4 / 30 | in progress (26/30 done) |
+| UWAVOF | 71 | m2464 | 26 / 30 | published 2026-11-01 |
+| UYORAE | 93 | m2464 | 30 / 30 | in progress (26/30 done) |
+| WEQZAT01 | 48 | m2464 | 26 / 30 | published 2026-11-01 |
 | BUNNII | 137 | m5268 | 30 / 30 | published 2026-10-31 |
-| CATZUS10 | 137 | m5268 | 30 / 30 | in progress (27/30 done) |
+| CATZUS10 | 137 | m5268 | 30 / 30 | published 2026-11-01 |
 | DOZVOF | 111 | m5268 | 30 / 30 | published 2026-10-29 |
 | GUCSED | 105 | m5268 | 30 / 30 | published 2026-10-28 |
 | GUFHEU | 105 | m5268 | 30 / 30 | published 2026-10-30 |
@@ -240,15 +249,15 @@ Each branch has at most one first failure; every later point of that branch is `
 
 | Status | Points | Share of published points |
 |---|---|---|
-| pass | 72,372 | 90.7% |
-| jump | 923 | 1.16% |
-| shell | 356 | 0.45% |
-| energy_drop | 120 | 0.15% |
-| new_contact | 96 | 0.12% |
-| energy_cap | 32 | 0.04% |
+| pass | 87,905 | 90.1% |
+| jump | 1235 | 1.27% |
+| shell | 397 | 0.41% |
+| energy_drop | 171 | 0.18% |
+| new_contact | 126 | 0.13% |
+| energy_cap | 39 | 0.04% |
 | ref_mismatch | 5 | 0.01% |
-| after_fail | 5,894 | 7.4% |
-| not_converged | 0 | - |
+| not_converged | 1 | 0.00% |
+| after_fail | 7,737 | 7.9% |
 | constraint | 0 | - |
 | bonds | 0 | - |
 
@@ -256,16 +265,16 @@ Each branch has at most one first failure; every later point of that branch is `
 
 | Coordinate | Branch | Points | Pass | Pass % | First failures |
 |---|---|---|---|---|---|
-| angle | neg | 17,523 | 14,201 | 81.0 | jump 344, shell 289, energy_drop 37, new_contact 21 |
-| angle | pos | 17,512 | 15,584 | 89.0 | jump 248, new_contact 55, energy_drop 32, shell 29 |
-| bond | neg | 4,228 | 4,168 | 98.6 | jump 26, energy_drop 6, ref_mismatch 1 |
-| bond | pos | 11,627 | 10,877 | 93.5 | jump 83, shell 30, new_contact 18, energy_drop 14 |
-| tilt | neg | 11,594 | 11,255 | 97.1 | jump 59, energy_drop 11, shell 1, ref_mismatch 1 |
-| tilt | pos | 11,594 | 11,254 | 97.1 | jump 58, energy_drop 9, ref_mismatch 1 |
-| twist | neg | 2,860 | 2,514 | 87.9 | jump 53, energy_drop 8, shell 2 |
-| twist | pos | 2,860 | 2,519 | 88.1 | jump 52, shell 5, energy_drop 3, new_contact 2 |
+| angle | neg | 21,417 | 17,215 | 80.4 | jump 452, shell 329, energy_drop 47, new_contact 29 |
+| angle | pos | 21,406 | 18,845 | 88.0 | jump 340, new_contact 64, energy_drop 48, energy_cap 33 |
+| bond | neg | 5,172 | 5,094 | 98.5 | jump 35, energy_drop 7, ref_mismatch 1 |
+| bond | pos | 14,223 | 13,230 | 93.0 | jump 111, shell 31, new_contact 27, energy_drop 21 |
+| tilt | neg | 14,190 | 13,683 | 96.4 | jump 83, energy_drop 15, shell 1, ref_mismatch 1 |
+| tilt | pos | 14,190 | 13,693 | 96.5 | jump 81, energy_drop 17, new_contact 1, ref_mismatch 1 |
+| twist | neg | 3,509 | 3,074 | 87.6 | jump 69, energy_drop 8, new_contact 2, shell 2 |
+| twist | pos | 3,509 | 3,071 | 87.5 | jump 64, energy_drop 8, shell 5, new_contact 3 |
 
-Points lost per first-failure type (the failing point plus the `after_fail` points behind it): jump 4,907, shell 1,364, energy_drop 710, new_contact 361, ref_mismatch 48, energy_cap 36.
+Points lost per first-failure type (the failing point plus the `after_fail` points behind it): jump 6,565, shell 1,528, energy_drop 1,026, new_contact 500, ref_mismatch 48, energy_cap 43, not_converged 1.
 
 ## Per-complex table
 
@@ -283,18 +292,18 @@ All 338 complexes, by name. *Points*: validated points (published) or planned po
 | AZIJIC | published | 78 | 30 | 302 | 302 | 100.0 | - | 0 | - | Aurora | 2026-10-30 |
 | BAPZIC | published | 95 | 30 | 302 | 288 | 95.4 | jump 3, shell 1 | 10 | - | Aurora | 2026-10-31 |
 | BELDUS | published | 59 | 30 | 302 | 238 | 78.8 | jump 13, shell 1, energy_cap 1 | 49 | - | Aurora | 2026-10-26 |
-| BELFAA | in progress (19/30 br.) | 57 | 30 | 302 | - | - | - | - | - | Aurora | - |
+| BELFAA | published | 57 | 30 | 302 | 262 | 86.8 | jump 6, shell 1, energy_cap 1 | 32 | - | Aurora | 2026-11-01 |
 | BELFEE | published | 47 | 30 | 302 | 297 | 98.3 | shell 1, energy_cap 1 | 3 | - | Aurora | 2026-10-24 |
 | BELFII | published | 44 | 30 | 302 | 297 | 98.3 | shell 1, energy_cap 1 | 3 | - | Aurora | 2026-10-24 |
-| BIJQOC | in progress (29/30 br.) | 95 | 30 | 302 | - | - | - | - | - | Aurora | - |
+| BIJQOC | published | 95 | 30 | 302 | 281 | 93.0 | jump 6, new_contact 5 | 10 | - | Aurora | 2026-11-01 |
 | BMBTZN | published | 61 | 30 | 302 | 297 | 98.3 | jump 1 | 4 | - | Aurora | 2026-10-23 |
-| BOJMIX | in progress (27/30 br.) | 95 | 30 | 302 | - | - | - | - | - | Aurora | - |
-| BTSQZN10 | in progress (29/30 br.) | 61 | 30 | 302 | - | - | - | - | - | Aurora | - |
+| BOJMIX | published | 95 | 30 | 302 | 198 | 65.6 | jump 18, shell 1 | 85 | - | Aurora | 2026-11-01 |
+| BTSQZN10 | published | 61 | 30 | 302 | 293 | 97.0 | shell 2, jump 1 | 6 | - | Aurora | 2026-11-01 |
 | BUNNII | published | 137 | 30 | 302 | 182 | 60.3 | jump 20 | 100 | - | Aurora + NERSC m5268 (30/30 br.) | 2026-10-31 |
 | BUNTOW | published | 25 | 30 | 302 | 300 | 99.3 | shell 2 | 0 | - | Aurora | 2026-10-23 |
 | CADKUO | published | 45 | 30 | 302 | 302 | 100.0 | - | 0 | - | Aurora | 2026-10-23 |
 | CAPWIB | published | 65 | 30 | 302 | 292 | 96.7 | shell 2 | 8 | - | Aurora + NERSC m2464 (30/30 br.) | 2026-10-31 |
-| CATZUS10 | in progress (27/30 br.) | 137 | 30 | 302 | - | - | - | - | - | Aurora + NERSC m5268 (30/30 br.) | - |
+| CATZUS10 | published | 137 | 30 | 302 | 268 | 88.7 | jump 9 | 25 | - | Aurora + NERSC m5268 (30/30 br.) | 2026-11-01 |
 | CAWKIW | published | 65 | 30 | 302 | 293 | 97.0 | shell 2 | 7 | - | Aurora + NERSC m2464 (26/30 br.) | 2026-10-31 |
 | CAXBEM | published | 69 | 30 | 302 | 286 | 94.7 | shell 4 | 12 | - | Aurora | 2026-10-27 |
 | CAXBIQ | published | 59 | 30 | 302 | 294 | 97.4 | shell 2 | 6 | - | Aurora | 2026-10-24 |
@@ -306,11 +315,11 @@ All 338 complexes, by name. *Points*: validated points (published) or planned po
 | DASFUY | published | 21 | 30 | 302 | 298 | 98.7 | shell 2 | 2 | - | Aurora | 2026-10-24 |
 | DASMOZ | published | 41 | 30 | 302 | 296 | 98.0 | shell 2 | 4 | - | Aurora | 2026-10-24 |
 | DASPOC | published | 43 | 30 | 302 | 295 | 97.7 | shell 2 | 5 | - | Aurora | 2026-10-24 |
-| DETCEL | in progress (26/30 br.) | 61 | 30 | 302 | - | - | - | - | - | Aurora | - |
+| DETCEL | published | 61 | 30 | 302 | 290 | 96.0 | shell 2, jump 1 | 9 | - | Aurora | 2026-11-01 |
 | DIFBIE | published | 45 | 30 | 302 | 293 | 97.0 | shell 2, jump 1 | 6 | - | Aurora | 2026-10-25 |
 | DIFBOK | published | 55 | 30 | 302 | 264 | 87.4 | shell 8, jump 1, energy_cap 1 | 28 | 7 (-6.339) | Aurora | 2026-10-24 |
 | DILGUA | published | 53 | 30 | 302 | 302 | 100.0 | - | 0 | - | Aurora | 2026-10-20 |
-| DIVKAW | in progress (20/30 br.) | 96 | 30 | 302 | - | - | - | - | - | Aurora | - |
+| DIVKAW | in progress (25/30 br.) | 96 | 30 | 302 | - | - | - | - | - | Aurora + NERSC m2464 (6/30 br.) | - |
 | DOMMOH | published | 37 | 30 | 302 | 294 | 97.4 | shell 2 | 6 | - | Aurora | 2026-10-24 |
 | DOMMUN | published | 45 | 30 | 302 | 291 | 96.4 | jump 1, shell 1 | 9 | - | Aurora | 2026-10-24 |
 | DOZVOF | published | 111 | 30 | 302 | 294 | 97.4 | shell 2 | 6 | - | Aurora + NERSC m5268 (30/30 br.) | 2026-10-29 |
@@ -319,28 +328,28 @@ All 338 complexes, by name. *Points*: validated points (published) or planned po
 | EDUPEZ | published | 47 | 30 | 302 | 225 | 74.5 | jump 15, shell 2 | 60 | - | Aurora | 2026-10-23 |
 | EFEWUI | published | 38 | 30 | 302 | 298 | 98.7 | shell 2 | 2 | - | Aurora | 2026-10-23 |
 | EGORAT | published | 65 | 30 | 302 | 286 | 94.7 | shell 2, jump 2 | 12 | - | Aurora | 2026-10-23 |
-| ELISUO | in progress (28/30 br.) | 73 | 30 | 302 | - | - | - | - | - | Aurora | - |
-| EPOFUL | in progress (26/30 br.) | 69 | 30 | 302 | - | - | - | - | - | Aurora | - |
+| ELISUO | published | 73 | 30 | 302 | 260 | 86.1 | jump 9, shell 2 | 31 | - | Aurora | 2026-11-01 |
+| EPOFUL | **not exported** | 69 | 30 | 302 | 0 | 0.0 | branch starts: new_contact 30 | - | - | Aurora | 2026-11-01 |
 | EQOFEW | published | 63 | 30 | 302 | 278 | 92.1 | jump 3, energy_drop 1 | 20 | - | Aurora | 2026-10-27 |
-| ETEROK | in progress (27/30 br.) | 81 | 30 | 302 | - | - | - | - | - | Aurora | - |
+| ETEROK | published | 81 | 30 | 302 | 301 | 99.7 | jump 1 | 0 | - | Aurora | 2026-11-01 |
 | EVOJOO | published | 49 | 30 | 302 | 287 | 95.0 | jump 3 | 12 | - | Aurora | 2026-10-23 |
 | FADYOY | published | 41 | 30 | 302 | 280 | 92.7 | shell 2, jump 2 | 18 | - | Aurora | 2026-10-25 |
 | FAJZAS | published | 78 | 30 | 302 | 300 | 99.3 | jump 1 | 1 | - | Aurora | 2026-10-27 |
 | FATJUG | published | 49 | 30 | 302 | 280 | 92.7 | jump 5 | 17 | - | Aurora | 2026-10-19 |
-| FAXYIP | in progress (14/30 br.) | 77 | 30 | 302 | - | - | - | - | - | Aurora + NERSC m2464 (25/30 br.) | - |
-| FAZJAT | in progress (14/30 br.) | 97 | 30 | 302 | - | - | - | - | - | Aurora | - |
-| FECYIZ | in progress (28/30 br.) | 85 | 30 | 302 | - | - | - | - | - | Aurora | - |
-| FEKQIV | in progress (21/30 br.) | 78 | 30 | 302 | - | - | - | - | - | Aurora | - |
+| FAXYIP | published | 77 | 30 | 302 | 293 | 97.0 | shell 2, energy_cap 1 | 6 | - | Aurora + NERSC m2464 (25/30 br.) | 2026-11-01 |
+| FAZJAT | in progress (27/30 br.) | 97 | 30 | 302 | - | - | - | - | - | Aurora + NERSC m2464 (3/30 br.) | - |
+| FECYIZ | **not exported** | 85 | 30 | 302 | 0 | 0.0 | branch starts: shell 30 | - | - | Aurora | 2026-11-01 |
+| FEKQIV | published | 78 | 30 | 302 | 302 | 100.0 | - | 0 | - | Aurora | 2026-11-01 |
 | FEKQOB | published | 84 | 30 | 302 | 296 | 98.0 | energy_drop 1, jump 1 | 4 | 1 (-2.832) | Aurora | 2026-10-31 |
-| FEKQUH | in progress (10/30 br.) | 90 | 30 | 302 | - | - | - | - | - | Aurora | - |
+| FEKQUH | in progress (28/30 br.) | 90 | 30 | 302 | - | - | - | - | - | Aurora + NERSC m2464 (2/30 br.) | - |
 | FEKRAO | published | 65 | 30 | 302 | 228 | 75.5 | energy_drop 9, jump 3, energy_cap 1 | 61 | 5 (-3.29) | Aurora | 2026-10-27 |
-| FEKRES | in progress (19/30 br.) | 67 | 30 | 302 | - | - | - | - | - | Aurora | - |
+| FEKRES | published | 67 | 30 | 302 | 296 | 98.0 | jump 1, energy_drop 1 | 4 | - | Aurora | 2026-11-01 |
 | FEKTAQ | published | 29 | 30 | 302 | 291 | 96.4 | shell 2, jump 2 | 7 | - | Aurora | 2026-10-24 |
 | FEYNUT | published | 93 | 30 | 302 | 286 | 94.7 | new_contact 2, jump 2 | 12 | - | Aurora | 2026-10-23 |
 | FILGEN | published | 43 | 30 | 302 | 298 | 98.7 | shell 1, energy_cap 1 | 2 | - | Aurora | 2026-10-24 |
-| FIQTII | in progress (11/30 br.) | 53 | 30 | 302 | - | - | - | - | - | Aurora | - |
+| FIQTII | published | 53 | 30 | 302 | 301 | 99.7 | jump 1 | 0 | - | Aurora | 2026-11-01 |
 | FIYQIP | published | 69 | 26 | 258 | 248 | 96.1 | energy_cap 2, new_contact 2 | 6 | - | Aurora | 2026-10-24 |
-| FOQGOH | in progress (28/30 br.) | 71 | 30 | 302 | - | - | - | - | - | Aurora | - |
+| FOQGOH | published | 71 | 30 | 302 | 255 | 84.4 | jump 6 | 41 | - | Aurora | 2026-11-01 |
 | FUXMAM | published | 73 | 30 | 302 | 288 | 95.4 | jump 4 | 10 | - | Aurora + NERSC m2464 (26/30 br.) | 2026-10-31 |
 | FUXMEQ | published | 99 | 30 | 302 | 293 | 97.0 | jump 2, shell 1, energy_cap 1 | 5 | - | Aurora | 2026-10-31 |
 | GADFUO | published | 51 | 30 | 302 | 294 | 97.4 | shell 2 | 6 | - | Aurora | 2026-10-23 |
@@ -349,10 +358,10 @@ All 338 complexes, by name. *Points*: validated points (published) or planned po
 | GALGEG | published | 49 | 30 | 302 | 298 | 98.7 | shell 1 | 3 | - | Aurora | 2026-10-19 |
 | GALGIK | published | 47 | 30 | 302 | 274 | 90.7 | jump 6, shell 1 | 21 | - | Aurora | 2026-10-24 |
 | GECLUZ | **not exported** | 73 | 29 | 291 | 0 | 0.0 | branch starts: new_contact 29 | - | - | Aurora | 2026-10-24 |
-| GEQCUE | in progress (23/30 br.) | 47 | 30 | 302 | - | - | - | - | - | Aurora | - |
+| GEQCUE | published | 47 | 30 | 302 | 239 | 79.1 | jump 7, energy_drop 2, shell 1 | 53 | 2 (-14.839) | Aurora | 2026-11-01 |
 | GEXZOY | published | 81 | 30 | 302 | 276 | 91.4 | jump 7 | 19 | - | Aurora | 2026-10-25 |
 | GILZEG | published | 49 | 30 | 302 | 299 | 99.0 | shell 1, new_contact 1 | 1 | - | Aurora | 2026-10-23 |
-| GIXSUE | in progress (19/30 br.) | 65 | 30 | 302 | - | - | - | - | - | Aurora | - |
+| GIXSUE | in progress (27/30 br.) | 65 | 30 | 302 | - | - | - | - | - | Aurora + NERSC m2464 (3/30 br.) | - |
 | GIXTAL | published | 57 | 30 | 302 | 153 | 50.7 | jump 19, energy_drop 3 | 127 | 1 (-4.886) | Aurora | 2026-10-28 |
 | GOLCIU01 | published | 43 | 30 | 302 | 295 | 97.7 | shell 2, jump 2 | 3 | - | Aurora | 2026-10-25 |
 | GOWRAL | published | 53 | 30 | 302 | 240 | 79.5 | jump 10 | 52 | - | Aurora | 2026-10-25 |
@@ -363,7 +372,7 @@ All 338 complexes, by name. *Points*: validated points (published) or planned po
 | GUFHEU | published | 105 | 30 | 302 | 284 | 94.0 | jump 4 | 14 | - | Aurora + NERSC m5268 (30/30 br.) | 2026-10-30 |
 | GUWXUR | published | 75 | 30 | 302 | 298 | 98.7 | jump 2 | 2 | - | Aurora | 2026-10-31 |
 | GUYHEN | published | 49 | 30 | 302 | 204 | 67.5 | shell 9, new_contact 4, jump 2 | 82 | 9 (-18.665) | Aurora | 2026-10-21 |
-| HEFHOR | in progress (29/30 br.) | 87 | 30 | 302 | - | - | - | - | - | Aurora | - |
+| HEFHOR | published | 87 | 30 | 302 | 271 | 89.7 | jump 4, shell 3, new_contact 2 | 22 | - | Aurora | 2026-11-01 |
 | HEFHUX | published | 53 | 30 | 302 | 286 | 94.7 | shell 2, new_contact 2 | 12 | - | Aurora | 2026-10-23 |
 | HIJGEM | published | 13 | 30 | 302 | 298 | 98.7 | jump 1, shell 1 | 2 | - | Aurora | 2026-10-24 |
 | HOMQAC | published | 115 | 30 | 302 | 297 | 98.3 | shell 1, energy_cap 1 | 3 | - | Aurora + NERSC m5268 (30/30 br.) | 2026-10-27 |
@@ -376,7 +385,7 @@ All 338 complexes, by name. *Points*: validated points (published) or planned po
 | HULBIZ | published | 57 | 30 | 302 | 243 | 80.5 | shell 10, jump 1, energy_cap 1 | 47 | 10 (-6.333) | Aurora | 2026-10-24 |
 | IBEQUB | published | 79 | 30 | 302 | 296 | 98.0 | shell 2, jump 1 | 3 | - | Aurora | 2026-10-31 |
 | ICATOW | published | 77 | 30 | 302 | 272 | 90.1 | new_contact 7 | 23 | - | Aurora | 2026-10-25 |
-| ICATUC | in progress (29/30 br.) | 85 | 30 | 302 | - | - | - | - | - | Aurora | - |
+| ICATUC | published | 85 | 30 | 302 | 196 | 64.9 | new_contact 11, jump 3 | 92 | - | Aurora | 2026-11-01 |
 | ICAVAK | published | 101 | 30 | 302 | 291 | 96.4 | shell 2, jump 2, energy_drop 1 | 6 | 1 (-2.533) | Aurora + NERSC m5268 (30/30 br.) | 2026-10-27 |
 | ICAVEO | published | 81 | 30 | 302 | 300 | 99.3 | shell 2 | 0 | - | Aurora | 2026-10-31 |
 | ICEHOP | published | 73 | 30 | 302 | 293 | 97.0 | jump 1, shell 1, energy_cap 1 | 6 | - | Aurora | 2026-10-24 |
@@ -389,15 +398,15 @@ All 338 complexes, by name. *Points*: validated points (published) or planned po
 | IGURAD | published | 81 | 30 | 302 | 296 | 98.0 | jump 1, shell 1 | 4 | - | Aurora | 2026-10-30 |
 | IGURIL | published | 78 | 30 | 302 | 288 | 95.4 | jump 4, energy_drop 1 | 9 | - | Aurora | 2026-10-31 |
 | IQETOP | published | 39 | 30 | 302 | 268 | 88.7 | jump 5, energy_drop 2, shell 1 | 26 | - | Aurora | 2026-10-24 |
-| IRETIJ | in progress (29/30 br.) | 67 | 30 | 302 | - | - | - | - | - | Aurora | - |
+| IRETIJ | published | 67 | 30 | 302 | 283 | 93.7 | jump 4, shell 1 | 14 | - | Aurora | 2026-11-01 |
 | JADMAG | published | 65 | 30 | 302 | 257 | 85.1 | jump 5, shell 3, new_contact 2 | 35 | - | Aurora | 2026-10-24 |
 | JADMEK | published | 71 | 30 | 302 | 290 | 96.0 | shell 2, new_contact 2 | 8 | - | Aurora | 2026-10-23 |
 | JAMJAJ | published | 47 | 30 | 302 | 298 | 98.7 | shell 2 | 2 | - | Aurora | 2026-10-24 |
 | JAXFEW | published | 81 | 30 | 302 | 289 | 95.7 | shell 1, energy_drop 1, jump 1 | 10 | - | Aurora | 2026-10-31 |
 | JEYTAI | published | 33 | 30 | 302 | 296 | 98.0 | shell 2 | 4 | - | Aurora | 2026-10-23 |
 | JOCZEG | published | 81 | 30 | 302 | 296 | 98.0 | jump 1, shell 1, energy_cap 1 | 3 | - | Aurora + NERSC m2464 (30/30 br.) | 2026-10-31 |
-| JUQXUO | in progress (29/30 br.) | 77 | 30 | 302 | - | - | - | - | - | Aurora + NERSC m2464 (27/30 br.) | - |
-| KAFFON | in progress (21/30 br.) | 49 | 30 | 302 | - | - | - | - | - | Aurora | - |
+| JUQXUO | published | 77 | 30 | 302 | 279 | 92.4 | jump 4, energy_drop 2 | 17 | - | Aurora + NERSC m2464 (27/30 br.) | 2026-11-01 |
+| KAFFON | published | 49 | 30 | 302 | 295 | 97.7 | jump 2 | 5 | - | Aurora | 2026-11-01 |
 | KAKVAT | published | 45 | 30 | 302 | 221 | 73.2 | jump 15, shell 1 | 65 | - | Aurora | 2026-10-25 |
 | KAKVEX | published | 53 | 30 | 302 | 286 | 94.7 | jump 4 | 12 | - | Aurora | 2026-10-24 |
 | KAKVIB01 | published | 49 | 30 | 302 | 204 | 67.5 | jump 13, shell 1, energy_cap 1 | 83 | - | Aurora | 2026-10-25 |
@@ -418,26 +427,26 @@ All 338 complexes, by name. *Points*: validated points (published) or planned po
 | KUBVEJ | **not exported** | 53 | 30 | 302 | 0 | 0.0 | branch starts: new_contact 30 | - | - | Aurora | 2026-10-27 |
 | KUBVIN | published | 49 | 30 | 302 | 264 | 87.4 | new_contact 8, shell 1, energy_cap 1 | 28 | - | Aurora | 2026-10-25 |
 | KUNDIH | published | 67 | 30 | 302 | 297 | 98.3 | shell 2 | 3 | - | Aurora | 2026-10-25 |
-| LAJGIM | in progress (27/30 br.) | 89 | 30 | 302 | - | - | - | - | - | Aurora + NERSC m2464 (30/30 br.) | - |
-| LAPYAD | in progress (28/30 br.) | 71 | 30 | 302 | - | - | - | - | - | Aurora | - |
+| LAJGIM | published | 89 | 30 | 302 | 302 | 100.0 | - | 0 | - | Aurora + NERSC m2464 (30/30 br.) | 2026-11-01 |
+| LAPYAD | published | 71 | 30 | 302 | 214 | 70.9 | energy_drop 9, jump 6 | 73 | 7 (-12.177) | Aurora | 2026-11-01 |
 | LAPYOR | published | 75 | 30 | 302 | 286 | 94.7 | jump 5 | 11 | - | Aurora | 2026-10-24 |
 | LAQBIP | published | 51 | 30 | 302 | 302 | 100.0 | - | 0 | - | Aurora | 2026-10-21 |
 | LEMVAB | published | 37 | 30 | 302 | 294 | 97.4 | jump 2 | 6 | - | Aurora | 2026-10-24 |
 | LEMVEF | published | 49 | 30 | 302 | 292 | 96.7 | jump 2 | 8 | - | Aurora | 2026-10-24 |
 | LEQHAU | published | 17 | 30 | 302 | 300 | 99.3 | shell 2 | 0 | - | Aurora | 2026-10-23 |
 | LIVNAG | **not exported** | 49 | 30 | 302 | 0 | 0.0 | branch starts: new_contact 30 | - | - | Aurora | 2026-10-25 |
-| LIYDEE | in progress (28/30 br.) | 79 | 30 | 302 | - | - | - | - | - | Aurora | - |
+| LIYDEE | published | 79 | 30 | 302 | 209 | 69.2 | jump 13, energy_drop 3 | 77 | - | Aurora | 2026-11-01 |
 | LIYFEG01 | published | 59 | 30 | 302 | 281 | 93.0 | jump 4, shell 2 | 15 | - | Aurora | 2026-10-24 |
-| LOHZAM | in progress (20/30 br.) | 85 | 30 | 302 | - | - | - | - | - | Aurora | - |
+| LOHZAM | in progress (27/30 br.) | 85 | 30 | 302 | - | - | - | - | - | Aurora + NERSC m2464 (3/30 br.) | - |
 | LUKREP | published | 53 | 30 | 302 | 291 | 96.4 | shell 2, jump 1 | 8 | - | Aurora | 2026-10-23 |
 | LUVFUD | published | 60 | 30 | 302 | 301 | 99.7 | shell 1 | 0 | - | Aurora | 2026-10-25 |
 | LUZTEF | published | 81 | 30 | 302 | 298 | 98.7 | shell 1, jump 1 | 2 | - | Aurora | 2026-10-26 |
 | LUZTUV | published | 81 | 30 | 302 | 254 | 84.1 | jump 7 | 41 | - | Aurora | 2026-10-31 |
-| LUZVAD | in progress (18/30 br.) | 80 | 30 | 302 | - | - | - | - | - | Aurora | - |
+| LUZVAD | published | 80 | 30 | 302 | 299 | 99.0 | jump 2 | 1 | - | Aurora | 2026-11-01 |
 | MAZBZN10 | published | 49 | 30 | 302 | 288 | 95.4 | shell 4 | 10 | - | Aurora | 2026-10-27 |
 | MEPWOT | published | 38 | 28 | 280 | 248 | 88.6 | jump 5, shell 1 | 26 | - | Aurora | 2026-10-24 |
 | MIYPAM | published | 89 | 30 | 302 | 245 | 81.1 | jump 13 | 44 | - | Aurora | 2026-10-23 |
-| MIYVEW | in progress (13/30 br.) | 69 | 30 | 302 | - | - | - | - | - | Aurora | - |
+| MIYVEW | published | 69 | 30 | 302 | 276 | 91.4 | jump 4 | 22 | - | Aurora | 2026-11-01 |
 | MIYVIA | published | 63 | 30 | 302 | 294 | 97.4 | shell 2 | 6 | - | Aurora | 2026-10-24 |
 | MIYVOG | published | 59 | 30 | 302 | 294 | 97.4 | shell 2 | 6 | - | Aurora | 2026-10-24 |
 | MIYVUM | published | 67 | 30 | 302 | 294 | 97.4 | shell 2 | 6 | - | Aurora | 2026-10-24 |
@@ -456,7 +465,7 @@ All 338 complexes, by name. *Points*: validated points (published) or planned po
 | NIGTEC | published | 96 | 30 | 302 | 302 | 100.0 | - | 0 | - | Aurora | 2026-10-21 |
 | NIHTEG | published | 45 | 30 | 302 | 280 | 92.7 | jump 5, shell 2 | 15 | - | Aurora | 2026-10-25 |
 | NIHTIK | published | 51 | 30 | 302 | 294 | 97.4 | shell 2 | 6 | - | Aurora | 2026-10-25 |
-| NIJVUY | in progress (26/30 br.) | 75 | 30 | 302 | - | - | - | - | - | Aurora | - |
+| NIJVUY | published | 75 | 30 | 302 | 294 | 97.4 | shell 2 | 6 | - | Aurora | 2026-11-01 |
 | NITZEW | published | 35 | 30 | 302 | 292 | 96.7 | shell 2, jump 1 | 7 | - | Aurora | 2026-10-24 |
 | NOCNEY | published | 65 | 30 | 302 | 270 | 89.4 | new_contact 7 | 25 | - | Aurora | 2026-10-24 |
 | NONKUX | published | 93 | 30 | 302 | 285 | 94.4 | shell 2, new_contact 2, jump 1 | 12 | - | Aurora | 2026-10-31 |
@@ -473,9 +482,9 @@ All 338 complexes, by name. *Points*: validated points (published) or planned po
 | OJELIY | published | 91 | 30 | 302 | 254 | 84.1 | jump 10 | 38 | - | Aurora | 2026-10-31 |
 | OJELOE | published | 109 | 30 | 302 | 229 | 75.8 | jump 10, energy_drop 3 | 60 | 2 (-2.511) | Aurora + NERSC m5268 (30/30 br.) | 2026-10-28 |
 | OKAROJ | published | 47 | 30 | 302 | 294 | 97.4 | shell 2 | 6 | - | Aurora | 2026-10-23 |
-| OKIWIQ | in progress (23/30 br.) | 59 | 30 | 302 | - | - | - | - | - | Aurora | - |
+| OKIWIQ | published | 59 | 30 | 302 | 292 | 96.7 | shell 2, jump 1 | 7 | - | Aurora | 2026-11-01 |
 | OLIPEG | published | 57 | 30 | 302 | 189 | 62.6 | jump 21 | 92 | - | Aurora | 2026-10-25 |
-| OVAPIL | in progress (29/30 br.) | 75 | 30 | 302 | - | - | - | - | - | Aurora | - |
+| OVAPIL | published | 75 | 30 | 302 | 286 | 94.7 | jump 6 | 10 | - | Aurora | 2026-11-01 |
 | OVAQIM | published | 81 | 30 | 302 | 267 | 88.4 | jump 5 | 30 | - | Aurora | 2026-10-30 |
 | OYASOZ | published | 89 | 30 | 302 | 287 | 95.0 | jump 2, shell 1 | 12 | - | Aurora | 2026-10-30 |
 | OYASUF | published | 87 | 30 | 302 | 295 | 97.7 | shell 2 | 5 | - | Aurora | 2026-10-31 |
@@ -483,24 +492,24 @@ All 338 complexes, by name. *Points*: validated points (published) or planned po
 | PAGFEM | published | 33 | 30 | 302 | 295 | 97.7 | jump 1, shell 1 | 5 | - | Aurora | 2026-10-24 |
 | PAGJOA | published | 77 | 30 | 302 | 253 | 83.8 | shell 9, jump 4 | 36 | - | Aurora | 2026-10-31 |
 | PEQSEK | published | 70 | 30 | 302 | 287 | 95.0 | shell 3, new_contact 3 | 9 | - | Aurora | 2026-10-24 |
-| PMTCZN10 | in progress (29/30 br.) | 73 | 30 | 302 | - | - | - | - | - | Aurora | - |
+| PMTCZN10 | published | 73 | 30 | 302 | 297 | 98.3 | jump 3 | 2 | - | Aurora | 2026-11-01 |
 | POHTOV | published | 43 | 30 | 302 | 290 | 96.0 | jump 2, shell 1 | 9 | - | Aurora | 2026-10-24 |
-| POZDIR | in progress (28/30 br.) | 64 | 30 | 302 | - | - | - | - | - | Aurora | - |
+| POZDIR | published | 64 | 30 | 302 | 295 | 97.7 | shell 2, new_contact 1 | 4 | - | Aurora | 2026-11-01 |
 | PTOLZN01 | published | 53 | 30 | 302 | 171 | 56.6 | jump 17 | 114 | - | Aurora | 2026-10-26 |
 | PUMRAQ | published | 57 | 30 | 302 | 285 | 94.4 | new_contact 5, shell 1 | 11 | - | Aurora | 2026-10-24 |
-| PUNTEZ | in progress (16/30 br.) | 69 | 30 | 302 | - | - | - | - | - | Aurora | - |
+| PUNTEZ | published | 69 | 30 | 302 | 299 | 99.0 | jump 1, shell 1 | 1 | - | Aurora | 2026-11-01 |
 | PUZKUQ | published | 33 | 30 | 302 | 289 | 95.7 | shell 2, jump 1 | 10 | - | Aurora | 2026-10-24 |
 | QADDEF | published | 85 | 30 | 302 | 281 | 93.0 | jump 5, shell 2, new_contact 1 | 12 | 1 (-6.959) | Aurora | 2026-10-31 |
 | QAGWII | published | 73 | 30 | 302 | 284 | 94.0 | shell 2, jump 2 | 14 | - | Aurora | 2026-10-25 |
 | QASRIL | published | 53 | 30 | 302 | 263 | 87.1 | jump 7 | 32 | - | Aurora | 2026-10-24 |
 | QASROR | published | 81 | 30 | 302 | 281 | 93.0 | jump 4 | 17 | - | Aurora | 2026-10-31 |
 | QAWBAS | published | 79 | 30 | 302 | 302 | 100.0 | - | 0 | - | Aurora | 2026-10-30 |
-| QEJKEV | in progress (21/30 br.) | 75 | 30 | 302 | - | - | - | - | - | Aurora | - |
+| QEJKEV | published | 75 | 30 | 302 | 295 | 97.7 | shell 2, jump 1 | 4 | - | Aurora | 2026-11-01 |
 | QELPED | published | 49 | 30 | 302 | 282 | 93.4 | jump 4, shell 2 | 14 | - | Aurora | 2026-10-24 |
 | QEMXUE | published | 89 | 30 | 302 | 236 | 78.1 | jump 14 | 52 | - | Aurora | 2026-10-31 |
 | QIBVAZ | published | 45 | 30 | 302 | 300 | 99.3 | shell 1 | 1 | - | Aurora | 2026-10-25 |
-| QISJUA | in progress (26/30 br.) | 91 | 30 | 302 | - | - | - | - | - | Aurora | - |
-| QISKEL | in progress (25/30 br.) | 89 | 30 | 302 | - | - | - | - | - | Aurora | - |
+| QISJUA | in progress (29/30 br.) | 91 | 30 | 302 | - | - | - | - | - | Aurora + NERSC m2464 (1/30 br.) | - |
+| QISKEL | published | 89 | 30 | 302 | 227 | 75.2 | jump 14, shell 1 | 60 | - | Aurora | 2026-11-01 |
 | QOBKAW | published | 37 | 30 | 302 | 291 | 96.4 | jump 2, shell 1 | 8 | - | Aurora | 2026-10-24 |
 | QOQYAW | published | 71 | 30 | 302 | 289 | 95.7 | jump 2, shell 1, new_contact 1 | 9 | - | Aurora | 2026-10-25 |
 | QOQYEA | published | 50 | 30 | 302 | 292 | 96.7 | jump 2, shell 1, new_contact 1 | 6 | - | Aurora | 2026-10-19 |
@@ -509,7 +518,7 @@ All 338 complexes, by name. *Points*: validated points (published) or planned po
 | QUQGEO | published | 31 | 30 | 302 | 295 | 97.7 | jump 3 | 4 | - | Aurora | 2026-10-24 |
 | RADPOB | published | 81 | 26 | 258 | 254 | 98.4 | energy_cap 4 | 0 | - | Aurora | 2026-10-24 |
 | RAGDUY | published | 49 | 30 | 302 | 267 | 88.4 | jump 6 | 29 | - | Aurora | 2026-10-25 |
-| RAGFAG | in progress (24/30 br.) | 67 | 30 | 302 | - | - | - | - | - | Aurora | - |
+| RAGFAG | published | 67 | 30 | 302 | 275 | 91.1 | jump 7 | 20 | - | Aurora | 2026-11-01 |
 | RAJHOA | published | 57 | 40 | 405 | 317 | 78.3 | shell 17 | 71 | - | Aurora | 2026-10-24 |
 | RATHOL | published | 55 | 30 | 302 | 294 | 97.4 | jump 2 | 6 | - | Aurora | 2026-10-21 |
 | RAXDAV | published | 37 | 30 | 302 | 292 | 96.7 | jump 3 | 7 | - | Aurora | 2026-10-24 |
@@ -518,11 +527,11 @@ All 338 complexes, by name. *Points*: validated points (published) or planned po
 | RIBMEV | published | 59 | 30 | 302 | 205 | 67.9 | shell 9, ref_mismatch 4, jump 1 | 83 | 8 (-6.282) | Aurora | 2026-10-25 |
 | RIBMIZ | published | 53 | 30 | 302 | 235 | 77.8 | shell 11 | 56 | 10 (-6.116) | Aurora | 2026-10-24 |
 | RUKJAL | published | 37 | 30 | 302 | 294 | 97.4 | jump 2 | 6 | - | Aurora | 2026-10-24 |
-| SEJZOW | in progress (21/30 br.) | 85 | 30 | 302 | - | - | - | - | - | Aurora + NERSC m2464 (26/30 br.) | - |
+| SEJZOW | published | 85 | 30 | 302 | 292 | 96.7 | jump 3 | 7 | - | Aurora + NERSC m2464 (26/30 br.) | 2026-11-01 |
 | SENFOG | published | 59 | 30 | 302 | 296 | 98.0 | shell 3, new_contact 3 | 0 | - | Aurora | 2026-10-23 |
 | SEWZUS | published | 57 | 30 | 302 | 261 | 86.4 | jump 7 | 34 | - | Aurora | 2026-10-23 |
 | SEYCIL | published | 61 | 30 | 302 | 281 | 93.0 | jump 3, shell 2 | 16 | - | Aurora | 2026-10-23 |
-| SIHXIR | in progress (29/30 br.) | 75 | 30 | 302 | - | - | - | - | - | Aurora | - |
+| SIHXIR | published | 75 | 30 | 302 | 151 | 50.0 | energy_drop 11, jump 7, energy_cap 1 | 132 | 10 (-2.643) | Aurora | 2026-11-01 |
 | SIJKUR | published | 47 | 30 | 302 | 293 | 97.0 | shell 2 | 7 | - | Aurora | 2026-10-24 |
 | SOCSAE | published | 51 | 30 | 302 | 299 | 99.0 | energy_drop 2 | 1 | - | Aurora | 2026-10-20 |
 | SONROE | published | 125 | 30 | 302 | 289 | 95.7 | shell 3, new_contact 3, jump 1 | 6 | - | Aurora + NERSC m5268 (29/30 br.) | 2026-10-28 |
@@ -535,34 +544,34 @@ All 338 complexes, by name. *Points*: validated points (published) or planned po
 | TARNIJ | published | 53 | 30 | 302 | 281 | 93.0 | jump 4, energy_drop 1 | 16 | 1 (-2.476) | Aurora | 2026-10-24 |
 | TAVZEW | published | 75 | 48 | 486 | 484 | 99.6 | shell 2 | 0 | - | Aurora | 2026-10-24 |
 | TBZZNP01 | published | 51 | 30 | 302 | 226 | 74.8 | jump 14 | 62 | - | Aurora | 2026-10-21 |
-| TELRIN | in progress (25/30 br.) | 69 | 30 | 302 | - | - | - | - | - | Aurora | - |
-| TELROT | in progress (16/30 br.) | 71 | 30 | 302 | - | - | - | - | - | Aurora | - |
-| TELRUZ | in progress (18/30 br.) | 77 | 30 | 302 | - | - | - | - | - | Aurora + NERSC m2464 (26/30 br.) | - |
-| TELSAG | in progress (17/30 br.) | 73 | 30 | 302 | - | - | - | - | - | Aurora | - |
-| TEYSIA | in progress (12/30 br.) | 67 | 30 | 302 | - | - | - | - | - | Aurora | - |
-| TEYSOG | in progress (14/30 br.) | 73 | 30 | 302 | - | - | - | - | - | Aurora + NERSC m2464 (25/30 br.) | - |
+| TELRIN | published | 69 | 30 | 302 | 200 | 66.2 | energy_drop 10, jump 5, energy_cap 1 | 86 | 10 (-8.018) | Aurora | 2026-11-01 |
+| TELROT | published | 71 | 30 | 302 | 206 | 68.2 | jump 11, energy_drop 5, energy_cap 1 | 79 | 2 (-2.534) | Aurora | 2026-11-01 |
+| TELRUZ | published | 77 | 30 | 302 | 161 | 53.3 | jump 18, shell 1 | 122 | - | Aurora + NERSC m2464 (26/30 br.) | 2026-11-01 |
+| TELSAG | published | 73 | 30 | 302 | 201 | 66.6 | jump 20 | 81 | - | Aurora | 2026-11-01 |
+| TEYSIA | published | 67 | 30 | 302 | 217 | 71.9 | jump 15, shell 1 | 69 | - | Aurora | 2026-11-01 |
+| TEYSOG | published | 73 | 30 | 302 | 287 | 95.0 | jump 4, energy_drop 1, shell 1 | 8 | 1 (-27.45) | Aurora + NERSC m2464 (25/30 br.) | 2026-11-01 |
 | TIFNOO | published | 55 | 30 | 302 | 241 | 79.8 | shell 8, new_contact 5, energy_cap 1 | 47 | 8 (-44.024) | Aurora | 2026-10-27 |
-| TIFNUU | in progress (28/30 br.) | 65 | 30 | 302 | - | - | - | - | - | Aurora + NERSC m2464 (27/30 br.) | - |
+| TIFNUU | published | 65 | 30 | 302 | 260 | 86.1 | jump 6, energy_drop 4 | 32 | 3 (-2.298) | Aurora + NERSC m2464 (27/30 br.) | 2026-11-01 |
 | TIQLEK | published | 83 | 30 | 302 | 285 | 94.4 | jump 4 | 13 | - | Aurora | 2026-10-30 |
 | TIQLOU | published | 69 | 30 | 302 | 302 | 100.0 | - | 0 | - | Aurora | 2026-10-23 |
 | TIXQOH | published | 92 | 30 | 302 | 302 | 100.0 | - | 0 | - | Aurora | 2026-10-22 |
 | TIXREY | published | 48 | 30 | 302 | 302 | 100.0 | - | 0 | - | Aurora | 2026-10-23 |
-| UCOLIH | in progress (18/30 br.) | 69 | 30 | 302 | - | - | - | - | - | Aurora | - |
-| UCOLON | in progress (7/30 br.) | 82 | 30 | 302 | - | - | - | - | - | Aurora | - |
+| UCOLIH | published | 69 | 30 | 302 | 204 | 67.5 | jump 13 | 85 | - | Aurora | 2026-11-01 |
+| UCOLON | in progress (26/30 br.) | 82 | 30 | 302 | - | - | - | - | - | Aurora + NERSC m2464 (4/30 br.) | - |
 | UDOCUL | published | 70 | 30 | 302 | 300 | 99.3 | shell 1 | 1 | - | Aurora | 2026-10-26 |
 | UDODOG | published | 90 | 30 | 302 | 234 | 77.5 | new_contact 9, jump 1 | 58 | - | Aurora | 2026-10-27 |
-| UDODUM | in progress (26/30 br.) | 75 | 30 | 302 | - | - | - | - | - | Aurora | - |
-| UDOFAU | in progress (29/30 br.) | 74 | 30 | 302 | - | - | - | - | - | Aurora | - |
+| UDODUM | published | 75 | 30 | 302 | 283 | 93.7 | new_contact 8 | 11 | - | Aurora | 2026-11-01 |
+| UDOFAU | published | 74 | 30 | 302 | 299 | 99.0 | jump 1 | 2 | - | Aurora | 2026-11-01 |
 | UFUROC | published | 29 | 30 | 302 | 181 | 59.9 | energy_drop 16 | 105 | 14 (-3.621) | Aurora | 2026-10-24 |
 | UMEVOY | published | 39 | 30 | 302 | 291 | 96.4 | shell 3 | 8 | - | Aurora | 2026-10-24 |
 | UQOWIH | published | 65 | 30 | 302 | 287 | 95.0 | jump 3, shell 2 | 10 | - | Aurora | 2026-10-24 |
 | UTAXAQ | published | 81 | 30 | 302 | 242 | 80.1 | jump 12 | 48 | - | Aurora | 2026-10-30 |
-| UWAVOF | in progress (5/30 br.) | 71 | 30 | 302 | - | - | - | - | - | Aurora + NERSC m2464 (26/30 br.) | - |
-| UYORAE | in progress (7/30 br.) | 93 | 30 | 302 | - | - | - | - | - | Aurora + NERSC m2464 (30/30 br.) | - |
+| UWAVOF | published | 71 | 30 | 302 | 294 | 97.4 | shell 2 | 6 | - | Aurora + NERSC m2464 (26/30 br.) | 2026-11-01 |
+| UYORAE | in progress (26/30 br.) | 93 | 30 | 302 | - | - | - | - | - | Aurora + NERSC m2464 (30/30 br.) | - |
 | VAGJES | published | 35 | 30 | 302 | 296 | 98.0 | shell 2 | 4 | - | Aurora | 2026-10-24 |
 | VAGJIW | published | 55 | 30 | 302 | 292 | 96.7 | shell 2 | 8 | - | Aurora | 2026-10-25 |
-| VATSAM | in progress (29/30 br.) | 67 | 30 | 302 | - | - | - | - | - | Aurora | - |
-| VATSEQ | in progress (28/30 br.) | 81 | 30 | 302 | - | - | - | - | - | Aurora | - |
+| VATSAM | published | 67 | 30 | 302 | 294 | 97.4 | shell 2 | 6 | - | Aurora | 2026-11-01 |
+| VATSEQ | published | 81 | 30 | 302 | 286 | 94.7 | jump 3, shell 2 | 11 | - | Aurora | 2026-11-01 |
 | VEKDUL | published | 65 | 30 | 302 | 212 | 70.2 | jump 10, energy_drop 1 | 79 | - | Aurora | 2026-10-25 |
 | VEKFAT | published | 74 | 30 | 302 | 298 | 98.7 | jump 2, shell 1 | 1 | - | Aurora | 2026-10-27 |
 | VEPXOD | published | 49 | 30 | 302 | 293 | 97.0 | shell 2 | 7 | - | Aurora | 2026-10-24 |
@@ -573,12 +582,12 @@ All 338 complexes, by name. *Points*: validated points (published) or planned po
 | VUHDIL | published | 89 | 30 | 302 | 294 | 97.4 | jump 3 | 5 | - | Aurora | 2026-10-25 |
 | VUVVAM | published | 55 | 30 | 302 | 254 | 84.1 | jump 8, shell 2 | 38 | - | Aurora | 2026-10-21 |
 | WACPAS | published | 61 | 30 | 302 | 278 | 92.1 | jump 3, shell 1, energy_cap 1 | 19 | - | Aurora | 2026-10-25 |
-| WAJJIB | in progress (28/30 br.) | 93 | 30 | 302 | - | - | - | - | - | Aurora | - |
+| WAJJIB | published | 93 | 30 | 302 | 182 | 60.3 | jump 16 | 104 | - | Aurora | 2026-11-01 |
 | WAJNAW | published | 64 | 30 | 302 | 301 | 99.7 | shell 1 | 0 | - | Aurora | 2026-10-31 |
 | WAJNEA | published | 65 | 30 | 302 | 297 | 98.3 | shell 1, jump 1 | 3 | - | Aurora | 2026-10-24 |
 | WEDVEG | published | 51 | 30 | 302 | 293 | 97.0 | energy_drop 1, jump 1 | 7 | - | Aurora | 2026-10-23 |
-| WEDVIK | in progress (29/30 br.) | 49 | 30 | 302 | - | - | - | - | - | Aurora | - |
-| WEQZAT01 | in progress (16/30 br.) | 48 | 30 | 302 | - | - | - | - | - | Aurora + NERSC m2464 (26/30 br.) | - |
+| WEDVIK | published | 49 | 30 | 302 | 275 | 91.1 | new_contact 2, shell 2, jump 1 | 20 | 2 (-29.293) | Aurora | 2026-11-01 |
+| WEQZAT01 | published | 48 | 30 | 302 | 290 | 96.0 | jump 3, shell 1 | 8 | - | Aurora + NERSC m2464 (26/30 br.) | 2026-11-01 |
 | WIGBIX | published | 121 | 30 | 302 | 216 | 71.5 | jump 13, energy_drop 1 | 72 | 1 (-2.309) | Aurora + NERSC m5268 (30/30 br.) | 2026-10-29 |
 | WITLAM | published | 43 | 30 | 302 | 291 | 96.4 | jump 2, shell 1, energy_cap 1 | 7 | - | Aurora | 2026-10-25 |
 | WONYUW | published | 33 | 28 | 280 | 254 | 90.7 | jump 4, shell 1, energy_cap 1 | 20 | - | Aurora | 2026-10-25 |
@@ -592,25 +601,25 @@ All 338 complexes, by name. *Points*: validated points (published) or planned po
 | XIGZUI | published | 69 | 30 | 302 | 223 | 73.8 | jump 12, shell 2 | 65 | - | Aurora | 2026-10-25 |
 | XILGIJ | published | 49 | 30 | 302 | 290 | 96.0 | jump 3, energy_drop 1 | 8 | - | Aurora | 2026-10-24 |
 | XIXTEG | published | 59 | 30 | 302 | 195 | 64.6 | energy_drop 11, jump 8 | 88 | 11 (-6.57) | Aurora | 2026-10-25 |
-| XIYHET | in progress (28/30 br.) | 73 | 30 | 302 | - | - | - | - | - | Aurora | - |
-| XIZPOL | in progress (28/30 br.) | 82 | 30 | 302 | - | - | - | - | - | Aurora | - |
+| XIYHET | published | 73 | 30 | 302 | 179 | 59.3 | jump 18 | 105 | - | Aurora | 2026-11-01 |
+| XIZPOL | published | 82 | 30 | 302 | 275 | 91.1 | jump 4, shell 1, new_contact 1 | 21 | - | Aurora | 2026-11-01 |
 | XOGYUQ | published | 49 | 30 | 302 | 204 | 67.5 | jump 16, energy_drop 1 | 81 | - | Aurora | 2026-10-25 |
 | XOGZAX | published | 61 | 30 | 302 | 272 | 90.1 | jump 5 | 25 | - | Aurora | 2026-10-24 |
-| XUBBAX | in progress (18/30 br.) | 71 | 30 | 302 | - | - | - | - | - | Aurora | - |
+| XUBBAX | published | 71 | 30 | 302 | 279 | 92.4 | jump 4, shell 1 | 18 | - | Aurora | 2026-11-01 |
 | XUSTAG | published | 21 | 30 | 302 | 302 | 100.0 | - | 0 | - | Aurora | 2026-10-23 |
-| XUVWES | in progress (26/30 br.) | 65 | 30 | 302 | - | - | - | - | - | Aurora | - |
-| YACTOP | in progress (29/30 br.) | 81 | 30 | 302 | - | - | - | - | - | Aurora | - |
+| XUVWES | published | 65 | 30 | 302 | 284 | 94.0 | jump 5 | 13 | - | Aurora | 2026-11-01 |
+| YACTOP | published | 81 | 30 | 302 | 296 | 98.0 | jump 3 | 3 | - | Aurora | 2026-11-01 |
 | YACTUV | published | 78 | 30 | 302 | 243 | 80.5 | new_contact 8, jump 1, energy_drop 1 | 49 | - | Aurora | 2026-10-31 |
 | YOLCOR | published | 45 | 30 | 302 | 234 | 77.5 | jump 11, shell 1 | 56 | - | Aurora | 2026-10-24 |
 | YOTFEU | published | 17 | 30 | 302 | 299 | 99.0 | shell 2 | 1 | - | Aurora | 2026-10-24 |
 | ZACWOP | published | 45 | 30 | 302 | 294 | 97.4 | shell 2 | 6 | - | Aurora | 2026-10-24 |
 | ZAHCAM | published | 71 | 30 | 302 | 302 | 100.0 | - | 0 | - | Aurora | 2026-10-24 |
-| ZAZQUM | in progress (27/30 br.) | 49 | 30 | 302 | - | - | - | - | - | Aurora | - |
-| ZAZRIB | in progress (29/30 br.) | 49 | 30 | 302 | - | - | - | - | - | Aurora | - |
+| ZAZQUM | published | 49 | 30 | 302 | 222 | 73.5 | jump 11, energy_drop 2 | 67 | 2 (-7.364) | Aurora | 2026-11-01 |
+| ZAZRIB | published | 49 | 30 | 302 | 302 | 100.0 | - | 0 | - | Aurora | 2026-11-01 |
 | ZEFGAS | published | 51 | 30 | 302 | 294 | 97.4 | shell 2 | 6 | - | Aurora | 2026-10-19 |
 | ZIBCAR | published | 57 | 30 | 302 | 282 | 93.4 | jump 5, shell 1, new_contact 1 | 13 | - | Aurora | 2026-10-24 |
 | ZNDITZ11 | published | 59 | 30 | 302 | 178 | 58.9 | jump 10, energy_drop 10 | 104 | 8 (-2.658) | Aurora | 2026-10-24 |
-| ZUKRII | in progress (29/30 br.) | 75 | 30 | 302 | - | - | - | - | - | Aurora | - |
+| ZUKRII | published | 75 | 30 | 302 | 291 | 96.4 | shell 2, energy_drop 1 | 8 | 1 (-2.724) | Aurora | 2026-11-01 |
 
 ## Complexes that need Riti's attention
 
@@ -621,6 +630,8 @@ recommended actions are collected as numbered choices under *Decisions for Riti*
 
 | Complex | Atoms | Branches | Planned points | Reason recorded by publish.py | Finished | Site |
 |---|---|---|---|---|---|---|
+| EPOFUL | 69 | 30 | 302 | all 30 branches finished; branch starts fail validation (new_contact 30) | 2026-11-01 | Aurora |
+| FECYIZ | 85 | 30 | 302 | all 30 branches finished; branch starts fail validation (shell 30) | 2026-11-01 | Aurora |
 | GECLUZ | 73 | 29 | 291 | all 29 branches finished; branch starts fail validation (new_contact 29) | 2026-10-24 | Aurora |
 | KECGEI | 65 | 30 | 302 | all 30 branches finished; branch starts fail validation (new_contact 30) | 2026-10-25 | Aurora |
 | KERJOI | 41 | 29 | 291 | all 29 branches finished; branch starts fail validation (shell 29) | 2026-10-25 | Aurora |
@@ -701,14 +712,16 @@ is not a constraint. The real costs are wall time and a code change.
 | OGUGON | (a) redo with chlorides (~4-9 node-hours), or (b) as a labelled N4O2 solution model -> 238 points |
 | KERJOI | (c) drop, or (b) only if an explicit N-bound linkage isomer is wanted (285 points, 11 branches mislabelled) |
 | KUBVEJ | (c) drop, or (b) with a caveat (153 points) |
+| EPOFUL | (b), as for KECGEI and LIVNAG (O chelate closes, 4 -> 6) |
+| FECYIZ | (c) drop, or (b) only if an explicit N-bound linkage isomer is wanted, as for KERJOI |
 
-**Two more complexes will join this list.** EPOFUL and FECYIZ are still running. Their stage-2 shells, checked
-on 2026-10-31 at step 0 of finished branches, fail every branch start in the same way. **EPOFUL** has
+**Two more complexes joined this list on 2026-11-01, as predicted on 10-31.** EPOFUL and FECYIZ finished that
+day, and every branch start failed in the same way: `new_contact` for EPOFUL (30 of 30), `shell` for FECYIZ
+(30 of 30). Their stage-2 shells had been checked on 2026-10-31 at step 0 of finished branches. **EPOFUL** has
 non-donors O62/O63 at 2.404/2.399 A at stage 2, against 2.703 A in the crystal. This is the KECGEI/LIVNAG
 pattern: an O closes a chelate, 4 -> 6. **FECYIZ** has non-donor N10 at 1.98 A, while its donor S1 sits at
 3.702 A. This is the KERJOI pattern, an S -> N linkage switch at stage 2; its `bond_Zn-S1` branches stretch a
-non-bond. Both will be recorded `not_exported` when their last branches finish. The same options apply. See
-section (f).
+non-bond. Both are recorded `not_exported`. The same options apply. See section (f).
 
 ### (b) Lower minimum than the stage-2 geometry
 
@@ -717,12 +730,18 @@ Every published complex with at least one branch whose first failing point lies 
 | Complex | Branches below start | Lowest E_rel (kJ/mol) | Where | Kind | Pass |
 |---|---|---|---|---|---|
 | TIFNOO | 8 | -44.024 | angle_S3-Zn-N33 neg step 7 (shell) | structural 8 | 241/302 |
+| WEDVIK | 2 | -29.293 | bond_Zn-N6 pos step 7 (shell) | structural 2 | 275/302 |
+| TEYSOG | 1 | -27.45 | angle_S1-Zn-S2 pos step 9 (energy_drop) | energy_drop 1 | 287/302 |
 | XAJQAB | 1 | -21.073 | angle_N22-Zn-N69 neg step 9 (energy_drop) | energy_drop 1 | 277/302 |
 | GUYHEN | 9 | -18.665 | angle_S1-Zn-N11 neg step 4 (shell) | structural 9 | 204/302 |
 | NAMSOJ | 13 | -16.76 | angle_N3-Zn-S4 pos step 1 (energy_drop) | energy_drop 11, structural 2 | 212/302 |
 | HOZGAF | 15 | -16.099 | angle_N3-Zn-N5 neg step 1 (energy_drop) | energy_drop 15 | 137/302 |
+| GEQCUE | 2 | -14.839 | bond_Zn-S44 pos step 3 (energy_drop) | energy_drop 2 | 239/302 |
+| LAPYAD | 7 | -12.177 | bond_Zn-N39 pos step 4 (energy_drop) | energy_drop 7 | 214/302 |
 | ICUCIT | 1 | -10.556 | angle_N2-Zn-N3 pos step 8 (energy_drop) | energy_drop 1 | 272/302 |
 | KAKYAW | 1 | -10.288 | angle_N29-Zn-N50 pos step 3 (energy_drop) | energy_drop 1 | 231/302 |
+| TELRIN | 10 | -8.018 | angle_S2-Zn-N6 pos step 1 (energy_drop) | energy_drop 10 | 200/302 |
+| ZAZQUM | 2 | -7.364 | angle_S1-Zn-S3 neg step 7 (energy_drop) | energy_drop 2 | 222/302 |
 | QADDEF | 1 | -6.959 | angle_N5-Zn-N7 pos step 9 (energy_drop) | energy_drop 1 | 281/302 |
 | XIXTEG | 11 | -6.57 | tilt_Zn-S4-C54-N10 pos step 10 (energy_drop) | energy_drop 11 | 195/302 |
 | DIFBOK | 7 | -6.339 | angle_S3-Zn-N5 neg step 7 (shell) | structural 7 | 264/302 |
@@ -737,11 +756,15 @@ Every published complex with at least one branch whose first failing point lies 
 | UFUROC | 14 | -3.621 | angle_S1-Zn-S2 neg step 1 (energy_drop) | energy_drop 14 | 181/302 |
 | FEKRAO | 5 | -3.29 | tilt_Zn-S2-C32-C38 neg step 9 (energy_drop) | energy_drop 5 | 228/302 |
 | FEKQOB | 1 | -2.832 | angle_N1-Zn-S3 neg step 9 (energy_drop) | energy_drop 1 | 296/302 |
+| ZUKRII | 1 | -2.724 | angle_N21-Zn-N58 neg step 8 (energy_drop) | energy_drop 1 | 291/302 |
 | ZNDITZ11 | 8 | -2.658 | tilt_Zn-S2-C34-N8 neg step 6 (energy_drop) | energy_drop 8 | 178/302 |
+| SIHXIR | 10 | -2.643 | bond_Zn-N5 pos step 1 (energy_drop) | energy_drop 10 | 151/302 |
+| TELROT | 2 | -2.534 | tilt_Zn-S2-C29-C37 pos step 4 (energy_drop) | energy_drop 2 | 206/302 |
 | ICAVAK | 1 | -2.533 | angle_S1-Zn-N2 pos step 8 (energy_drop) | energy_drop 1 | 291/302 |
 | OJELOE | 2 | -2.511 | twist_S3-S4-N100-S5 neg step 7 (energy_drop) | energy_drop 2 | 229/302 |
 | TARNIJ | 1 | -2.476 | angle_S1-Zn-S2 neg step 8 (energy_drop) | energy_drop 1 | 281/302 |
 | WIGBIX | 1 | -2.309 | angle_S20-Zn-N39 pos step 7 (energy_drop) | energy_drop 1 | 216/302 |
+| TIFNUU | 3 | -2.298 | angle_S6-Zn-S7 pos step 5 (energy_drop) | energy_drop 3 | 260/302 |
 
 All branches below start (coordinate, branch, step of the first failure, E_rel kJ/mol, status):
 
@@ -749,6 +772,7 @@ All branches below start (coordinate, branch, step of the first failure, E_rel k
 - **FEKQOB**: angle_N1-Zn-S3 neg 9 -2.832 (energy_drop)
 - **FEKRAO**: angle_S1-Zn-N3 neg 2 -2.508 (energy_drop); angle_S1-Zn-N4 neg 3 -2.483 (energy_drop); angle_S2-Zn-N3 neg 2 -2.345 (energy_drop); tilt_Zn-S2-C32-C38 neg 9 -3.29 (energy_drop); twist_S1-S2-N3-N4 neg 3 -2.489 (energy_drop)
 - **GAKKUY**: angle_S2-Zn-S3 neg 9 -4.906 (energy_drop)
+- **GEQCUE**: bond_Zn-S44 pos 3 -14.839 (energy_drop); bond_Zn-S45 pos 5 -11.695 (energy_drop)
 - **GIXTAL**: angle_N6-Zn-N7 pos 6 -4.886 (energy_drop)
 - **GUYHEN**: angle_N11-Zn-N12 neg 3 -16.45 (shell); angle_S1-Zn-N11 neg 4 -18.665 (shell); angle_S1-Zn-N12 neg 4 -17.688 (shell); angle_S1-Zn-S2 pos 8 -11.041 (shell); angle_S2-Zn-N11 neg 4 -17.692 (shell); angle_S2-Zn-N12 neg 4 -18.662 (shell); bond_Zn-N11 pos 2 -18.614 (shell); bond_Zn-N12 pos 2 -18.615 (shell); twist_S1-S2-N11-N12 pos 5 -17.374 (shell)
 - **HOZGAF**: angle_N3-Zn-N5 neg 1 -16.099 (energy_drop); angle_N3-Zn-N6 neg 1 -16.094 (energy_drop); angle_N3-Zn-N6 pos 8 -2.22 (energy_drop); angle_N5-Zn-N6 pos 1 -15.968 (energy_drop); angle_S1-Zn-N3 neg 1 -16.095 (energy_drop); angle_S1-Zn-N3 pos 3 -15.406 (energy_drop); angle_S1-Zn-N5 neg 1 -16.028 (energy_drop); angle_S1-Zn-N6 pos 1 -16.09 (energy_drop); bond_Zn-N3 pos 1 -16.087 (energy_drop); bond_Zn-N5 pos 1 -15.996 (energy_drop); bond_Zn-N6 neg 1 -15.931 (energy_drop); bond_Zn-S1 pos 2 -15.858 (energy_drop); tilt_Zn-N3-C10-C21 neg 6 -16.006 (energy_drop); tilt_Zn-N6-C14-C15 pos 7 -15.659 (energy_drop); twist_S1-N3-N5-N6 neg 1 -16.089 (energy_drop)
@@ -756,21 +780,34 @@ All branches below start (coordinate, branch, step of the first failure, E_rel k
 - **ICAVAK**: angle_S1-Zn-N2 pos 8 -2.533 (energy_drop)
 - **ICUCIT**: angle_N2-Zn-N3 pos 8 -10.556 (energy_drop)
 - **KAKYAW**: angle_N29-Zn-N50 pos 3 -10.288 (energy_drop)
+- **LAPYAD**: angle_N39-Zn-S66 pos 3 -11.029 (energy_drop); angle_N40-Zn-S65 pos 3 -11.048 (energy_drop); bond_Zn-N39 pos 4 -12.177 (energy_drop); bond_Zn-N40 pos 4 -12.174 (energy_drop); tilt_Zn-N39-C35-C33 pos 5 -9.657 (energy_drop); tilt_Zn-N40-C36-C34 pos 5 -9.668 (energy_drop); twist_N39-S65-N40-S66 pos 3 -11.849 (energy_drop)
 - **MUJJUW**: angle_S1-Zn-N10 neg 6 -6.222 (shell); angle_S1-Zn-N9 neg 8 -6.28 (shell); angle_S3-Zn-N10 neg 7 -6.155 (shell); angle_S3-Zn-N9 neg 6 -6.272 (shell); bond_Zn-N9 pos 5 -5.771 (shell); bond_Zn-S1 pos 5 -4.745 (shell); bond_Zn-S3 pos 5 -4.789 (shell)
 - **NAMSOJ**: angle_N1-Zn-N2 pos 3 -15.459 (energy_drop); angle_N1-Zn-N3 neg 2 -16.738 (energy_drop); angle_N1-Zn-S4 neg 1 -16.718 (energy_drop); angle_N2-Zn-N3 neg 7 -3.647 (new_contact); angle_N2-Zn-S4 neg 3 -15.969 (energy_drop); angle_N2-Zn-S4 pos 4 -16.305 (energy_drop); angle_N3-Zn-S4 pos 1 -16.76 (energy_drop); bond_Zn-N1 neg 2 -16.558 (energy_drop); bond_Zn-N2 pos 6 -12.737 (new_contact); bond_Zn-S4 neg 3 -15.584 (energy_drop); tilt_Zn-N1-C19-C24 pos 3 -4.152 (energy_drop); tilt_Zn-S4-C5-O7 neg 8 -15.792 (energy_drop); twist_N1-N2-N3-S4 neg 1 -16.653 (energy_drop)
 - **OJELOE**: angle_S4-Zn-N100 pos 4 -2.003 (energy_drop); twist_S3-S4-N100-S5 neg 7 -2.511 (energy_drop)
 - **QADDEF**: angle_N5-Zn-N7 pos 9 -6.959 (energy_drop)
 - **RIBMEV**: angle_N5-Zn-N6 neg 4 -4.823 (shell); angle_S1-Zn-N5 neg 5 -6.271 (shell); angle_S2-Zn-N5 neg 4 -6.172 (shell); angle_S2-Zn-N6 neg 5 -6.271 (shell); bond_Zn-N6 pos 5 -6.218 (shell); bond_Zn-S1 pos 5 -4.485 (shell); bond_Zn-S2 pos 5 -4.486 (shell); twist_S1-S2-N5-N6 neg 4 -6.282 (shell)
 - **RIBMIZ**: angle_N5-Zn-N6 neg 4 -4.288 (shell); angle_S1-Zn-N5 neg 5 -6.116 (shell); angle_S1-Zn-N6 neg 4 -6.025 (shell); angle_S2-Zn-N5 neg 4 -6.025 (shell); angle_S2-Zn-N6 neg 5 -6.115 (shell); bond_Zn-N5 pos 6 -5.548 (shell); bond_Zn-N6 pos 6 -5.556 (shell); bond_Zn-S1 pos 4 -3.525 (shell); bond_Zn-S2 pos 4 -3.525 (shell); twist_S1-S2-N5-N6 neg 4 -6.081 (shell)
+- **SIHXIR**: angle_N5-Zn-S11 neg 1 -2.433 (energy_drop); angle_N5-Zn-S12 pos 3 -2.212 (energy_drop); angle_N8-Zn-S11 pos 1 -2.439 (energy_drop); angle_N8-Zn-S12 neg 1 -2.467 (energy_drop); bond_Zn-N5 pos 1 -2.643 (energy_drop); bond_Zn-N8 pos 1 -2.642 (energy_drop); bond_Zn-S11 neg 1 -2.566 (energy_drop); tilt_Zn-N5-C13-H14 neg 2 -2.431 (energy_drop); tilt_Zn-S11-C25-N6 pos 2 -2.633 (energy_drop); tilt_Zn-S12-C56-N9 neg 2 -2.438 (energy_drop)
 - **TARNIJ**: angle_S1-Zn-S2 neg 8 -2.476 (energy_drop)
+- **TELRIN**: angle_N5-Zn-N6 neg 2 -6.456 (energy_drop); angle_S1-Zn-N5 neg 1 -6.128 (energy_drop); angle_S1-Zn-N6 neg 4 -7.006 (energy_drop); angle_S2-Zn-N5 pos 7 -7.607 (energy_drop); angle_S2-Zn-N6 neg 8 -6.445 (energy_drop); angle_S2-Zn-N6 pos 1 -8.018 (energy_drop); tilt_Zn-N5-C51-H52 neg 3 -7.861 (energy_drop); tilt_Zn-N6-C60-C59 pos 9 -6.646 (energy_drop); tilt_Zn-S1-C7-C8 pos 10 -5.637 (energy_drop); twist_S1-S2-N5-N6 pos 4 -8.01 (energy_drop)
+- **TELROT**: tilt_Zn-S2-C29-C37 pos 4 -2.534 (energy_drop); twist_S1-S2-N5-N6 pos 3 -2.01 (energy_drop)
+- **TEYSOG**: angle_S1-Zn-S2 pos 9 -27.45 (energy_drop)
 - **TIFNOO**: angle_N33-Zn-N34 neg 4 -31.876 (shell); angle_S3-Zn-N33 neg 7 -44.024 (shell); angle_S3-Zn-N34 neg 7 -37.596 (shell); angle_S3-Zn-S4 pos 9 -15.896 (shell); angle_S4-Zn-N33 neg 7 -34.454 (shell); bond_Zn-S3 pos 4 -32.173 (shell); bond_Zn-S4 pos 4 -32.174 (shell); twist_S3-S4-N33-N34 pos 8 -32.322 (shell)
+- **TIFNUU**: angle_S5-Zn-S8 pos 5 -2.29 (energy_drop); angle_S6-Zn-S7 pos 5 -2.298 (energy_drop); twist_S5-S6-S7-S8 pos 7 -2.136 (energy_drop)
 - **UFUROC**: angle_S1-Zn-S2 neg 1 -3.621 (energy_drop); angle_S1-Zn-S3 pos 1 -3.152 (energy_drop); angle_S1-Zn-S4 neg 1 -2.971 (energy_drop); angle_S2-Zn-S3 pos 3 -3.3 (energy_drop); angle_S2-Zn-S4 neg 1 -3.606 (energy_drop); angle_S3-Zn-S4 pos 2 -3.615 (energy_drop); bond_Zn-S1 neg 3 -2.655 (energy_drop); bond_Zn-S2 pos 2 -3.299 (energy_drop); bond_Zn-S3 neg 1 -3.613 (energy_drop); bond_Zn-S4 pos 3 -3.064 (energy_drop); tilt_Zn-S2-C12-O11 neg 3 -3.564 (energy_drop); tilt_Zn-S3-C18-C19 neg 2 -3.22 (energy_drop); tilt_Zn-S4-C24-O23 neg 2 -3.615 (energy_drop); twist_S1-S2-S3-S4 neg 1 -3.334 (energy_drop)
+- **WEDVIK**: angle_N5-Zn-N6 neg 4 -20.701 (shell); bond_Zn-N6 pos 7 -29.293 (shell)
 - **WIGBIX**: angle_S20-Zn-N39 pos 7 -2.309 (energy_drop)
 - **WUCGIN**: angle_N9-Zn-N10 neg 4 -2.705 (shell); angle_S1-Zn-N10 neg 7 -5.717 (shell); angle_S2-Zn-N10 neg 7 -5.726 (shell); angle_S2-Zn-N9 neg 7 -5.716 (shell); bond_Zn-N10 pos 6 -4.69 (shell); bond_Zn-N9 pos 6 -4.693 (shell); bond_Zn-S1 pos 4 -3.547 (shell); bond_Zn-S2 pos 4 -3.546 (shell); twist_S1-S2-N9-N10 pos 7 -5.669 (shell)
 - **WUJZOS**: angle_N1-Zn-N6 neg 5 -2.591 (energy_drop); angle_N1-Zn-N9 pos 2 -5.665 (energy_drop); angle_N4-Zn-N6 neg 2 -5.635 (energy_drop); bond_Zn-N4 pos 5 -4.526 (energy_drop); tilt_Zn-N1-C11-C43 neg 4 -5.43 (energy_drop); tilt_Zn-N4-C43-C11 neg 5 -4.602 (energy_drop); tilt_Zn-N6-C69-C101 pos 9 -4.898 (energy_drop); tilt_Zn-N9-C75-C74 neg 3 -5.495 (energy_drop); twist_N1-N4-N6-N9 neg 3 -5.18 (energy_drop)
 - **XAJQAB**: angle_N22-Zn-N69 neg 9 -21.073 (energy_drop)
 - **XIXTEG**: angle_N5-Zn-N9 neg 2 -6.213 (energy_drop); angle_S2-Zn-N5 neg 3 -4.432 (energy_drop); angle_S2-Zn-S4 pos 3 -6.376 (energy_drop); angle_S4-Zn-N5 pos 6 -3.541 (energy_drop); angle_S4-Zn-N9 neg 3 -4.737 (energy_drop); bond_Zn-N5 pos 4 -6.315 (energy_drop); bond_Zn-N9 pos 4 -6.38 (energy_drop); tilt_Zn-N5-C26-C27 pos 4 -4.229 (energy_drop); tilt_Zn-N9-C49-C50 pos 4 -4.473 (energy_drop); tilt_Zn-S4-C54-N10 pos 10 -6.57 (energy_drop); twist_S2-N5-S4-N9 neg 8 -3.992 (energy_drop)
+- **ZAZQUM**: angle_S1-Zn-S3 neg 7 -7.364 (energy_drop); angle_S3-Zn-N4 pos 4 -6.257 (energy_drop)
 - **ZNDITZ11**: angle_S1-Zn-N3 neg 2 -2.201 (energy_drop); angle_S1-Zn-N7 pos 2 -2.522 (energy_drop); angle_S1-Zn-S2 pos 4 -2.225 (energy_drop); angle_S2-Zn-N3 pos 1 -2.373 (energy_drop); bond_Zn-N3 pos 4 -2.047 (energy_drop); tilt_Zn-S1-C11-N4 pos 7 -2.373 (energy_drop); tilt_Zn-S2-C34-N8 neg 6 -2.658 (energy_drop); tilt_Zn-S2-C34-N8 pos 5 -2.413 (energy_drop)
+- **ZUKRII**: angle_N21-Zn-N58 neg 8 -2.724 (energy_drop)
+
+**Not yet examined.** Complexes published after 2026-10-31 appear in the list above but are not covered by the
+geometry check below. The deepest among them are WEDVIK (-29.3 kJ/mol, a `shell` failure), TEYSOG (-27.5),
+GEQCUE (-14.8) and LAPYAD (-12.2). They will get the same check when the campaign ends.
 
 **What the structures show.** This is a read-only geometry check of the lowest first-failing point of each
 complex on 2026-10-31: the Zn-donor distances at step 0 and at the failing step, the nearest non-donors, and
@@ -814,31 +851,45 @@ if an imaginary mode or a strongly different conformer matters for the spectra.
 |---|---|---|---|---|---|---|---|
 | VOJHIO | 53 | 97/302 | 32.1 | jump 24 | 1 | 0.0 | Aurora |
 | HOZGAF | 96 | 137/302 | 45.4 | energy_drop 15, jump 6 | 2 | -15.9 | Aurora |
+| SIHXIR | 75 | 151/302 | 50.0 | energy_drop 11, jump 7, energy_cap 1 | 2 | -2.2 | Aurora |
 | GIXTAL | 57 | 153/302 | 50.7 | jump 19, energy_drop 3 | 3 | 0.2 | Aurora |
 | WUJZOS | 127 | 154/302 | 51.0 | energy_drop 14, jump 9 | 4 | 0.2 | Aurora + NERSC m5268 (4/30 br.) |
 | RAYBIC | 124 | 156/302 | 51.7 | jump 20, ref_mismatch 1 | 3 | 0.3 | Aurora + NERSC m5268 (28/30 br.) |
+| TELRUZ | 77 | 161/302 | 53.3 | jump 18, shell 1 | 2 | 0.2 | Aurora + NERSC m2464 (26/30 br.) |
 | NESCAR | 63 | 168/302 | 55.6 | jump 20, energy_cap 2 | 4.5 | 0.7 | Aurora |
 | PTOLZN01 | 53 | 171/302 | 56.6 | jump 17 | 3 | -0.1 | Aurora |
 | OJEKIX | 95 | 174/302 | 57.6 | jump 16 | 2 | 0.1 | Aurora |
 | GOYNIT | 79 | 175/302 | 57.9 | jump 14, shell 2 | 1 | 0.0 | Aurora |
 | NESBUK | 61 | 176/302 | 58.3 | jump 21, energy_cap 2 | 5 | 0.8 | Aurora |
 | ZNDITZ11 | 59 | 178/302 | 58.9 | jump 10, energy_drop 10 | 4 | -1.6 | Aurora |
+| XIYHET | 73 | 179/302 | 59.3 | jump 18 | 3 | 0.1 | Aurora |
 | UFUROC | 29 | 181/302 | 59.9 | energy_drop 16 | 2 | -3.3 | Aurora |
 | BUNNII | 137 | 182/302 | 60.3 | jump 20 | 2.5 | 0.1 | Aurora + NERSC m5268 (30/30 br.) |
+| WAJJIB | 93 | 182/302 | 60.3 | jump 16 | 2.5 | -0.4 | Aurora |
 | OLIPEG | 57 | 189/302 | 62.6 | jump 21 | 4 | 0.7 | Aurora |
 | EBEXIS | 66 | 180/280 | 64.3 | jump 16 | 3.5 | 0.2 | Aurora |
 | XIXTEG | 59 | 195/302 | 64.6 | energy_drop 11, jump 8 | 4 | -4.0 | Aurora |
+| ICATUC | 85 | 196/302 | 64.9 | new_contact 11, jump 3 | 1 | 0.2 | Aurora |
+| BOJMIX | 95 | 198/302 | 65.6 | jump 18, shell 1 | 5 | 0.5 | Aurora |
 | TANRAE | 63 | 200/302 | 66.2 | jump 21 | 6 | 1.4 | Aurora |
+| TELRIN | 69 | 200/302 | 66.2 | energy_drop 10, jump 5, energy_cap 1 | 4 | -6.3 | Aurora |
+| TELSAG | 73 | 201/302 | 66.6 | jump 20 | 6 | 0.8 | Aurora |
 | GUYHEN | 49 | 204/302 | 67.5 | shell 9, new_contact 4, jump 2, energy_cap 1 | 4 | -13.7 | Aurora |
 | KAKVIB01 | 49 | 204/302 | 67.5 | jump 13, shell 1, energy_cap 1 | 4 | 0.9 | Aurora |
+| UCOLIH | 69 | 204/302 | 67.5 | jump 13 | 4 | 0.8 | Aurora |
 | XOGYUQ | 49 | 204/302 | 67.5 | jump 16, energy_drop 1 | 5 | 0.4 | Aurora |
 | RIBMEV | 59 | 205/302 | 67.9 | shell 9, ref_mismatch 4, jump 1 | 4 | -4.5 | Aurora |
+| TELROT | 71 | 206/302 | 68.2 | jump 11, energy_drop 5, energy_cap 1 | 4 | 0.2 | Aurora |
+| LIYDEE | 79 | 209/302 | 69.2 | jump 13, energy_drop 3 | 6 | -0.8 | Aurora |
 | NAMSOJ | 104 | 212/302 | 70.2 | energy_drop 11, new_contact 2, jump 1 | 3 | -15.9 | Aurora + NERSC m5268 (30/30 br.) |
 | VEKDUL | 65 | 212/302 | 70.2 | jump 10, energy_drop 1 | 2 | -1.5 | Aurora |
+| LAPYAD | 71 | 214/302 | 70.9 | energy_drop 9, jump 6 | 5 | -0.6 | Aurora |
 | WIGBIX | 121 | 216/302 | 71.5 | jump 13, energy_drop 1 | 4 | 0.4 | Aurora + NERSC m5268 (30/30 br.) |
+| TEYSIA | 67 | 217/302 | 71.9 | jump 15, shell 1 | 4 | 1.0 | Aurora |
 | ICUCAL | 46 | 218/302 | 72.2 | jump 13, new_contact 1 | 4.5 | 1.1 | Aurora |
 | KAKVAT | 45 | 221/302 | 73.2 | jump 15, shell 1 | 6.5 | 1.5 | Aurora |
 | XAYGEL | 77 | 222/302 | 73.5 | jump 14 | 5 | 1.2 | Aurora |
+| ZAZQUM | 49 | 222/302 | 73.5 | jump 11, energy_drop 2 | 4 | 0.7 | Aurora |
 | XIGZUI | 69 | 223/302 | 73.8 | jump 12, shell 2 | 5.5 | 0.7 | Aurora |
 | EDUPEZ | 47 | 225/302 | 74.5 | jump 15, shell 2 | 7 | 1.3 | Aurora |
 | TBZZNP01 | 51 | 226/302 | 74.8 | jump 14 | 5 | 0.2 | Aurora |
@@ -875,7 +926,7 @@ the data may want that.
 
 ### (d) Non-converged optimisation steps
 
-`not_converged` first failures among the published points: **0**.
+`not_converged` first failures among the published points: **1** (WEDVIK angle_S3-Zn-N6 neg step 10).
 
 No published point failed as `not_converged`, so none of the published points is a non-converged step. Steps
 that did not converge in an earlier run are not visible in the stitched `scan.out`, because only converged
@@ -911,8 +962,8 @@ Computed from `stage2_b3lyp/<REF>/<REF>.xyz` and the donors in `scans/<REF>/coor
 | Complex | Status | Findings (atom index 0-based, distance to Zn in A) |
 |---|---|---|
 | CUSGEE | published | donor S3 at 2.660 |
-| EPOFUL | in progress (26/30 br.) | non-donor O62 at 2.404 (< 2.6: fails every start); non-donor O63 at 2.399 (< 2.6: fails every start) |
-| FECYIZ | in progress (28/30 br.) | donor S1 at 3.702 (> 2.8: fails every start); non-donor N10 at 1.980 (< 2.6: fails every start) |
+| EPOFUL | not_exported | non-donor O62 at 2.404 (< 2.6: fails every start); non-donor O63 at 2.399 (< 2.6: fails every start) |
+| FECYIZ | not_exported | donor S1 at 3.702 (> 2.8: fails every start); non-donor N10 at 1.980 (< 2.6: fails every start) |
 | FEYNUT | published | non-donor F2 at 2.689 |
 | GECLUZ | not_exported | non-donor S1 at 2.526 (< 2.6: fails every start); non-donor S2 at 2.526 (< 2.6: fails every start) |
 | GOYNIT | published | non-donor C7 at 2.790; non-donor C48 at 2.791 |
@@ -920,7 +971,7 @@ Computed from `stage2_b3lyp/<REF>/<REF>.xyz` and the donors in `scans/<REF>/coor
 | GUCSED | published | non-donor C5 at 2.791; non-donor C6 at 2.791 |
 | HEFHUX | published | non-donor C19 at 2.787; non-donor C20 at 2.787 |
 | ICATOW | published | non-donor O9 at 2.668 |
-| ICATUC | in progress (29/30 br.) | non-donor O8 at 2.606; crystal: non-donor O8 at 2.552 |
+| ICATUC | published | non-donor O8 at 2.606; crystal: non-donor O8 at 2.552 |
 | JADMEK | published | non-donor C5 at 2.789; non-donor C40 at 2.798 |
 | KECGEI | not_exported | non-donor O11 at 2.393 (< 2.6: fails every start); non-donor O12 at 2.340 (< 2.6: fails every start) |
 | KERJOI | not_exported | donor S2 at 3.520 (> 2.8: fails every start); non-donor N5 at 1.996 (< 2.6: fails every start); crystal: non-donor N5 at 2.530 |
@@ -940,14 +991,15 @@ Computed from `stage2_b3lyp/<REF>/<REF>.xyz` and the donors in `scans/<REF>/coor
 | YACTUV | published | non-donor F65 at 2.631 |
 
 **Reading this list.** Exactly eight complexes have a non-donor below 2.6 A, or a donor beyond 2.8 A, at
-stage 2. Six are the not-exported complexes: GECLUZ, KECGEI, KERJOI, KUBVEJ, LIVNAG and OGUGON (KERJOI and
-FECYIZ show both). The other two are still running: EPOFUL and FECYIZ. No other complex has this signature.
+stage 2. All eight are the not-exported complexes: GECLUZ, KECGEI, KERJOI, KUBVEJ, LIVNAG and OGUGON, plus
+EPOFUL and FECYIZ, which finished on 11-01 and failed every branch start as predicted here (KERJOI and FECYIZ
+show both). No other complex has this signature.
 
 The complexes at risk have a non-donor O, N or F at 2.6-2.8 A at stage 2. Their branches fail early as
 `new_contact` when a scan pulls that atom inside 2.6 A. Published examples: UDODOG O2 2.637 (9 `new_contact`),
 NOCNEY N5 2.661 (7), ICATOW O9 2.668 (7), YACTUV F65 2.631 (8), FEYNUT F2 2.689 (2), and TIFNOO N9/N10 2.76,
-whose N switch is the lower minimum in (b). **ICATUC**, still running, has O8 at 2.606 A at stage 2, 0.006 A
-above the limit; expect many `new_contact` failures. Crystal contacts between 2.53 and 2.6 A (non-donors only
+whose N switch is the lower minimum in (b). **ICATUC** has O8 at 2.606 A at stage 2, 0.006 A above the limit;
+it was published on 11-01 with 196 of 302 points passing and 11 `new_contact` failures. Crystal contacts between 2.53 and 2.6 A (non-donors only
 because of the 2.53 A curation cut-off) are listed with the prefix `crystal:`.
 
 **Recommended action.** Align the two cut-offs. The cleanest fix is to take the donor list from the stage-2
@@ -974,15 +1026,18 @@ Verbatim from `aurora/README.md` (Run log and setup notes), oldest first.
 - 2026-10-28 07:04: For Riti: GIXTAL has a lower minimum than stage 2 (angle_N6-Zn-N7 pos step 6, -4.9 kJ/mol).
 - 2026-10-28 08:20: For Riti: a non-converged step fails validation and makes the rest of its branch after_fail, so such steps are worth reviewing before more compute goes into them.
 - 2026-10-31 07:26: BUNNII, the slowest of the big complexes on NERSC (m5268), finished all 30 branches and is published, with 182 of 302 points passing validation (lower than most; for Riti to look at).
+- 2026-11-01 13:17: EPOFUL finished and was not exported (`new_contact` on all 30 branch starts), as `CAMPAIGN_REPORT.md` predicted: it has the same stage-2 shell change as the six already listed (attention case a), so seven are now withheld for Riti's decision; FECYIZ is expected to follow. 8995873 handed its 118 unfinished branches back before its 6 h limit, and 9019151 picked them up at 11:05; 9024268 queued as the second 16-node farm.
+- 2026-11-01 18:05: FECYIZ not exported (`shell` on all 30 branch starts), as `CAMPAIGN_REPORT.md` predicted, so eight are withheld for Riti's decision.
 
 ## Decisions for Riti
 
 Each item gives our recommendation and its cost. ModCon node-hours are not a constraint for the user. The NERSC
-projects are shared and are not to be used for more of this work unless DOE adds hours. "0 compute" means a
+projects are shared and are not to be used for more of this work unless DOE adds hours (the user made one
+exception, for the last 22 slow branches on 11-01). "0 compute" means a
 re-validation or inspection of results that already exist.
 
 1. **Donor overrides for the eight shell-changed complexes**: GECLUZ, KECGEI, LIVNAG, OGUGON, KERJOI, KUBVEJ,
-   plus EPOFUL and FECYIZ when they finish. *Recommended:* yes for GECLUZ, KECGEI and LIVNAG (about 800 points),
+   EPOFUL and FECYIZ (both finished 11-01). *Recommended:* yes for GECLUZ, KECGEI and LIVNAG (about 800 points),
    and EPOFUL by the same argument. *Cost:* 0 compute; a small code change (a per-complex `donors` override read
    by `validate.py` and `publish.py`). The results layout stays as is.
 2. **OGUGON**: redo stage 2 and the scans as neutral [Zn(L)2]Cl2 with the crystal chlorides, or publish the
