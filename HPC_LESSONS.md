@@ -116,6 +116,10 @@ Check them again for other work:
   can take longer than 25 min. Farms of 64 nodes or more stop ORCA 50 min before the walltime
   (`MARGIN_MIN`); smaller farms keep 25 min, and when one is killed mid-hand-back the autopilot's
   re-queue (`NODES=0 go.sh submit`) recovers its branches. Never rely on the margin alone.
+- **Never re-read every log on each check.** Late in a campaign the log directory holds ~50,000 files and
+  a full `grep` over them takes 10+ min on a busy Lustre (it made the autopilot's cycle about an hour).
+  Keep a cache of each log's verdict and read only logs newer than the last check (`find -newer
+  <stamp>`, about a minute).
 - `qhold`/`qrls` and `qalter -A <project>` keep a queued job's eligible time. Hold queued farms rather
   than letting them start into an empty queue. `qalter -v` is not supported.
 - Production reads ORCA and OpenMPI from `/lus/flare`, not `$HOME`; set `OPAL_PREFIX`.
