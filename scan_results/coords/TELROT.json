@@ -1,0 +1,464 @@
+{
+ "ref": "TELROT",
+ "zn": 0,
+ "donors": [
+  1,
+  2,
+  5,
+  6
+ ],
+ "coords": [
+  {
+   "name": "bond_Zn-S1",
+   "kind": "B",
+   "atoms": [
+    0,
+    1
+   ],
+   "branch": "neg",
+   "v0": 2.297390651656529,
+   "start": 2.297390651656529,
+   "end": 2.2373906516565287,
+   "npoints": 4,
+   "dir": "scans/TELROT/bond_Zn-S1_neg"
+  },
+  {
+   "name": "bond_Zn-S1",
+   "kind": "B",
+   "atoms": [
+    0,
+    1
+   ],
+   "branch": "pos",
+   "v0": 2.297390651656529,
+   "start": 2.297390651656529,
+   "end": 2.497390651656529,
+   "npoints": 11,
+   "dir": "scans/TELROT/bond_Zn-S1_pos"
+  },
+  {
+   "name": "bond_Zn-S2",
+   "kind": "B",
+   "atoms": [
+    0,
+    2
+   ],
+   "branch": "neg",
+   "v0": 2.3312605431658486,
+   "start": 2.3312605431658486,
+   "end": 2.2712605431658486,
+   "npoints": 4,
+   "dir": "scans/TELROT/bond_Zn-S2_neg"
+  },
+  {
+   "name": "bond_Zn-S2",
+   "kind": "B",
+   "atoms": [
+    0,
+    2
+   ],
+   "branch": "pos",
+   "v0": 2.3312605431658486,
+   "start": 2.3312605431658486,
+   "end": 2.531260543165849,
+   "npoints": 11,
+   "dir": "scans/TELROT/bond_Zn-S2_pos"
+  },
+  {
+   "name": "bond_Zn-N5",
+   "kind": "B",
+   "atoms": [
+    0,
+    5
+   ],
+   "branch": "neg",
+   "v0": 2.112732270484557,
+   "start": 2.112732270484557,
+   "end": 2.0527322704845568,
+   "npoints": 4,
+   "dir": "scans/TELROT/bond_Zn-N5_neg"
+  },
+  {
+   "name": "bond_Zn-N5",
+   "kind": "B",
+   "atoms": [
+    0,
+    5
+   ],
+   "branch": "pos",
+   "v0": 2.112732270484557,
+   "start": 2.112732270484557,
+   "end": 2.312732270484557,
+   "npoints": 11,
+   "dir": "scans/TELROT/bond_Zn-N5_pos"
+  },
+  {
+   "name": "bond_Zn-N6",
+   "kind": "B",
+   "atoms": [
+    0,
+    6
+   ],
+   "branch": "neg",
+   "v0": 2.105893163267905,
+   "start": 2.105893163267905,
+   "end": 2.045893163267905,
+   "npoints": 4,
+   "dir": "scans/TELROT/bond_Zn-N6_neg"
+  },
+  {
+   "name": "bond_Zn-N6",
+   "kind": "B",
+   "atoms": [
+    0,
+    6
+   ],
+   "branch": "pos",
+   "v0": 2.105893163267905,
+   "start": 2.105893163267905,
+   "end": 2.305893163267905,
+   "npoints": 11,
+   "dir": "scans/TELROT/bond_Zn-N6_pos"
+  },
+  {
+   "name": "angle_S1-Zn-S2",
+   "kind": "A",
+   "atoms": [
+    1,
+    0,
+    2
+   ],
+   "branch": "neg",
+   "v0": 120.85934012146299,
+   "start": 120.85934012146299,
+   "end": 105.85934012146299,
+   "npoints": 11,
+   "dir": "scans/TELROT/angle_S1-Zn-S2_neg"
+  },
+  {
+   "name": "angle_S1-Zn-S2",
+   "kind": "A",
+   "atoms": [
+    1,
+    0,
+    2
+   ],
+   "branch": "pos",
+   "v0": 120.85934012146299,
+   "start": 120.85934012146299,
+   "end": 135.859340121463,
+   "npoints": 11,
+   "dir": "scans/TELROT/angle_S1-Zn-S2_pos"
+  },
+  {
+   "name": "angle_S1-Zn-N5",
+   "kind": "A",
+   "atoms": [
+    1,
+    0,
+    5
+   ],
+   "branch": "neg",
+   "v0": 120.03949928772575,
+   "start": 120.03949928772575,
+   "end": 105.03949928772575,
+   "npoints": 11,
+   "dir": "scans/TELROT/angle_S1-Zn-N5_neg"
+  },
+  {
+   "name": "angle_S1-Zn-N5",
+   "kind": "A",
+   "atoms": [
+    1,
+    0,
+    5
+   ],
+   "branch": "pos",
+   "v0": 120.03949928772575,
+   "start": 120.03949928772575,
+   "end": 135.03949928772573,
+   "npoints": 11,
+   "dir": "scans/TELROT/angle_S1-Zn-N5_pos"
+  },
+  {
+   "name": "angle_S1-Zn-N6",
+   "kind": "A",
+   "atoms": [
+    1,
+    0,
+    6
+   ],
+   "branch": "neg",
+   "v0": 118.20892243288922,
+   "start": 118.20892243288922,
+   "end": 103.20892243288922,
+   "npoints": 11,
+   "dir": "scans/TELROT/angle_S1-Zn-N6_neg"
+  },
+  {
+   "name": "angle_S1-Zn-N6",
+   "kind": "A",
+   "atoms": [
+    1,
+    0,
+    6
+   ],
+   "branch": "pos",
+   "v0": 118.20892243288922,
+   "start": 118.20892243288922,
+   "end": 133.2089224328892,
+   "npoints": 11,
+   "dir": "scans/TELROT/angle_S1-Zn-N6_pos"
+  },
+  {
+   "name": "angle_S2-Zn-N5",
+   "kind": "A",
+   "atoms": [
+    2,
+    0,
+    5
+   ],
+   "branch": "neg",
+   "v0": 104.61212286065869,
+   "start": 104.61212286065869,
+   "end": 89.61212286065869,
+   "npoints": 11,
+   "dir": "scans/TELROT/angle_S2-Zn-N5_neg"
+  },
+  {
+   "name": "angle_S2-Zn-N5",
+   "kind": "A",
+   "atoms": [
+    2,
+    0,
+    5
+   ],
+   "branch": "pos",
+   "v0": 104.61212286065869,
+   "start": 104.61212286065869,
+   "end": 119.61212286065869,
+   "npoints": 11,
+   "dir": "scans/TELROT/angle_S2-Zn-N5_pos"
+  },
+  {
+   "name": "angle_S2-Zn-N6",
+   "kind": "A",
+   "atoms": [
+    2,
+    0,
+    6
+   ],
+   "branch": "neg",
+   "v0": 105.46481940486579,
+   "start": 105.46481940486579,
+   "end": 90.46481940486579,
+   "npoints": 11,
+   "dir": "scans/TELROT/angle_S2-Zn-N6_neg"
+  },
+  {
+   "name": "angle_S2-Zn-N6",
+   "kind": "A",
+   "atoms": [
+    2,
+    0,
+    6
+   ],
+   "branch": "pos",
+   "v0": 105.46481940486579,
+   "start": 105.46481940486579,
+   "end": 120.46481940486579,
+   "npoints": 11,
+   "dir": "scans/TELROT/angle_S2-Zn-N6_pos"
+  },
+  {
+   "name": "angle_N5-Zn-N6",
+   "kind": "A",
+   "atoms": [
+    5,
+    0,
+    6
+   ],
+   "branch": "neg",
+   "v0": 79.79119691434181,
+   "start": 79.79119691434181,
+   "end": 64.79119691434181,
+   "npoints": 11,
+   "dir": "scans/TELROT/angle_N5-Zn-N6_neg"
+  },
+  {
+   "name": "angle_N5-Zn-N6",
+   "kind": "A",
+   "atoms": [
+    5,
+    0,
+    6
+   ],
+   "branch": "pos",
+   "v0": 79.79119691434181,
+   "start": 79.79119691434181,
+   "end": 94.79119691434181,
+   "npoints": 11,
+   "dir": "scans/TELROT/angle_N5-Zn-N6_pos"
+  },
+  {
+   "name": "twist_S1-S2-N5-N6",
+   "kind": "D",
+   "atoms": [
+    1,
+    2,
+    5,
+    6
+   ],
+   "branch": "neg",
+   "v0": -75.14301945562997,
+   "start": -75.14301945562997,
+   "end": -85.14301945562997,
+   "npoints": 11,
+   "dir": "scans/TELROT/twist_S1-S2-N5-N6_neg"
+  },
+  {
+   "name": "twist_S1-S2-N5-N6",
+   "kind": "D",
+   "atoms": [
+    1,
+    2,
+    5,
+    6
+   ],
+   "branch": "pos",
+   "v0": -75.14301945562997,
+   "start": -75.14301945562997,
+   "end": -65.14301945562997,
+   "npoints": 11,
+   "dir": "scans/TELROT/twist_S1-S2-N5-N6_pos"
+  },
+  {
+   "name": "tilt_Zn-S1-C7-C15",
+   "kind": "D",
+   "atoms": [
+    0,
+    1,
+    7,
+    15
+   ],
+   "branch": "neg",
+   "v0": 39.37871768521276,
+   "start": 39.37871768521276,
+   "end": 29.378717685212763,
+   "npoints": 11,
+   "dir": "scans/TELROT/tilt_Zn-S1-C7-C15_neg"
+  },
+  {
+   "name": "tilt_Zn-S1-C7-C15",
+   "kind": "D",
+   "atoms": [
+    0,
+    1,
+    7,
+    15
+   ],
+   "branch": "pos",
+   "v0": 39.37871768521276,
+   "start": 39.37871768521276,
+   "end": 49.37871768521276,
+   "npoints": 11,
+   "dir": "scans/TELROT/tilt_Zn-S1-C7-C15_pos"
+  },
+  {
+   "name": "tilt_Zn-S2-C29-C37",
+   "kind": "D",
+   "atoms": [
+    0,
+    2,
+    29,
+    37
+   ],
+   "branch": "neg",
+   "v0": 84.87369571407191,
+   "start": 84.87369571407191,
+   "end": 74.87369571407191,
+   "npoints": 11,
+   "dir": "scans/TELROT/tilt_Zn-S2-C29-C37_neg"
+  },
+  {
+   "name": "tilt_Zn-S2-C29-C37",
+   "kind": "D",
+   "atoms": [
+    0,
+    2,
+    29,
+    37
+   ],
+   "branch": "pos",
+   "v0": 84.87369571407191,
+   "start": 84.87369571407191,
+   "end": 94.87369571407191,
+   "npoints": 11,
+   "dir": "scans/TELROT/tilt_Zn-S2-C29-C37_pos"
+  },
+  {
+   "name": "tilt_Zn-N5-C51-H52",
+   "kind": "D",
+   "atoms": [
+    0,
+    5,
+    51,
+    52
+   ],
+   "branch": "neg",
+   "v0": -7.44162426892491,
+   "start": -7.44162426892491,
+   "end": -17.44162426892491,
+   "npoints": 11,
+   "dir": "scans/TELROT/tilt_Zn-N5-C51-H52_neg"
+  },
+  {
+   "name": "tilt_Zn-N5-C51-H52",
+   "kind": "D",
+   "atoms": [
+    0,
+    5,
+    51,
+    52
+   ],
+   "branch": "pos",
+   "v0": -7.44162426892491,
+   "start": -7.44162426892491,
+   "end": 2.55837573107509,
+   "npoints": 11,
+   "dir": "scans/TELROT/tilt_Zn-N5-C51-H52_pos"
+  },
+  {
+   "name": "tilt_Zn-N6-C59-C58",
+   "kind": "D",
+   "atoms": [
+    0,
+    6,
+    59,
+    58
+   ],
+   "branch": "neg",
+   "v0": -5.530845041055042,
+   "start": -5.530845041055042,
+   "end": -15.530845041055041,
+   "npoints": 11,
+   "dir": "scans/TELROT/tilt_Zn-N6-C59-C58_neg"
+  },
+  {
+   "name": "tilt_Zn-N6-C59-C58",
+   "kind": "D",
+   "atoms": [
+    0,
+    6,
+    59,
+    58
+   ],
+   "branch": "pos",
+   "v0": -5.530845041055042,
+   "start": -5.530845041055042,
+   "end": 4.469154958944958,
+   "npoints": 11,
+   "dir": "scans/TELROT/tilt_Zn-N6-C59-C58_pos"
+  }
+ ]
+}

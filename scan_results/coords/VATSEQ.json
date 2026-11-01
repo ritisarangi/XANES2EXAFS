@@ -1,0 +1,464 @@
+{
+ "ref": "VATSEQ",
+ "zn": 67,
+ "donors": [
+  59,
+  60,
+  65,
+  66
+ ],
+ "coords": [
+  {
+   "name": "bond_Zn-N59",
+   "kind": "B",
+   "atoms": [
+    67,
+    59
+   ],
+   "branch": "neg",
+   "v0": 2.11183506659166,
+   "start": 2.11183506659166,
+   "end": 2.05183506659166,
+   "npoints": 4,
+   "dir": "scans/VATSEQ/bond_Zn-N59_neg"
+  },
+  {
+   "name": "bond_Zn-N59",
+   "kind": "B",
+   "atoms": [
+    67,
+    59
+   ],
+   "branch": "pos",
+   "v0": 2.11183506659166,
+   "start": 2.11183506659166,
+   "end": 2.31183506659166,
+   "npoints": 11,
+   "dir": "scans/VATSEQ/bond_Zn-N59_pos"
+  },
+  {
+   "name": "bond_Zn-N60",
+   "kind": "B",
+   "atoms": [
+    67,
+    60
+   ],
+   "branch": "neg",
+   "v0": 2.1112711174639567,
+   "start": 2.1112711174639567,
+   "end": 2.0512711174639566,
+   "npoints": 4,
+   "dir": "scans/VATSEQ/bond_Zn-N60_neg"
+  },
+  {
+   "name": "bond_Zn-N60",
+   "kind": "B",
+   "atoms": [
+    67,
+    60
+   ],
+   "branch": "pos",
+   "v0": 2.1112711174639567,
+   "start": 2.1112711174639567,
+   "end": 2.311271117463957,
+   "npoints": 11,
+   "dir": "scans/VATSEQ/bond_Zn-N60_pos"
+  },
+  {
+   "name": "bond_Zn-S65",
+   "kind": "B",
+   "atoms": [
+    67,
+    65
+   ],
+   "branch": "neg",
+   "v0": 2.319553547230968,
+   "start": 2.319553547230968,
+   "end": 2.259553547230968,
+   "npoints": 4,
+   "dir": "scans/VATSEQ/bond_Zn-S65_neg"
+  },
+  {
+   "name": "bond_Zn-S65",
+   "kind": "B",
+   "atoms": [
+    67,
+    65
+   ],
+   "branch": "pos",
+   "v0": 2.319553547230968,
+   "start": 2.319553547230968,
+   "end": 2.5195535472309682,
+   "npoints": 11,
+   "dir": "scans/VATSEQ/bond_Zn-S65_pos"
+  },
+  {
+   "name": "bond_Zn-S66",
+   "kind": "B",
+   "atoms": [
+    67,
+    66
+   ],
+   "branch": "neg",
+   "v0": 2.3173558520673865,
+   "start": 2.3173558520673865,
+   "end": 2.2573558520673864,
+   "npoints": 4,
+   "dir": "scans/VATSEQ/bond_Zn-S66_neg"
+  },
+  {
+   "name": "bond_Zn-S66",
+   "kind": "B",
+   "atoms": [
+    67,
+    66
+   ],
+   "branch": "pos",
+   "v0": 2.3173558520673865,
+   "start": 2.3173558520673865,
+   "end": 2.5173558520673867,
+   "npoints": 11,
+   "dir": "scans/VATSEQ/bond_Zn-S66_pos"
+  },
+  {
+   "name": "angle_N59-Zn-N60",
+   "kind": "A",
+   "atoms": [
+    59,
+    67,
+    60
+   ],
+   "branch": "neg",
+   "v0": 98.77479374572727,
+   "start": 98.77479374572727,
+   "end": 83.77479374572727,
+   "npoints": 11,
+   "dir": "scans/VATSEQ/angle_N59-Zn-N60_neg"
+  },
+  {
+   "name": "angle_N59-Zn-N60",
+   "kind": "A",
+   "atoms": [
+    59,
+    67,
+    60
+   ],
+   "branch": "pos",
+   "v0": 98.77479374572727,
+   "start": 98.77479374572727,
+   "end": 113.77479374572727,
+   "npoints": 11,
+   "dir": "scans/VATSEQ/angle_N59-Zn-N60_pos"
+  },
+  {
+   "name": "angle_N59-Zn-S65",
+   "kind": "A",
+   "atoms": [
+    59,
+    67,
+    65
+   ],
+   "branch": "neg",
+   "v0": 139.17667310065195,
+   "start": 139.17667310065195,
+   "end": 124.17667310065195,
+   "npoints": 11,
+   "dir": "scans/VATSEQ/angle_N59-Zn-S65_neg"
+  },
+  {
+   "name": "angle_N59-Zn-S65",
+   "kind": "A",
+   "atoms": [
+    59,
+    67,
+    65
+   ],
+   "branch": "pos",
+   "v0": 139.17667310065195,
+   "start": 139.17667310065195,
+   "end": 154.17667310065195,
+   "npoints": 11,
+   "dir": "scans/VATSEQ/angle_N59-Zn-S65_pos"
+  },
+  {
+   "name": "angle_N59-Zn-S66",
+   "kind": "A",
+   "atoms": [
+    59,
+    67,
+    66
+   ],
+   "branch": "neg",
+   "v0": 84.66211265545292,
+   "start": 84.66211265545292,
+   "end": 69.66211265545292,
+   "npoints": 11,
+   "dir": "scans/VATSEQ/angle_N59-Zn-S66_neg"
+  },
+  {
+   "name": "angle_N59-Zn-S66",
+   "kind": "A",
+   "atoms": [
+    59,
+    67,
+    66
+   ],
+   "branch": "pos",
+   "v0": 84.66211265545292,
+   "start": 84.66211265545292,
+   "end": 99.66211265545292,
+   "npoints": 11,
+   "dir": "scans/VATSEQ/angle_N59-Zn-S66_pos"
+  },
+  {
+   "name": "angle_N60-Zn-S65",
+   "kind": "A",
+   "atoms": [
+    60,
+    67,
+    65
+   ],
+   "branch": "neg",
+   "v0": 84.7350343424854,
+   "start": 84.7350343424854,
+   "end": 69.7350343424854,
+   "npoints": 11,
+   "dir": "scans/VATSEQ/angle_N60-Zn-S65_neg"
+  },
+  {
+   "name": "angle_N60-Zn-S65",
+   "kind": "A",
+   "atoms": [
+    60,
+    67,
+    65
+   ],
+   "branch": "pos",
+   "v0": 84.7350343424854,
+   "start": 84.7350343424854,
+   "end": 99.7350343424854,
+   "npoints": 11,
+   "dir": "scans/VATSEQ/angle_N60-Zn-S65_pos"
+  },
+  {
+   "name": "angle_N60-Zn-S66",
+   "kind": "A",
+   "atoms": [
+    60,
+    67,
+    66
+   ],
+   "branch": "neg",
+   "v0": 139.4332308614213,
+   "start": 139.4332308614213,
+   "end": 124.4332308614213,
+   "npoints": 11,
+   "dir": "scans/VATSEQ/angle_N60-Zn-S66_neg"
+  },
+  {
+   "name": "angle_N60-Zn-S66",
+   "kind": "A",
+   "atoms": [
+    60,
+    67,
+    66
+   ],
+   "branch": "pos",
+   "v0": 139.4332308614213,
+   "start": 139.4332308614213,
+   "end": 154.4332308614213,
+   "npoints": 11,
+   "dir": "scans/VATSEQ/angle_N60-Zn-S66_pos"
+  },
+  {
+   "name": "angle_S65-Zn-S66",
+   "kind": "A",
+   "atoms": [
+    65,
+    67,
+    66
+   ],
+   "branch": "neg",
+   "v0": 118.48402441760328,
+   "start": 118.48402441760328,
+   "end": 103.48402441760328,
+   "npoints": 11,
+   "dir": "scans/VATSEQ/angle_S65-Zn-S66_neg"
+  },
+  {
+   "name": "angle_S65-Zn-S66",
+   "kind": "A",
+   "atoms": [
+    65,
+    67,
+    66
+   ],
+   "branch": "pos",
+   "v0": 118.48402441760328,
+   "start": 118.48402441760328,
+   "end": 133.48402441760328,
+   "npoints": 11,
+   "dir": "scans/VATSEQ/angle_S65-Zn-S66_pos"
+  },
+  {
+   "name": "twist_N59-S66-N60-S65",
+   "kind": "D",
+   "atoms": [
+    59,
+    66,
+    60,
+    65
+   ],
+   "branch": "neg",
+   "v0": 106.80093361770652,
+   "start": 106.80093361770652,
+   "end": 96.80093361770652,
+   "npoints": 11,
+   "dir": "scans/VATSEQ/twist_N59-S66-N60-S65_neg"
+  },
+  {
+   "name": "twist_N59-S66-N60-S65",
+   "kind": "D",
+   "atoms": [
+    59,
+    66,
+    60,
+    65
+   ],
+   "branch": "pos",
+   "v0": 106.80093361770652,
+   "start": 106.80093361770652,
+   "end": 116.80093361770652,
+   "npoints": 11,
+   "dir": "scans/VATSEQ/twist_N59-S66-N60-S65_pos"
+  },
+  {
+   "name": "tilt_Zn-N59-C33-C0",
+   "kind": "D",
+   "atoms": [
+    67,
+    59,
+    33,
+    0
+   ],
+   "branch": "neg",
+   "v0": -16.216089072874258,
+   "start": -16.216089072874258,
+   "end": -26.216089072874258,
+   "npoints": 11,
+   "dir": "scans/VATSEQ/tilt_Zn-N59-C33-C0_neg"
+  },
+  {
+   "name": "tilt_Zn-N59-C33-C0",
+   "kind": "D",
+   "atoms": [
+    67,
+    59,
+    33,
+    0
+   ],
+   "branch": "pos",
+   "v0": -16.216089072874258,
+   "start": -16.216089072874258,
+   "end": -6.216089072874258,
+   "npoints": 11,
+   "dir": "scans/VATSEQ/tilt_Zn-N59-C33-C0_pos"
+  },
+  {
+   "name": "tilt_Zn-N60-C46-C35",
+   "kind": "D",
+   "atoms": [
+    67,
+    60,
+    46,
+    35
+   ],
+   "branch": "neg",
+   "v0": -16.756290247811208,
+   "start": -16.756290247811208,
+   "end": -26.756290247811208,
+   "npoints": 11,
+   "dir": "scans/VATSEQ/tilt_Zn-N60-C46-C35_neg"
+  },
+  {
+   "name": "tilt_Zn-N60-C46-C35",
+   "kind": "D",
+   "atoms": [
+    67,
+    60,
+    46,
+    35
+   ],
+   "branch": "pos",
+   "v0": -16.756290247811208,
+   "start": -16.756290247811208,
+   "end": -6.756290247811208,
+   "npoints": 11,
+   "dir": "scans/VATSEQ/tilt_Zn-N60-C46-C35_pos"
+  },
+  {
+   "name": "tilt_Zn-S65-C47-N61",
+   "kind": "D",
+   "atoms": [
+    67,
+    65,
+    47,
+    61
+   ],
+   "branch": "neg",
+   "v0": -18.44737231327362,
+   "start": -18.44737231327362,
+   "end": -28.44737231327362,
+   "npoints": 11,
+   "dir": "scans/VATSEQ/tilt_Zn-S65-C47-N61_neg"
+  },
+  {
+   "name": "tilt_Zn-S65-C47-N61",
+   "kind": "D",
+   "atoms": [
+    67,
+    65,
+    47,
+    61
+   ],
+   "branch": "pos",
+   "v0": -18.44737231327362,
+   "start": -18.44737231327362,
+   "end": -8.447372313273618,
+   "npoints": 11,
+   "dir": "scans/VATSEQ/tilt_Zn-S65-C47-N61_pos"
+  },
+  {
+   "name": "tilt_Zn-S66-C34-N62",
+   "kind": "D",
+   "atoms": [
+    67,
+    66,
+    34,
+    62
+   ],
+   "branch": "neg",
+   "v0": -19.02882648390641,
+   "start": -19.02882648390641,
+   "end": -29.02882648390641,
+   "npoints": 11,
+   "dir": "scans/VATSEQ/tilt_Zn-S66-C34-N62_neg"
+  },
+  {
+   "name": "tilt_Zn-S66-C34-N62",
+   "kind": "D",
+   "atoms": [
+    67,
+    66,
+    34,
+    62
+   ],
+   "branch": "pos",
+   "v0": -19.02882648390641,
+   "start": -19.02882648390641,
+   "end": -9.02882648390641,
+   "npoints": 11,
+   "dir": "scans/VATSEQ/tilt_Zn-S66-C34-N62_pos"
+  }
+ ]
+}

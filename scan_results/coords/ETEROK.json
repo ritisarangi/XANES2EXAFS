@@ -1,0 +1,464 @@
+{
+ "ref": "ETEROK",
+ "zn": 0,
+ "donors": [
+  1,
+  2,
+  5,
+  6
+ ],
+ "coords": [
+  {
+   "name": "bond_Zn-S1",
+   "kind": "B",
+   "atoms": [
+    0,
+    1
+   ],
+   "branch": "neg",
+   "v0": 2.3910354897634907,
+   "start": 2.3910354897634907,
+   "end": 2.3310354897634906,
+   "npoints": 4,
+   "dir": "scans/ETEROK/bond_Zn-S1_neg"
+  },
+  {
+   "name": "bond_Zn-S1",
+   "kind": "B",
+   "atoms": [
+    0,
+    1
+   ],
+   "branch": "pos",
+   "v0": 2.3910354897634907,
+   "start": 2.3910354897634907,
+   "end": 2.591035489763491,
+   "npoints": 11,
+   "dir": "scans/ETEROK/bond_Zn-S1_pos"
+  },
+  {
+   "name": "bond_Zn-S2",
+   "kind": "B",
+   "atoms": [
+    0,
+    2
+   ],
+   "branch": "neg",
+   "v0": 2.391031967070049,
+   "start": 2.391031967070049,
+   "end": 2.331031967070049,
+   "npoints": 4,
+   "dir": "scans/ETEROK/bond_Zn-S2_neg"
+  },
+  {
+   "name": "bond_Zn-S2",
+   "kind": "B",
+   "atoms": [
+    0,
+    2
+   ],
+   "branch": "pos",
+   "v0": 2.391031967070049,
+   "start": 2.391031967070049,
+   "end": 2.591031967070049,
+   "npoints": 11,
+   "dir": "scans/ETEROK/bond_Zn-S2_pos"
+  },
+  {
+   "name": "bond_Zn-S5",
+   "kind": "B",
+   "atoms": [
+    0,
+    5
+   ],
+   "branch": "neg",
+   "v0": 2.3917465561563285,
+   "start": 2.3917465561563285,
+   "end": 2.3317465561563284,
+   "npoints": 4,
+   "dir": "scans/ETEROK/bond_Zn-S5_neg"
+  },
+  {
+   "name": "bond_Zn-S5",
+   "kind": "B",
+   "atoms": [
+    0,
+    5
+   ],
+   "branch": "pos",
+   "v0": 2.3917465561563285,
+   "start": 2.3917465561563285,
+   "end": 2.5917465561563287,
+   "npoints": 11,
+   "dir": "scans/ETEROK/bond_Zn-S5_pos"
+  },
+  {
+   "name": "bond_Zn-S6",
+   "kind": "B",
+   "atoms": [
+    0,
+    6
+   ],
+   "branch": "neg",
+   "v0": 2.391732939239019,
+   "start": 2.391732939239019,
+   "end": 2.331732939239019,
+   "npoints": 4,
+   "dir": "scans/ETEROK/bond_Zn-S6_neg"
+  },
+  {
+   "name": "bond_Zn-S6",
+   "kind": "B",
+   "atoms": [
+    0,
+    6
+   ],
+   "branch": "pos",
+   "v0": 2.391732939239019,
+   "start": 2.391732939239019,
+   "end": 2.5917329392390194,
+   "npoints": 11,
+   "dir": "scans/ETEROK/bond_Zn-S6_pos"
+  },
+  {
+   "name": "angle_S1-Zn-S2",
+   "kind": "A",
+   "atoms": [
+    1,
+    0,
+    2
+   ],
+   "branch": "neg",
+   "v0": 121.56593826839479,
+   "start": 121.56593826839479,
+   "end": 106.56593826839479,
+   "npoints": 11,
+   "dir": "scans/ETEROK/angle_S1-Zn-S2_neg"
+  },
+  {
+   "name": "angle_S1-Zn-S2",
+   "kind": "A",
+   "atoms": [
+    1,
+    0,
+    2
+   ],
+   "branch": "pos",
+   "v0": 121.56593826839479,
+   "start": 121.56593826839479,
+   "end": 136.5659382683948,
+   "npoints": 11,
+   "dir": "scans/ETEROK/angle_S1-Zn-S2_pos"
+  },
+  {
+   "name": "angle_S1-Zn-S5",
+   "kind": "A",
+   "atoms": [
+    1,
+    0,
+    5
+   ],
+   "branch": "neg",
+   "v0": 102.76791828413499,
+   "start": 102.76791828413499,
+   "end": 87.76791828413499,
+   "npoints": 11,
+   "dir": "scans/ETEROK/angle_S1-Zn-S5_neg"
+  },
+  {
+   "name": "angle_S1-Zn-S5",
+   "kind": "A",
+   "atoms": [
+    1,
+    0,
+    5
+   ],
+   "branch": "pos",
+   "v0": 102.76791828413499,
+   "start": 102.76791828413499,
+   "end": 117.76791828413499,
+   "npoints": 11,
+   "dir": "scans/ETEROK/angle_S1-Zn-S5_pos"
+  },
+  {
+   "name": "angle_S1-Zn-S6",
+   "kind": "A",
+   "atoms": [
+    1,
+    0,
+    6
+   ],
+   "branch": "neg",
+   "v0": 104.84437281024972,
+   "start": 104.84437281024972,
+   "end": 89.84437281024972,
+   "npoints": 11,
+   "dir": "scans/ETEROK/angle_S1-Zn-S6_neg"
+  },
+  {
+   "name": "angle_S1-Zn-S6",
+   "kind": "A",
+   "atoms": [
+    1,
+    0,
+    6
+   ],
+   "branch": "pos",
+   "v0": 104.84437281024972,
+   "start": 104.84437281024972,
+   "end": 119.84437281024972,
+   "npoints": 11,
+   "dir": "scans/ETEROK/angle_S1-Zn-S6_pos"
+  },
+  {
+   "name": "angle_S2-Zn-S5",
+   "kind": "A",
+   "atoms": [
+    2,
+    0,
+    5
+   ],
+   "branch": "neg",
+   "v0": 104.84941025606808,
+   "start": 104.84941025606808,
+   "end": 89.84941025606808,
+   "npoints": 11,
+   "dir": "scans/ETEROK/angle_S2-Zn-S5_neg"
+  },
+  {
+   "name": "angle_S2-Zn-S5",
+   "kind": "A",
+   "atoms": [
+    2,
+    0,
+    5
+   ],
+   "branch": "pos",
+   "v0": 104.84941025606808,
+   "start": 104.84941025606808,
+   "end": 119.84941025606808,
+   "npoints": 11,
+   "dir": "scans/ETEROK/angle_S2-Zn-S5_pos"
+  },
+  {
+   "name": "angle_S2-Zn-S6",
+   "kind": "A",
+   "atoms": [
+    2,
+    0,
+    6
+   ],
+   "branch": "neg",
+   "v0": 102.76709582039894,
+   "start": 102.76709582039894,
+   "end": 87.76709582039894,
+   "npoints": 11,
+   "dir": "scans/ETEROK/angle_S2-Zn-S6_neg"
+  },
+  {
+   "name": "angle_S2-Zn-S6",
+   "kind": "A",
+   "atoms": [
+    2,
+    0,
+    6
+   ],
+   "branch": "pos",
+   "v0": 102.76709582039894,
+   "start": 102.76709582039894,
+   "end": 117.76709582039894,
+   "npoints": 11,
+   "dir": "scans/ETEROK/angle_S2-Zn-S6_pos"
+  },
+  {
+   "name": "angle_S5-Zn-S6",
+   "kind": "A",
+   "atoms": [
+    5,
+    0,
+    6
+   ],
+   "branch": "neg",
+   "v0": 121.4701784319988,
+   "start": 121.4701784319988,
+   "end": 106.4701784319988,
+   "npoints": 11,
+   "dir": "scans/ETEROK/angle_S5-Zn-S6_neg"
+  },
+  {
+   "name": "angle_S5-Zn-S6",
+   "kind": "A",
+   "atoms": [
+    5,
+    0,
+    6
+   ],
+   "branch": "pos",
+   "v0": 121.4701784319988,
+   "start": 121.4701784319988,
+   "end": 136.47017843199882,
+   "npoints": 11,
+   "dir": "scans/ETEROK/angle_S5-Zn-S6_pos"
+  },
+  {
+   "name": "twist_S1-S2-S5-S6",
+   "kind": "D",
+   "atoms": [
+    1,
+    2,
+    5,
+    6
+   ],
+   "branch": "neg",
+   "v0": 64.48538035930947,
+   "start": 64.48538035930947,
+   "end": 54.485380359309474,
+   "npoints": 11,
+   "dir": "scans/ETEROK/twist_S1-S2-S5-S6_neg"
+  },
+  {
+   "name": "twist_S1-S2-S5-S6",
+   "kind": "D",
+   "atoms": [
+    1,
+    2,
+    5,
+    6
+   ],
+   "branch": "pos",
+   "v0": 64.48538035930947,
+   "start": 64.48538035930947,
+   "end": 74.48538035930947,
+   "npoints": 11,
+   "dir": "scans/ETEROK/twist_S1-S2-S5-S6_pos"
+  },
+  {
+   "name": "tilt_Zn-S1-C17-S3",
+   "kind": "D",
+   "atoms": [
+    0,
+    1,
+    17,
+    3
+   ],
+   "branch": "neg",
+   "v0": -3.249455970839318,
+   "start": -3.249455970839318,
+   "end": -13.249455970839318,
+   "npoints": 11,
+   "dir": "scans/ETEROK/tilt_Zn-S1-C17-S3_neg"
+  },
+  {
+   "name": "tilt_Zn-S1-C17-S3",
+   "kind": "D",
+   "atoms": [
+    0,
+    1,
+    17,
+    3
+   ],
+   "branch": "pos",
+   "v0": -3.249455970839318,
+   "start": -3.249455970839318,
+   "end": 6.750544029160682,
+   "npoints": 11,
+   "dir": "scans/ETEROK/tilt_Zn-S1-C17-S3_pos"
+  },
+  {
+   "name": "tilt_Zn-S2-C18-S4",
+   "kind": "D",
+   "atoms": [
+    0,
+    2,
+    18,
+    4
+   ],
+   "branch": "neg",
+   "v0": -3.255326565387708,
+   "start": -3.255326565387708,
+   "end": -13.255326565387708,
+   "npoints": 11,
+   "dir": "scans/ETEROK/tilt_Zn-S2-C18-S4_neg"
+  },
+  {
+   "name": "tilt_Zn-S2-C18-S4",
+   "kind": "D",
+   "atoms": [
+    0,
+    2,
+    18,
+    4
+   ],
+   "branch": "pos",
+   "v0": -3.255326565387708,
+   "start": -3.255326565387708,
+   "end": 6.744673434612292,
+   "npoints": 11,
+   "dir": "scans/ETEROK/tilt_Zn-S2-C18-S4_pos"
+  },
+  {
+   "name": "tilt_Zn-S5-C29-S7",
+   "kind": "D",
+   "atoms": [
+    0,
+    5,
+    29,
+    7
+   ],
+   "branch": "neg",
+   "v0": -3.285582557538418,
+   "start": -3.285582557538418,
+   "end": -13.285582557538419,
+   "npoints": 11,
+   "dir": "scans/ETEROK/tilt_Zn-S5-C29-S7_neg"
+  },
+  {
+   "name": "tilt_Zn-S5-C29-S7",
+   "kind": "D",
+   "atoms": [
+    0,
+    5,
+    29,
+    7
+   ],
+   "branch": "pos",
+   "v0": -3.285582557538418,
+   "start": -3.285582557538418,
+   "end": 6.714417442461582,
+   "npoints": 11,
+   "dir": "scans/ETEROK/tilt_Zn-S5-C29-S7_pos"
+  },
+  {
+   "name": "tilt_Zn-S6-C30-S8",
+   "kind": "D",
+   "atoms": [
+    0,
+    6,
+    30,
+    8
+   ],
+   "branch": "neg",
+   "v0": -3.2842083559160398,
+   "start": -3.2842083559160398,
+   "end": -13.28420835591604,
+   "npoints": 11,
+   "dir": "scans/ETEROK/tilt_Zn-S6-C30-S8_neg"
+  },
+  {
+   "name": "tilt_Zn-S6-C30-S8",
+   "kind": "D",
+   "atoms": [
+    0,
+    6,
+    30,
+    8
+   ],
+   "branch": "pos",
+   "v0": -3.2842083559160398,
+   "start": -3.2842083559160398,
+   "end": 6.715791644083961,
+   "npoints": 11,
+   "dir": "scans/ETEROK/tilt_Zn-S6-C30-S8_pos"
+  }
+ ]
+}
