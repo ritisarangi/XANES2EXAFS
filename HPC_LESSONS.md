@@ -160,6 +160,11 @@ Check them again for other work:
 - **Globus Transfer** moves results (ALCF `dtn_flare`, NERSC Perlmutter collection; link the identities
   first). A missing source file makes a transfer retry until its deadline and blocks whatever waits on
   it, so add only files that exist (a branch finished in one run has no `scan_acc.txt`).
+- **The ALCF Globus collection needs a recent login with an ALCF identity.** When that session lapses
+  (here after about a week), transfers fail with "None of your authenticated identities are from
+  domains allowed by resource policies" (403, LOGIN_DENIED). Only a person can renew it (browser, ALCF
+  MFA): `nersc/iri/globus_login.py url`, then `code <CODE>`, then restart the driver. Watch for this
+  error and ask the user at once; results wait safely at NERSC meanwhile.
 
 ## Running unattended
 
