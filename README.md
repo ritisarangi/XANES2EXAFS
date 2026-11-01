@@ -8,7 +8,7 @@
 
 A complex is added when all its branches have terminated normally and `aurora/audit.py` finds no problem (every ORCA output matches its own folder's input; no folder run twice at once).
 
-## Published (285 complexes, 78522 points)
+## Published (300 complexes, 82420 points)
 
 | Complex | Atoms | Branches | Points | Passing | Published |
 |---|---|---|---|---|---|
@@ -22,6 +22,7 @@ A complex is added when all its branches have terminated normally and `aurora/au
 | AZIJIC | 78 | 30 | 302 | 302 | 2026-10-30 |
 | BAPZIC | 95 | 30 | 302 | 288 | 2026-10-31 |
 | BELDUS | 59 | 30 | 302 | 238 | 2026-10-26 |
+| BELFAA | 57 | 30 | 302 | 262 | 2026-11-01 |
 | BELFEE | 47 | 30 | 302 | 297 | 2026-10-24 |
 | BELFII | 44 | 30 | 302 | 297 | 2026-10-24 |
 | BMBTZN | 61 | 30 | 302 | 297 | 2026-10-23 |
@@ -40,6 +41,7 @@ A complex is added when all its branches have terminated normally and `aurora/au
 | DASFUY | 21 | 30 | 302 | 298 | 2026-10-24 |
 | DASMOZ | 41 | 30 | 302 | 296 | 2026-10-24 |
 | DASPOC | 43 | 30 | 302 | 295 | 2026-10-24 |
+| DETCEL | 61 | 30 | 302 | 290 | 2026-11-01 |
 | DIFBIE | 45 | 30 | 302 | 293 | 2026-10-25 |
 | DIFBOK | 55 | 30 | 302 | 264 | 2026-10-24 |
 | DILGUA | 53 | 30 | 302 | 302 | 2026-10-20 |
@@ -56,6 +58,7 @@ A complex is added when all its branches have terminated normally and `aurora/au
 | FADYOY | 41 | 30 | 302 | 280 | 2026-10-25 |
 | FAJZAS | 78 | 30 | 302 | 300 | 2026-10-27 |
 | FATJUG | 49 | 30 | 302 | 280 | 2026-10-19 |
+| FAXYIP | 77 | 30 | 302 | 293 | 2026-11-01 |
 | FEKQIV | 78 | 30 | 302 | 302 | 2026-11-01 |
 | FEKQOB | 84 | 30 | 302 | 296 | 2026-10-31 |
 | FEKRAO | 65 | 30 | 302 | 228 | 2026-10-27 |
@@ -63,6 +66,7 @@ A complex is added when all its branches have terminated normally and `aurora/au
 | FEKTAQ | 29 | 30 | 302 | 291 | 2026-10-24 |
 | FEYNUT | 93 | 30 | 302 | 286 | 2026-10-23 |
 | FILGEN | 43 | 30 | 302 | 298 | 2026-10-24 |
+| FIQTII | 53 | 30 | 302 | 301 | 2026-11-01 |
 | FIYQIP | 69 | 26 | 258 | 248 | 2026-10-24 |
 | FOQGOH | 71 | 30 | 302 | 255 | 2026-11-01 |
 | FUXMAM | 73 | 30 | 302 | 288 | 2026-10-31 |
@@ -72,6 +76,7 @@ A complex is added when all its branches have terminated normally and `aurora/au
 | GALGAC | 47 | 30 | 302 | 296 | 2026-10-24 |
 | GALGEG | 49 | 30 | 302 | 298 | 2026-10-19 |
 | GALGIK | 47 | 30 | 302 | 274 | 2026-10-24 |
+| GEQCUE | 47 | 30 | 302 | 239 | 2026-11-01 |
 | GEXZOY | 81 | 30 | 302 | 276 | 2026-10-25 |
 | GILZEG | 49 | 30 | 302 | 299 | 2026-10-23 |
 | GIXTAL | 57 | 30 | 302 | 153 | 2026-10-28 |
@@ -144,9 +149,11 @@ A complex is added when all its branches have terminated normally and `aurora/au
 | LUVFUD | 60 | 30 | 302 | 301 | 2026-10-25 |
 | LUZTEF | 81 | 30 | 302 | 298 | 2026-10-26 |
 | LUZTUV | 81 | 30 | 302 | 254 | 2026-10-31 |
+| LUZVAD | 80 | 30 | 302 | 299 | 2026-11-01 |
 | MAZBZN10 | 49 | 30 | 302 | 288 | 2026-10-27 |
 | MEPWOT | 38 | 28 | 280 | 248 | 2026-10-24 |
 | MIYPAM | 89 | 30 | 302 | 245 | 2026-10-23 |
+| MIYVEW | 69 | 30 | 302 | 276 | 2026-11-01 |
 | MIYVIA | 63 | 30 | 302 | 294 | 2026-10-24 |
 | MIYVOG | 59 | 30 | 302 | 294 | 2026-10-24 |
 | MIYVUM | 67 | 30 | 302 | 294 | 2026-10-24 |
@@ -195,6 +202,7 @@ A complex is added when all its branches have terminated normally and `aurora/au
 | POZDIR | 64 | 30 | 302 | 295 | 2026-11-01 |
 | PTOLZN01 | 53 | 30 | 302 | 171 | 2026-10-26 |
 | PUMRAQ | 57 | 30 | 302 | 285 | 2026-10-24 |
+| PUNTEZ | 69 | 30 | 302 | 299 | 2026-11-01 |
 | PUZKUQ | 33 | 30 | 302 | 289 | 2026-10-24 |
 | QADDEF | 85 | 30 | 302 | 281 | 2026-10-31 |
 | QAGWII | 73 | 30 | 302 | 284 | 2026-10-25 |
@@ -221,6 +229,7 @@ A complex is added when all its branches have terminated normally and `aurora/au
 | RIBMEV | 59 | 30 | 302 | 205 | 2026-10-25 |
 | RIBMIZ | 53 | 30 | 302 | 235 | 2026-10-24 |
 | RUKJAL | 37 | 30 | 302 | 294 | 2026-10-24 |
+| SEJZOW | 85 | 30 | 302 | 292 | 2026-11-01 |
 | SENFOG | 59 | 30 | 302 | 296 | 2026-10-23 |
 | SEWZUS | 57 | 30 | 302 | 261 | 2026-10-23 |
 | SEYCIL | 61 | 30 | 302 | 281 | 2026-10-23 |
@@ -236,12 +245,17 @@ A complex is added when all its branches have terminated normally and `aurora/au
 | TARNIJ | 53 | 30 | 302 | 281 | 2026-10-24 |
 | TAVZEW | 75 | 48 | 486 | 484 | 2026-10-24 |
 | TBZZNP01 | 51 | 30 | 302 | 226 | 2026-10-21 |
+| TELRIN | 69 | 30 | 302 | 200 | 2026-11-01 |
+| TELRUZ | 77 | 30 | 302 | 161 | 2026-11-01 |
+| TELSAG | 73 | 30 | 302 | 201 | 2026-11-01 |
+| TEYSOG | 73 | 30 | 302 | 287 | 2026-11-01 |
 | TIFNOO | 55 | 30 | 302 | 241 | 2026-10-27 |
 | TIFNUU | 65 | 30 | 302 | 260 | 2026-11-01 |
 | TIQLEK | 83 | 30 | 302 | 285 | 2026-10-30 |
 | TIQLOU | 69 | 30 | 302 | 302 | 2026-10-23 |
 | TIXQOH | 92 | 30 | 302 | 302 | 2026-10-22 |
 | TIXREY | 48 | 30 | 302 | 302 | 2026-10-23 |
+| UCOLIH | 69 | 30 | 302 | 204 | 2026-11-01 |
 | UDOCUL | 70 | 30 | 302 | 300 | 2026-10-26 |
 | UDODOG | 90 | 30 | 302 | 234 | 2026-10-27 |
 | UDODUM | 75 | 30 | 302 | 283 | 2026-11-01 |
@@ -250,6 +264,7 @@ A complex is added when all its branches have terminated normally and `aurora/au
 | UMEVOY | 39 | 30 | 302 | 291 | 2026-10-24 |
 | UQOWIH | 65 | 30 | 302 | 287 | 2026-10-24 |
 | UTAXAQ | 81 | 30 | 302 | 242 | 2026-10-30 |
+| UWAVOF | 71 | 30 | 302 | 294 | 2026-11-01 |
 | VAGJES | 35 | 30 | 302 | 296 | 2026-10-24 |
 | VAGJIW | 55 | 30 | 302 | 292 | 2026-10-25 |
 | VATSAM | 67 | 30 | 302 | 294 | 2026-11-01 |
@@ -305,6 +320,7 @@ A branch fell more than 2 kJ/mol below its start (`energy_drop`), so the complex
 - FEKQOB: angle_N1-Zn-S3 neg step 9 at -2.832 kJ/mol
 - FEKRAO: angle_S1-Zn-N3 neg step 2 at -2.508 kJ/mol; angle_S1-Zn-N4 neg step 3 at -2.483 kJ/mol; angle_S2-Zn-N3 neg step 2 at -2.345 kJ/mol; twist_S1-S2-N3-N4 neg step 3 at -2.489 kJ/mol; tilt_Zn-S2-C32-C38 neg step 9 at -3.29 kJ/mol
 - GAKKUY: angle_S2-Zn-S3 neg step 9 at -4.906 kJ/mol
+- GEQCUE: bond_Zn-S44 pos step 3 at -14.839 kJ/mol; bond_Zn-S45 pos step 5 at -11.695 kJ/mol
 - GIXTAL: angle_N6-Zn-N7 pos step 6 at -4.886 kJ/mol
 - HOZGAF: bond_Zn-S1 pos step 2 at -15.858 kJ/mol; bond_Zn-N3 pos step 1 at -16.087 kJ/mol; bond_Zn-N5 pos step 1 at -15.996 kJ/mol; bond_Zn-N6 neg step 1 at -15.931 kJ/mol; angle_S1-Zn-N3 neg step 1 at -16.095 kJ/mol; angle_S1-Zn-N3 pos step 3 at -15.406 kJ/mol; angle_S1-Zn-N5 neg step 1 at -16.028 kJ/mol; angle_S1-Zn-N6 pos step 1 at -16.09 kJ/mol; angle_N3-Zn-N5 neg step 1 at -16.099 kJ/mol; angle_N3-Zn-N6 neg step 1 at -16.094 kJ/mol; angle_N3-Zn-N6 pos step 8 at -2.22 kJ/mol; angle_N5-Zn-N6 pos step 1 at -15.968 kJ/mol; twist_S1-N3-N5-N6 neg step 1 at -16.089 kJ/mol; tilt_Zn-N3-C10-C21 neg step 6 at -16.006 kJ/mol; tilt_Zn-N6-C14-C15 pos step 7 at -15.659 kJ/mol
 - ICAVAK: angle_S1-Zn-N2 pos step 8 at -2.533 kJ/mol
@@ -314,6 +330,8 @@ A branch fell more than 2 kJ/mol below its start (`energy_drop`), so the complex
 - OJELOE: angle_S4-Zn-N100 pos step 4 at -2.003 kJ/mol; twist_S3-S4-N100-S5 neg step 7 at -2.511 kJ/mol
 - QADDEF: angle_N5-Zn-N7 pos step 9 at -6.959 kJ/mol
 - TARNIJ: angle_S1-Zn-S2 neg step 8 at -2.476 kJ/mol
+- TELRIN: angle_S1-Zn-N5 neg step 1 at -6.128 kJ/mol; angle_S1-Zn-N6 neg step 4 at -7.006 kJ/mol; angle_S2-Zn-N5 pos step 7 at -7.607 kJ/mol; angle_S2-Zn-N6 neg step 8 at -6.445 kJ/mol; angle_S2-Zn-N6 pos step 1 at -8.018 kJ/mol; angle_N5-Zn-N6 neg step 2 at -6.456 kJ/mol; twist_S1-S2-N5-N6 pos step 4 at -8.01 kJ/mol; tilt_Zn-S1-C7-C8 pos step 10 at -5.637 kJ/mol; tilt_Zn-N5-C51-H52 neg step 3 at -7.861 kJ/mol; tilt_Zn-N6-C60-C59 pos step 9 at -6.646 kJ/mol
+- TEYSOG: angle_S1-Zn-S2 pos step 9 at -27.45 kJ/mol
 - TIFNUU: angle_S5-Zn-S8 pos step 5 at -2.29 kJ/mol; angle_S6-Zn-S7 pos step 5 at -2.298 kJ/mol; twist_S5-S6-S7-S8 pos step 7 at -2.136 kJ/mol
 - UFUROC: bond_Zn-S1 neg step 3 at -2.655 kJ/mol; bond_Zn-S2 pos step 2 at -3.299 kJ/mol; bond_Zn-S3 neg step 1 at -3.613 kJ/mol; bond_Zn-S4 pos step 3 at -3.064 kJ/mol; angle_S1-Zn-S2 neg step 1 at -3.621 kJ/mol; angle_S1-Zn-S3 pos step 1 at -3.152 kJ/mol; angle_S1-Zn-S4 neg step 1 at -2.971 kJ/mol; angle_S2-Zn-S3 pos step 3 at -3.3 kJ/mol; angle_S2-Zn-S4 neg step 1 at -3.606 kJ/mol; angle_S3-Zn-S4 pos step 2 at -3.615 kJ/mol; twist_S1-S2-S3-S4 neg step 1 at -3.334 kJ/mol; tilt_Zn-S2-C12-O11 neg step 3 at -3.564 kJ/mol; tilt_Zn-S3-C18-C19 neg step 2 at -3.22 kJ/mol; tilt_Zn-S4-C24-O23 neg step 2 at -3.615 kJ/mol
 - WIGBIX: angle_S20-Zn-N39 pos step 7 at -2.309 kJ/mol
@@ -328,6 +346,7 @@ A branch fell more than 2 kJ/mol below its start (`energy_drop`), so the complex
 
 No branch start passes validation, so no point is usable as defined (for example a non-donor atom within 2.6 A of Zn at the stage-2 minimum).
 
+- EPOFUL: all 30 branches finished; branch starts fail validation (new_contact 30)
 - GECLUZ: all 29 branches finished; branch starts fail validation (new_contact 29)
 - KECGEI: all 30 branches finished; branch starts fail validation (new_contact 30)
 - KERJOI: all 29 branches finished; branch starts fail validation (shell 29)

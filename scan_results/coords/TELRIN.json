@@ -1,0 +1,464 @@
+{
+ "ref": "TELRIN",
+ "zn": 0,
+ "donors": [
+  1,
+  2,
+  5,
+  6
+ ],
+ "coords": [
+  {
+   "name": "bond_Zn-S1",
+   "kind": "B",
+   "atoms": [
+    0,
+    1
+   ],
+   "branch": "neg",
+   "v0": 2.3258189877515134,
+   "start": 2.3258189877515134,
+   "end": 2.2658189877515134,
+   "npoints": 4,
+   "dir": "scans/TELRIN/bond_Zn-S1_neg"
+  },
+  {
+   "name": "bond_Zn-S1",
+   "kind": "B",
+   "atoms": [
+    0,
+    1
+   ],
+   "branch": "pos",
+   "v0": 2.3258189877515134,
+   "start": 2.3258189877515134,
+   "end": 2.5258189877515136,
+   "npoints": 11,
+   "dir": "scans/TELRIN/bond_Zn-S1_pos"
+  },
+  {
+   "name": "bond_Zn-S2",
+   "kind": "B",
+   "atoms": [
+    0,
+    2
+   ],
+   "branch": "neg",
+   "v0": 2.3076527410323124,
+   "start": 2.3076527410323124,
+   "end": 2.2476527410323124,
+   "npoints": 4,
+   "dir": "scans/TELRIN/bond_Zn-S2_neg"
+  },
+  {
+   "name": "bond_Zn-S2",
+   "kind": "B",
+   "atoms": [
+    0,
+    2
+   ],
+   "branch": "pos",
+   "v0": 2.3076527410323124,
+   "start": 2.3076527410323124,
+   "end": 2.5076527410323126,
+   "npoints": 11,
+   "dir": "scans/TELRIN/bond_Zn-S2_pos"
+  },
+  {
+   "name": "bond_Zn-N5",
+   "kind": "B",
+   "atoms": [
+    0,
+    5
+   ],
+   "branch": "neg",
+   "v0": 2.105021492514113,
+   "start": 2.105021492514113,
+   "end": 2.045021492514113,
+   "npoints": 4,
+   "dir": "scans/TELRIN/bond_Zn-N5_neg"
+  },
+  {
+   "name": "bond_Zn-N5",
+   "kind": "B",
+   "atoms": [
+    0,
+    5
+   ],
+   "branch": "pos",
+   "v0": 2.105021492514113,
+   "start": 2.105021492514113,
+   "end": 2.305021492514113,
+   "npoints": 11,
+   "dir": "scans/TELRIN/bond_Zn-N5_pos"
+  },
+  {
+   "name": "bond_Zn-N6",
+   "kind": "B",
+   "atoms": [
+    0,
+    6
+   ],
+   "branch": "neg",
+   "v0": 2.0935674742211314,
+   "start": 2.0935674742211314,
+   "end": 2.0335674742211314,
+   "npoints": 4,
+   "dir": "scans/TELRIN/bond_Zn-N6_neg"
+  },
+  {
+   "name": "bond_Zn-N6",
+   "kind": "B",
+   "atoms": [
+    0,
+    6
+   ],
+   "branch": "pos",
+   "v0": 2.0935674742211314,
+   "start": 2.0935674742211314,
+   "end": 2.2935674742211316,
+   "npoints": 11,
+   "dir": "scans/TELRIN/bond_Zn-N6_pos"
+  },
+  {
+   "name": "angle_S1-Zn-S2",
+   "kind": "A",
+   "atoms": [
+    1,
+    0,
+    2
+   ],
+   "branch": "neg",
+   "v0": 118.99279717732536,
+   "start": 118.99279717732536,
+   "end": 103.99279717732536,
+   "npoints": 11,
+   "dir": "scans/TELRIN/angle_S1-Zn-S2_neg"
+  },
+  {
+   "name": "angle_S1-Zn-S2",
+   "kind": "A",
+   "atoms": [
+    1,
+    0,
+    2
+   ],
+   "branch": "pos",
+   "v0": 118.99279717732536,
+   "start": 118.99279717732536,
+   "end": 133.99279717732537,
+   "npoints": 11,
+   "dir": "scans/TELRIN/angle_S1-Zn-S2_pos"
+  },
+  {
+   "name": "angle_S1-Zn-N5",
+   "kind": "A",
+   "atoms": [
+    1,
+    0,
+    5
+   ],
+   "branch": "neg",
+   "v0": 114.82384647040291,
+   "start": 114.82384647040291,
+   "end": 99.82384647040291,
+   "npoints": 11,
+   "dir": "scans/TELRIN/angle_S1-Zn-N5_neg"
+  },
+  {
+   "name": "angle_S1-Zn-N5",
+   "kind": "A",
+   "atoms": [
+    1,
+    0,
+    5
+   ],
+   "branch": "pos",
+   "v0": 114.82384647040291,
+   "start": 114.82384647040291,
+   "end": 129.8238464704029,
+   "npoints": 11,
+   "dir": "scans/TELRIN/angle_S1-Zn-N5_pos"
+  },
+  {
+   "name": "angle_S1-Zn-N6",
+   "kind": "A",
+   "atoms": [
+    1,
+    0,
+    6
+   ],
+   "branch": "neg",
+   "v0": 106.74608269891164,
+   "start": 106.74608269891164,
+   "end": 91.74608269891164,
+   "npoints": 11,
+   "dir": "scans/TELRIN/angle_S1-Zn-N6_neg"
+  },
+  {
+   "name": "angle_S1-Zn-N6",
+   "kind": "A",
+   "atoms": [
+    1,
+    0,
+    6
+   ],
+   "branch": "pos",
+   "v0": 106.74608269891164,
+   "start": 106.74608269891164,
+   "end": 121.74608269891164,
+   "npoints": 11,
+   "dir": "scans/TELRIN/angle_S1-Zn-N6_pos"
+  },
+  {
+   "name": "angle_S2-Zn-N5",
+   "kind": "A",
+   "atoms": [
+    2,
+    0,
+    5
+   ],
+   "branch": "neg",
+   "v0": 113.04144268740772,
+   "start": 113.04144268740772,
+   "end": 98.04144268740772,
+   "npoints": 11,
+   "dir": "scans/TELRIN/angle_S2-Zn-N5_neg"
+  },
+  {
+   "name": "angle_S2-Zn-N5",
+   "kind": "A",
+   "atoms": [
+    2,
+    0,
+    5
+   ],
+   "branch": "pos",
+   "v0": 113.04144268740772,
+   "start": 113.04144268740772,
+   "end": 128.0414426874077,
+   "npoints": 11,
+   "dir": "scans/TELRIN/angle_S2-Zn-N5_pos"
+  },
+  {
+   "name": "angle_S2-Zn-N6",
+   "kind": "A",
+   "atoms": [
+    2,
+    0,
+    6
+   ],
+   "branch": "neg",
+   "v0": 117.85360736469325,
+   "start": 117.85360736469325,
+   "end": 102.85360736469325,
+   "npoints": 11,
+   "dir": "scans/TELRIN/angle_S2-Zn-N6_neg"
+  },
+  {
+   "name": "angle_S2-Zn-N6",
+   "kind": "A",
+   "atoms": [
+    2,
+    0,
+    6
+   ],
+   "branch": "pos",
+   "v0": 117.85360736469325,
+   "start": 117.85360736469325,
+   "end": 132.85360736469323,
+   "npoints": 11,
+   "dir": "scans/TELRIN/angle_S2-Zn-N6_pos"
+  },
+  {
+   "name": "angle_N5-Zn-N6",
+   "kind": "A",
+   "atoms": [
+    5,
+    0,
+    6
+   ],
+   "branch": "neg",
+   "v0": 78.68506270502802,
+   "start": 78.68506270502802,
+   "end": 63.68506270502802,
+   "npoints": 11,
+   "dir": "scans/TELRIN/angle_N5-Zn-N6_neg"
+  },
+  {
+   "name": "angle_N5-Zn-N6",
+   "kind": "A",
+   "atoms": [
+    5,
+    0,
+    6
+   ],
+   "branch": "pos",
+   "v0": 78.68506270502802,
+   "start": 78.68506270502802,
+   "end": 93.68506270502802,
+   "npoints": 11,
+   "dir": "scans/TELRIN/angle_N5-Zn-N6_pos"
+  },
+  {
+   "name": "twist_S1-S2-N5-N6",
+   "kind": "D",
+   "atoms": [
+    1,
+    2,
+    5,
+    6
+   ],
+   "branch": "neg",
+   "v0": 70.47005306699832,
+   "start": 70.47005306699832,
+   "end": 60.47005306699832,
+   "npoints": 11,
+   "dir": "scans/TELRIN/twist_S1-S2-N5-N6_neg"
+  },
+  {
+   "name": "twist_S1-S2-N5-N6",
+   "kind": "D",
+   "atoms": [
+    1,
+    2,
+    5,
+    6
+   ],
+   "branch": "pos",
+   "v0": 70.47005306699832,
+   "start": 70.47005306699832,
+   "end": 80.47005306699832,
+   "npoints": 11,
+   "dir": "scans/TELRIN/twist_S1-S2-N5-N6_pos"
+  },
+  {
+   "name": "tilt_Zn-S1-C7-C8",
+   "kind": "D",
+   "atoms": [
+    0,
+    1,
+    7,
+    8
+   ],
+   "branch": "neg",
+   "v0": 64.3238921983609,
+   "start": 64.3238921983609,
+   "end": 54.323892198360895,
+   "npoints": 11,
+   "dir": "scans/TELRIN/tilt_Zn-S1-C7-C8_neg"
+  },
+  {
+   "name": "tilt_Zn-S1-C7-C8",
+   "kind": "D",
+   "atoms": [
+    0,
+    1,
+    7,
+    8
+   ],
+   "branch": "pos",
+   "v0": 64.3238921983609,
+   "start": 64.3238921983609,
+   "end": 74.3238921983609,
+   "npoints": 11,
+   "dir": "scans/TELRIN/tilt_Zn-S1-C7-C8_pos"
+  },
+  {
+   "name": "tilt_Zn-S2-C29-C30",
+   "kind": "D",
+   "atoms": [
+    0,
+    2,
+    29,
+    30
+   ],
+   "branch": "neg",
+   "v0": 38.93204056086963,
+   "start": 38.93204056086963,
+   "end": 28.93204056086963,
+   "npoints": 11,
+   "dir": "scans/TELRIN/tilt_Zn-S2-C29-C30_neg"
+  },
+  {
+   "name": "tilt_Zn-S2-C29-C30",
+   "kind": "D",
+   "atoms": [
+    0,
+    2,
+    29,
+    30
+   ],
+   "branch": "pos",
+   "v0": 38.93204056086963,
+   "start": 38.93204056086963,
+   "end": 48.93204056086963,
+   "npoints": 11,
+   "dir": "scans/TELRIN/tilt_Zn-S2-C29-C30_pos"
+  },
+  {
+   "name": "tilt_Zn-N5-C51-H52",
+   "kind": "D",
+   "atoms": [
+    0,
+    5,
+    51,
+    52
+   ],
+   "branch": "neg",
+   "v0": -0.18669234057687195,
+   "start": -0.18669234057687195,
+   "end": -10.186692340576872,
+   "npoints": 11,
+   "dir": "scans/TELRIN/tilt_Zn-N5-C51-H52_neg"
+  },
+  {
+   "name": "tilt_Zn-N5-C51-H52",
+   "kind": "D",
+   "atoms": [
+    0,
+    5,
+    51,
+    52
+   ],
+   "branch": "pos",
+   "v0": -0.18669234057687195,
+   "start": -0.18669234057687195,
+   "end": 9.813307659423128,
+   "npoints": 11,
+   "dir": "scans/TELRIN/tilt_Zn-N5-C51-H52_pos"
+  },
+  {
+   "name": "tilt_Zn-N6-C60-C59",
+   "kind": "D",
+   "atoms": [
+    0,
+    6,
+    60,
+    59
+   ],
+   "branch": "neg",
+   "v0": -6.371522287333294,
+   "start": -6.371522287333294,
+   "end": -16.371522287333292,
+   "npoints": 11,
+   "dir": "scans/TELRIN/tilt_Zn-N6-C60-C59_neg"
+  },
+  {
+   "name": "tilt_Zn-N6-C60-C59",
+   "kind": "D",
+   "atoms": [
+    0,
+    6,
+    60,
+    59
+   ],
+   "branch": "pos",
+   "v0": -6.371522287333294,
+   "start": -6.371522287333294,
+   "end": 3.6284777126667063,
+   "npoints": 11,
+   "dir": "scans/TELRIN/tilt_Zn-N6-C60-C59_pos"
+  }
+ ]
+}

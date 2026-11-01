@@ -1,0 +1,464 @@
+{
+ "ref": "TELSAG",
+ "zn": 0,
+ "donors": [
+  1,
+  2,
+  5,
+  6
+ ],
+ "coords": [
+  {
+   "name": "bond_Zn-S1",
+   "kind": "B",
+   "atoms": [
+    0,
+    1
+   ],
+   "branch": "neg",
+   "v0": 2.3407158461792843,
+   "start": 2.3407158461792843,
+   "end": 2.2807158461792842,
+   "npoints": 4,
+   "dir": "scans/TELSAG/bond_Zn-S1_neg"
+  },
+  {
+   "name": "bond_Zn-S1",
+   "kind": "B",
+   "atoms": [
+    0,
+    1
+   ],
+   "branch": "pos",
+   "v0": 2.3407158461792843,
+   "start": 2.3407158461792843,
+   "end": 2.5407158461792845,
+   "npoints": 11,
+   "dir": "scans/TELSAG/bond_Zn-S1_pos"
+  },
+  {
+   "name": "bond_Zn-S2",
+   "kind": "B",
+   "atoms": [
+    0,
+    2
+   ],
+   "branch": "neg",
+   "v0": 2.3514287341286844,
+   "start": 2.3514287341286844,
+   "end": 2.2914287341286843,
+   "npoints": 4,
+   "dir": "scans/TELSAG/bond_Zn-S2_neg"
+  },
+  {
+   "name": "bond_Zn-S2",
+   "kind": "B",
+   "atoms": [
+    0,
+    2
+   ],
+   "branch": "pos",
+   "v0": 2.3514287341286844,
+   "start": 2.3514287341286844,
+   "end": 2.5514287341286845,
+   "npoints": 11,
+   "dir": "scans/TELSAG/bond_Zn-S2_pos"
+  },
+  {
+   "name": "bond_Zn-N5",
+   "kind": "B",
+   "atoms": [
+    0,
+    5
+   ],
+   "branch": "neg",
+   "v0": 2.0493735853965296,
+   "start": 2.0493735853965296,
+   "end": 1.9893735853965295,
+   "npoints": 4,
+   "dir": "scans/TELSAG/bond_Zn-N5_neg"
+  },
+  {
+   "name": "bond_Zn-N5",
+   "kind": "B",
+   "atoms": [
+    0,
+    5
+   ],
+   "branch": "pos",
+   "v0": 2.0493735853965296,
+   "start": 2.0493735853965296,
+   "end": 2.2493735853965298,
+   "npoints": 11,
+   "dir": "scans/TELSAG/bond_Zn-N5_pos"
+  },
+  {
+   "name": "bond_Zn-N6",
+   "kind": "B",
+   "atoms": [
+    0,
+    6
+   ],
+   "branch": "neg",
+   "v0": 2.057742971849521,
+   "start": 2.057742971849521,
+   "end": 1.997742971849521,
+   "npoints": 4,
+   "dir": "scans/TELSAG/bond_Zn-N6_neg"
+  },
+  {
+   "name": "bond_Zn-N6",
+   "kind": "B",
+   "atoms": [
+    0,
+    6
+   ],
+   "branch": "pos",
+   "v0": 2.057742971849521,
+   "start": 2.057742971849521,
+   "end": 2.257742971849521,
+   "npoints": 11,
+   "dir": "scans/TELSAG/bond_Zn-N6_pos"
+  },
+  {
+   "name": "angle_S1-Zn-S2",
+   "kind": "A",
+   "atoms": [
+    1,
+    0,
+    2
+   ],
+   "branch": "neg",
+   "v0": 115.05974618582343,
+   "start": 115.05974618582343,
+   "end": 100.05974618582343,
+   "npoints": 11,
+   "dir": "scans/TELSAG/angle_S1-Zn-S2_neg"
+  },
+  {
+   "name": "angle_S1-Zn-S2",
+   "kind": "A",
+   "atoms": [
+    1,
+    0,
+    2
+   ],
+   "branch": "pos",
+   "v0": 115.05974618582343,
+   "start": 115.05974618582343,
+   "end": 130.05974618582343,
+   "npoints": 11,
+   "dir": "scans/TELSAG/angle_S1-Zn-S2_pos"
+  },
+  {
+   "name": "angle_S1-Zn-N5",
+   "kind": "A",
+   "atoms": [
+    1,
+    0,
+    5
+   ],
+   "branch": "neg",
+   "v0": 109.05342827606509,
+   "start": 109.05342827606509,
+   "end": 94.05342827606509,
+   "npoints": 11,
+   "dir": "scans/TELSAG/angle_S1-Zn-N5_neg"
+  },
+  {
+   "name": "angle_S1-Zn-N5",
+   "kind": "A",
+   "atoms": [
+    1,
+    0,
+    5
+   ],
+   "branch": "pos",
+   "v0": 109.05342827606509,
+   "start": 109.05342827606509,
+   "end": 124.05342827606509,
+   "npoints": 11,
+   "dir": "scans/TELSAG/angle_S1-Zn-N5_pos"
+  },
+  {
+   "name": "angle_S1-Zn-N6",
+   "kind": "A",
+   "atoms": [
+    1,
+    0,
+    6
+   ],
+   "branch": "neg",
+   "v0": 113.26298458665931,
+   "start": 113.26298458665931,
+   "end": 98.26298458665931,
+   "npoints": 11,
+   "dir": "scans/TELSAG/angle_S1-Zn-N6_neg"
+  },
+  {
+   "name": "angle_S1-Zn-N6",
+   "kind": "A",
+   "atoms": [
+    1,
+    0,
+    6
+   ],
+   "branch": "pos",
+   "v0": 113.26298458665931,
+   "start": 113.26298458665931,
+   "end": 128.26298458665931,
+   "npoints": 11,
+   "dir": "scans/TELSAG/angle_S1-Zn-N6_pos"
+  },
+  {
+   "name": "angle_S2-Zn-N5",
+   "kind": "A",
+   "atoms": [
+    2,
+    0,
+    5
+   ],
+   "branch": "neg",
+   "v0": 109.66731627088437,
+   "start": 109.66731627088437,
+   "end": 94.66731627088437,
+   "npoints": 11,
+   "dir": "scans/TELSAG/angle_S2-Zn-N5_neg"
+  },
+  {
+   "name": "angle_S2-Zn-N5",
+   "kind": "A",
+   "atoms": [
+    2,
+    0,
+    5
+   ],
+   "branch": "pos",
+   "v0": 109.66731627088437,
+   "start": 109.66731627088437,
+   "end": 124.66731627088437,
+   "npoints": 11,
+   "dir": "scans/TELSAG/angle_S2-Zn-N5_pos"
+  },
+  {
+   "name": "angle_S2-Zn-N6",
+   "kind": "A",
+   "atoms": [
+    2,
+    0,
+    6
+   ],
+   "branch": "neg",
+   "v0": 106.19757559029972,
+   "start": 106.19757559029972,
+   "end": 91.19757559029972,
+   "npoints": 11,
+   "dir": "scans/TELSAG/angle_S2-Zn-N6_neg"
+  },
+  {
+   "name": "angle_S2-Zn-N6",
+   "kind": "A",
+   "atoms": [
+    2,
+    0,
+    6
+   ],
+   "branch": "pos",
+   "v0": 106.19757559029972,
+   "start": 106.19757559029972,
+   "end": 121.19757559029972,
+   "npoints": 11,
+   "dir": "scans/TELSAG/angle_S2-Zn-N6_pos"
+  },
+  {
+   "name": "angle_N5-Zn-N6",
+   "kind": "A",
+   "atoms": [
+    5,
+    0,
+    6
+   ],
+   "branch": "neg",
+   "v0": 102.87393218269864,
+   "start": 102.87393218269864,
+   "end": 87.87393218269864,
+   "npoints": 11,
+   "dir": "scans/TELSAG/angle_N5-Zn-N6_neg"
+  },
+  {
+   "name": "angle_N5-Zn-N6",
+   "kind": "A",
+   "atoms": [
+    5,
+    0,
+    6
+   ],
+   "branch": "pos",
+   "v0": 102.87393218269864,
+   "start": 102.87393218269864,
+   "end": 117.87393218269864,
+   "npoints": 11,
+   "dir": "scans/TELSAG/angle_N5-Zn-N6_pos"
+  },
+  {
+   "name": "twist_S1-S2-N5-N6",
+   "kind": "D",
+   "atoms": [
+    1,
+    2,
+    5,
+    6
+   ],
+   "branch": "neg",
+   "v0": 73.24538860420374,
+   "start": 73.24538860420374,
+   "end": 63.24538860420374,
+   "npoints": 11,
+   "dir": "scans/TELSAG/twist_S1-S2-N5-N6_neg"
+  },
+  {
+   "name": "twist_S1-S2-N5-N6",
+   "kind": "D",
+   "atoms": [
+    1,
+    2,
+    5,
+    6
+   ],
+   "branch": "pos",
+   "v0": 73.24538860420374,
+   "start": 73.24538860420374,
+   "end": 83.24538860420374,
+   "npoints": 11,
+   "dir": "scans/TELSAG/twist_S1-S2-N5-N6_pos"
+  },
+  {
+   "name": "tilt_Zn-S1-C9-C25",
+   "kind": "D",
+   "atoms": [
+    0,
+    1,
+    9,
+    25
+   ],
+   "branch": "neg",
+   "v0": -64.77738253749075,
+   "start": -64.77738253749075,
+   "end": -74.77738253749075,
+   "npoints": 11,
+   "dir": "scans/TELSAG/tilt_Zn-S1-C9-C25_neg"
+  },
+  {
+   "name": "tilt_Zn-S1-C9-C25",
+   "kind": "D",
+   "atoms": [
+    0,
+    1,
+    9,
+    25
+   ],
+   "branch": "pos",
+   "v0": -64.77738253749075,
+   "start": -64.77738253749075,
+   "end": -54.77738253749075,
+   "npoints": 11,
+   "dir": "scans/TELSAG/tilt_Zn-S1-C9-C25_pos"
+  },
+  {
+   "name": "tilt_Zn-S2-C10-C26",
+   "kind": "D",
+   "atoms": [
+    0,
+    2,
+    10,
+    26
+   ],
+   "branch": "neg",
+   "v0": -79.07129404486528,
+   "start": -79.07129404486528,
+   "end": -89.07129404486528,
+   "npoints": 11,
+   "dir": "scans/TELSAG/tilt_Zn-S2-C10-C26_neg"
+  },
+  {
+   "name": "tilt_Zn-S2-C10-C26",
+   "kind": "D",
+   "atoms": [
+    0,
+    2,
+    10,
+    26
+   ],
+   "branch": "pos",
+   "v0": -79.07129404486528,
+   "start": -79.07129404486528,
+   "end": -69.07129404486528,
+   "npoints": 11,
+   "dir": "scans/TELSAG/tilt_Zn-S2-C10-C26_pos"
+  },
+  {
+   "name": "tilt_Zn-N5-C53-N7",
+   "kind": "D",
+   "atoms": [
+    0,
+    5,
+    53,
+    7
+   ],
+   "branch": "neg",
+   "v0": -169.66478829660448,
+   "start": -169.66478829660448,
+   "end": -179.66478829660448,
+   "npoints": 11,
+   "dir": "scans/TELSAG/tilt_Zn-N5-C53-N7_neg"
+  },
+  {
+   "name": "tilt_Zn-N5-C53-N7",
+   "kind": "D",
+   "atoms": [
+    0,
+    5,
+    53,
+    7
+   ],
+   "branch": "pos",
+   "v0": -169.66478829660448,
+   "start": -169.66478829660448,
+   "end": -159.66478829660448,
+   "npoints": 11,
+   "dir": "scans/TELSAG/tilt_Zn-N5-C53-N7_pos"
+  },
+  {
+   "name": "tilt_Zn-N6-C54-N8",
+   "kind": "D",
+   "atoms": [
+    0,
+    6,
+    54,
+    8
+   ],
+   "branch": "neg",
+   "v0": -168.87141528437752,
+   "start": -168.87141528437752,
+   "end": -178.87141528437752,
+   "npoints": 11,
+   "dir": "scans/TELSAG/tilt_Zn-N6-C54-N8_neg"
+  },
+  {
+   "name": "tilt_Zn-N6-C54-N8",
+   "kind": "D",
+   "atoms": [
+    0,
+    6,
+    54,
+    8
+   ],
+   "branch": "pos",
+   "v0": -168.87141528437752,
+   "start": -168.87141528437752,
+   "end": -158.87141528437752,
+   "npoints": 11,
+   "dir": "scans/TELSAG/tilt_Zn-N6-C54-N8_pos"
+  }
+ ]
+}
