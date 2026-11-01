@@ -116,9 +116,9 @@ while :; do
       ALLOW_EMPTY=1 WAIT_MIN=120 WAIT_ALWAYS=1 POOL=main QUEUE=prod NODES=256 HOURS=$h $GO submit >> "$LOG" 2>&1
     fi
     # and one 16-node main farm in capacity, which starts far more often than the 256-node ones
-    if [ "$n_main_cap" -lt "$WANT_MAIN_CAP" ] && [ "$left_main" -gt 0 ] && [ "$n_cap" -lt 5 ]; then
-      say "submitting main capacity farm on $ACCOUNT, $(hours) h (queue $left_main left)"
-      POOL=main QUEUE=capacity NODES=16 HOURS=$(hours) $GO submit >> "$LOG" 2>&1; n_cap=$((n_cap + 1))
+    if [ "$n_main_cap" -lt "$WANT_MAIN_CAP" ] && [ "$work_main" -gt 0 ] && [ "$n_cap" -lt 5 ]; then
+      say "submitting main capacity farm on $ACCOUNT, $(hours) h (queue $left_main left, $work_main with running)"
+      ALLOW_EMPTY=1 WAIT_MIN=120 WAIT_ALWAYS=1 POOL=main QUEUE=capacity NODES=16 HOURS=$(hours) $GO submit >> "$LOG" 2>&1; n_cap=$((n_cap + 1))
     fi
     if [ "$n_big" -lt "$WANT_BIG" ] && [ "$left_big" -gt 0 ] && [ "$n_cap" -lt 5 ]; then
       say "submitting big farm on $ACCOUNT (queue $left_big left, $n_big big farms)"
