@@ -23,6 +23,8 @@ WANT_MAIN=${WANT_MAIN:-2} WANT_BIG=${WANT_BIG:-2} WANT_MAIN_CAP=${WANT_MAIN_CAP:
 MIN_BALANCE=${MIN_BALANCE:-1500} ACCOUNTS=${ACCOUNTS:-isaac ModCon}
 A=$WORK/autopilot; mkdir -p "$A"
 LOG=$A/autopilot.log
+# one autopilot at a time: a second copy (e.g. the watchdog restarting it while a person also does) exits here
+exec 9>"$A/autopilot.lock"; flock -n 9 || { echo "[$(date '+%F %T')] another autopilot holds $A/autopilot.lock: exiting" >> "$LOG"; exit 0; }
 SNAP=$A/repo; rm -rf "$SNAP"; mkdir -p "$SNAP"; cp -r "$SRC/aurora" "$SRC/scans" "$SRC/sites" "$SNAP/"
 export RESULTS=${RESULTS:-$(dirname "$SRC")/XANES2EXAFS-results}   # the aurora-results checkout
 GO="bash $SNAP/aurora/go.sh"
