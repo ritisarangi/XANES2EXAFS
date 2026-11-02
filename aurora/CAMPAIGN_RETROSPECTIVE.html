@@ -1,0 +1,358 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<style>:root{color-scheme:light dark}body{margin:0}img{max-width:100%}[hidden]{display:none!important}</style>
+</head>
+<body>
+<title>Zn Campaign Retrospective</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans+Condensed:wght@500;600;700&family=IBM+Plex+Sans:ital,wght@0,400;0,500;0,600;1,400&display=swap">
+<style>
+/* Layout: a single reading column (lab-notebook width) with full-width chart plates; numbers set in mono like an instrument log. */
+:root{
+  --bg:#F3F5F7; --panel:#FFFFFF; --ink:#14202B; --muted:#5A6774; --faint:#8C98A4; --rule:#D8DEE4;
+  --aurora:#2D62C6; --aurora-soft:#2D62C633; --nersc:#C5701C; --nersc-soft:#C5701C33;
+  --agent:#0E8577; --agent-soft:#0E857722; --warn:#B4452E; --band:#E7EBEF;
+  --display:"IBM Plex Sans Condensed","Arial Narrow",Arial,sans-serif;
+  --body:"IBM Plex Sans",-apple-system,"Segoe UI",Roboto,sans-serif;
+  --mono:"IBM Plex Mono",ui-monospace,Menlo,Consolas,monospace;
+}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
+  --bg:#0E141A; --panel:#151D25; --ink:#E5EAEF; --muted:#94A2AF; --faint:#6C7a87; --rule:#283440;
+  --aurora:#6F9CFF; --aurora-soft:#6F9CFF33; --nersc:#F0A04A; --nersc-soft:#F0A04A33;
+  --agent:#3CC4B4; --agent-soft:#3CC4B422; --warn:#F07A61; --band:#1B252E; color-scheme:dark}}
+:root[data-theme="dark"]{
+  --bg:#0E141A; --panel:#151D25; --ink:#E5EAEF; --muted:#94A2AF; --faint:#6C7a87; --rule:#283440;
+  --aurora:#6F9CFF; --aurora-soft:#6F9CFF33; --nersc:#F0A04A; --nersc-soft:#F0A04A33;
+  --agent:#3CC4B4; --agent-soft:#3CC4B422; --warn:#F07A61; --band:#1B252E; color-scheme:dark}
+body{background:var(--bg);color:var(--ink);font-family:var(--body);font-size:16px;line-height:1.6;
+  padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));padding-block:0 64px}
+.wrap{max-width:980px;margin:0 auto}
+.col{max-width:68ch}
+header{padding-block:56px 32px;border-bottom:1px solid var(--rule)}
+.eyebrow{font-family:var(--mono);font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:var(--muted)}
+h1{font-family:var(--display);font-weight:700;font-size:clamp(34px,6vw,60px);line-height:1.02;letter-spacing:-.01em;margin:14px 0 18px;text-wrap:balance}
+h1 em{font-style:normal;color:var(--agent)}
+h2{font-family:var(--display);font-weight:600;font-size:clamp(24px,3.4vw,32px);line-height:1.15;margin:0 0 10px;text-wrap:balance}
+h3{font-family:var(--display);font-weight:600;font-size:19px;margin:0 0 6px}
+p{margin:0 0 14px}
+.lede{font-size:18px;color:var(--ink);max-width:62ch}
+.sub{color:var(--muted)}
+section{padding-block:44px 8px;border-bottom:1px solid var(--rule)}
+section:last-of-type{border-bottom:0}
+.kpis{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:1px;background:var(--rule);border:1px solid var(--rule);margin-top:28px}
+.kpi{background:var(--panel);padding:16px 16px 14px;min-width:0}
+.kpi b{display:block;font-family:var(--mono);font-weight:500;font-size:clamp(22px,3vw,30px);font-variant-numeric:tabular-nums;letter-spacing:-.02em}
+.kpi span{font-size:13px;color:var(--muted);line-height:1.35;display:block;margin-top:4px}
+.kpi.agent b{color:var(--agent)}
+.plate{background:var(--panel);border:1px solid var(--rule);padding:18px 18px 10px;margin:22px 0;min-width:0}
+.plate figcaption{font-size:13px;color:var(--muted);margin:8px 0 6px;max-width:75ch}
+.plate .title{font-family:var(--display);font-weight:600;font-size:17px}
+.legend{display:flex;flex-wrap:wrap;gap:6px 18px;font-size:13px;color:var(--muted);margin:6px 0 2px}
+.legend i{display:inline-block;width:10px;height:10px;margin-right:6px;vertical-align:-1px}
+svg{display:block;width:100%;height:auto;overflow:visible}
+svg text{font-family:var(--mono);font-size:11px;fill:var(--muted)}
+svg .lbl{fill:var(--ink)}
+.grid2{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:22px}
+.grid2 .plate{margin:0}
+.tablewrap{overflow-x:auto;margin:18px 0;border:1px solid var(--rule);background:var(--panel)}
+table{border-collapse:collapse;width:100%;font-size:14px;min-width:620px}
+th,td{padding:10px 12px;text-align:left;vertical-align:top;border-bottom:1px solid var(--rule)}
+th{font-family:var(--mono);font-weight:500;font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);background:var(--band)}
+td.num,th.num{text-align:right;font-family:var(--mono);font-variant-numeric:tabular-nums;white-space:nowrap}
+tr.total td{font-weight:600;border-bottom:0}
+.tag{display:inline-block;font-family:var(--mono);font-size:11px;padding:1px 7px;border-radius:3px;white-space:nowrap}
+.tag.m{background:var(--agent-soft);color:var(--agent)}
+.tag.e{background:var(--band);color:var(--muted)}
+.vs{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:1px;background:var(--rule);border:1px solid var(--rule);margin:22px 0}
+.vs>div{background:var(--panel);padding:18px;min-width:0}
+.vs h3 small{font-family:var(--mono);font-weight:400;font-size:11px;color:var(--muted);letter-spacing:.06em;text-transform:uppercase;display:block;margin-bottom:4px}
+.big{font-family:var(--mono);font-size:clamp(30px,5vw,44px);font-weight:500;letter-spacing:-.03em;line-height:1.1}
+.big.agent{color:var(--agent)}
+ul.plain{margin:0 0 14px;padding-left:18px}
+ul.plain li{margin-bottom:6px}
+.timeline{border-left:2px solid var(--rule);margin:18px 0 18px 6px;padding-left:20px}
+.timeline div{position:relative;margin-bottom:14px}
+.timeline div::before{content:"";position:absolute;left:-26px;top:7px;width:10px;height:10px;border-radius:50%;background:var(--panel);border:2px solid var(--agent)}
+.timeline time{font-family:var(--mono);font-size:12px;color:var(--muted);display:block}
+.note{font-size:13px;color:var(--muted);border-top:1px solid var(--rule);padding-top:12px;margin-top:10px}
+footer{padding-top:28px;font-size:13px;color:var(--muted)}
+code{font-family:var(--mono);font-size:.88em}
+@media (max-width:520px){.plate{padding:14px 12px 8px}body{font-size:15px}}
+</style>
+
+<div class="wrap">
+<header>
+  <div class="eyebrow">XANES2EXAFS · Zn K-edge relaxed scans · Oct 17 – Nov 2, 2026</div>
+  <h1>10,175 scans, two supercomputers, <em>one agent at the console</em></h1>
+  <p class="lede">Riti Sarangi's Zn dataset needed a relaxed one-coordinate scan around every one of 338 CSD zinc complexes: about 100,000 constrained DFT optimisations. An AI agent built the job farms, ran them on ALCF Aurora and NERSC Perlmutter around the clock, moved work between the sites, validated and published the results, and wrote the record. People set the policy and made the scientific calls.</p>
+  <div class="kpis">
+    <div class="kpi"><b>15.6 d</b><span>first production farm to last branch</span></div>
+    <div class="kpi"><b>1.47 M</b><span>CPU core-hours (13,723 node-hours)</span></div>
+    <div class="kpi"><b>48,945</b><span>ORCA runs (47,897 on Aurora, 1,048 on Perlmutter)</span></div>
+    <div class="kpi"><b>89,807</b><span>validated geometries published</span></div>
+    <div class="kpi"><b>330 / 338</b><span>complexes published; 8 held for Riti, each explained</span></div>
+    <div class="kpi agent"><b>79%</b><span>of logged incidents came outside weekday working hours</span></div>
+  </div>
+</header>
+
+<section>
+  <h2>Where the compute went</h2>
+  <div class="col"><p>All numbers come from the sites' own accounting: <code>sbank</code> for Aurora and the Slurm records of every Perlmutter job, read through the IRI API. Aurora nodes have 104 CPU cores (two Xeon Max 9470C); Perlmutter CPU nodes have 128 (two EPYC 7763). ORCA ran on CPUs only, so Aurora's GPUs sat idle. Shared Perlmutter jobs used 8 cores each and were charged as 1/16 of a node.</p></div>
+  <div class="tablewrap"><table>
+    <thead><tr><th>Site · project</th><th>Used for</th><th class="num">Jobs</th><th class="num">Node-hours</th><th class="num">Core-hours</th><th class="num">Share</th></tr></thead>
+    <tbody>
+      <tr><td>Aurora · isaac</td><td>first five days (Oct 17–21)</td><td class="num">22</td><td class="num">4,042</td><td class="num">420,326</td><td class="num">29.5%</td></tr>
+      <tr><td>Aurora · ModCon</td><td>Oct 21 to the end; storage since Oct 24</td><td class="num">34</td><td class="num">7,729</td><td class="num">803,806</td><td class="num">56.3%</td></tr>
+      <tr><td>Perlmutter · m5268</td><td>the 18 largest complexes, from Oct 25</td><td class="num">620</td><td class="num">1,448</td><td class="num">185,357</td><td class="num">10.6%</td></tr>
+      <tr><td>Perlmutter · m2464</td><td>long tails, Oct 29 – Nov 2 (cap 700)</td><td class="num">428</td><td class="num">504</td><td class="num">64,550</td><td class="num">3.7%</td></tr>
+      <tr class="total"><td>Total</td><td></td><td class="num">1,104</td><td class="num">13,723</td><td class="num">1,474,039</td><td class="num">100%</td></tr>
+    </tbody></table></div>
+
+  <figure class="plate">
+    <div class="title">Node-hours per day</div>
+    <div class="legend"><span><i style="background:var(--aurora)"></i>Aurora</span><span><i style="background:var(--nersc)"></i>Perlmutter</span></div>
+    <div id="c-daily"></div>
+    <figcaption>The tall days are 256-node farms (256 nodes for 6 h = 1,536 node-hours each). Aurora gave a 256-node job only when that many nodes were free for its whole walltime, so those days came in bursts. From Oct 25 Perlmutter carried the largest complexes steadily alongside.</figcaption>
+  </figure>
+
+  <figure class="plate">
+    <div class="title">CPU cores computing, hour by hour</div>
+    <div class="legend"><span><i style="background:var(--agent)"></i>cores busy on both sites</span></div>
+    <div id="c-cores"></div>
+    <figcaption>Peak: 29,952 cores at once (a 256-node and two 16-node Aurora farms at once). Between bursts, 16-node farms and Perlmutter kept a baseline going.</figcaption>
+  </figure>
+</section>
+
+<section>
+  <h2>How the work progressed</h2>
+  <figure class="plate">
+    <div class="title">Branches finished and complexes published</div>
+    <div class="legend"><span><i style="background:var(--aurora)"></i>branches finished (left axis, of 10,175)</span><span><i style="background:var(--agent)"></i>complexes published (right axis, of 338)</span></div>
+    <div id="c-progress"></div>
+    <figcaption>A complex is published only when all of its ~30 branches have finished and passed the audit, so publishing trails the branch count. The last 2% took a week: those branches had the largest molecules (65–97 atoms), and some needed more than 20 restarts.</figcaption>
+  </figure>
+
+  <figure class="plate">
+    <div class="title">Every Aurora production farm</div>
+    <div class="legend"><span><i style="background:var(--aurora)"></i>256-node farm running</span><span><i style="background:var(--agent)"></i>16-node farm running</span><span><i style="background:var(--faint);height:2px;vertical-align:3px"></i>waiting in the queue</span></div>
+    <div id="c-gantt" style="overflow-x:auto"></div>
+    <figcaption>49 farms: 7 of 256 nodes and 42 of 16 nodes, each 4–12 h. Grey lines are queue waits. A 12 h 256-node farm queued on Oct 17 never started in 15 days and was cancelled at the end. Its 4 h and 6 h siblings started first, which became a rule in <code>HPC_LESSONS.md</code>: shorter large jobs fit the gaps.</figcaption>
+  </figure>
+
+  <figure class="plate">
+    <div class="title">Time from submission to start</div>
+    <div id="c-waits"></div>
+    <figcaption>Log scale. Dots are single jobs. Medians: Aurora 256-node 25.0 h, Aurora 16-node 6.9 h, Perlmutter shared 1.8 h. Moving the slowest work to Perlmutter traded scarce hours for a near-empty queue. The last 22 branches started within a minute and were all finished 17 h later.</figcaption>
+  </figure>
+</section>
+
+<section>
+  <h2>What came out</h2>
+  <div class="col"><p>Every point is a constrained B3LYP-D3(BJ) optimisation (ORCA 6.0.1). <code>validate.py</code> checks each one against Riti's rules: the scanned coordinate is on target, no bonds broke, the Zn first shell is unchanged, no new contact closer than 2.6 Å, no energy drop below the start, and no sudden jump in geometry. A branch stops counting at its first failure. Before anything is published, <code>audit.py</code> confirms that every output belongs to its own folder's input and that no folder ran twice at once.</p></div>
+  <div class="grid2">
+    <figure class="plate">
+      <div class="title">Points passing, by coordinate type</div>
+      <div id="c-type"></div>
+      <figcaption>89,807 of 100,032 published points pass (89.8%). Angle scans fail most, because bending a donor toward a neighbour is how new contacts and shell changes happen.</figcaption>
+    </figure>
+    <figure class="plate">
+      <div class="title">What ended a branch</div>
+      <div id="c-fail"></div>
+      <figcaption>Branches by the reason for their first failure. Most <code>jump</code>s involve atoms far from Zn (71% vanish if the rule looks only within 3.5 Å); the report proposes that change as Decision 6.</figcaption>
+    </figure>
+    <figure class="plate">
+      <div class="title">Pass rate per complex</div>
+      <div id="c-cp"></div>
+      <figcaption>Median 95.4%. 178 complexes pass at least 95% of their points.</figcaption>
+    </figure>
+    <figure class="plate">
+      <div class="title">Size of the complexes</div>
+      <div id="c-atoms"></div>
+      <figcaption>13 to 137 atoms, median 65. Cost grows steeply with size. The 18 largest went to Perlmutter on Oct 25, so they could not hold up Aurora's farms.</figcaption>
+    </figure>
+  </div>
+  <div class="col"><p>The 8 complexes not exported all failed for the same reason: their stage-2 minimum has a different Zn first shell from the donor list taken from the crystal. The agent traced the six known on Oct 31 to that cause, then predicted from their stage-2 geometries that EPOFUL and FECYIZ would fail the same way. Both did, two days later. <code>aurora/CAMPAIGN_REPORT.md</code> gives each case its evidence, a recommendation and a cost, as nine decisions for Riti.</p></div>
+</section>
+
+<section>
+  <h2>The agent at the console</h2>
+  <div class="col"><p>One Claude Code session ran the whole campaign from an Aurora login node. Detached <code>screen</code> sessions kept the layers alive: an autopilot that submits, re-queues and publishes; a pair watcher for the 256-node farms; the Perlmutter driver; and a watchdog that restarts any of them, including the agent itself. Hourly check-ins and event watches brought the agent back whenever something changed.</p></div>
+  <div class="kpis">
+    <div class="kpi agent"><b>2,793</b><span>commands and actions taken by the agent</span></div>
+    <div class="kpi agent"><b>263</b><span>hourly check-ins, each a full health review</span></div>
+    <div class="kpi agent"><b>2,863</b><span>automated events read and acted on</span></div>
+    <div class="kpi agent"><b>3,117</b><span>lines of tooling written while running</span></div>
+    <div class="kpi agent"><b>354</b><span>commits: 172 status snapshots, 182 changes</span></div>
+    <div class="kpi"><b>137</b><span>messages from the user in 16 days</span></div>
+  </div>
+
+  <figure class="plate">
+    <div class="title">When the work happened (US Pacific time)</div>
+    <div class="legend"><span><i style="background:var(--agent)"></i>agent actions per hour of day</span><span><i style="background:var(--warn)"></i>logged incidents and decisions</span><span><i style="background:var(--band)"></i>08:00–18:00</span></div>
+    <div id="c-clock"></div>
+    <figcaption>51% of the agent's actions, 79% of the 125 Run-log entries, 71% of farm endings and 82% of farm starts fell outside weekday working hours. A farm that ends at 3 a.m. needs its unfinished branches re-queued at 3 a.m.</figcaption>
+  </figure>
+
+  <figure class="plate">
+    <div class="title">Agent actions and user messages per day</div>
+    <div class="legend"><span><i style="background:var(--agent)"></i>agent actions</span><span><i style="background:var(--ink)"></i>user messages</span></div>
+    <div id="c-days"></div>
+    <figcaption>Activity rose with the engineering work (Oct 23–27: the race fix, the Perlmutter move, the publishing fix), not with the user's attention. Oct 26 had a single user message and 229 agent actions.</figcaption>
+  </figure>
+
+  <h3 style="margin-top:26px">Milestones</h3>
+  <div class="timeline col">
+    <div><time>Oct 17 · day 0</time>Farm system committed (queue, node slots, restarts). Benchmarks on debug nodes. First 256-node farm queued the same evening.</div>
+    <div><time>Oct 18 – 19</time>Autopilot, audit and publisher written while the first farms ran. The first complex is published to <code>aurora-results</code> on Oct 19.</div>
+    <div><time>Oct 21</time>The isaac allocation year ends. New farms go to ModCon, and the queued ones move there with <code>qalter -A</code>, keeping their place in the queue.</div>
+    <div><time>Oct 23</time>Audit catches 16 UDODOG folders run by two processes at once. The re-queue race is found and fixed with per-folder locks, the queued farms are patched, and the result is cleared within hours.</div>
+    <div><time>Oct 25 · 03:10–04:00</time>A driver for Perlmutter, using the IRI API and Globus, is written overnight. All 495 branches of the 18 largest complexes are submitted by 04:00 and start within minutes.</div>
+    <div><time>Oct 27</time>A blocked publication found and fixed: one known problem complex had stopped every publish. 11 complexes go out at once.</div>
+    <div><time>Oct 29 – Nov 1</time>Long tails move to m2464 under a budget cap. The full campaign report for Riti is written. An expired Globus login is renewed with a new two-step tool (<code>globus_login.py</code>).</div>
+    <div><time>Nov 1 · 18:28</time>The last 22 Aurora branches move to Perlmutter in 10 minutes: paused driver, queue edit, 13.6 GB Globus copy, restart.</div>
+    <div><time>Nov 2 · 11:16</time>Last branch finishes. 330 complexes published, export verified byte-identical, report final.</div>
+  </div>
+</section>
+
+<section>
+  <h2>Agent versus a dedicated expert</h2>
+  <div class="col"><p>What would the same campaign look like run by one skilled person, say a computational chemist fluent in PBS, Slurm and ORCA, working on it full time? The agent's column below is measured. The person's column is our estimate and is labelled as one. It assumes weekday hours plus an evening check, and the same allocations and queues.</p></div>
+
+  <div class="vs">
+    <div><h3><small>Agent · measured</small>Time to the final dataset</h3><div class="big agent">15.6 days</div><p class="sub">Oct 17 21:26 to Nov 2 11:16 UTC, including the tooling build.</p><div id="c-vs-days"></div></div>
+    <div><h3><small>Person · estimate</small>Time to the same result</h3><div class="big">6–10 weeks</div><p class="sub">2–3 weeks to build reliable farm tooling, then operation at office-hours speed. A 60 h maintenance and the tail of slow branches are likely to land inside that span.</p></div>
+    <div><h3><small>Human attention</small>People's time spent</h3><div class="big agent">~10–15 h</div><p class="sub">Estimate from 137 messages: policy, budgets, one MFA login, questions. A person running it alone: about 350–500 working hours.</p></div>
+  </div>
+
+  <div class="tablewrap"><table>
+    <thead><tr><th>Task</th><th>Agent (measured)</th><th>One expert person (estimate)</th></tr></thead>
+    <tbody>
+      <tr><td>Farm, queue, restart, audit and publish tooling (~1,900 lines)</td><td><span class="tag m">measured</span> Core in place on day 0–1; refined during the run (14–16 commits per main script)</td><td><span class="tag e">estimate</span> 2–3 weeks to the same reliability, or more manual work in its place</td></tr>
+      <tr><td>Second site: Perlmutter through the IRI API and Globus (406 lines)</td><td><span class="tag m">measured</span> One night: written by 03:10 UTC, 495 jobs running by 04:00</td><td><span class="tag e">estimate</span> 3–7 days, or not attempted</td></tr>
+      <tr><td>Reaction to a farm ending or failing</td><td><span class="tag m">measured</span> Minutes (autopilot), at most an hour (check-in); 35 of 49 farm endings were off-hours</td><td><span class="tag e">estimate</span> 8–14 h overnight, up to 2 days over a weekend</td></tr>
+      <tr><td>Monitoring</td><td><span class="tag m">measured</span> 263 hourly reviews, 2,863 events, every day including weekends</td><td><span class="tag e">estimate</span> 2–4 checks a day</td></tr>
+      <tr><td>Scientific QA: 100,032 points validated, 8 withheld cases traced to a cause, 2 predicted, geometry checks of the lower minima</td><td><span class="tag m">measured</span> During the run, read-only, with evidence in the report</td><td><span class="tag e">estimate</span> 1–2 weeks after the run</td></tr>
+      <tr><td>Record: 1,110-line report, 276-line lessons file, 125 Run-log entries</td><td><span class="tag m">measured</span> Kept current as events happened</td><td><span class="tag e">estimate</span> about a week at the end, usually partial</td></tr>
+    </tbody></table></div>
+
+  <div class="col">
+    <h3>Why the gap is this large</h3>
+    <ul class="plain">
+      <li><b>Queues reward whoever is always there.</b> Big jobs start in gaps nobody schedules, and a farm that ends at night needs its branches re-queued at once. Every off-hours delay costs queue position, not just hours.</li>
+      <li><b>Building and running happen at the same time.</b> The agent wrote the tooling while the first farms ran and improved it as faults appeared. A person usually has to choose between engineering and operating.</li>
+      <li><b>Moving work is cheap.</b> Re-routing jobs between sites is a few minutes of careful work for the agent, so it happened five times. For a person it is a project, so it tends to happen once or not at all.</li>
+      <li><b>The record is a by-product.</b> Each incident became a Run-log entry and, where it changed practice, a rule in <code>HPC_LESSONS.md</code> for the next campaign.</li>
+    </ul>
+    <h3>What people still did</h3>
+    <ul class="plain">
+      <li>Set the policy: which allocations are cheap (ModCon) and which are precious (isaac, NERSC), the m2464 cap, when to move the tail, when to cancel the idle farms.</li>
+      <li>Did what needs a person: the ALCF multi-factor login for Globus, and the request to DOE for more hours.</li>
+      <li>Own the chemistry. Riti decides the nine open questions in the report; the agent recommends but does not change her deliverable without approval.</li>
+    </ul>
+    <h3>Where the agent fell short</h3>
+    <ul class="plain">
+      <li>Its hourly check-ins expired silently on Oct 27 (a 7-day limit). The autopilot kept the work going, but nobody was watching it for a while. Check-ins now renew themselves, and a watchdog restarts the agent.</li>
+      <li>It underestimated the third m2464 batch by counting steps instead of parallel jobs. The user chose to let it finish; the project ended at 504 node-hours, inside the cap.</li>
+      <li>It turned off the tail cutoff for all farms when the user meant ModCon farms only. The user caught it before any harm, and the cutoff is now set per account.</li>
+      <li>A restart raced the watchdog and briefly ran two autopilots. This was caught within a minute and nothing was submitted twice. Single-instance locks were added.</li>
+    </ul>
+    <p class="sub">Each of these is now a rule in <code>HPC_LESSONS.md</code>, written for the next agent or person who runs a campaign like this.</p>
+  </div>
+</section>
+
+<footer class="col">
+  Sources: <code>sbank-list-jobs</code> (Aurora, projects isaac and ModCon, jobs named <code>zn_*</code>); Slurm records of 1,048 Perlmutter jobs read through the NERSC IRI API; <code>aurora/STATUS.md</code> history for progress; <code>aurora-results</code> commits for publication; <code>validation_scan_full.csv</code> and <code>published.json</code> for results; the agent's session transcript for actions and messages; the Run log in <code>aurora/README.md</code> for incidents. Core-hours use 104 cores per Aurora node and 128 per Perlmutter node. Pacific time is UTC−7 until Nov 1 and UTC−8 after. Estimates for a person are marked as such.
+</footer>
+</div>
+
+<script>
+(()=>{
+const D={"daily":[["10-17",8,0],["10-18",1311,0],["10-19",362,0],["10-20",1913,0],["10-21",462,0],["10-22",278,0],["10-23",3309,0],["10-24",1578,0],["10-25",160,454],["10-26",17,549],["10-27",177,220],["10-28",383,114],["10-29",316,96],["10-30",449,239],["10-31",740,231],["11-01",259,46],["11-02",94,3]],"progress":[["2026-10-18T16:31",88],["2026-10-18T17:22",95],["2026-10-18T17:56",101],["2026-10-18T19:36",122],["2026-10-18T21:38",157],["2026-10-19T00:00",205],["2026-10-19T00:13",208],["2026-10-19T01:40",233],["2026-10-19T01:45",234],["2026-10-19T03:34",264],["2026-10-19T05:33",294],["2026-10-19T07:41",335],["2026-10-19T09:57",357],["2026-10-19T11:52",367],["2026-10-19T23:58",368],["2026-10-20T00:10",368],["2026-10-20T02:16",368],["2026-10-20T04:25",402],["2026-10-20T05:54",601],["2026-10-20T07:46",848],["2026-10-20T08:54",1055],["2026-10-20T10:05",1225],["2026-10-20T11:52",1237],["2026-10-20T14:02",1240],["2026-10-20T15:51",1250],["2026-10-20T17:53",1276],["2026-10-20T20:24",1276],["2026-10-20T22:11",1276],["2026-10-21T00:20",1276],["2026-10-21T00:59",1280],["2026-10-21T02:30",1316],["2026-10-21T04:36",1351],["2026-10-21T07:06",1388],["2026-10-21T08:47",1398],["2026-10-21T10:53",1427],["2026-10-21T13:19",1449],["2026-10-21T15:22",1463],["2026-10-21T17:26",1478],["2026-10-21T19:23",1487],["2026-10-21T21:33",1487],["2026-10-21T23:37",1487],["2026-10-22T01:44",1487],["2026-10-22T04:15",1498],["2026-10-22T06:32",1502],["2026-10-22T08:32",1506],["2026-10-22T10:26",1532],["2026-10-22T12:32",1553],["2026-10-22T14:31",1564],["2026-10-22T16:38",1577],["2026-10-22T18:47",1582],["2026-10-22T21:05",1582],["2026-10-22T22:57",1582],["2026-10-23T01:12",1582],["2026-10-23T03:10",1582],["2026-10-23T05:13",1586],["2026-10-23T08:14",2124],["2026-10-23T08:23",2154],["2026-10-23T10:36",2841],["2026-10-23T13:55",3087],["2026-10-23T15:30",3702],["2026-10-23T17:03",4611],["2026-10-23T20:07",5335],["2026-10-23T20:48",5336],["2026-10-23T22:38",5337],["2026-10-24T00:59",5338],["2026-10-24T02:29",5336],["2026-10-24T04:44",6010],["2026-10-24T06:39",6509],["2026-10-24T08:39",6735],["2026-10-24T10:26",6735],["2026-10-24T13:03",6735],["2026-10-24T15:19",6735],["2026-10-24T17:29",6735],["2026-10-24T19:25",6736],["2026-10-24T21:45",6741],["2026-10-24T23:34",6806],["2026-10-25T01:46",6969],["2026-10-25T02:57",7029],["2026-10-25T03:26",7059],["2026-10-25T05:28",7080],["2026-10-25T07:34",7080],["2026-10-25T09:39",7080],["2026-10-25T09:39",7080],["2026-10-25T11:41",7080],["2026-10-25T13:45",7081],["2026-10-25T15:52",7086],["2026-10-25T18:04",7097],["2026-10-25T20:35",7158],["2026-10-25T22:53",7218],["2026-10-26T01:13",7261],["2026-10-26T03:25",7266],["2026-10-26T05:24",7274],["2026-10-26T07:24",7282],["2026-10-26T09:34",7290],["2026-10-26T11:35",7304],["2026-10-26T13:42",7344],["2026-10-26T15:52",7360],["2026-10-26T18:01",7407],["2026-10-26T20:48",7431],["2026-10-26T22:45",7445],["2026-10-27T00:50",7473],["2026-10-27T03:12",7542],["2026-10-27T06:13",7575],["2026-10-27T09:02",7608],["2026-10-27T11:13",7620],["2026-10-27T15:50",7670],["2026-10-27T17:30",7678],["2026-10-27T19:40",7688],["2026-10-27T21:50",7695],["2026-10-27T23:51",7698],["2026-10-28T02:10",7704],["2026-10-28T03:53",7707],["2026-10-28T06:00",7721],["2026-10-28T07:56",7769],["2026-10-28T10:12",7807],["2026-10-28T10:45",7812],["2026-10-28T12:46",7819],["2026-10-28T14:59",7835],["2026-10-28T17:21",7901],["2026-10-28T19:59",7959],["2026-10-28T21:39",7960],["2026-10-28T23:26",7962],["2026-10-29T01:57",7963],["2026-10-29T03:48",7964],["2026-10-29T05:58",7964],["2026-10-29T08:00",7964],["2026-10-29T10:10",7964],["2026-10-29T12:19",7995],["2026-10-29T14:29",8070],["2026-10-29T17:49",8132],["2026-10-29T18:43",8134],["2026-10-29T20:54",8139],["2026-10-29T22:57",8205],["2026-10-30T01:05",8292],["2026-10-30T03:15",8326],["2026-10-30T05:26",8335],["2026-10-30T07:59",8353],["2026-10-30T10:24",8460],["2026-10-30T14:14",8552],["2026-10-30T14:58",8552],["2026-10-30T17:25",8575],["2026-10-30T19:44",8690],["2026-10-30T21:30",8827],["2026-10-31T00:54",8846],["2026-10-31T03:13",8859],["2026-10-31T05:17",8869],["2026-10-31T07:45",8896],["2026-10-31T09:41",8923],["2026-10-31T11:33",8942],["2026-10-31T14:00",8964],["2026-10-31T16:08",8985],["2026-10-31T18:06",8994],["2026-10-31T19:42",9044],["2026-10-31T20:49",9381],["2026-10-31T23:07",9684],["2026-11-01T01:27",9783],["2026-11-01T03:21",9900],["2026-11-01T07:13",9986],["2026-11-01T08:23",10002],["2026-11-01T10:47",10037],["2026-11-01T13:35",10075],["2026-11-01T15:26",10125],["2026-11-01T17:48",10149],["2026-11-01T19:59",10150],["2026-11-01T22:06",10155],["2026-11-02T00:18",10163],["2026-11-02T02:28",10167],["2026-11-02T05:11",10169],["2026-11-02T07:39",10172],["2026-11-02T09:54",10173],["2026-11-02T11:20",10174],["2026-11-02T12:03",10175]],"published":[["2026-10-19T01:33",1],["2026-10-19T09:41",3],["2026-10-19T11:52",5],["2026-10-20T08:51",7],["2026-10-20T20:23",10],["2026-10-21T07:06",14],["2026-10-21T13:08",19],["2026-10-21T19:11",20],["2026-10-22T07:57",21],["2026-10-22T14:05",22],["2026-10-23T16:44",38],["2026-10-23T20:44",60],["2026-10-24T08:37",140],["2026-10-25T02:46",160],["2026-10-25T03:25",165],["2026-10-25T09:26",167],["2026-10-25T22:04",183],["2026-10-26T04:04",187],["2026-10-26T16:08",188],["2026-10-26T22:19",189],["2026-10-27T06:15",200],["2026-10-27T06:36",202],["2026-10-27T15:08",206],["2026-10-28T07:04",209],["2026-10-28T10:43",212],["2026-10-28T17:16",213],["2026-10-29T05:27",214],["2026-10-29T11:38",215],["2026-10-30T00:26",218],["2026-10-30T06:28",219],["2026-10-30T14:01",227],["2026-10-31T01:11",237],["2026-10-31T07:26",238],["2026-10-31T13:22",239],["2026-10-31T19:29",241],["2026-10-31T20:34",249],["2026-10-31T22:33",263],["2026-11-01T06:55",285],["2026-11-01T13:17",300],["2026-11-01T18:05",322],["2026-11-02T02:14",325],["2026-11-02T08:56",328],["2026-11-02T11:30",330]],"farms":[["8940427","isaac","capacity",16,"2026-10-18T03:52","2026-10-18T11:18","2026-10-18T17:10",7.44,93.6],["8940026","isaac","small",256,"2026-10-17T22:45","2026-10-18T11:33","2026-10-18T15:25",12.81,985.2],["8940420","isaac","capacity",16,"2026-10-18T03:50","2026-10-18T15:05","2026-10-19T02:57",11.25,189.6],["8940421","isaac","capacity",16,"2026-10-18T03:50","2026-10-18T18:41","2026-10-19T06:36",14.85,190.5],["8944435","isaac","capacity",16,"2026-10-19T03:20","2026-10-19T03:59","2026-10-19T09:44",0.65,91.7],["8945717","isaac","capacity",16,"2026-10-19T06:48","2026-10-19T06:51","2026-10-19T12:30",0.05,90.1],["8946081","isaac","capacity",16,"2026-10-19T10:11","2026-10-19T10:16","2026-10-19T11:55",0.08,26.2],["8946258","isaac","capacity",16,"2026-10-19T12:06","2026-10-20T03:27","2026-10-20T09:15",15.34,92.5],["8946295","isaac","capacity",16,"2026-10-19T12:41","2026-10-20T03:42","2026-10-20T09:27",15.02,91.7],["8940426","isaac","small",256,"2026-10-18T03:52","2026-10-20T03:57","2026-10-20T09:58",48.08,1536.5],["8947389","isaac","capacity",16,"2026-10-20T09:28","2026-10-20T12:09","2026-10-20T17:57",2.68,92.1],["8947400","isaac","capacity",16,"2026-10-20T09:39","2026-10-20T12:10","2026-10-20T18:05",2.51,93.6],["8948275","isaac","capacity",16,"2026-10-20T18:10","2026-10-21T00:38","2026-10-21T06:24",6.48,91.9],["8948280","isaac","capacity",16,"2026-10-20T18:12","2026-10-21T01:23","2026-10-21T07:13",7.18,93.0],["8949575","isaac","capacity",16,"2026-10-21T06:28","2026-10-21T06:38","2026-10-21T12:22",0.17,91.6],["8949671","isaac","capacity",16,"2026-10-21T07:18","2026-10-21T08:00","2026-10-21T13:44",0.71,91.4],["8950006","isaac","capacity",16,"2026-10-21T12:30","2026-10-21T12:44","2026-10-21T18:31",0.22,92.2],["8950108","ModCon","capacity",16,"2026-10-21T13:55","2026-10-22T00:32","2026-10-22T06:23",10.62,93.3],["8950977","ModCon","capacity",16,"2026-10-21T18:44","2026-10-22T07:44","2026-10-22T13:30",13.0,91.9],["8952802","ModCon","capacity",16,"2026-10-22T06:54","2026-10-22T13:02","2026-10-22T18:48",6.13,92.1],["8953480","ModCon","capacity",16,"2026-10-22T14:19","2026-10-23T03:40","2026-10-23T09:31",13.35,93.3],["8947436","ModCon","small",256,"2026-10-20T10:26","2026-10-23T05:05","2026-10-23T11:06",66.64,1536.5],["8954403","ModCon","capacity",16,"2026-10-22T19:04","2026-10-23T10:04","2026-10-23T15:54",15.0,93.0],["8956793","ModCon","small",256,"2026-10-23T12:42","2026-10-23T12:47","2026-10-23T18:37",0.08,1491.1],["8956596","ModCon","capacity",16,"2026-10-23T10:18","2026-10-23T17:42","2026-10-23T18:03",7.41,5.3],["8957252","ModCon","capacity",16,"2026-10-23T16:18","2026-10-23T18:50","2026-10-24T00:41",2.52,93.4],["8958138","ModCon","small",256,"2026-10-23T20:37","2026-10-24T02:23","2026-10-24T08:02",5.77,1440.4],["8959031","ModCon","capacity",16,"2026-10-24T02:21","2026-10-24T16:31","2026-10-24T22:17",14.16,92.1],["8957984","ModCon","capacity",16,"2026-10-23T19:48","2026-10-24T22:15","2026-10-25T04:09",26.46,94.1],["8962257","ModCon","capacity",16,"2026-10-25T04:27","2026-10-25T18:08","2026-10-26T00:03",13.68,94.4],["8965440","ModCon","capacity",16,"2026-10-25T22:31","2026-10-26T23:00","2026-10-27T05:01",24.49,96.0],["8970790","ModCon","capacity",16,"2026-10-26T23:39","2026-10-27T06:20","2026-10-27T12:22",6.68,96.1],["8972496","ModCon","capacity",16,"2026-10-27T14:11","2026-10-28T02:49","2026-10-28T08:50",12.63,96.0],["8972593","ModCon","capacity",16,"2026-10-27T14:52","2026-10-28T04:10","2026-10-28T10:10",13.3,95.7],["8976721","ModCon","capacity",16,"2026-10-28T09:35","2026-10-28T13:07","2026-10-28T19:03",3.52,94.8],["8976814","ModCon","capacity",16,"2026-10-28T10:14","2026-10-28T13:09","2026-10-28T19:10",2.92,96.1],["8978689","ModCon","capacity",16,"2026-10-28T19:56","2026-10-29T10:01","2026-10-29T16:02",14.09,96.0],["8978755","ModCon","capacity",16,"2026-10-28T20:13","2026-10-29T10:38","2026-10-29T16:34",14.4,94.8],["8985662","ModCon","capacity",16,"2026-10-29T17:30","2026-10-29T20:06","2026-10-30T02:08",2.61,96.0],["8986279","ModCon","capacity",16,"2026-10-29T18:26","2026-10-29T20:06","2026-10-30T02:04",1.68,95.0],["8988070","ModCon","capacity",16,"2026-10-30T02:16","2026-10-30T06:22","2026-10-30T12:15",4.09,93.9],["8988123","ModCon","capacity",16,"2026-10-30T02:37","2026-10-30T06:37","2026-10-30T12:38",3.99,96.0],["8990248","ModCon","capacity",16,"2026-10-30T13:41","2026-10-30T15:55","2026-10-30T21:51",2.23,94.7],["8990398","ModCon","capacity",16,"2026-10-30T14:43","2026-10-30T15:56","2026-10-30T21:57",1.23,96.0],["8987775","ModCon","small",256,"2026-10-30T00:45","2026-10-31T19:05","2026-10-31T21:52",42.34,705.8],["8994906","ModCon","capacity",16,"2026-10-30T22:57","2026-10-31T22:16","2026-11-01T04:13",23.31,95.0],["8995873","ModCon","capacity",16,"2026-10-31T00:23","2026-11-01T04:21","2026-11-01T10:20",27.97,95.3],["9019151","ModCon","capacity",16,"2026-11-01T06:26","2026-11-01T11:04","2026-11-01T17:03",4.64,95.4],["9013664","ModCon","small",256,"2026-10-31T23:03","2026-11-02T00:01","2026-11-02T00:23",24.98,89.2]],"cores":[["10-17T19",208],["10-17T20",416],["10-17T21",1040],["10-17T22",624],["10-18T11",28288],["10-18T12",28288],["10-18T13",28288],["10-18T14",28288],["10-18T15",29952],["10-18T16",3328],["10-18T17",3328],["10-18T18",3328],["10-18T19",3328],["10-18T20",3328],["10-18T21",3328],["10-18T22",3328],["10-18T23",3328],["10-19T00",3328],["10-19T01",3328],["10-19T02",3328],["10-19T03",3328],["10-19T04",3328],["10-19T05",3328],["10-19T06",4992],["10-19T07",3328],["10-19T08",3328],["10-19T09",3328],["10-19T10",3328],["10-19T11",3328],["10-19T12",1664],["10-20T03",29952],["10-20T04",29952],["10-20T05",29952],["10-20T06",29952],["10-20T07",29952],["10-20T08",29952],["10-20T09",29952],["10-20T12",3328],["10-20T13",3328],["10-20T14",3328],["10-20T15",3328],["10-20T16",3328],["10-20T17",3328],["10-20T18",1664],["10-21T00",1664],["10-21T01",3328],["10-21T02",3328],["10-21T03",3328],["10-21T04",3328],["10-21T05",3328],["10-21T06",4992],["10-21T07",3328],["10-21T08",3328],["10-21T09",3328],["10-21T10",3328],["10-21T11",3328],["10-21T12",4992],["10-21T13",3328],["10-21T14",1664],["10-21T15",1664],["10-21T16",1664],["10-21T17",1664],["10-21T18",1664],["10-22T00",1664],["10-22T01",1664],["10-22T02",1664],["10-22T03",1664],["10-22T04",1664],["10-22T05",1664],["10-22T06",1664],["10-22T07",1664],["10-22T08",1664],["10-22T09",1664],["10-22T10",1664],["10-22T11",1664],["10-22T12",1664],["10-22T13",3328],["10-22T14",1664],["10-22T15",1664],["10-22T16",1664],["10-22T17",1664],["10-22T18",1664],["10-23T03",1664],["10-23T04",1664],["10-23T05",28288],["10-23T06",28288],["10-23T07",28288],["10-23T08",28288],["10-23T09",28288],["10-23T10",28288],["10-23T11",28288],["10-23T12",28288],["10-23T13",28288],["10-23T14",28288],["10-23T15",28288],["10-23T16",26624],["10-23T17",28288],["10-23T18",29952],["10-23T19",1664],["10-23T20",1664],["10-23T21",1664],["10-23T22",1664],["10-23T23",1664],["10-24T00",1664],["10-24T01",104],["10-24T02",26728],["10-24T03",26624],["10-24T04",26624],["10-24T05",26624],["10-24T06",26624],["10-24T07",26624],["10-24T08",26832],["10-24T16",1664],["10-24T17",1664],["10-24T18",1664],["10-24T19",1664],["10-24T20",1664],["10-24T21",1664],["10-24T22",3328],["10-24T23",1664],["10-25T00",1664],["10-25T01",1664],["10-25T02",1672],["10-25T03",1928],["10-25T04",2032],["10-25T05",720],["10-25T06",1024],["10-25T07",1592],["10-25T08",2376],["10-25T09",2960],["10-25T10",2952],["10-25T11",3200],["10-25T12",3456],["10-25T13",3952],["10-25T14",3936],["10-25T15",3912],["10-25T16",3888],["10-25T17",3856],["10-25T18",5472],["10-25T19",5672],["10-25T20",5400],["10-25T21",5336],["10-25T22",5296],["10-25T23",5296],["10-26T00",5256],["10-26T01",3576],["10-26T02",3552],["10-26T03",3544],["10-26T04",3504],["10-26T05",3472],["10-26T06",3440],["10-26T07",3400],["10-26T08",3384],["10-26T09",3336],["10-26T10",3288],["10-26T11",3272],["10-26T12",3104],["10-26T13",2952],["10-26T14",2880],["10-26T15",2800],["10-26T16",2632],["10-26T17",2416],["10-26T18",2376],["10-26T19",2304],["10-26T20",2256],["10-26T21",2168],["10-26T22",2144],["10-26T23",3728],["10-27T00",3664],["10-27T01",3496],["10-27T02",3488],["10-27T03",3368],["10-27T04",3280],["10-27T05",3256],["10-27T06",3016],["10-27T07",3064],["10-27T08",2968],["10-27T09",2808],["10-27T10",2864],["10-27T11",2880],["10-27T12",2976],["10-27T13",1120],["10-27T14",1072],["10-27T15",1032],["10-27T16",992],["10-27T17",968],["10-27T18",936],["10-27T19",904],["10-27T20",832],["10-27T21",824],["10-27T22",816],["10-27T23",808],["10-28T00",800],["10-28T01",776],["10-28T02",2416],["10-28T03",2408],["10-28T04",4056],["10-28T05",4040],["10-28T06",4032],["10-28T07",4008],["10-28T08",4008],["10-28T09",2328],["10-28T10",2288],["10-28T11",600],["10-28T12",576],["10-28T13",3896],["10-28T14",3880],["10-28T15",3872],["10-28T16",3864],["10-28T17",3856],["10-28T18",3848],["10-28T19",3848],["10-28T20",504],["10-28T21",504],["10-28T22",496],["10-28T23",488],["10-29T00",480],["10-29T01",480],["10-29T02",480],["10-29T03",464],["10-29T04",376],["10-29T05",408],["10-29T06",408],["10-29T07",408],["10-29T08",472],["10-29T09",472],["10-29T10",3784],["10-29T11",3808],["10-29T12",3776],["10-29T13",3768],["10-29T14",3752],["10-29T15",3760],["10-29T16",3752],["10-29T17",480],["10-29T18",568],["10-29T19",672],["10-29T20",4088],["10-29T21",4216],["10-29T22",4368],["10-29T23",4568],["10-30T00",4528],["10-30T01",4488],["10-30T02",4488],["10-30T03",1144],["10-30T04",1128],["10-30T05",1080],["10-30T06",4408],["10-30T07",4376],["10-30T08",4360],["10-30T09",4344],["10-30T10",4336],["10-30T11",4296],["10-30T12",4272],["10-30T13",920],["10-30T14",968],["10-30T15",4736],["10-30T16",4888],["10-30T17",5184],["10-30T18",5176],["10-30T19",5144],["10-30T20",5120],["10-30T21",5088],["10-30T22",1736],["10-30T23",1720],["10-31T00",1688],["10-31T01",1656],["10-31T02",1616],["10-31T03",1552],["10-31T04",1496],["10-31T05",1448],["10-31T06",1352],["10-31T07",1216],["10-31T08",1144],["10-31T09",1088],["10-31T10",992],["10-31T11",896],["10-31T12",888],["10-31T13",1128],["10-31T14",1280],["10-31T15",1384],["10-31T16",1560],["10-31T17",1520],["10-31T18",1432],["10-31T19",27960],["10-31T20",27920],["10-31T21",27800],["10-31T22",2792],["10-31T23",2640],["11-01T00",2528],["11-01T01",2392],["11-01T02",2320],["11-01T03",2208],["11-01T04",3800],["11-01T05",2040],["11-01T06",1952],["11-01T07",1904],["11-01T08",1896],["11-01T09",1872],["11-01T10",1824],["11-01T11",1800],["11-01T12",1800],["11-01T13",1776],["11-01T14",1776],["11-01T15",1760],["11-01T16",1728],["11-01T17",1704],["11-01T18",208],["11-01T19",208],["11-01T20",200],["11-01T21",184],["11-01T22",152],["11-01T23",136],["11-02T00",26720],["11-02T01",80],["11-02T02",64],["11-02T03",64],["11-02T04",56],["11-02T05",48],["11-02T06",24],["11-02T07",24],["11-02T08",16],["11-02T09",16],["11-02T10",16],["11-02T11",8]],"pass_by_type":{"bond":[18744,19875],"angle":[36781,43879],"twist":[6280,7194],"tilt":[28002,29084]},"first_fail":[["jump",1304],["shell",403],["energy_drop",183],["new_contact",130],["energy_cap",39],["ref_mismatch",5],["not_converged",1]],"cp_hist":[3,13,17,13,15,14,22,55,178],"natoms_hist":[13,81,108,93,30,13],"nersc_wait":[137,130,100,192,223,262,4,0],"tool_hours":[79,113,101,79,90,92,83,140,226,192,106,128,148,107,119,116,94,126,129,86,97,100,116,126],"tool_days":[["2026-10-17",144],["2026-10-18",138],["2026-10-19",91],["2026-10-20",124],["2026-10-21",124],["2026-10-22",93],["2026-10-23",188],["2026-10-24",231],["2026-10-25",304],["2026-10-26",229],["2026-10-27",214],["2026-10-28",152],["2026-10-29",141],["2026-10-30",140],["2026-10-31",170],["2026-11-01",220],["2026-11-02",90]],"human_days":[["2026-10-17",9],["2026-10-18",11],["2026-10-19",8],["2026-10-20",4],["2026-10-21",7],["2026-10-22",6],["2026-10-23",7],["2026-10-24",16],["2026-10-25",19],["2026-10-26",1],["2026-10-27",6],["2026-10-28",5],["2026-10-29",6],["2026-10-30",9],["2026-10-31",13],["2026-11-01",8],["2026-11-02",2]],"runlog_hours":[8,9,7,4,3,5,7,3,7,6,4,8,3,3,0,6,4,9,2,7,6,5,3,6],"nersc_wait_raw":[0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.01,0.01,0.01,0.01,0.01,0.01,0.01,0.01,0.01,0.01,0.01,0.01,0.01,0.01,0.01,0.01,0.01,0.01,0.01,0.01,0.01,0.01,0.01,0.01,0.01,0.01,0.01,0.01,0.01,0.01,0.01,0.01,0.01,0.01,0.01,0.01,0.01,0.01,0.01,0.01,0.01,0.01,0.01,0.01,0.01,0.01,0.01,0.01,0.01,0.01,0.01,0.01,0.01,0.01,0.01,0.01,0.01,0.01,0.01,0.02,0.02,0.02,0.02,0.02,0.02,0.02,0.02,0.02,0.02,0.02,0.02,0.02,0.02,0.02,0.02,0.02,0.02,0.02,0.02,0.02,0.02,0.02,0.02,0.02,0.02,0.03,0.03,0.03,0.03,0.03,0.03,0.03,0.04,0.04,0.04,0.04,0.04,0.04,0.05,0.05,0.05,0.05,0.05,0.06,0.06,0.06,0.06,0.06,0.07,0.07,0.07,0.07,0.07,0.07,0.07,0.07,0.07,0.08,0.08,0.08,0.08,0.08,0.09,0.09,0.09,0.09,0.09,0.09,0.09,0.1,0.1,0.1,0.1,0.1,0.11,0.11,0.11,0.11,0.11,0.12,0.12,0.13,0.13,0.13,0.13,0.13,0.13,0.13,0.13,0.13,0.13,0.13,0.13,0.14,0.14,0.14,0.14,0.14,0.14,0.14,0.14,0.14,0.14,0.15,0.15,0.15,0.15,0.15,0.16,0.16,0.16,0.16,0.16,0.16,0.16,0.17,0.17,0.17,0.17,0.18,0.18,0.18,0.18,0.19,0.2,0.21,0.21,0.21,0.21,0.22,0.22,0.22,0.23,0.23,0.23,0.23,0.24,0.24,0.25,0.25,0.27,0.27,0.27,0.27,0.27,0.28,0.28,0.29,0.29,0.29,0.3,0.3,0.31,0.31,0.31,0.31,0.32,0.32,0.33,0.33,0.33,0.33,0.34,0.35,0.35,0.36,0.36,0.36,0.36,0.37,0.38,0.38,0.38,0.39,0.39,0.39,0.39,0.39,0.4,0.41,0.41,0.42,0.43,0.43,0.43,0.44,0.44,0.45,0.45,0.45,0.46,0.46,0.46,0.47,0.47,0.47,0.48,0.48,0.48,0.5,0.5,0.5,0.53,0.53,0.53,0.54,0.54,0.54,0.54,0.54,0.54,0.54,0.55,0.55,0.55,0.56,0.56,0.56,0.56,0.56,0.57,0.57,0.57,0.57,0.57,0.57,0.58,0.58,0.58,0.58,0.58,0.58,0.58,0.6,0.6,0.6,0.6,0.61,0.62,0.62,0.63,0.63,0.63,0.63,0.64,0.64,0.64,0.65,0.66,0.66,0.67,0.68,0.68,0.7,0.71,0.72,0.74,0.74,0.74,0.75,0.75,0.76,0.77,0.77,0.78,0.79,0.79,0.8,0.8,0.8,0.81,0.81,0.81,0.82,0.82,0.82,0.82,0.83,0.83,0.84,0.84,0.86,0.87,0.88,0.9,0.93,0.94,0.94,0.95,0.96,0.96,0.97,0.97,0.97,0.97,0.97,0.99,0.99,0.99,1.0,1.01,1.02,1.02,1.02,1.02,1.02,1.02,1.02,1.02,1.02,1.02,1.03,1.03,1.03,1.03,1.03,1.03,1.03,1.04,1.04,1.04,1.06,1.06,1.07,1.07,1.07,1.08,1.09,1.09,1.09,1.1,1.1,1.11,1.12,1.12,1.13,1.13,1.13,1.13,1.13,1.14,1.15,1.15,1.15,1.16,1.16,1.16,1.17,1.17,1.17,1.17,1.18,1.18,1.21,1.21,1.21,1.21,1.22,1.24,1.24,1.24,1.25,1.26,1.27,1.27,1.27,1.28,1.28,1.28,1.3,1.3,1.3,1.31,1.32,1.34,1.34,1.35,1.36,1.37,1.37,1.37,1.37,1.38,1.38,1.39,1.39,1.4,1.41,1.41,1.42,1.43,1.43,1.43,1.44,1.44,1.45,1.46,1.46,1.46,1.46,1.46,1.46,1.46,1.48,1.48,1.49,1.52,1.52,1.52,1.53,1.53,1.53,1.53,1.53,1.54,1.54,1.54,1.55,1.55,1.55,1.55,1.56,1.57,1.57,1.59,1.59,1.59,1.61,1.63,1.63,1.63,1.64,1.64,1.65,1.65,1.69,1.69,1.69,1.7,1.7,1.7,1.71,1.71,1.72,1.72,1.72,1.73,1.75,1.75,1.75,1.76,1.78,1.78,1.78,1.79,1.79,1.79,1.79,1.79,1.8,1.8,1.81,1.83,1.83,1.83,1.83,1.83,1.84,1.85,1.85,1.85,1.85,1.86,1.88,1.9,1.9,1.91,1.91,1.92,1.92,1.92,1.92,1.92,1.92,1.93,1.94,1.94,1.95,1.96,1.96,1.98,2.01,2.02,2.03,2.03,2.07,2.08,2.09,2.1,2.1,2.11,2.11,2.11,2.12,2.13,2.13,2.14,2.15,2.17,2.19,2.2,2.21,2.22,2.22,2.22,2.22,2.23,2.25,2.25,2.25,2.25,2.26,2.27,2.31,2.32,2.33,2.33,2.33,2.34,2.34,2.36,2.37,2.38,2.39,2.39,2.4,2.4,2.42,2.42,2.45,2.46,2.46,2.46,2.46,2.46,2.46,2.48,2.48,2.49,2.49,2.49,2.49,2.49,2.49,2.5,2.5,2.5,2.5,2.5,2.5,2.51,2.51,2.51,2.51,2.51,2.51,2.51,2.51,2.51,2.51,2.51,2.52,2.52,2.52,2.52,2.52,2.52,2.53,2.53,2.53,2.53,2.53,2.53,2.53,2.54,2.54,2.54,2.54,2.55,2.55,2.55,2.55,2.58,2.58,2.58,2.59,2.59,2.6,2.61,2.61,2.61,2.62,2.69,2.69,2.71,2.72,2.72,2.74,2.74,2.77,2.77,2.79,2.81,2.81,2.81,2.82,2.82,2.83,2.83,2.83,2.84,2.85,2.9,2.91,2.91,2.92,2.93,2.94,2.94,3.0,3.01,3.05,3.06,3.09,3.12,3.14,3.16,3.17,3.17,3.23,3.24,3.24,3.27,3.28,3.28,3.3,3.31,3.31,3.31,3.32,3.34,3.35,3.35,3.36,3.37,3.39,3.39,3.39,3.4,3.42,3.42,3.44,3.48,3.48,3.49,3.49,3.49,3.5,3.52,3.52,3.56,3.56,3.57,3.57,3.59,3.59,3.6,3.6,3.61,3.61,3.61,3.62,3.63,3.63,3.64,3.67,3.69,3.7,3.71,3.71,3.77,3.77,3.79,3.81,3.81,3.82,3.82,3.82,3.83,3.83,3.83,3.84,3.86,3.86,3.89,3.89,3.89,3.9,3.95,3.95,3.95,3.97,3.98,3.98,4.01,4.01,4.02,4.02,4.02,4.03,4.03,4.04,4.04,4.04,4.05,4.06,4.06,4.06,4.07,4.07,4.07,4.08,4.08,4.08,4.09,4.1,4.12,4.14,4.15,4.16,4.18,4.19,4.2,4.21,4.22,4.22,4.3,4.31,4.31,4.31,4.33,4.34,4.38,4.38,4.4,4.4,4.4,4.4,4.43,4.46,4.47,4.47,4.49,4.49,4.5,4.51,4.51,4.51,4.52,4.53,4.54,4.55,4.55,4.57,4.59,4.61,4.63,4.63,4.67,4.67,4.68,4.69,4.7,4.7,4.71,4.72,4.73,4.73,4.74,4.74,4.75,4.75,4.77,4.79,4.79,4.79,4.8,4.81,4.82,4.84,4.85,4.87,4.87,4.87,4.88,4.89,4.89,4.89,4.9,4.9,4.91,4.93,4.93,4.93,4.93,4.93,4.93,4.93,4.93,4.93,4.93,4.94,4.94,4.94,4.95,4.95,4.96,4.96,4.98,4.98,4.99,4.99,4.99,5.0,5.0,5.01,5.01,5.02,5.02,5.02,5.04,5.04,5.04,5.04,5.05,5.05,5.05,5.05,5.05,5.05,5.05,5.05,5.05,5.06,5.06,5.06,5.06,5.06,5.06,5.06,5.06,5.07,5.07,5.07,5.07,5.07,5.08,5.08,5.08,5.08,5.09,5.09,5.09,5.1,5.1,5.1,5.1,5.1,5.14,5.14,5.14,5.14,5.15,5.15,5.16,5.16,5.16,5.16,5.17,5.18,5.18,5.19,5.19,5.2,5.21,5.21,5.21,5.21,5.21,5.24,5.25,5.25,5.25,5.26,5.26,5.27,5.27,5.28,5.29,5.29,5.29,5.31,5.31,5.32,5.34,5.34,5.34,5.34,5.35,5.35,5.35,5.36,5.36,5.36,5.36,5.36,5.37,5.4,5.4,5.43,5.43,5.43,5.44,5.45,5.47,5.47,5.48,5.49,5.5,5.51,5.51,5.51,5.52,5.6,5.6,5.68,5.68,5.84,5.84,5.84,5.85,5.87,5.87,5.87,5.87,5.87,5.87,5.87,5.87,5.87,5.88,5.88,5.88,5.88,5.88,5.88,5.88,5.88,6.15,6.15,6.22,6.22,6.42,6.48,7.59,7.65,8.8,9.0,9.01,9.09]};
+const NS="http://www.w3.org/2000/svg";
+const el=(t,a,p)=>{const e=document.createElementNS(NS,t);for(const k in a)e.setAttribute(k,a[k]);if(p)p.appendChild(e);return e};
+const txt=(p,x,y,s,a={})=>{const e=el("text",Object.assign({x,y},a),p);e.textContent=s;return e};
+const svg=(id,w,h)=>{const s=el("svg",{viewBox:`0 0 ${w} ${h}`,role:"img"});document.getElementById(id).appendChild(s);return s};
+const fmt=n=>n.toLocaleString("en-US");
+const T0=Date.parse("2026-10-17T00:00:00Z"), T1=Date.parse("2026-11-03T00:00:00Z");
+const ts=s=>Date.parse((s.length===16?s+":00":s)+(s.endsWith("Z")?"":"Z"));
+function timeAxis(g,x,y0,y1){for(let t=T0;t<=T1;t+=86400000*2){const X=x(t);el("line",{x1:X,x2:X,y1:y0,y2:y1,stroke:"var(--rule)","stroke-width":1},g);const d=new Date(t);txt(g,X,y1+14,`${d.getUTCMonth()+1}/${d.getUTCDate()}`,{"text-anchor":"middle"})}}
+function yAxis(g,y,ticks,x0,x1,f=fmt,right=false){for(const v of ticks){const Y=y(v);if(!right)el("line",{x1:x0,x2:x1,y1:Y,y2:Y,stroke:"var(--rule)"},g);txt(g,right?x1+6:x0-6,Y+4,f(v),{"text-anchor":right?"start":"end"})}}
+
+// daily node-hours
+{const W=900,H=260,L=56,R=10,Tp=10,B=26,s=svg("c-daily",W,H);const n=D.daily.length,bw=(W-L-R)/n;
+ const y=v=>H-B-(v/3600)*(H-B-Tp);yAxis(s,y,[0,1000,2000,3000],L,W-R);
+ D.daily.forEach(([d,a,b],i)=>{const x=L+i*bw+bw*.15,w=bw*.7;el("rect",{x,y:y(a),width:w,height:y(0)-y(a),fill:"var(--aurora)"},s);el("rect",{x,y:y(a+b),width:w,height:y(a)-y(a+b),fill:"var(--nersc)"},s);
+  if(i%2===0)txt(s,x+w/2,H-B+14,d.replace("-","/").replace(/^0/,""),{"text-anchor":"middle"})});
+ const mx=D.daily.reduce((m,r)=>r[1]+r[2]>m[1]+m[2]?r:m);const i=D.daily.indexOf(mx);txt(s,L+i*bw+bw/2,y(mx[1]+mx[2])-6,fmt(mx[1]+mx[2]),{"text-anchor":"middle",class:"lbl"});}
+
+// cores busy
+{const W=900,H=240,L=56,R=10,Tp=12,B=26,s=svg("c-cores",W,H);const x=t=>L+(t-T0)/(T1-T0)*(W-L-R),y=v=>H-B-v/32000*(H-B-Tp);
+ yAxis(s,y,[0,10000,20000,30000],L,W-R,v=>v/1000+"k");timeAxis(s,x,Tp,H-B);
+ let d=`M${x(ts("2026-"+D.cores[0][0]+":00"))},${y(0)}`;let pk=[0,0];D.cores.forEach(([k,v])=>{const t=ts("2026-"+k+":00");d+=` L${x(t)},${y(v)} L${x(t+3600000)},${y(v)}`;if(v>pk[1])pk=[t,v]});
+ d+=` L${x(ts("2026-"+D.cores[D.cores.length-1][0]+":00")+3600000)},${y(0)} Z`;el("path",{d,fill:"var(--agent-soft)",stroke:"var(--agent)","stroke-width":1},s);
+ el("circle",{cx:x(pk[0]),cy:y(pk[1]),r:4,fill:"var(--agent)"},s);txt(s,x(pk[0])+8,y(pk[1])+4,fmt(pk[1])+" cores",{class:"lbl"});}
+
+// progress
+{const W=900,H=280,L=56,R=44,Tp=12,B=26,s=svg("c-progress",W,H);const x=t=>L+(t-T0)/(T1-T0)*(W-L-R),y=v=>H-B-v/10175*(H-B-Tp),y2=v=>H-B-v/338*(H-B-Tp);
+ yAxis(s,y,[0,2500,5000,7500,10175],L,W-R);[0,100,200,338].forEach(v=>txt(s,W-R+6,y2(v)+4,v,{fill:"var(--agent)"}));timeAxis(s,x,Tp,H-B);
+ const P=[["2026-10-17T21:00",0]].concat(D.progress);el("polyline",{points:P.map(([t,v])=>`${x(ts(t))},${y(v)}`).join(" "),fill:"none",stroke:"var(--aurora)","stroke-width":2.2},s);
+ let d="";const Q=[["2026-10-18T00:00",0]].concat(D.published);Q.forEach(([t,v],i)=>{const X=x(ts(t));d+=i?` H${X} V${y2(v)}`:`M${X},${y2(v)}`});d+=` H${x(ts("2026-11-02T12:00"))}`;
+ el("path",{d,fill:"none",stroke:"var(--agent)","stroke-width":2},s);
+ const last=D.progress[D.progress.length-1];el("circle",{cx:x(ts(last[0])),cy:y(last[1]),r:4,fill:"var(--aurora)"},s);txt(s,x(ts(last[0]))-8,y(last[1])-8,"10,175",{"text-anchor":"end",class:"lbl"});
+ const m=Date.parse("2026-11-02T20:00:00Z");el("rect",{x:x(m),y:Tp,width:x(T1)-x(m),height:H-B-Tp,fill:"var(--band)"},s);txt(s,x(m)+3,Tp+12,"maint.",{});}
+
+// gantt
+{const F=D.farms.slice().sort((a,b)=>a[5]<b[5]?-1:1);const rh=9,W=900,L=10,R=10,Tp=6,B=26,H=Tp+F.length*rh+B,s=svg("c-gantt",W,H);const x=t=>L+(t-T0)/(T1-T0)*(W-L-R);
+ timeAxis(s,x,Tp,H-B);F.forEach((f,i)=>{const Y=Tp+i*rh+rh/2,q=ts(f[4]),a=ts(f[5]),b=ts(f[6]),big=f[3]>=256;
+  el("line",{x1:x(q),x2:x(a),y1:Y,y2:Y,stroke:"var(--faint)","stroke-width":1},s);
+  el("rect",{x:x(a),y:Y-(big?3.5:2.5),width:Math.max(2,x(b)-x(a)),height:big?7:5,fill:big?"var(--aurora)":"var(--agent)"},s)});}
+
+// waits strip (log)
+{const W=900,H=200,L=130,R=14,s=svg("c-waits",W,H);const lx=v=>L+(Math.log10(Math.max(v,0.01))+2)/(Math.log10(100)+2)*(W-L-R);
+ [0.01,0.1,1,10,100].forEach(v=>{el("line",{x1:lx(v),x2:lx(v),y1:10,y2:H-26,stroke:"var(--rule)"},s);txt(s,lx(v),H-10,v<1?(v===0.01?"<1 min":"6 min"):v+" h",{"text-anchor":"middle"})});
+ const rows=[["Aurora 256-node",D.farms.filter(f=>f[3]>=256).map(f=>f[7]),"var(--aurora)"],["Aurora 16-node",D.farms.filter(f=>f[3]<256).map(f=>f[7]),"var(--agent)"],["Perlmutter shared",D.nersc_wait_raw,"var(--nersc)"]];
+ rows.forEach(([n,v,c],i)=>{const Y=35+i*52;txt(s,L-12,Y+4,n,{"text-anchor":"end",class:"lbl"});
+  v.forEach((w,j)=>{const jit=((j*2654435761)%1000)/1000-.5;el("circle",{cx:lx(w),cy:Y+jit*20,r:v.length>100?1.8:4,fill:c,"fill-opacity":v.length>100?.35:.85},s)});
+  const m=v.slice().sort((a,b)=>a-b)[Math.floor(v.length/2)];el("line",{x1:lx(m),x2:lx(m),y1:Y-15,y2:Y+15,stroke:"var(--ink)","stroke-width":2},s)});}
+
+// bars helper
+function hbars(id,rows,max,color,f=fmt){const W=440,rh=30,L=118,R=70,H=rows.length*rh+8,s=svg(id,W,H);
+ rows.forEach(([n,v,sub],i)=>{const Y=4+i*rh;txt(s,L-8,Y+17,n,{"text-anchor":"end",class:"lbl"});el("rect",{x:L,y:Y+5,width:W-L-R,height:16,fill:"var(--band)"},s);
+  el("rect",{x:L,y:Y+5,width:(W-L-R)*v/max,height:16,fill:color},s);txt(s,L+(W-L-R)*v/max+6,Y+17,sub||f(v))});}
+hbars("c-type",Object.entries(D.pass_by_type).sort((a,b)=>b[1][1]-a[1][1]).map(([k,[p,t]])=>[k,p/t*100,(p/t*100).toFixed(1)+"%"]),100,"var(--aurora)");
+hbars("c-fail",D.first_fail.map(([k,v])=>[k,v]),D.first_fail[0][1],"var(--warn)");
+function vbars(id,labels,vals,color){const W=440,H=200,L=34,R=8,Tp=14,B=34,s=svg(id,W,H);const mx=Math.max(...vals),bw=(W-L-R)/vals.length,y=v=>H-B-v/mx*(H-B-Tp);
+ vals.forEach((v,i)=>{el("rect",{x:L+i*bw+bw*.12,y:y(v),width:bw*.76,height:y(0)-y(v),fill:color},s);txt(s,L+i*bw+bw/2,y(v)-4,v,{"text-anchor":"middle",class:"lbl"});
+  txt(s,L+i*bw+bw/2,H-B+15,labels[i],{"text-anchor":"middle"})});el("line",{x1:L,x2:W-R,y1:y(0),y2:y(0),stroke:"var(--rule)"},s);return s}
+vbars("c-cp",["<50","50","60","70","75","80","85","90","95+"],D.cp_hist,"var(--agent)");
+vbars("c-atoms",["10–29","30–49","50–69","70–89","90–109","110+"],D.natoms_hist,"var(--aurora)");
+
+// clock
+{const W=900,H=230,L=40,R=40,Tp=14,B=28,s=svg("c-clock",W,H);const bw=(W-L-R)/24,mx=Math.max(...D.tool_hours),mr=Math.max(...D.runlog_hours),y=v=>H-B-v/mx*(H-B-Tp),y2=v=>H-B-v/mr*(H-B-Tp);
+ el("rect",{x:L+8*bw,y:Tp,width:10*bw,height:H-B-Tp,fill:"var(--band)"},s);txt(s,L+13*bw,Tp+12,"working hours",{"text-anchor":"middle"});
+ D.tool_hours.forEach((v,h)=>{el("rect",{x:L+h*bw+bw*.15,y:y(v),width:bw*.7,height:y(0)-y(v),fill:"var(--agent)","fill-opacity":.85},s);if(h%3===0)txt(s,L+h*bw+bw/2,H-B+15,String(h).padStart(2,"0")+":00",{"text-anchor":"middle"})});
+ el("polyline",{points:D.runlog_hours.map((v,h)=>`${L+h*bw+bw/2},${y2(v)}`).join(" "),fill:"none",stroke:"var(--warn)","stroke-width":2},s);
+ D.runlog_hours.forEach((v,h)=>el("circle",{cx:L+h*bw+bw/2,cy:y2(v),r:2.5,fill:"var(--warn)"},s));
+ yAxis(s,y,[0,100,200],L,W-R);[0,5,9].forEach(v=>txt(s,W-R+6,y2(v)+4,v,{fill:"var(--warn)"}));}
+
+// per day
+{const W=900,H=200,L=40,R=40,Tp=14,B=26,s=svg("c-days",W,H);const days=D.tool_days.map(r=>r[0]),n=days.length,bw=(W-L-R)/n,mx=320,y=v=>H-B-v/mx*(H-B-Tp),my=20,y2=v=>H-B-v/my*(H-B-Tp);
+ const hm=Object.fromEntries(D.human_days);yAxis(s,y,[0,100,200,300],L,W-R);[0,10,20].forEach(v=>txt(s,W-R+6,y2(v)+4,v,{class:"lbl"}));
+ D.tool_days.forEach(([d,v],i)=>{el("rect",{x:L+i*bw+bw*.15,y:y(v),width:bw*.7,height:y(0)-y(v),fill:"var(--agent)","fill-opacity":.85},s);
+  el("circle",{cx:L+i*bw+bw/2,cy:y2(hm[d]||0),r:3.5,fill:"var(--ink)"},s);if(i%2===0)txt(s,L+i*bw+bw/2,H-B+15,d.slice(5).replace("-","/").replace(/^0/,""),{"text-anchor":"middle"})});}
+
+// agent vs person timeline bars
+{const W=420,H=86,L=70,R=10,s=svg("c-vs-days",W,H);const x=d=>L+d/70*(W-L-R);
+ [0,14,28,42,56,70].forEach(d=>{el("line",{x1:x(d),x2:x(d),y1:4,y2:H-18,stroke:"var(--rule)"},s);txt(s,x(d),H-4,d+" d",{"text-anchor":"middle"})});
+ txt(s,L-8,22,"agent",{"text-anchor":"end",class:"lbl"});el("rect",{x:L,y:12,width:x(15.6)-L,height:14,fill:"var(--agent)"},s);
+ txt(s,L-8,52,"person",{"text-anchor":"end",class:"lbl"});el("rect",{x:L,y:42,width:x(42)-L,height:14,fill:"var(--faint)"},s);
+ el("rect",{x:x(42),y:42,width:x(70)-x(42),height:14,fill:"var(--faint)","fill-opacity":.35},s);txt(s,x(56),53,"estimate",{"text-anchor":"middle",class:"lbl"});}
+})();
+</script>
+
+</body>
+</html>
