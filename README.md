@@ -8,7 +8,7 @@
 
 A complex is added when all its branches have terminated normally and `aurora/audit.py` finds no problem (every ORCA output matches its own folder's input; no folder run twice at once).
 
-## Published (322 complexes, 87905 points)
+## Published (325 complexes, 88736 points)
 
 | Complex | Atoms | Branches | Points | Passing | Published |
 |---|---|---|---|---|---|
@@ -67,6 +67,7 @@ A complex is added when all its branches have terminated normally and `aurora/au
 | FAXYIP | 77 | 30 | 302 | 293 | 2026-11-01 |
 | FEKQIV | 78 | 30 | 302 | 302 | 2026-11-01 |
 | FEKQOB | 84 | 30 | 302 | 296 | 2026-10-31 |
+| FEKQUH | 90 | 30 | 302 | 283 | 2026-11-02 |
 | FEKRAO | 65 | 30 | 302 | 228 | 2026-10-27 |
 | FEKRES | 67 | 30 | 302 | 296 | 2026-11-01 |
 | FEKTAQ | 29 | 30 | 302 | 291 | 2026-10-24 |
@@ -225,6 +226,7 @@ A complex is added when all its branches have terminated normally and `aurora/au
 | QELPED | 49 | 30 | 302 | 282 | 2026-10-24 |
 | QEMXUE | 89 | 30 | 302 | 236 | 2026-10-31 |
 | QIBVAZ | 45 | 30 | 302 | 300 | 2026-10-25 |
+| QISJUA | 91 | 30 | 302 | 274 | 2026-11-02 |
 | QISKEL | 89 | 30 | 302 | 227 | 2026-11-01 |
 | QOBKAW | 37 | 30 | 302 | 291 | 2026-10-24 |
 | QOQYAW | 71 | 30 | 302 | 289 | 2026-10-25 |
@@ -282,6 +284,7 @@ A complex is added when all its branches have terminated normally and `aurora/au
 | UQOWIH | 65 | 30 | 302 | 287 | 2026-10-24 |
 | UTAXAQ | 81 | 30 | 302 | 242 | 2026-10-30 |
 | UWAVOF | 71 | 30 | 302 | 294 | 2026-11-01 |
+| UYORAE | 93 | 30 | 302 | 274 | 2026-11-02 |
 | VAGJES | 35 | 30 | 302 | 296 | 2026-10-24 |
 | VAGJIW | 55 | 30 | 302 | 292 | 2026-10-25 |
 | VATSAM | 67 | 30 | 302 | 294 | 2026-11-01 |
@@ -340,6 +343,7 @@ A complex is added when all its branches have terminated normally and `aurora/au
 A branch fell more than 2 kJ/mol below its start (`energy_drop`), so the complex has a lower minimum than the stage-2 geometry; points past the drop are not exported.
 
 - FEKQOB: angle_N1-Zn-S3 neg step 9 at -2.832 kJ/mol
+- FEKQUH: angle_N1-Zn-S4 pos step 7 at -9.777 kJ/mol; angle_N2-Zn-S3 neg step 5 at -9.851 kJ/mol
 - FEKRAO: angle_S1-Zn-N3 neg step 2 at -2.508 kJ/mol; angle_S1-Zn-N4 neg step 3 at -2.483 kJ/mol; angle_S2-Zn-N3 neg step 2 at -2.345 kJ/mol; twist_S1-S2-N3-N4 neg step 3 at -2.489 kJ/mol; tilt_Zn-S2-C32-C38 neg step 9 at -3.29 kJ/mol
 - GAKKUY: angle_S2-Zn-S3 neg step 9 at -4.906 kJ/mol
 - GEQCUE: bond_Zn-S44 pos step 3 at -14.839 kJ/mol; bond_Zn-S45 pos step 5 at -11.695 kJ/mol
