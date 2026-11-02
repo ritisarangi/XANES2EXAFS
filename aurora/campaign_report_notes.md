@@ -281,18 +281,19 @@ pattern: an O closes a chelate, 4 -> 6. **FECYIZ** has non-donor N10 at 1.98 A, 
 non-bond. Both are recorded `not_exported`. The same options apply. See section (f).
 
 <!-- lower_minima -->
-**Not yet examined.** Complexes published after 2026-10-31 appear in the list above but are not covered by the
-geometry check below. The deepest among them are WEDVIK (-29.3 kJ/mol, a `shell` failure), TEYSOG (-27.5),
-GEQCUE (-14.8) and LAPYAD (-12.2). They will get the same check when the campaign ends.
-
 **What the structures show.** This is a read-only geometry check of the lowest first-failing point of each
 complex on 2026-10-31: the Zn-donor distances at step 0 and at the failing step, the nearest non-donors, and
-the heavy-atom pair that changed most. Three kinds stand out.
+the heavy-atom pair that changed most. The same check was repeated on 2026-11-02 for the complexes published
+after 10-31: WEDVIK, TEYSOG, GEQCUE, LAPYAD, TELRIN, ZAZQUM, ZUKRII, SIHXIR, TELROT and TIFNUU. Their step-0
+geometries match stage 2 within 0.001 A. Three kinds stand out.
 
 1. **The first shell changes: a different species lies lower** (*inference* for the chemical labels).
    - **TIFNOO**: the deepest at -32 to -44 kJ/mol. At Zn-S3 or Zn-S4 +0.08 A, the other S leaves (3.51 A) and the
      ring N9/N10, at 2.76 A at stage 2, bind at 2.03/2.23 A. This is an S -> N linkage switch like KERJOI and
      FECYIZ, here reached during the scan. The published points describe the S-bound local minimum.
+   - **WEDVIK**: -29.3 kJ/mol. At Zn-N6 +0.14 A, both S leave (3.40/3.44 A), and N7/N8, at 2.97/2.99 A at
+     stage 2, bind at 2.02/2.03 A. Its second low branch (angle_N5-Zn-N6 neg, -20.7) shows the same switch. This
+     is an S -> N linkage switch like TIFNOO and KERJOI. The published points describe the S-bound local minimum.
    - **GUYHEN**: -18.6 kJ/mol (Run log 10-21). N9/N10, at 2.85 A at stage 2, come in to 2.13 A, while S1/S2
      lengthen to 2.64 A: 4 -> 6.
    - **DIFBOK, HULBIZ, MUJJUW, RIBMEV, RIBMIZ, WUCGIN**: -4 to -6 kJ/mol. The second S atom of each of two
@@ -305,18 +306,25 @@ the heavy-atom pair that changed most. Three kinds stand out.
    (-4.9), the Zn-donor
    distances change by at most about 0.05 A at the lowest point. The heavy-atom pairs that change most (by
    2-8 A) lie in the ligand periphery: aryl or alkyl groups rotating. NAMSOJ also has two `new_contact` failures at
-   -12.7 kJ/mol, where carbonyl O7 reaches 2.60 A. In HOZGAF and NAMSOJ most branches drop
-   by about 16 kJ/mol already at step 1-3, so the stage-2 geometry is not the lowest conformer and possibly not
+   -12.7 kJ/mol, where carbonyl O7 reaches 2.60 A. The same holds for TEYSOG (-27.5), GEQCUE (-14.8), LAPYAD
+   (-12.2), TELRIN (-8.0) and ZAZQUM (-7.4): the unscanned Zn-donor distances change by at most 0.036 A, and the
+   pairs that change most (by 3-11 A) lie 5-9 A from Zn, such as a methyl-bearing thioether arm in TEYSOG and a
+   chloroaryl arm in GEQCUE. In HOZGAF, NAMSOJ and TELRIN most branches drop
+   already at step 1-3 (by about 16 kJ/mol in HOZGAF and NAMSOJ, 6-8 in 10 TELRIN branches), so the stage-2 geometry is not the lowest conformer and possibly not
    a true minimum. The stage-2 frequencies on S3DF would settle this. For the Zn K-edge the first shell is what
    matters, so these published points are probably still representative (*inference*). Their energies are
    relative to a conformer that is not the lowest.
-3. **Small drops of 2-3 kJ/mol** (UFUROC, ZNDITZ11, FEKRAO, TARNIJ, ICAVAK, OJELOE, WIGBIX, FEKQOB): flat surfaces.
+3. **Small drops of 2-3 kJ/mol** (UFUROC, ZNDITZ11, FEKRAO, TARNIJ, ICAVAK, OJELOE, WIGBIX, FEKQOB, ZUKRII,
+   SIHXIR, TELROT, TIFNUU): flat surfaces. In TIFNUU, N18/N19 come in from 3.20/3.25 to 3.01 A, still outside
+   the shell.
    *Inference*: no action needed beyond noting them.
 
 **Recommended action.** For kind 1, decide per complex: either keep the published points as a labelled local
 minimum (0 compute), or re-optimise stage 2 from the lowest scan geometry and re-scan (about 3-9 node-hours per
-complex). TIFNOO and GUYHEN deserve this most; the six S-chelate cases are only 4-6 kJ/mol apart. For kind 2,
-check the stage-2 frequencies on S3DF for HOZGAF, NAMSOJ, XAJQAB, ICUCIT and KAKYAW (0 compute). Re-scan only
+complex). TIFNOO, WEDVIK and GUYHEN deserve this most; for TIFNOO and WEDVIK the lower form is N-bound, not the
+CSD compound, so they belong with the KERJOI question (Decision 3); the six S-chelate cases are only 4-6 kJ/mol apart. For kind 2,
+check the stage-2 frequencies on S3DF for HOZGAF, NAMSOJ, TELRIN, XAJQAB, ICUCIT, KAKYAW, TEYSOG, GEQCUE, LAPYAD
+and ZAZQUM (0 compute); TELRIN first, since its drops start at step 1. Re-scan only
 if an imaginary mode or a strongly different conformer matters for the spectra.
 
 <!-- low_pass -->
@@ -404,11 +412,13 @@ re-validation or inspection of results that already exist.
 3. **KERJOI and KUBVEJ** (and FECYIZ, the same kind of S -> N switch as KERJOI): drop them, or keep them with
    option 1 as an explicit N-bound isomer or a floppy model. *Recommended:* drop, unless a linkage isomer is
    wanted. *Cost:* 0.
-4. **Lower minima with a first-shell change** (TIFNOO -44, GUYHEN -18.6; DIFBOK, HULBIZ, MUJJUW, RIBMEV, RIBMIZ,
+4. **Lower minima with a first-shell change** (TIFNOO -44, WEDVIK -29.3, GUYHEN -18.6; DIFBOK, HULBIZ, MUJJUW, RIBMEV, RIBMIZ,
    WUCGIN -4 to -6 kJ/mol): keep the published points as labelled local minima, or re-optimise stage 2 from the
-   lowest scan geometry and re-scan. *Recommended:* re-scan TIFNOO and GUYHEN. Keep the six S-chelate cases,
+   lowest scan geometry and re-scan. *Recommended:* re-scan GUYHEN; decide TIFNOO and WEDVIK (both S -> N, so the
+   lower form is not the CSD compound) together with item 3. Keep the six S-chelate cases,
    noting the near-degenerate six-coordinate form. *Cost:* 0, or about 3-9 node-hours per re-scanned complex.
-5. **Conformer drops** (HOZGAF, NAMSOJ, XAJQAB, ICUCIT, KAKYAW; first shell almost unchanged): check the stage-2
+5. **Conformer drops** (HOZGAF, NAMSOJ, TELRIN, XAJQAB, ICUCIT, KAKYAW, TEYSOG, GEQCUE, LAPYAD, ZAZQUM; first shell
+   almost unchanged): check the stage-2
    frequency outputs on S3DF for imaginary modes before deciding. *Recommended:* check first, and re-scan only
    if stage 2 was not a minimum. *Cost:* 0 for the check.
 6. **`jump` rule limited to the Zn neighbourhood** (the median moving atom is 5.2 A from Zn; 71% of jumps vanish

@@ -1,17 +1,17 @@
 # Zn relaxed-scan campaign: report for Riti Sarangi (SSRL)
 
-Generated 2026-11-01 19:54 UTC by `aurora/campaign_report.py` from the run folder `/lus/flare/projects/ModCon/dsokaras/zn_scans` and the results checkout `/home/dsokaras/dev/xanes2exafs/XANES2EXAFS-results` (branch `aurora-results`). Rebuild with `python3 aurora/campaign_report.py /lus/flare/projects/ModCon/dsokaras/zn_scans > aurora/CAMPAIGN_REPORT.md`. Hand-written sections come from `aurora/campaign_report_notes.md`. Numbers in tables are computed; statements marked *(inference)* are interpretation.
+Generated 2026-11-02 12:03 UTC by `aurora/campaign_report.py` from the run folder `/lus/flare/projects/ModCon/dsokaras/zn_scans` and the results checkout `/home/dsokaras/dev/xanes2exafs/XANES2EXAFS-results` (branch `aurora-results`). Rebuild with `python3 aurora/campaign_report.py /lus/flare/projects/ModCon/dsokaras/zn_scans > aurora/CAMPAIGN_REPORT.md`. Hand-written sections come from `aurora/campaign_report_notes.md`. Numbers in tables are computed; statements marked *(inference)* are interpretation.
 
 ## Summary
 
-Relaxed one-coordinate scans (B3LYP-D3(BJ), def2-TZVP on Zn and donors, def2-SVP elsewhere, RIJCOSX, CPCM(water), ORCA 6.0.1) around the stage-2 minima of **338 Zn complexes**: 10,175 scan branches, 102,426 planned points (constrained optimisations, two branch starts per coordinate included). 10,150 of 10,175 branches have terminated normally (99.8%). **322 complexes are published** on `aurora-results` (97,616 points validated, **87,905 pass**, **90.1%**); **8 finished complexes are not exported** (every branch start fails validation: the stage-2 minimum has a different Zn first shell than the donor list); **8 complexes are still running** (215 of their 240 branches done; Aurora `main` queue: 0 pending, 0 running). 36 published complexes fall below their stage-2 energy by more than 2 kJ/mol in some branch, and 44 pass fewer than 75% of their points; both lists are below.
+Relaxed one-coordinate scans (B3LYP-D3(BJ), def2-TZVP on Zn and donors, def2-SVP elsewhere, RIJCOSX, CPCM(water), ORCA 6.0.1) around the stage-2 minima of **338 Zn complexes**: 10,175 scan branches, 102,426 planned points (constrained optimisations, two branch starts per coordinate included). 10,175 of 10,175 branches have terminated normally (100.0%). **330 complexes are published** on `aurora-results` (100,032 points validated, **89,807 pass**, **89.8%**); **8 finished complexes are not exported** (every branch start fails validation: the stage-2 minimum has a different Zn first shell than the donor list); **0 complexes are still running** (0 of their 0 branches done; Aurora `main` queue: 0 pending, 0 running). 39 published complexes fall below their stage-2 energy by more than 2 kJ/mol in some branch, and 46 pass fewer than 75% of their points; both lists are below.
 
 |  | Complexes | Branches | Points | Passing |
 |---|---|---|---|---|
-| Published | 322 | 9,697 | 97,616 | 87,905 |
+| Published | 330 | 9,937 | 100,032 | 89,807 |
 | Not exported | 8 | 238 | 2,394 | 0 |
-| In progress | 8 | 240 (215 done) | 2,416 | - |
-| Total | 338 | 10,175 | 102,426 | 87,905 |
+| In progress | 0 | 0 (0 done) | 0 | - |
+| Total | 338 | 10,175 | 102,426 | 89,807 |
 
 **Reading guide.** The results are the `scan_results/` folder on branch `aurora-results`. Its layout and its
 README are the deliverable; this report does not change them. Each published point is one constrained
@@ -167,24 +167,24 @@ From `remote_refs.txt`; branch counts from the NERSC driver state. Every complex
 |---|---|---|---|---|
 | CAPWIB | 65 | m2464 | 30 / 30 | published 2026-10-31 |
 | CAWKIW | 65 | m2464 | 26 / 30 | published 2026-10-31 |
-| DIVKAW | 96 | m2464 | 6 / 30 | in progress (25/30 done) |
+| DIVKAW | 96 | m2464 | 6 / 30 | published 2026-11-02 |
 | FAXYIP | 77 | m2464 | 25 / 30 | published 2026-11-01 |
-| FAZJAT | 97 | m2464 | 3 / 30 | in progress (27/30 done) |
-| FEKQUH | 90 | m2464 | 2 / 30 | in progress (28/30 done) |
+| FAZJAT | 97 | m2464 | 3 / 30 | published 2026-11-02 |
+| FEKQUH | 90 | m2464 | 2 / 30 | published 2026-11-02 |
 | FUXMAM | 73 | m2464 | 26 / 30 | published 2026-10-31 |
-| GIXSUE | 65 | m2464 | 3 / 30 | in progress (27/30 done) |
+| GIXSUE | 65 | m2464 | 3 / 30 | published 2026-11-02 |
 | JOCZEG | 81 | m2464 | 30 / 30 | published 2026-10-31 |
 | JUQXUO | 77 | m2464 | 27 / 30 | published 2026-11-01 |
 | LAJGIM | 89 | m2464 | 30 / 30 | published 2026-11-01 |
-| LOHZAM | 85 | m2464 | 3 / 30 | in progress (27/30 done) |
-| QISJUA | 91 | m2464 | 1 / 30 | in progress (29/30 done) |
+| LOHZAM | 85 | m2464 | 3 / 30 | published 2026-11-02 |
+| QISJUA | 91 | m2464 | 1 / 30 | published 2026-11-02 |
 | SEJZOW | 85 | m2464 | 26 / 30 | published 2026-11-01 |
 | TELRUZ | 77 | m2464 | 26 / 30 | published 2026-11-01 |
 | TEYSOG | 73 | m2464 | 25 / 30 | published 2026-11-01 |
 | TIFNUU | 65 | m2464 | 27 / 30 | published 2026-11-01 |
-| UCOLON | 82 | m2464 | 4 / 30 | in progress (26/30 done) |
+| UCOLON | 82 | m2464 | 4 / 30 | published 2026-11-02 |
 | UWAVOF | 71 | m2464 | 26 / 30 | published 2026-11-01 |
-| UYORAE | 93 | m2464 | 30 / 30 | in progress (26/30 done) |
+| UYORAE | 93 | m2464 | 30 / 30 | published 2026-11-02 |
 | WEQZAT01 | 48 | m2464 | 26 / 30 | published 2026-11-01 |
 | BUNNII | 137 | m5268 | 30 / 30 | published 2026-10-31 |
 | CATZUS10 | 137 | m5268 | 30 / 30 | published 2026-11-01 |
@@ -249,15 +249,15 @@ Each branch has at most one first failure; every later point of that branch is `
 
 | Status | Points | Share of published points |
 |---|---|---|
-| pass | 87,905 | 90.1% |
-| jump | 1235 | 1.27% |
-| shell | 397 | 0.41% |
-| energy_drop | 171 | 0.18% |
-| new_contact | 126 | 0.13% |
+| pass | 89,807 | 89.8% |
+| jump | 1304 | 1.30% |
+| shell | 403 | 0.40% |
+| energy_drop | 183 | 0.18% |
+| new_contact | 130 | 0.13% |
 | energy_cap | 39 | 0.04% |
-| ref_mismatch | 5 | 0.01% |
+| ref_mismatch | 5 | 0.00% |
 | not_converged | 1 | 0.00% |
-| after_fail | 7,737 | 7.9% |
+| after_fail | 8,160 | 8.2% |
 | constraint | 0 | - |
 | bonds | 0 | - |
 
@@ -265,16 +265,16 @@ Each branch has at most one first failure; every later point of that branch is `
 
 | Coordinate | Branch | Points | Pass | Pass % | First failures |
 |---|---|---|---|---|---|
-| angle | neg | 21,417 | 17,215 | 80.4 | jump 452, shell 329, energy_drop 47, new_contact 29 |
-| angle | pos | 21,406 | 18,845 | 88.0 | jump 340, new_contact 64, energy_drop 48, energy_cap 33 |
-| bond | neg | 5,172 | 5,094 | 98.5 | jump 35, energy_drop 7, ref_mismatch 1 |
-| bond | pos | 14,223 | 13,230 | 93.0 | jump 111, shell 31, new_contact 27, energy_drop 21 |
-| tilt | neg | 14,190 | 13,683 | 96.4 | jump 83, energy_drop 15, shell 1, ref_mismatch 1 |
-| tilt | pos | 14,190 | 13,693 | 96.5 | jump 81, energy_drop 17, new_contact 1, ref_mismatch 1 |
-| twist | neg | 3,509 | 3,074 | 87.6 | jump 69, energy_drop 8, new_contact 2, shell 2 |
-| twist | pos | 3,509 | 3,071 | 87.5 | jump 64, energy_drop 8, shell 5, new_contact 3 |
+| angle | neg | 21,945 | 17,551 | 80.0 | jump 475, shell 335, energy_drop 53, new_contact 29 |
+| angle | pos | 21,934 | 19,230 | 87.7 | jump 359, new_contact 68, energy_drop 52, energy_cap 33 |
+| bond | neg | 5,300 | 5,213 | 98.4 | jump 37, energy_drop 8, ref_mismatch 1 |
+| bond | pos | 14,575 | 13,531 | 92.8 | jump 117, shell 31, new_contact 27, energy_drop 22 |
+| tilt | neg | 14,542 | 13,998 | 96.3 | jump 89, energy_drop 15, shell 1, ref_mismatch 1 |
+| tilt | pos | 14,542 | 14,004 | 96.3 | jump 87, energy_drop 17, new_contact 1, ref_mismatch 1 |
+| twist | neg | 3,597 | 3,142 | 87.4 | jump 72, energy_drop 8, new_contact 2, shell 2 |
+| twist | pos | 3,597 | 3,138 | 87.2 | jump 68, energy_drop 8, shell 5, new_contact 3 |
 
-Points lost per first-failure type (the failing point plus the `after_fail` points behind it): jump 6,565, shell 1,528, energy_drop 1,026, new_contact 500, ref_mismatch 48, energy_cap 43, not_converged 1.
+Points lost per first-failure type (the failing point plus the `after_fail` points behind it): jump 6,990, shell 1,551, energy_drop 1,084, new_contact 508, ref_mismatch 48, energy_cap 43, not_converged 1.
 
 ## Per-complex table
 
@@ -319,7 +319,7 @@ All 338 complexes, by name. *Points*: validated points (published) or planned po
 | DIFBIE | published | 45 | 30 | 302 | 293 | 97.0 | shell 2, jump 1 | 6 | - | Aurora | 2026-10-25 |
 | DIFBOK | published | 55 | 30 | 302 | 264 | 87.4 | shell 8, jump 1, energy_cap 1 | 28 | 7 (-6.339) | Aurora | 2026-10-24 |
 | DILGUA | published | 53 | 30 | 302 | 302 | 100.0 | - | 0 | - | Aurora | 2026-10-20 |
-| DIVKAW | in progress (25/30 br.) | 96 | 30 | 302 | - | - | - | - | - | Aurora + NERSC m2464 (6/30 br.) | - |
+| DIVKAW | published | 96 | 30 | 302 | 262 | 86.8 | jump 9 | 31 | - | Aurora + NERSC m2464 (6/30 br.) | 2026-11-02 |
 | DOMMOH | published | 37 | 30 | 302 | 294 | 97.4 | shell 2 | 6 | - | Aurora | 2026-10-24 |
 | DOMMUN | published | 45 | 30 | 302 | 291 | 96.4 | jump 1, shell 1 | 9 | - | Aurora | 2026-10-24 |
 | DOZVOF | published | 111 | 30 | 302 | 294 | 97.4 | shell 2 | 6 | - | Aurora + NERSC m5268 (30/30 br.) | 2026-10-29 |
@@ -337,11 +337,11 @@ All 338 complexes, by name. *Points*: validated points (published) or planned po
 | FAJZAS | published | 78 | 30 | 302 | 300 | 99.3 | jump 1 | 1 | - | Aurora | 2026-10-27 |
 | FATJUG | published | 49 | 30 | 302 | 280 | 92.7 | jump 5 | 17 | - | Aurora | 2026-10-19 |
 | FAXYIP | published | 77 | 30 | 302 | 293 | 97.0 | shell 2, energy_cap 1 | 6 | - | Aurora + NERSC m2464 (25/30 br.) | 2026-11-01 |
-| FAZJAT | in progress (27/30 br.) | 97 | 30 | 302 | - | - | - | - | - | Aurora + NERSC m2464 (3/30 br.) | - |
+| FAZJAT | published | 97 | 30 | 302 | 50 | 16.6 | jump 24, energy_drop 5 | 223 | 5 (-24.658) | Aurora + NERSC m2464 (3/30 br.) | 2026-11-02 |
 | FECYIZ | **not exported** | 85 | 30 | 302 | 0 | 0.0 | branch starts: shell 30 | - | - | Aurora | 2026-11-01 |
 | FEKQIV | published | 78 | 30 | 302 | 302 | 100.0 | - | 0 | - | Aurora | 2026-11-01 |
 | FEKQOB | published | 84 | 30 | 302 | 296 | 98.0 | energy_drop 1, jump 1 | 4 | 1 (-2.832) | Aurora | 2026-10-31 |
-| FEKQUH | in progress (28/30 br.) | 90 | 30 | 302 | - | - | - | - | - | Aurora + NERSC m2464 (2/30 br.) | - |
+| FEKQUH | published | 90 | 30 | 302 | 283 | 93.7 | energy_drop 3, jump 2 | 14 | 2 (-9.851) | Aurora + NERSC m2464 (2/30 br.) | 2026-11-02 |
 | FEKRAO | published | 65 | 30 | 302 | 228 | 75.5 | energy_drop 9, jump 3, energy_cap 1 | 61 | 5 (-3.29) | Aurora | 2026-10-27 |
 | FEKRES | published | 67 | 30 | 302 | 296 | 98.0 | jump 1, energy_drop 1 | 4 | - | Aurora | 2026-11-01 |
 | FEKTAQ | published | 29 | 30 | 302 | 291 | 96.4 | shell 2, jump 2 | 7 | - | Aurora | 2026-10-24 |
@@ -361,7 +361,7 @@ All 338 complexes, by name. *Points*: validated points (published) or planned po
 | GEQCUE | published | 47 | 30 | 302 | 239 | 79.1 | jump 7, energy_drop 2, shell 1 | 53 | 2 (-14.839) | Aurora | 2026-11-01 |
 | GEXZOY | published | 81 | 30 | 302 | 276 | 91.4 | jump 7 | 19 | - | Aurora | 2026-10-25 |
 | GILZEG | published | 49 | 30 | 302 | 299 | 99.0 | shell 1, new_contact 1 | 1 | - | Aurora | 2026-10-23 |
-| GIXSUE | in progress (27/30 br.) | 65 | 30 | 302 | - | - | - | - | - | Aurora + NERSC m2464 (3/30 br.) | - |
+| GIXSUE | published | 65 | 30 | 302 | 214 | 70.9 | jump 13, shell 2, new_contact 2 | 71 | - | Aurora + NERSC m2464 (3/30 br.) | 2026-11-02 |
 | GIXTAL | published | 57 | 30 | 302 | 153 | 50.7 | jump 19, energy_drop 3 | 127 | 1 (-4.886) | Aurora | 2026-10-28 |
 | GOLCIU01 | published | 43 | 30 | 302 | 295 | 97.7 | shell 2, jump 2 | 3 | - | Aurora | 2026-10-25 |
 | GOWRAL | published | 53 | 30 | 302 | 240 | 79.5 | jump 10 | 52 | - | Aurora | 2026-10-25 |
@@ -437,7 +437,7 @@ All 338 complexes, by name. *Points*: validated points (published) or planned po
 | LIVNAG | **not exported** | 49 | 30 | 302 | 0 | 0.0 | branch starts: new_contact 30 | - | - | Aurora | 2026-10-25 |
 | LIYDEE | published | 79 | 30 | 302 | 209 | 69.2 | jump 13, energy_drop 3 | 77 | - | Aurora | 2026-11-01 |
 | LIYFEG01 | published | 59 | 30 | 302 | 281 | 93.0 | jump 4, shell 2 | 15 | - | Aurora | 2026-10-24 |
-| LOHZAM | in progress (27/30 br.) | 85 | 30 | 302 | - | - | - | - | - | Aurora + NERSC m2464 (3/30 br.) | - |
+| LOHZAM | published | 85 | 30 | 302 | 258 | 85.4 | jump 10, new_contact 2 | 32 | - | Aurora + NERSC m2464 (3/30 br.) | 2026-11-02 |
 | LUKREP | published | 53 | 30 | 302 | 291 | 96.4 | shell 2, jump 1 | 8 | - | Aurora | 2026-10-23 |
 | LUVFUD | published | 60 | 30 | 302 | 301 | 99.7 | shell 1 | 0 | - | Aurora | 2026-10-25 |
 | LUZTEF | published | 81 | 30 | 302 | 298 | 98.7 | shell 1, jump 1 | 2 | - | Aurora | 2026-10-26 |
@@ -508,7 +508,7 @@ All 338 complexes, by name. *Points*: validated points (published) or planned po
 | QELPED | published | 49 | 30 | 302 | 282 | 93.4 | jump 4, shell 2 | 14 | - | Aurora | 2026-10-24 |
 | QEMXUE | published | 89 | 30 | 302 | 236 | 78.1 | jump 14 | 52 | - | Aurora | 2026-10-31 |
 | QIBVAZ | published | 45 | 30 | 302 | 300 | 99.3 | shell 1 | 1 | - | Aurora | 2026-10-25 |
-| QISJUA | in progress (29/30 br.) | 91 | 30 | 302 | - | - | - | - | - | Aurora + NERSC m2464 (1/30 br.) | - |
+| QISJUA | published | 91 | 30 | 302 | 274 | 90.7 | jump 4, shell 2 | 22 | - | Aurora + NERSC m2464 (1/30 br.) | 2026-11-02 |
 | QISKEL | published | 89 | 30 | 302 | 227 | 75.2 | jump 14, shell 1 | 60 | - | Aurora | 2026-11-01 |
 | QOBKAW | published | 37 | 30 | 302 | 291 | 96.4 | jump 2, shell 1 | 8 | - | Aurora | 2026-10-24 |
 | QOQYAW | published | 71 | 30 | 302 | 289 | 95.7 | jump 2, shell 1, new_contact 1 | 9 | - | Aurora | 2026-10-25 |
@@ -557,7 +557,7 @@ All 338 complexes, by name. *Points*: validated points (published) or planned po
 | TIXQOH | published | 92 | 30 | 302 | 302 | 100.0 | - | 0 | - | Aurora | 2026-10-22 |
 | TIXREY | published | 48 | 30 | 302 | 302 | 100.0 | - | 0 | - | Aurora | 2026-10-23 |
 | UCOLIH | published | 69 | 30 | 302 | 204 | 67.5 | jump 13 | 85 | - | Aurora | 2026-11-01 |
-| UCOLON | in progress (26/30 br.) | 82 | 30 | 302 | - | - | - | - | - | Aurora + NERSC m2464 (4/30 br.) | - |
+| UCOLON | published | 82 | 30 | 302 | 287 | 95.0 | energy_drop 4, jump 3 | 8 | 1 (-8.969) | Aurora + NERSC m2464 (4/30 br.) | 2026-11-02 |
 | UDOCUL | published | 70 | 30 | 302 | 300 | 99.3 | shell 1 | 1 | - | Aurora | 2026-10-26 |
 | UDODOG | published | 90 | 30 | 302 | 234 | 77.5 | new_contact 9, jump 1 | 58 | - | Aurora | 2026-10-27 |
 | UDODUM | published | 75 | 30 | 302 | 283 | 93.7 | new_contact 8 | 11 | - | Aurora | 2026-11-01 |
@@ -567,7 +567,7 @@ All 338 complexes, by name. *Points*: validated points (published) or planned po
 | UQOWIH | published | 65 | 30 | 302 | 287 | 95.0 | jump 3, shell 2 | 10 | - | Aurora | 2026-10-24 |
 | UTAXAQ | published | 81 | 30 | 302 | 242 | 80.1 | jump 12 | 48 | - | Aurora | 2026-10-30 |
 | UWAVOF | published | 71 | 30 | 302 | 294 | 97.4 | shell 2 | 6 | - | Aurora + NERSC m2464 (26/30 br.) | 2026-11-01 |
-| UYORAE | in progress (26/30 br.) | 93 | 30 | 302 | - | - | - | - | - | Aurora + NERSC m2464 (30/30 br.) | - |
+| UYORAE | published | 93 | 30 | 302 | 274 | 90.7 | jump 4, shell 2 | 22 | - | Aurora + NERSC m2464 (30/30 br.) | 2026-11-02 |
 | VAGJES | published | 35 | 30 | 302 | 296 | 98.0 | shell 2 | 4 | - | Aurora | 2026-10-24 |
 | VAGJIW | published | 55 | 30 | 302 | 292 | 96.7 | shell 2 | 8 | - | Aurora | 2026-10-25 |
 | VATSAM | published | 67 | 30 | 302 | 294 | 97.4 | shell 2 | 6 | - | Aurora | 2026-11-01 |
@@ -732,6 +732,7 @@ Every published complex with at least one branch whose first failing point lies 
 | TIFNOO | 8 | -44.024 | angle_S3-Zn-N33 neg step 7 (shell) | structural 8 | 241/302 |
 | WEDVIK | 2 | -29.293 | bond_Zn-N6 pos step 7 (shell) | structural 2 | 275/302 |
 | TEYSOG | 1 | -27.45 | angle_S1-Zn-S2 pos step 9 (energy_drop) | energy_drop 1 | 287/302 |
+| FAZJAT | 5 | -24.658 | angle_S93-Zn-S94 neg step 3 (energy_drop) | energy_drop 5 | 50/302 |
 | XAJQAB | 1 | -21.073 | angle_N22-Zn-N69 neg step 9 (energy_drop) | energy_drop 1 | 277/302 |
 | GUYHEN | 9 | -18.665 | angle_S1-Zn-N11 neg step 4 (shell) | structural 9 | 204/302 |
 | NAMSOJ | 13 | -16.76 | angle_N3-Zn-S4 pos step 1 (energy_drop) | energy_drop 11, structural 2 | 212/302 |
@@ -740,6 +741,8 @@ Every published complex with at least one branch whose first failing point lies 
 | LAPYAD | 7 | -12.177 | bond_Zn-N39 pos step 4 (energy_drop) | energy_drop 7 | 214/302 |
 | ICUCIT | 1 | -10.556 | angle_N2-Zn-N3 pos step 8 (energy_drop) | energy_drop 1 | 272/302 |
 | KAKYAW | 1 | -10.288 | angle_N29-Zn-N50 pos step 3 (energy_drop) | energy_drop 1 | 231/302 |
+| FEKQUH | 2 | -9.851 | angle_N2-Zn-S3 neg step 5 (energy_drop) | energy_drop 2 | 283/302 |
+| UCOLON | 1 | -8.969 | angle_S3-Zn-S4 pos step 10 (energy_drop) | energy_drop 1 | 287/302 |
 | TELRIN | 10 | -8.018 | angle_S2-Zn-N6 pos step 1 (energy_drop) | energy_drop 10 | 200/302 |
 | ZAZQUM | 2 | -7.364 | angle_S1-Zn-S3 neg step 7 (energy_drop) | energy_drop 2 | 222/302 |
 | QADDEF | 1 | -6.959 | angle_N5-Zn-N7 pos step 9 (energy_drop) | energy_drop 1 | 281/302 |
@@ -769,7 +772,9 @@ Every published complex with at least one branch whose first failing point lies 
 All branches below start (coordinate, branch, step of the first failure, E_rel kJ/mol, status):
 
 - **DIFBOK**: angle_S1-Zn-N6 neg 8 -6.174 (shell); angle_S3-Zn-N5 neg 7 -6.339 (shell); angle_S3-Zn-N6 neg 9 -6.306 (shell); bond_Zn-N5 pos 6 -5.467 (shell); bond_Zn-N6 pos 7 -4.65 (shell); bond_Zn-S1 pos 5 -4.816 (shell); bond_Zn-S3 pos 7 -5.503 (shell)
+- **FAZJAT**: angle_S92-Zn-S93 neg 3 -20.796 (energy_drop); angle_S92-Zn-S95 neg 1 -6.423 (energy_drop); angle_S93-Zn-S94 neg 3 -24.658 (energy_drop); bond_Zn-S93 pos 1 -7.64 (energy_drop); bond_Zn-S94 neg 1 -7.73 (energy_drop)
 - **FEKQOB**: angle_N1-Zn-S3 neg 9 -2.832 (energy_drop)
+- **FEKQUH**: angle_N1-Zn-S4 pos 7 -9.777 (energy_drop); angle_N2-Zn-S3 neg 5 -9.851 (energy_drop)
 - **FEKRAO**: angle_S1-Zn-N3 neg 2 -2.508 (energy_drop); angle_S1-Zn-N4 neg 3 -2.483 (energy_drop); angle_S2-Zn-N3 neg 2 -2.345 (energy_drop); tilt_Zn-S2-C32-C38 neg 9 -3.29 (energy_drop); twist_S1-S2-N3-N4 neg 3 -2.489 (energy_drop)
 - **GAKKUY**: angle_S2-Zn-S3 neg 9 -4.906 (energy_drop)
 - **GEQCUE**: bond_Zn-S44 pos 3 -14.839 (energy_drop); bond_Zn-S45 pos 5 -11.695 (energy_drop)
@@ -794,6 +799,7 @@ All branches below start (coordinate, branch, step of the first failure, E_rel k
 - **TEYSOG**: angle_S1-Zn-S2 pos 9 -27.45 (energy_drop)
 - **TIFNOO**: angle_N33-Zn-N34 neg 4 -31.876 (shell); angle_S3-Zn-N33 neg 7 -44.024 (shell); angle_S3-Zn-N34 neg 7 -37.596 (shell); angle_S3-Zn-S4 pos 9 -15.896 (shell); angle_S4-Zn-N33 neg 7 -34.454 (shell); bond_Zn-S3 pos 4 -32.173 (shell); bond_Zn-S4 pos 4 -32.174 (shell); twist_S3-S4-N33-N34 pos 8 -32.322 (shell)
 - **TIFNUU**: angle_S5-Zn-S8 pos 5 -2.29 (energy_drop); angle_S6-Zn-S7 pos 5 -2.298 (energy_drop); twist_S5-S6-S7-S8 pos 7 -2.136 (energy_drop)
+- **UCOLON**: angle_S3-Zn-S4 pos 10 -8.969 (energy_drop)
 - **UFUROC**: angle_S1-Zn-S2 neg 1 -3.621 (energy_drop); angle_S1-Zn-S3 pos 1 -3.152 (energy_drop); angle_S1-Zn-S4 neg 1 -2.971 (energy_drop); angle_S2-Zn-S3 pos 3 -3.3 (energy_drop); angle_S2-Zn-S4 neg 1 -3.606 (energy_drop); angle_S3-Zn-S4 pos 2 -3.615 (energy_drop); bond_Zn-S1 neg 3 -2.655 (energy_drop); bond_Zn-S2 pos 2 -3.299 (energy_drop); bond_Zn-S3 neg 1 -3.613 (energy_drop); bond_Zn-S4 pos 3 -3.064 (energy_drop); tilt_Zn-S2-C12-O11 neg 3 -3.564 (energy_drop); tilt_Zn-S3-C18-C19 neg 2 -3.22 (energy_drop); tilt_Zn-S4-C24-O23 neg 2 -3.615 (energy_drop); twist_S1-S2-S3-S4 neg 1 -3.334 (energy_drop)
 - **WEDVIK**: angle_N5-Zn-N6 neg 4 -20.701 (shell); bond_Zn-N6 pos 7 -29.293 (shell)
 - **WIGBIX**: angle_S20-Zn-N39 pos 7 -2.309 (energy_drop)
@@ -805,18 +811,19 @@ All branches below start (coordinate, branch, step of the first failure, E_rel k
 - **ZNDITZ11**: angle_S1-Zn-N3 neg 2 -2.201 (energy_drop); angle_S1-Zn-N7 pos 2 -2.522 (energy_drop); angle_S1-Zn-S2 pos 4 -2.225 (energy_drop); angle_S2-Zn-N3 pos 1 -2.373 (energy_drop); bond_Zn-N3 pos 4 -2.047 (energy_drop); tilt_Zn-S1-C11-N4 pos 7 -2.373 (energy_drop); tilt_Zn-S2-C34-N8 neg 6 -2.658 (energy_drop); tilt_Zn-S2-C34-N8 pos 5 -2.413 (energy_drop)
 - **ZUKRII**: angle_N21-Zn-N58 neg 8 -2.724 (energy_drop)
 
-**Not yet examined.** Complexes published after 2026-10-31 appear in the list above but are not covered by the
-geometry check below. The deepest among them are WEDVIK (-29.3 kJ/mol, a `shell` failure), TEYSOG (-27.5),
-GEQCUE (-14.8) and LAPYAD (-12.2). They will get the same check when the campaign ends.
-
 **What the structures show.** This is a read-only geometry check of the lowest first-failing point of each
 complex on 2026-10-31: the Zn-donor distances at step 0 and at the failing step, the nearest non-donors, and
-the heavy-atom pair that changed most. Three kinds stand out.
+the heavy-atom pair that changed most. The same check was repeated on 2026-11-02 for the complexes published
+after 10-31: WEDVIK, TEYSOG, GEQCUE, LAPYAD, TELRIN, ZAZQUM, ZUKRII, SIHXIR, TELROT and TIFNUU. Their step-0
+geometries match stage 2 within 0.001 A. Three kinds stand out.
 
 1. **The first shell changes: a different species lies lower** (*inference* for the chemical labels).
    - **TIFNOO**: the deepest at -32 to -44 kJ/mol. At Zn-S3 or Zn-S4 +0.08 A, the other S leaves (3.51 A) and the
      ring N9/N10, at 2.76 A at stage 2, bind at 2.03/2.23 A. This is an S -> N linkage switch like KERJOI and
      FECYIZ, here reached during the scan. The published points describe the S-bound local minimum.
+   - **WEDVIK**: -29.3 kJ/mol. At Zn-N6 +0.14 A, both S leave (3.40/3.44 A), and N7/N8, at 2.97/2.99 A at
+     stage 2, bind at 2.02/2.03 A. Its second low branch (angle_N5-Zn-N6 neg, -20.7) shows the same switch. This
+     is an S -> N linkage switch like TIFNOO and KERJOI. The published points describe the S-bound local minimum.
    - **GUYHEN**: -18.6 kJ/mol (Run log 10-21). N9/N10, at 2.85 A at stage 2, come in to 2.13 A, while S1/S2
      lengthen to 2.64 A: 4 -> 6.
    - **DIFBOK, HULBIZ, MUJJUW, RIBMEV, RIBMIZ, WUCGIN**: -4 to -6 kJ/mol. The second S atom of each of two
@@ -829,18 +836,25 @@ the heavy-atom pair that changed most. Three kinds stand out.
    (-4.9), the Zn-donor
    distances change by at most about 0.05 A at the lowest point. The heavy-atom pairs that change most (by
    2-8 A) lie in the ligand periphery: aryl or alkyl groups rotating. NAMSOJ also has two `new_contact` failures at
-   -12.7 kJ/mol, where carbonyl O7 reaches 2.60 A. In HOZGAF and NAMSOJ most branches drop
-   by about 16 kJ/mol already at step 1-3, so the stage-2 geometry is not the lowest conformer and possibly not
+   -12.7 kJ/mol, where carbonyl O7 reaches 2.60 A. The same holds for TEYSOG (-27.5), GEQCUE (-14.8), LAPYAD
+   (-12.2), TELRIN (-8.0) and ZAZQUM (-7.4): the unscanned Zn-donor distances change by at most 0.036 A, and the
+   pairs that change most (by 3-11 A) lie 5-9 A from Zn, such as a methyl-bearing thioether arm in TEYSOG and a
+   chloroaryl arm in GEQCUE. In HOZGAF, NAMSOJ and TELRIN most branches drop
+   already at step 1-3 (by about 16 kJ/mol in HOZGAF and NAMSOJ, 6-8 in 10 TELRIN branches), so the stage-2 geometry is not the lowest conformer and possibly not
    a true minimum. The stage-2 frequencies on S3DF would settle this. For the Zn K-edge the first shell is what
    matters, so these published points are probably still representative (*inference*). Their energies are
    relative to a conformer that is not the lowest.
-3. **Small drops of 2-3 kJ/mol** (UFUROC, ZNDITZ11, FEKRAO, TARNIJ, ICAVAK, OJELOE, WIGBIX, FEKQOB): flat surfaces.
+3. **Small drops of 2-3 kJ/mol** (UFUROC, ZNDITZ11, FEKRAO, TARNIJ, ICAVAK, OJELOE, WIGBIX, FEKQOB, ZUKRII,
+   SIHXIR, TELROT, TIFNUU): flat surfaces. In TIFNUU, N18/N19 come in from 3.20/3.25 to 3.01 A, still outside
+   the shell.
    *Inference*: no action needed beyond noting them.
 
 **Recommended action.** For kind 1, decide per complex: either keep the published points as a labelled local
 minimum (0 compute), or re-optimise stage 2 from the lowest scan geometry and re-scan (about 3-9 node-hours per
-complex). TIFNOO and GUYHEN deserve this most; the six S-chelate cases are only 4-6 kJ/mol apart. For kind 2,
-check the stage-2 frequencies on S3DF for HOZGAF, NAMSOJ, XAJQAB, ICUCIT and KAKYAW (0 compute). Re-scan only
+complex). TIFNOO, WEDVIK and GUYHEN deserve this most; for TIFNOO and WEDVIK the lower form is N-bound, not the
+CSD compound, so they belong with the KERJOI question (Decision 3); the six S-chelate cases are only 4-6 kJ/mol apart. For kind 2,
+check the stage-2 frequencies on S3DF for HOZGAF, NAMSOJ, TELRIN, XAJQAB, ICUCIT, KAKYAW, TEYSOG, GEQCUE, LAPYAD
+and ZAZQUM (0 compute); TELRIN first, since its drops start at step 1. Re-scan only
 if an imaginary mode or a strongly different conformer matters for the spectra.
 
 ### (c) Pass rate below 75%
@@ -849,6 +863,7 @@ if an imaginary mode or a strongly different conformer matters for the spectra.
 
 | Complex | Atoms | Pass | Pass % | First failures | Median first-failure step | Median E_rel at first failure | Site |
 |---|---|---|---|---|---|---|---|
+| FAZJAT | 97 | 50/302 | 16.6 | jump 24, energy_drop 5 | 1 | -0.5 | Aurora + NERSC m2464 (3/30 br.) |
 | VOJHIO | 53 | 97/302 | 32.1 | jump 24 | 1 | 0.0 | Aurora |
 | HOZGAF | 96 | 137/302 | 45.4 | energy_drop 15, jump 6 | 2 | -15.9 | Aurora |
 | SIHXIR | 75 | 151/302 | 50.0 | energy_drop 11, jump 7, energy_cap 1 | 2 | -2.2 | Aurora |
@@ -883,6 +898,7 @@ if an imaginary mode or a strongly different conformer matters for the spectra.
 | LIYDEE | 79 | 209/302 | 69.2 | jump 13, energy_drop 3 | 6 | -0.8 | Aurora |
 | NAMSOJ | 104 | 212/302 | 70.2 | energy_drop 11, new_contact 2, jump 1 | 3 | -15.9 | Aurora + NERSC m5268 (30/30 br.) |
 | VEKDUL | 65 | 212/302 | 70.2 | jump 10, energy_drop 1 | 2 | -1.5 | Aurora |
+| GIXSUE | 65 | 214/302 | 70.9 | jump 13, shell 2, new_contact 2 | 6 | 0.3 | Aurora + NERSC m2464 (3/30 br.) |
 | LAPYAD | 71 | 214/302 | 70.9 | energy_drop 9, jump 6 | 5 | -0.6 | Aurora |
 | WIGBIX | 121 | 216/302 | 71.5 | jump 13, energy_drop 1 | 4 | 0.4 | Aurora + NERSC m5268 (30/30 br.) |
 | TEYSIA | 67 | 217/302 | 71.9 | jump 15, shell 1 | 4 | 1.0 | Aurora |
@@ -1028,6 +1044,7 @@ Verbatim from `aurora/README.md` (Run log and setup notes), oldest first.
 - 2026-10-31 07:26: BUNNII, the slowest of the big complexes on NERSC (m5268), finished all 30 branches and is published, with 182 of 302 points passing validation (lower than most; for Riti to look at).
 - 2026-11-01 13:17: EPOFUL finished and was not exported (`new_contact` on all 30 branch starts), as `CAMPAIGN_REPORT.md` predicted: it has the same stage-2 shell change as the six already listed (attention case a), so seven are now withheld for Riti's decision; FECYIZ is expected to follow. 8995873 handed its 118 unfinished branches back before its 6 h limit, and 9019151 picked them up at 11:05; 9024268 queued as the second 16-node farm.
 - 2026-11-01 18:05: FECYIZ not exported (`shell` on all 30 branch starts), as `CAMPAIGN_REPORT.md` predicted, so eight are withheld for Riti's decision.
+- 2026-11-02 11:30: All 10,175 branches of the 338 complexes terminated normally: **330 complexes published** on `aurora-results`, **8 not exported** for Riti's decision (GECLUZ, KECGEI, KERJOI, KUBVEJ, LIVNAG, OGUGON, EPOFUL, FECYIZ; see `CAMPAIGN_REPORT.md` (a)).
 
 ## Decisions for Riti
 
@@ -1046,11 +1063,13 @@ re-validation or inspection of results that already exist.
 3. **KERJOI and KUBVEJ** (and FECYIZ, the same kind of S -> N switch as KERJOI): drop them, or keep them with
    option 1 as an explicit N-bound isomer or a floppy model. *Recommended:* drop, unless a linkage isomer is
    wanted. *Cost:* 0.
-4. **Lower minima with a first-shell change** (TIFNOO -44, GUYHEN -18.6; DIFBOK, HULBIZ, MUJJUW, RIBMEV, RIBMIZ,
+4. **Lower minima with a first-shell change** (TIFNOO -44, WEDVIK -29.3, GUYHEN -18.6; DIFBOK, HULBIZ, MUJJUW, RIBMEV, RIBMIZ,
    WUCGIN -4 to -6 kJ/mol): keep the published points as labelled local minima, or re-optimise stage 2 from the
-   lowest scan geometry and re-scan. *Recommended:* re-scan TIFNOO and GUYHEN. Keep the six S-chelate cases,
+   lowest scan geometry and re-scan. *Recommended:* re-scan GUYHEN; decide TIFNOO and WEDVIK (both S -> N, so the
+   lower form is not the CSD compound) together with item 3. Keep the six S-chelate cases,
    noting the near-degenerate six-coordinate form. *Cost:* 0, or about 3-9 node-hours per re-scanned complex.
-5. **Conformer drops** (HOZGAF, NAMSOJ, XAJQAB, ICUCIT, KAKYAW; first shell almost unchanged): check the stage-2
+5. **Conformer drops** (HOZGAF, NAMSOJ, TELRIN, XAJQAB, ICUCIT, KAKYAW, TEYSOG, GEQCUE, LAPYAD, ZAZQUM; first shell
+   almost unchanged): check the stage-2
    frequency outputs on S3DF for imaginary modes before deciding. *Recommended:* check first, and re-scan only
    if stage 2 was not a minimum. *Cost:* 0 for the check.
 6. **`jump` rule limited to the Zn neighbourhood** (the median moving atom is 5.2 A from Zn; 71% of jumps vanish
