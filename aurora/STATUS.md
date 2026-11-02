@@ -1,6 +1,6 @@
 # Zn scan campaign on Aurora and NERSC Perlmutter: status
 
-Generated 2026-11-02 13:21 UTC by `aurora/autopilot.sh`. Human-written notes are in the run log of `aurora/README.md`; validated results are on the `aurora-results` branch.
+Generated 2026-11-02 15:31 UTC by `aurora/autopilot.sh`. Human-written notes are in the run log of `aurora/README.md`; validated results are on the `aurora-results` branch.
 
 ## Branches
 
@@ -9,7 +9,7 @@ branches: 10175 done, 0 started (running/stopped/failed), 0 continuations ready,
 queue main: 0 of 0 waiting, 0 ORCA runs active
 queue big: 0 of 0 waiting, 0 ORCA runs active
 failed ORCA runs not retried: 2
-allocation: 41,119.6 Node Hours available on ModCon
+allocation: 41,100.7 Node Hours available on ModCon
 ```
 
 ## Farm jobs
@@ -72,29 +72,29 @@ stops at the 48 h limit so far: 201; failed runs: 93
 Last driver actions:
 
 ```
-[2026-11-02 12:07:08] status: 0 jobs queued/running, 1170 branches finished (1170 back on Aurora), 0 need review
-[2026-11-02 12:17:11] status: 0 jobs queued/running, 1170 branches finished (1170 back on Aurora), 0 need review
-[2026-11-02 12:27:14] status: 0 jobs queued/running, 1170 branches finished (1170 back on Aurora), 0 need review
-[2026-11-02 12:37:18] status: 0 jobs queued/running, 1170 branches finished (1170 back on Aurora), 0 need review
-[2026-11-02 12:47:22] status: 0 jobs queued/running, 1170 branches finished (1170 back on Aurora), 0 need review
-[2026-11-02 12:57:25] status: 0 jobs queued/running, 1170 branches finished (1170 back on Aurora), 0 need review
-[2026-11-02 13:07:28] status: 0 jobs queued/running, 1170 branches finished (1170 back on Aurora), 0 need review
-[2026-11-02 13:17:31] status: 0 jobs queued/running, 1170 branches finished (1170 back on Aurora), 0 need review
+[2026-11-02 14:17:49] status: 0 jobs queued/running, 1170 branches finished (1170 back on Aurora), 0 need review
+[2026-11-02 14:27:51] status: 0 jobs queued/running, 1170 branches finished (1170 back on Aurora), 0 need review
+[2026-11-02 14:37:54] status: 0 jobs queued/running, 1170 branches finished (1170 back on Aurora), 0 need review
+[2026-11-02 14:47:57] status: 0 jobs queued/running, 1170 branches finished (1170 back on Aurora), 0 need review
+[2026-11-02 14:57:59] status: 0 jobs queued/running, 1170 branches finished (1170 back on Aurora), 0 need review
+[2026-11-02 15:08:02] status: 0 jobs queued/running, 1170 branches finished (1170 back on Aurora), 0 need review
+[2026-11-02 15:18:05] status: 0 jobs queued/running, 1170 branches finished (1170 back on Aurora), 0 need review
+[2026-11-02 15:28:08] status: 0 jobs queued/running, 1170 branches finished (1170 back on Aurora), 0 need review
 ```
 
 ## Last autopilot actions
 
 ```
-prioritize big: 0 of 0 pending branches belong to complexes at least half done
 prioritize main: 0 of 0 pending branches belong to complexes at least half done
 prioritize big: 0 of 0 pending branches belong to complexes at least half done
 prioritize main: 0 of 0 pending branches belong to complexes at least half done
 prioritize big: 0 of 0 pending branches belong to complexes at least half done
-[2026-11-02 11:20:47] STATUS.md pushed
+[2026-11-02 13:23:33] STATUS.md pushed
 prioritize main: 0 of 0 pending branches belong to complexes at least half done
 prioritize big: 0 of 0 pending branches belong to complexes at least half done
 prioritize main: 0 of 0 pending branches belong to complexes at least half done
 prioritize big: 0 of 0 pending branches belong to complexes at least half done
+[2026-11-02 14:29:58] publish: publish: no newly finished complexes 
 prioritize main: 0 of 0 pending branches belong to complexes at least half done
 prioritize big: 0 of 0 pending branches belong to complexes at least half done
 ```
