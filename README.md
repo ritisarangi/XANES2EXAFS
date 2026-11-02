@@ -2,6 +2,8 @@
 
 `scan_results/` is the export of `scans/export_points.py` (the `scan_results.tar.gz` of `nersc/README.md`), added complex by complex as each finishes on Aurora. Code and run log: branch `aurora`, `aurora/README.md`.
 
+Computed and validated by a campaign run by an AI agent within ISAAC (Integrated Scientific Agentic AI for Catalysis); see `aurora/CAMPAIGN_REPORT.md` on branch `aurora` for the outcome of every complex.
+
 - `scan_results/<REF>.xyz`: one frame per point that passes `scans/validate.py`; comment line `REF coordinate branch step= offset= value= E_rel_kJ= E_h=`
 - `scan_results/validation_scan_full.csv`: the `validate.py` row of every point of the published complexes
 - `scan_results/coords/<REF>.json`: the scanned coordinates
