@@ -6,6 +6,8 @@ Workload from `scan_bundle.tar.gz`: 338 complexes, 10,175 branches, 92,589 const
 
 Lessons from running this campaign (walltimes, queues, charging, failures) are in `HPC_LESSONS.md` at the top of the repository.
 
+The production run was planned, built and operated by an AI agent within ISAAC (Integrated Scientific Agentic AI for Catalysis). That covers the farm and scheduling scripts in `aurora/`, the move of work to NERSC Perlmutter (`nersc/iri/`), validation and publication, and the Run log below. People set the allocation policy and own the scientific decisions. The campaign went from the first production farm to the last branch in 15.6 days, run around the clock. Compute, timeline and results are summarised in `aurora/CAMPAIGN_RETROSPECTIVE.html`; the outcome of every complex is in `aurora/CAMPAIGN_REPORT.md`.
+
 ## How it differs from Perlmutter
 
 Aurora charges whole nodes (2 x Xeon Max 9470C, 104 cores, 1 TB DDR5, 128 GB HBM; cores 0 and 52 belong to the OS, so 102 are usable) and has no shared QOS or Slurm arrays. One PBS job (a "farm") runs many pinned ORCA jobs on every node and keeps them fed from a shared queue on Lustre (`$WORK/queue/<pool>`, locked with `flock`), largest complexes first.

@@ -86,9 +86,9 @@ code{font-family:var(--mono);font-size:.88em}
 
 <div class="wrap">
 <header>
-  <div class="eyebrow">XANES2EXAFS · Zn K-edge relaxed scans · Oct 17 – Nov 2, 2026</div>
+  <div class="eyebrow">ISAAC · XANES2EXAFS · Zn K-edge relaxed scans · Oct 17 – Nov 2, 2026</div>
   <h1>10,175 scans, two supercomputers, <em>one agent at the console</em></h1>
-  <p class="lede">Riti Sarangi's Zn dataset needed a relaxed one-coordinate scan around every one of 338 CSD zinc complexes: about 100,000 constrained DFT optimisations. An AI agent built the job farms, ran them on ALCF Aurora and NERSC Perlmutter around the clock, moved work between the sites, validated and published the results, and wrote the record. People set the policy and made the scientific calls.</p>
+  <p class="lede">Riti Sarangi's Zn dataset needed a relaxed one-coordinate scan around every one of 338 CSD zinc complexes: about 100,000 constrained DFT optimisations. An AI agent, working within ISAAC (Integrated Scientific Agentic AI for Catalysis), built the job farms, ran them on ALCF Aurora and NERSC Perlmutter around the clock, moved work between the sites, validated and published the results, and wrote the record. People set the policy and made the scientific calls.</p>
   <div class="kpis">
     <div class="kpi"><b>15.6 d</b><span>first production farm to last branch</span></div>
     <div class="kpi"><b>1.47 M</b><span>CPU core-hours (13,723 node-hours)</span></div>
@@ -261,11 +261,13 @@ code{font-family:var(--mono);font-size:.88em}
       <li>A restart raced the watchdog and briefly ran two autopilots. This was caught within a minute and nothing was submitted twice. Single-instance locks were added.</li>
     </ul>
     <p class="sub">Each of these is now a rule in <code>HPC_LESSONS.md</code>, written for the next agent or person who runs a campaign like this.</p>
+    <h3>What this means for the science</h3>
+    <p>This campaign is one workflow from ISAAC, which builds agents that take a scientific computing goal and carry it across facilities, from first job to published, documented data. A dataset of about 100,000 DFT optimisations normally means weeks of an expert's time spent tending queues. Here it took about two weeks of machine time and a few hours of human attention, and the scientists' time went to the questions only they can answer. The tooling, the lessons file and the report stay in the repository, so the next dataset starts from where this one ended, not from scratch.</p>
   </div>
 </section>
 
 <footer class="col">
-  Sources: <code>sbank-list-jobs</code> (Aurora, projects isaac and ModCon, jobs named <code>zn_*</code>); Slurm records of 1,048 Perlmutter jobs read through the NERSC IRI API; <code>aurora/STATUS.md</code> history for progress; <code>aurora-results</code> commits for publication; <code>validation_scan_full.csv</code> and <code>published.json</code> for results; the agent's session transcript for actions and messages; the Run log in <code>aurora/README.md</code> for incidents. Core-hours use 104 cores per Aurora node and 128 per Perlmutter node. Pacific time is UTC−7 until Nov 1 and UTC−8 after. Estimates for a person are marked as such.
+  Prepared by the ISAAC agent that ran the campaign (Integrated Scientific Agentic AI for Catalysis). Sources: <code>sbank-list-jobs</code> (Aurora, projects isaac and ModCon, jobs named <code>zn_*</code>); Slurm records of 1,048 Perlmutter jobs read through the NERSC IRI API; <code>aurora/STATUS.md</code> history for progress; <code>aurora-results</code> commits for publication; <code>validation_scan_full.csv</code> and <code>published.json</code> for results; the agent's session transcript for actions and messages; the Run log in <code>aurora/README.md</code> for incidents. Core-hours use 104 cores per Aurora node and 128 per Perlmutter node. Pacific time is UTC−7 until Nov 1 and UTC−8 after. Estimates for a person are marked as such.
 </footer>
 </div>
 

@@ -1,6 +1,6 @@
 # Zn relaxed-scan campaign: report for Riti Sarangi (SSRL)
 
-Generated 2026-11-02 12:03 UTC by `aurora/campaign_report.py` from the run folder `/lus/flare/projects/ModCon/dsokaras/zn_scans` and the results checkout `/home/dsokaras/dev/xanes2exafs/XANES2EXAFS-results` (branch `aurora-results`). Rebuild with `python3 aurora/campaign_report.py /lus/flare/projects/ModCon/dsokaras/zn_scans > aurora/CAMPAIGN_REPORT.md`. Hand-written sections come from `aurora/campaign_report_notes.md`. Numbers in tables are computed; statements marked *(inference)* are interpretation.
+Generated 2026-11-02 20:56 UTC by `aurora/campaign_report.py` from the run folder `/lus/flare/projects/ModCon/dsokaras/zn_scans` and the results checkout `/home/dsokaras/dev/xanes2exafs/XANES2EXAFS-results` (branch `aurora-results`). Rebuild with `python3 aurora/campaign_report.py /lus/flare/projects/ModCon/dsokaras/zn_scans > aurora/CAMPAIGN_REPORT.md`. Hand-written sections come from `aurora/campaign_report_notes.md`. Numbers in tables are computed; statements marked *(inference)* are interpretation.
 
 ## Summary
 
@@ -12,6 +12,12 @@ Relaxed one-coordinate scans (B3LYP-D3(BJ), def2-TZVP on Zn and donors, def2-SVP
 | Not exported | 8 | 238 | 2,394 | 0 |
 | In progress | 0 | 0 (0 done) | 0 | - |
 | Total | 338 | 10,175 | 102,426 | 89,807 |
+
+**How this campaign was run.** An AI agent within ISAAC (Integrated Scientific Agentic AI for Catalysis)
+planned and ran the campaign end to end, under the user's oversight. It built and operated the job farms on
+ALCF Aurora, moved the largest and slowest complexes to NERSC Perlmutter, validated and published every
+complex, and wrote this report. From the first production farm to the last branch took 15.6 days, run around
+the clock. `aurora/CAMPAIGN_RETROSPECTIVE.html` summarises the compute, the timeline and the operation.
 
 **Reading guide.** The results are the `scan_results/` folder on branch `aurora-results`. Its layout and its
 README are the deliverable; this report does not change them. Each published point is one constrained

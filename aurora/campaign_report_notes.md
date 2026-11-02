@@ -5,6 +5,12 @@ marker. Lines above the first marker (this header) are not included. Keep number
 campaign ends in the script, not here; numbers below are fixed facts (thresholds, measured checks, dated events).
 
 <!-- summary -->
+**How this campaign was run.** An AI agent within ISAAC (Integrated Scientific Agentic AI for Catalysis)
+planned and ran the campaign end to end, under the user's oversight. It built and operated the job farms on
+ALCF Aurora, moved the largest and slowest complexes to NERSC Perlmutter, validated and published every
+complex, and wrote this report. From the first production farm to the last branch took 15.6 days, run around
+the clock. `aurora/CAMPAIGN_RETROSPECTIVE.html` summarises the compute, the timeline and the operation.
+
 **Reading guide.** The results are the `scan_results/` folder on branch `aurora-results`. Its layout and its
 README are the deliverable; this report does not change them. Each published point is one constrained
 optimisation that passed `scans/validate.py`. The *Complexes that need Riti's attention* section lists what

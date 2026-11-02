@@ -5,7 +5,9 @@ everything learned in the Zn relaxed-scan campaign (338 complexes, 10,175 scan b
 constrained optimisations, ORCA 6.0.1, Aurora and Perlmutter, from October 2026 on). This file is kept
 current: when a rule changes, the rule is rewritten here, not appended as history. The chronological
 record of the campaign is the Run log in `aurora/README.md`; the scripts are in `aurora/`,
-`nersc/iri/` and `scans/`.
+`nersc/iri/` and `scans/`. The campaign was run by an AI agent within ISAAC (Integrated Scientific Agentic
+AI for Catalysis), largely unattended, so these rules are written for an agent to follow as much as
+for a person. The section *Running a campaign with an agent* describes how that operation is set up.
 
 ## When these instructions apply
 
